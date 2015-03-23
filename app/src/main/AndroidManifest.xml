@@ -20,6 +20,10 @@
             android:name=".RoomCreate"
             android:label="@string/title_activity_room_create" >
         </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
     </application>
 
 </manifest>
