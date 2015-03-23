@@ -8,8 +8,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:name=".SpellActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_spell"
+            android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,10 +19,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SpellActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_spell"
-            android:theme="@style/FullscreenTheme" >
+            android:name=".util.SpellActivity"
+            android:label="@string/title_activity_spell" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

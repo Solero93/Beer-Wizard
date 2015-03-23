@@ -1,32 +1,191 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="#0099cc"
-    tools:context="pis2015.ub.com.beerwizard.SpellActivity">
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="pis2015.ub.com.beerwizard.util.SpellActivity">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView android:id="@+id/fullscreen_content" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:keepScreenOn="true" android:textColor="#33b5e5"
-        android:textStyle="bold" android:textSize="50sp" android:gravity="center"
-        android:text="@string/dummy_content" />
-
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
-        <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay" android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-            <Button android:id="@+id/dummy_button" style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:text="@string/dummy_button" />
-
+    <HorizontalScrollView
+        android:id="@+id/hsv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fillViewport="true"
+        android:measureAllChildren="false"
+        android:scrollbars="none" >
+        <LinearLayout
+            android:id="@+id/innerLay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <LinearLayout
+                android:id="@+id/asthma_action_plan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/hechizo" />
+                    <TextView
+                        android:layout_width="0.2dp"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/hechizo" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/controlled_medication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/hechizo" />
+                    <TextView
+                        android:layout_width="0.2dp"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/hechizo" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/as_needed_medication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/hechizo" />
+                    <TextView
+                        android:layout_width="0.2dp"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/hechizo" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/rescue_medication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/hechizo"
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/textView"
+                        android:layout_toStartOf="@+id/textView" />
+                    <TextView
+                        android:layout_width="0.2dp"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/hechizo"
+                        android:id="@+id/textView" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/your_symptoms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/hechizo" />
+                    <TextView
+                        android:layout_width="0.2dp"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/hechizo" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/your_triggers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/hechizo" />
+                    <TextView
+                        android:layout_width="0.2dp"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/hechizo" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/wheeze_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/hechizo" />
+                    <TextView
+                        android:layout_width="0.2dp"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/hechizo" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/peak_flow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/hechizo" />
+                    <TextView
+                        android:layout_width="0.2dp"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/hechizo" />
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
-    </FrameLayout>
+    </HorizontalScrollView>
 
-</FrameLayout>
+</RelativeLayout>
