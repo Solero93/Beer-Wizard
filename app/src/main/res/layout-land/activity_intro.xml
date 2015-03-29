@@ -14,9 +14,10 @@
     android:nestedScrollingEnabled="true"
     android:clickable="true"
     android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:background="@color/background_intro">
 
-    <ImageView
+<ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgvw_intro"
