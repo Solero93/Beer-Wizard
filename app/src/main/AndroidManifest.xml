@@ -27,6 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".util.SpellsActivity"
+            android:label="@string/title_activity_spells" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,11 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="pis2015.ub.com.beerwizard.util.SpellActivity">
+    tools:context="pis2015.ub.com.beerwizard.util.SpellsActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_search"
-        android:icon="@mipmap/icon_lvl_up"
+        android:icon="@mipmap/lvl_up_cuadrado"
         android:title="@string/lvlUp"/>
-
 </menu>
