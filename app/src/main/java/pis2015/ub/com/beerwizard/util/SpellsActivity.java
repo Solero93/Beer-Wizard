@@ -4,7 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.widget.ImageView
 import pis2015.ub.com.beerwizard.R;
 
 public class SpellsActivity extends ActionBarActivity {
@@ -13,6 +13,8 @@ public class SpellsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spells);
+        ImageView logo = (ImageView) findViewById(android.R.id.home);
+        logo.setImageDrawable(R.mipmap.hechizo.png);///???????????????????????????????
     }
 
 
