@@ -24,6 +24,14 @@
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
+        <activity
+            android:name=".CastSpell"
+            android:label="@string/title_activity_cast_spell"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pis2015.ub.com.beerwizard.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

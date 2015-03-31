@@ -9,5 +9,6 @@
     <string name="create_room_button">Create Room</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="profile_name">Name</string>
+    <string name="title_activity_cast_spell">Cast Spell</string>
 
 </resources>
