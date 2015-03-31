@@ -10,8 +10,9 @@
 
         <activity
             android:name=".util.SpellsActivity"
-            android:label="@string/title_activity_spells" >
-        </activity>
+            android:icon="@drawable/cara"
+            android:label="@string/nick"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>
