@@ -1,10 +1,11 @@
 package pis2015.ub.com.beerwizard.util;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView
+import android.widget.ImageView;
+
 import pis2015.ub.com.beerwizard.R;
 
 public class SpellsActivity extends ActionBarActivity {
