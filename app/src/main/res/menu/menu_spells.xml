@@ -2,10 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="pis2015.ub.com.beerwizard.util.SpellsActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/action_search"
-        android:icon="@mipmap/lvl_up_cuadrado"
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/lvl_up_cuadrado"
         app:showAsAction="ifRoom"
-        android:title="@string/lvlUp"/>
+        android:title="@string/lvlUp" />
 </menu>
