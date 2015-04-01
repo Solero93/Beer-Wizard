@@ -1,11 +1,12 @@
 package pis2015.ub.com.beerwizard;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-
+/**
+ *
+ */
 public class IntroActivity extends Activity {
 
     @Override
@@ -14,8 +15,12 @@ public class IntroActivity extends Activity {
         setContentView(R.layout.activity_intro);
     }
 
+    /**
+     * onClick ActionListener of the whole Activity
+     * Returns to the menu by finishing the Activity since
+     * MainMenuActivity opens this one.
+     */
     public void onClick_enterMenu(View vw) {
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        startActivity(intent);
+        this.finish();
     }
 }
