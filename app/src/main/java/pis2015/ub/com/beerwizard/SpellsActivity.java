@@ -1,10 +1,10 @@
 package pis2015.ub.com.beerwizard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;
 import android.view.View;
 
 public class SpellsActivity extends ActionBarActivity {
@@ -28,7 +28,7 @@ public class SpellsActivity extends ActionBarActivity {
     }
     public void onClickSpell(View v) {
 
-        Intent intent = new Intent(this, CastSpell.class);
+        Intent intent = new Intent(this, CastSpellActivity.class);
         startActivity(intent);
     }
     @Override
