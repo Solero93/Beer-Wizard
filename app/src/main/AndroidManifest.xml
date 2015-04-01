@@ -17,11 +17,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".RoomCreate"
+            android:label="@string/title_activity_room_create" >
+        </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name=".CastSpell"
+            android:label="@string/title_activity_cast_spell"
+            android:parentActivityName=".MainMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pis2015.ub.com.beerwizard.MainMenuActivity" />
+        </activity>
         <activity
             android:name=".MainMenuActivity"
             android:label="@string/title_activity_main_menu"
-            android:screenOrientation="landscape"></activity>
-
+            android:screenOrientation="landscape" >
+        </activity>
     </application>
 </manifest>

@@ -3,6 +3,12 @@
 
     <string name="app_name">Beer Wizard</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_room_create">RoomCreate</string>
+    <string name="create_room_hint">Room Name</string>
+    <string name="create_room_button">Create Room</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="profile_name">Name</string>
+    <string name="title_activity_cast_spell">Cast Spell</string>
 
     <!-- Intro Strings-->
     <string name="lbl_tap_to_begin">Tap to beergin!</string>
