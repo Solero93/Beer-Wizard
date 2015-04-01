@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -18,6 +16,7 @@ import android.widget.PopupWindow;
 public class MainMenuActivity extends Activity {
     public final static int tutorialActivity = 1;
     Button btnAbout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +71,7 @@ public class MainMenuActivity extends Activity {
                 startActivityForResult(intent, tutorialActivity);
             }
         });
+<<<<<<< HEAD
 
 
     }
@@ -97,5 +97,7 @@ public class MainMenuActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+=======
+>>>>>>> Christian
     }
 }
