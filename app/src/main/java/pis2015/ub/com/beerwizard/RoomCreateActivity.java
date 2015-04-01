@@ -1,24 +1,24 @@
 package pis2015.ub.com.beerwizard;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class CastSpell extends ActionBarActivity {
+public class RoomCreateActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cast_spell);
+        setContentView(R.layout.activity_room_create);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_cast_spell, menu);
+        getMenuInflater().inflate(R.menu.menu_room_create, menu);
         return true;
     }
 
