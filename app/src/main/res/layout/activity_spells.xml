@@ -27,7 +27,8 @@
             android:measureWithLargestChild="false"
             android:minHeight="1dp"
             android:minWidth="98dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="top|left">
 
             <TextView
                 android:id="@+id/textLvl"
