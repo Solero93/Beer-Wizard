@@ -19,16 +19,19 @@
         </activity>
         <activity
             android:name=".RoomCreate"
-            android:label="@string/title_activity_room_create" >
+            android:label="@string/title_activity_room_create"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".ProfileActivity"
-            android:label="@string/title_activity_profile" >
+            android:label="@string/title_activity_profile"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".CastSpell"
             android:label="@string/title_activity_cast_spell"
-            android:parentActivityName=".MainMenuActivity" >
+            android:parentActivityName=".MainMenuActivity"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pis2015.ub.com.beerwizard.MainMenuActivity" />
