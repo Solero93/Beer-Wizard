@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 /**
- *
+ * Activity of the Intro
  */
 public class IntroActivity extends Activity {
 
