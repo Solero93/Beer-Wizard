@@ -1,15 +1,23 @@
 package pis2015.ub.com.beerwizard;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 
 
 public class MainMenuActivity extends Activity {
-
+    public final static int tutorialActivity = 1;
+    Button btnAbout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +37,44 @@ public class MainMenuActivity extends Activity {
 
         // Assign adapter to ListView
         listView.setAdapter(adapter);
+
+        btnAbout = (Button) findViewById(R.id.btn_about);
+        btnAbout.setOnClickListener(new Button.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                LayoutInflater layoutInflater
+                        = (LayoutInflater) getBaseContext()
+                        .getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = layoutInflater.inflate(R.layout.popup_about, null);
+                final PopupWindow popupWindow = new PopupWindow(
+                        popupView,
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
+                btnDismiss.setOnClickListener(new Button.OnClickListener() {
+                    //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                    }
+                });
+
+                popupWindow.showAtLocation(btnAbout, Gravity.CENTER, 0, 0);
+
+            }
+        });
+
+        Button btnTutorial = (Button) findViewById(R.id.btn_tutorial);
+        btnTutorial.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenuActivity.this, TutorialActivity.class);
+                startActivityForResult(intent, tutorialActivity);
+            }
+        });
+
+
+
     }
 
 
