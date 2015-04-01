@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
+import android.view.View;
 
 public class SpellsActivity extends ActionBarActivity {
 
@@ -24,7 +26,11 @@ public class SpellsActivity extends ActionBarActivity {
         return super.onCreateOptionsMenu(menu);
 
     }
+    public void onClickSpell(View v) {
 
+        Intent intent = new Intent(this, CastSpell.class);
+        startActivity(intent);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -34,12 +40,17 @@ public class SpellsActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_profile) {
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
             return true;
         }
         if (id == R.id.action_tutorial) {
+            Intent intent = new Intent(this, TutorialActivity.class);
+            startActivity(intent);
             return true;
         }
         if (id == R.id.action_exit) {
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
