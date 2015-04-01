@@ -5,8 +5,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import pis2015.ub.com.beerwizard.R;
-
 public class SpellsActivity extends ActionBarActivity {
 
     @Override
