@@ -71,8 +71,8 @@
                     android:id="@+id/spell1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:gravity="center"
                     android:longClickable="false"
                     android:onClick="onClickSpell"
@@ -81,10 +81,9 @@
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
-                        android:background="@drawable/fondo_spell"
-                        android:clickable="true">
+                        android:background="@drawable/fondo_spell">
 
-                        <ImageView
+                    <ImageView
                             android:id="@+id/imageViewSpell1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -110,8 +109,8 @@
                     android:id="@+id/spell2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:gravity="center"
                     android:nestedScrollingEnabled="false"
                     android:onClick="onClickSpell"
@@ -148,19 +147,19 @@
                     android:id="@+id/spell3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:gravity="center"
+                    android:longClickable="false"
                     android:onClick="onClickSpell"
                     android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
-                        android:background="@drawable/fondo_spell"
-                        android:clickable="true">
+                        android:background="@drawable/fondo_spell">
 
-                        <ImageView
+                    <ImageView
                             android:id="@+id/imageViewSpell3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -186,8 +185,8 @@
                     android:id="@+id/spell4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:gravity="center"
                     android:onClick="onClickSpell"
                     android:orientation="vertical">
@@ -224,8 +223,8 @@
                     android:id="@+id/spell5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:gravity="center"
                     android:onClick="onClickSpell"
                     android:orientation="vertical">
@@ -233,10 +232,9 @@
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
-                        android:background="@drawable/fondo_spell"
-                        android:clickable="true">
+                        android:background="@drawable/fondo_spell">
 
-                        <ImageView
+                    <ImageView
                             android:id="@+id/imageViewSpell5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -262,8 +260,8 @@
                     android:id="@+id/spell6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:gravity="center"
                     android:nestedScrollingEnabled="false"
                     android:onClick="onClickSpell"
@@ -301,8 +299,8 @@
                     android:id="@+id/spell7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:gravity="center"
                     android:onClick="onClickSpell"
                     android:orientation="vertical">
@@ -310,10 +308,9 @@
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
-                        android:background="@drawable/fondo_spell"
-                        android:clickable="true">
+                        android:background="@drawable/fondo_spell">
 
-                        <ImageView
+                    <ImageView
                             android:id="@+id/imageViewSpell7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -339,8 +336,8 @@
                     android:id="@+id/spell8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:gravity="center"
                     android:onClick="onClickSpell"
                     android:orientation="vertical">
@@ -348,10 +345,9 @@
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
-                        android:background="@drawable/fondo_spell"
-                        android:clickable="true">
+                        android:background="@drawable/fondo_spell">
 
-                        <ImageView
+                    <ImageView
                             android:id="@+id/imageViewSpell8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -377,8 +373,8 @@
                     android:id="@+id/spell9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:gravity="center"
                     android:onClick="onClickSpell"
                     android:orientation="vertical">
