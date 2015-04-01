@@ -14,7 +14,7 @@ public class IntroActivity extends Activity {
         setContentView(R.layout.activity_intro);
     }
 
-    public void enterMenu(View vw) {
+    public void onClick_enterMenu(View vw) {
         Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
     }

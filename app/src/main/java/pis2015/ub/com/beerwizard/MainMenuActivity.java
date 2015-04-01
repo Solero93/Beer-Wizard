@@ -80,17 +80,17 @@ public class MainMenuActivity extends Activity {
         });
     }
 
-    public void btnEvent_newGame(View vw) {
+    public void onClick_newGame(View vw) {
         Intent intent = new Intent(this, RoomCreateActivity.class);
         startActivity(intent);
     }
 
-    public void btnEvent_profile(View vw) {
+    public void onClick_profile(View vw) {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 
-    public void btnEvent_tutorial(View vw) {
+    public void onClick_tutorial(View vw) {
         Intent intent = new Intent(this, TutorialActivity.class);
         startActivity(intent);
     }

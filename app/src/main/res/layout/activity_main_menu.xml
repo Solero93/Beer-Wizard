@@ -29,20 +29,20 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/lbl_available_rooms"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/lbl_available_rooms" />
+            android:textColor="@color/lbl_available_rooms"/>
 
         <ListView
             android:id="@+id/listvw_available_rooms"
             android:layout_width="201dp"
             android:layout_height="match_parent"
-            android:choiceMode="singleChoice" />
+            android:choiceMode="singleChoice"/>
 
     </LinearLayout>
 
     <Space
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_weight="0.26" />
+        android:layout_weight="0.26"/>
 
     <LinearLayout
         android:id="@+id/layout_menu"
@@ -58,7 +58,7 @@
             android:layout_height="107dp"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.17"
-            android:src="@drawable/img_title" />
+            android:src="@drawable/img_title"/>
 
         <Button
             android:id="@+id/btn_new_game"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.13"
-            android:onClick="btnEvent_newGame"
+            android:onClick="onClick_newGame"
             android:text="@string/btn_new_game"/>
 
         <LinearLayout
@@ -80,14 +80,14 @@
                 android:id="@+id/btn_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="btnEvent_profile"
+                android:onClick="onClick_profile"
                 android:text="@string/btn_profile"/>
 
             <Button
                 android:id="@+id/btn_tutorial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="btnEvent_tutorial"
+                android:onClick="onClick_tutorial"
                 android:text="@string/btn_tutorial"/>
 
         </LinearLayout>
