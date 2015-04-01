@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="pis2015.ub.com.beerwizard.SpellsActivity">
+    <item
+        android:id="@+id/action_profile"
+        android:orderInCategory="100"
+        android:title="@string/action_profile"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_tutorial"
+        android:orderInCategory="100"
+        android:title="@string/action_tutorial"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_exit"
+        android:orderInCategory="100"
+        android:title="@string/action_exit"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/lvl_up_cuadrado"
+        android:title="@string/lvlUp"
+        app:showAsAction="ifRoom" />
+</menu>
