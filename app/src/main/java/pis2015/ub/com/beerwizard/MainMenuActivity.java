@@ -17,6 +17,7 @@ import android.widget.PopupWindow;
 
 public class MainMenuActivity extends Activity {
     public final static int tutorialActivity = 1;
+    public final static int SpellActivity = 2;
     Button btnAbout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,13 @@ public class MainMenuActivity extends Activity {
                 startActivityForResult(intent, tutorialActivity);
             }
         });
-
+        Button btnspell = (Button) findViewById(R.id.btn_new_game);
+        btnspell.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenuActivity.this, SpellsActivity.class);
+                startActivityForResult(intent, SpellActivity);
+            }
+        });
 
 
     }

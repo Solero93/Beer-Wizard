@@ -20,12 +20,12 @@ public class TutorialActivity extends Activity {
     ImageSwitcher imageSwitcher;
     Animation slide_in_left, slide_out_right;
 
-//    int imageResources[] = {
-//            R.drawable.a01,
-//            R.drawable.a02,
-//            R.drawable.a03,
-//            R.drawable.a04,
-//    };
+    int imageResources[] = {
+            R.drawable.tutorial_1,
+            R.drawable.tutorial_2,
+            R.drawable.tutorial_3,
+            R.drawable.tutorial_4,
+    };
 
     int curIndex;
 
@@ -90,22 +90,22 @@ public class TutorialActivity extends Activity {
         });
 
         curIndex = 0;
-//        imageSwitcher.setImageResource(imageResources[curIndex]);
+        imageSwitcher.setImageResource(imageResources[curIndex]);
 
-//        buttonNext.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View arg0) {
-//                if (curIndex == imageResources.length - 1) {
-//
-//                    curIndex = 0;
-//                    imageSwitcher.setImageResource(imageResources[curIndex]);
-//
-//                } else {
-//                    imageSwitcher.setImageResource(imageResources[++curIndex]);
-//                }
-//            }
-//        });
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                if (curIndex == imageResources.length - 1) {
+
+                    curIndex = 0;
+                    imageSwitcher.setImageResource(imageResources[curIndex]);
+
+                } else {
+                    imageSwitcher.setImageResource(imageResources[++curIndex]);
+                }
+            }
+        });
     }
 
 }
