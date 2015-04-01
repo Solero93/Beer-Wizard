@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard.util;
+package pis2015.ub.com.beerwizard;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;

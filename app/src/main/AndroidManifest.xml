@@ -9,7 +9,7 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".util.SpellsActivity"
+            android:name=".SpellsActivity"
             android:icon="@drawable/cara"
             android:label="@string/nick"
             android:screenOrientation="landscape"></activity>
