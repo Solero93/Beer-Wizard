@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RoomCreate"
+            android:name=".RoomCreateActivity"
             android:label="@string/title_activity_room_create"
             android:screenOrientation="landscape" >
         </activity>
@@ -28,7 +28,7 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".CastSpell"
+            android:name=".CastSpellActivity"
             android:label="@string/title_activity_cast_spell"
             android:parentActivityName=".SpellsActivity"
             android:screenOrientation="landscape" >
