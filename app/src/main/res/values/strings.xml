@@ -35,7 +35,6 @@
     </string-array>
 
     <string name="title_activity_intro">IntroActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_profile">Profile</string>
     <string name="action_tutorial">Tutorial</string>
     <string name="action_exit">Exit to Menu</string>
