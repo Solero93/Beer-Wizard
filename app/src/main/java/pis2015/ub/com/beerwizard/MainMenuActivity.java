@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -14,7 +15,6 @@ import android.widget.PopupWindow;
 
 
 public class MainMenuActivity extends Activity {
-    public final static int tutorialActivity = 1;
     Button btnAbout;
 
     @Override
@@ -22,20 +22,7 @@ public class MainMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        // Get ListView object from xml
-        ListView listView = (ListView) findViewById(R.id.listvw_available_rooms);
-        // Define a new Adapter
-        // First parameter - Context
-        // Second parameter - Layout for the row
-        // Third parameter - ID of the TextView to which the data is written
-        // Forth - the Array of data
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, getResources().getStringArray(R.array.str_array_available_rooms));
-
-
-        // Assign adapter to ListView
-        listView.setAdapter(adapter);
+        this.init_listvw_available_rooms();
 
         btnAbout = (Button) findViewById(R.id.btn_about);
         btnAbout.setOnClickListener(new Button.OnClickListener() {
@@ -58,17 +45,37 @@ public class MainMenuActivity extends Activity {
                         popupWindow.dismiss();
                     }
                 });
-
                 popupWindow.showAtLocation(btnAbout, Gravity.CENTER, 0, 0);
-
             }
         });
+    }
 
-        Button btnTutorial = (Button) findViewById(R.id.btn_tutorial);
-        btnTutorial.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(MainMenuActivity.this, TutorialActivity.class);
-                startActivityForResult(intent, tutorialActivity);
+    public void init_listvw_available_rooms() {
+        // Get ListView object from xml
+        ListView listvw_available_rooms = (ListView) findViewById(R.id.listvw_available_rooms);
+        // Define a new Adapter
+        // First parameter - Context
+        // Second parameter - Layout for the row
+        // Third parameter - ID of the TextView to which the data is written
+        // Forth - the Array of data
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, getResources().getStringArray(R.array.str_array_available_rooms));
+
+        // Assign adapter to ListView
+        listvw_available_rooms.setAdapter(adapter);
+
+        listvw_available_rooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parentAdapter, View view, int position,
+                                    long id) {
+
+/*                // We know the View is a TextView so we can cast it
+                  // IMPORTANT TO REMEMBER THIS!!
+                TextView clickedView = (TextView) view;
+*/
+                Intent intent = new Intent(view.getContext(), SpellsActivity.class);
+                startActivity(intent);
             }
         });
     }
