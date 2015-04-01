@@ -15,8 +15,7 @@
     <item name="darkyellow" type="color">#E3D80B</item>
     
     <color name="black_overlay">#66000000</color>
-    <color name="background_intro">#476291</color>
-    <color name="background_main_menu">#476291</color>
+    <color name="background_app">#476291</color>
     <color name="lbl_available_rooms">#FFFFFF</color>
 
     <integer-array name="androidcolors">

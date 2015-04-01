@@ -1,10 +1,11 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     android:id="@+id/spellsLayaut"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_intro"
+    android:background="@color/background_app"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -24,16 +25,16 @@
             android:layout_width="98dp"
             android:layout_height="wrap_content"
             android:background="@drawable/fondo_lvl"
+            android:gravity="top|left"
             android:measureWithLargestChild="false"
             android:minHeight="1dp"
             android:minWidth="98dp"
-            android:orientation="vertical"
-            android:gravity="top|left">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textLvl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -41,12 +42,12 @@
                 android:layout_marginStart="20dp"
                 android:gravity="center"
                 android:text="@string/lvl"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
         </LinearLayout>
 
         <Space
             android:layout_width="20px"
-            android:layout_height="20px" />
+            android:layout_height="20px"/>
 
         <HorizontalScrollView
             android:id="@+id/hsv"
@@ -64,28 +65,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:id="@+id/spell1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
-                    android:orientation="vertical"
                     android:longClickable="false"
                     android:onClick="onClickSpell"
-                    android:focusable="true">
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell"
                         android:clickable="true">
+
                         <ImageView
                             android:id="@+id/imageViewSpell1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face" />
+                            android:src="@drawable/can_to_the_face"/>
 
                         <TextView
                             android:id="@+id/textViewSpell1"
@@ -95,34 +98,35 @@
                             android:layout_centerHorizontal="true"
                             android:gravity="center"
                             android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                            android:textAppearance="?android:attr/textAppearanceLarge"/>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px" />
+                    android:layout_height="20px"/>
 
                 <LinearLayout
                     android:id="@+id/spell2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
-                    android:orientation="vertical"
                     android:nestedScrollingEnabled="false"
                     android:onClick="onClickSpell"
-                    android:focusable="true">
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
+
                         <ImageView
                             android:id="@+id/imageViewSpell2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face" />
+                            android:src="@drawable/can_to_the_face"/>
 
                         <TextView
                             android:id="@+id/textView2Spell2"
@@ -132,34 +136,35 @@
                             android:layout_centerHorizontal="true"
                             android:gravity="center"
                             android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                            android:textAppearance="?android:attr/textAppearanceLarge"/>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px" />
+                    android:layout_height="20px"/>
 
                 <LinearLayout
                     android:id="@+id/spell3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
-                    android:orientation="vertical"
                     android:onClick="onClickSpell"
-                    android:focusable="true">
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell"
                         android:clickable="true">
+
                         <ImageView
                             android:id="@+id/imageViewSpell3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face" />
+                            android:src="@drawable/can_to_the_face"/>
 
                         <TextView
                             android:id="@+id/textView2Spell3"
@@ -169,32 +174,34 @@
                             android:layout_centerHorizontal="true"
                             android:gravity="center"
                             android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                            android:textAppearance="?android:attr/textAppearanceLarge"/>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px" />
+                    android:layout_height="20px"/>
+
                 <LinearLayout
                     android:id="@+id/spell4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
-                    android:orientation="vertical"
                     android:onClick="onClickSpell"
-                    android:focusable="true">
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
+
                         <ImageView
                             android:id="@+id/imageViewSpell4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face" />
+                            android:src="@drawable/can_to_the_face"/>
 
                         <TextView
                             android:id="@+id/textView2Spell4"
@@ -204,13 +211,13 @@
                             android:layout_centerHorizontal="true"
                             android:gravity="center"
                             android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                            android:textAppearance="?android:attr/textAppearanceLarge"/>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px" />
+                    android:layout_height="20px"/>
 
 
                 <LinearLayout
@@ -218,21 +225,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
-                    android:orientation="vertical"
                     android:onClick="onClickSpell"
-                    android:focusable="true">
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell"
                         android:clickable="true">
+
                         <ImageView
                             android:id="@+id/imageViewSpell5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face" />
+                            android:src="@drawable/can_to_the_face"/>
 
                         <TextView
                             android:id="@+id/textView2Spell5"
@@ -242,34 +250,35 @@
                             android:layout_centerHorizontal="true"
                             android:gravity="center"
                             android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                            android:textAppearance="?android:attr/textAppearanceLarge"/>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px" />
+                    android:layout_height="20px"/>
 
                 <LinearLayout
                     android:id="@+id/spell6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
-                    android:orientation="vertical"
                     android:nestedScrollingEnabled="false"
                     android:onClick="onClickSpell"
-                    android:focusable="true">
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
+
                         <ImageView
                             android:id="@+id/imageViewSpell6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face" />
+                            android:src="@drawable/can_to_the_face"/>
 
                         <TextView
                             android:id="@+id/textView2Spell6"
@@ -279,13 +288,13 @@
                             android:layout_centerHorizontal="true"
                             android:gravity="center"
                             android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                            android:textAppearance="?android:attr/textAppearanceLarge"/>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px" />
+                    android:layout_height="20px"/>
 
 
                 <LinearLayout
@@ -293,21 +302,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
-                    android:orientation="vertical"
                     android:onClick="onClickSpell"
-                    android:focusable="true">
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell"
                         android:clickable="true">
+
                         <ImageView
                             android:id="@+id/imageViewSpell7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face" />
+                            android:src="@drawable/can_to_the_face"/>
 
                         <TextView
                             android:id="@+id/textView2Spell7"
@@ -317,34 +327,35 @@
                             android:layout_centerHorizontal="true"
                             android:gravity="center"
                             android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                            android:textAppearance="?android:attr/textAppearanceLarge"/>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px" />
+                    android:layout_height="20px"/>
 
                 <LinearLayout
                     android:id="@+id/spell8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
-                    android:orientation="vertical"
                     android:onClick="onClickSpell"
-                    android:focusable="true">
+                    android:orientation="vertical">
 
                     <RelativeLayout
-                    android:layout_width="fill_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="220dp"
-                    android:background="@drawable/fondo_spell"
-                    android:clickable="true">
+                        android:background="@drawable/fondo_spell"
+                        android:clickable="true">
+
                         <ImageView
                             android:id="@+id/imageViewSpell8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face" />
+                            android:src="@drawable/can_to_the_face"/>
 
                         <TextView
                             android:id="@+id/textView2Spell8"
@@ -354,33 +365,34 @@
                             android:layout_centerHorizontal="true"
                             android:gravity="center"
                             android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                            android:textAppearance="?android:attr/textAppearanceLarge"/>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px" />
+                    android:layout_height="20px"/>
 
                 <LinearLayout
                     android:id="@+id/spell9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
-                    android:orientation="vertical"
                     android:onClick="onClickSpell"
-                    android:focusable="true">
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
+
                         <ImageView
                             android:id="@+id/imageViewSpell9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face" />
+                            android:src="@drawable/can_to_the_face"/>
 
                         <TextView
                             android:id="@+id/textView2Spell9"
@@ -390,7 +402,7 @@
                             android:layout_centerHorizontal="true"
                             android:gravity="center"
                             android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                            android:textAppearance="?android:attr/textAppearanceLarge"/>
                     </RelativeLayout>
                 </LinearLayout>
 
