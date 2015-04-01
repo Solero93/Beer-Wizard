@@ -4,7 +4,6 @@ package pis2015.ub.com.beerwizard;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +20,12 @@ public class TutorialActivity extends Activity {
     ImageSwitcher imageSwitcher;
     Animation slide_in_left, slide_out_right;
 
-//    int imageResources[] = {
-//            R.drawable.a01,
-//            R.drawable.a02,
-//            R.drawable.a03,
-//            R.drawable.a04,
-//    };
+    int imageResources[] = {
+            R.drawable.tutorial_1,
+            R.drawable.tutorial_2,
+            R.drawable.tutorial_3,
+            R.drawable.tutorial_4,
+    };
 
     int curIndex;
 
@@ -34,7 +33,7 @@ public class TutorialActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_tutorial);
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fonts.ttf");
+//        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fonts.ttf");
         //boto que desa el que hi ha escrit i torna a l'activity main
         final Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +59,7 @@ public class TutorialActivity extends Activity {
         });
 
         buttonNext = (Button) findViewById(R.id.btn);
-        buttonNext.setTypeface(font);
+//        buttonNext.setTypeface(font);
         imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
 
         slide_in_left = AnimationUtils.loadAnimation(this,
@@ -91,22 +90,22 @@ public class TutorialActivity extends Activity {
         });
 
         curIndex = 0;
-//        imageSwitcher.setImageResource(imageResources[curIndex]);
+        imageSwitcher.setImageResource(imageResources[curIndex]);
 
-//        buttonNext.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View arg0) {
-//                if (curIndex == imageResources.length - 1) {
-//
-//                    curIndex = 0;
-//                    imageSwitcher.setImageResource(imageResources[curIndex]);
-//
-//                } else {
-//                    imageSwitcher.setImageResource(imageResources[++curIndex]);
-//                }
-//            }
-//        });
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                if (curIndex == imageResources.length - 1) {
+
+                    curIndex = 0;
+                    imageSwitcher.setImageResource(imageResources[curIndex]);
+
+                } else {
+                    imageSwitcher.setImageResource(imageResources[++curIndex]);
+                }
+            }
+        });
     }
 
 }

@@ -74,7 +74,6 @@ public class MainMenuActivity extends Activity {
         });
 
 
-
     }
 
 

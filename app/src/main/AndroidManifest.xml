@@ -47,5 +47,8 @@
             android:label="@string/nick"
             android:screenOrientation="landscape">
         </activity>
+        <activity
+            android:name="TutorialActivity"
+            android:screenOrientation="landscape"></activity>
     </application>
 </manifest>
