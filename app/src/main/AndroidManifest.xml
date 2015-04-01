@@ -30,11 +30,11 @@
         <activity
             android:name=".CastSpell"
             android:label="@string/title_activity_cast_spell"
-            android:parentActivityName=".MainMenuActivity"
+            android:parentActivityName=".SpellsActivity"
             android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="pis2015.ub.com.beerwizard.MainMenuActivity" />
+                android:value="pis2015.ub.com.beerwizard.SpellsActivity" />
         </activity>
         <activity
             android:name=".MainMenuActivity"
