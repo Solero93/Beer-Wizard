@@ -34,6 +34,15 @@
         <item>Room 6</item>
     </string-array>
 
+    <!-- Cast Spell testing data -->
+    <string-array name="str_wizards_test_data">
+        <item>Harri Potter</item>
+        <item>Ron Whisky</item>
+        <item>Ginebra Wheasly</item>
+        <item>Several Snapple</item>
+        <item>Eh Mion</item>
+    </string-array>
+
     <string name="title_activity_intro">IntroActivity</string>
     <string name="action_profile">Profile</string>
     <string name="action_tutorial">Tutorial</string>

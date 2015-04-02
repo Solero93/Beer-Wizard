@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
@@ -16,12 +17,22 @@ public class CastSpellActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cast_spell);
-        ((ListView) findViewById(R.id.wizards)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListView wizards = (ListView) findViewById(R.id.wizards);
+
+        ArrayAdapter<String> wizardList = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                getResources().getStringArray(R.array.str_wizards_test_data));
+
+        wizards.setAdapter(wizardList);
+        wizards.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 onClick_Cast();
             }
         });
+
     }
 
 
