@@ -1,9 +1,10 @@
 package pis2015.ub.com.beerwizard;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class ProfileActivity extends ActionBarActivity {
@@ -35,5 +36,9 @@ public class ProfileActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClick_acceptChanges(View view) {
+        finish();
     }
 }

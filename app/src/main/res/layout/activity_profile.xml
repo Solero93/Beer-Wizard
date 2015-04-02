@@ -10,34 +10,56 @@
               android:paddingTop="@dimen/activity_vertical_margin"
               tools:context="pis2015.ub.com.beerwizard.ProfileActivity">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="0.5"
-        android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_media_next"/>
-
     <Space
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.5"/>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0.5"
-        android:orientation="vertical">
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="4"
+        android:background="@color/yellow"
+        android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editText2"
+        <ImageButton
+            android:id="@+id/avatarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/cara" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/nick"/>
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/wizardName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/nick" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:onClick="onClick_acceptChanges"
+                android:text="New Button" />
+        </LinearLayout>
     </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </LinearLayout>
