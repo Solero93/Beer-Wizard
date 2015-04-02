@@ -99,6 +99,7 @@ public class MainMenuActivity extends Activity {
         SharedPreferences.Editor editor = prefs.edit();
         if (prefs.getBoolean("isInitialAppLaunch", true)) {
             editor.putBoolean("isInitialAppLaunch", false);
+            editor.commit();
             Intent intent = new Intent(this, IntroActivity.class);
             startActivity(intent);
         }
