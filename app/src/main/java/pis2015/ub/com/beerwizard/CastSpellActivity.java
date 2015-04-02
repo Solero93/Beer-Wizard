@@ -1,6 +1,5 @@
 package pis2015.ub.com.beerwizard;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -59,7 +58,6 @@ public class CastSpellActivity extends ActionBarActivity {
     }
 
     public void onClick_Cast() {
-        Intent intent = new Intent(this, SpellsActivity.class);
-        startActivity(intent);
+        finish();
     }
 }
