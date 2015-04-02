@@ -42,6 +42,8 @@
         <item>Several Snapple</item>
         <item>Eh Mion</item>
     </string-array>
+    <string name="description_text">Call out someone of a lower level than you and make them take a drink</string>
+    <string name="description_quote">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Profile Strings -->
     <string name="btn_profile_ok">Ok</string>
