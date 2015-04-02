@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:onClick="onClick_acceptChanges"
-                android:text="New Button" />
+                android:text="@string/btn_profile_ok" />
         </LinearLayout>
     </LinearLayout>
 
