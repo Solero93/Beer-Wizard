@@ -29,6 +29,8 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@android:color/transparent"
+            android:clickable="true"
+            android:onClick="onClick_chooseAvatar"
             android:scaleType="centerInside"
             android:src="@drawable/cara" />
 

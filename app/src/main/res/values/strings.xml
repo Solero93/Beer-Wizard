@@ -47,6 +47,8 @@
 
     <!-- Profile Strings -->
     <string name="btn_profile_ok">Ok</string>
+    <string name="title_activity_avatar_chooser">Choose Avatar</string>
+    <string name="choose_avatar_text">Choose your Avatar</string>
 
     <string name="title_activity_intro">IntroActivity</string>
     <string name="action_profile">Profile</string>

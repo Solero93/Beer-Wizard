@@ -1,5 +1,6 @@
 package pis2015.ub.com.beerwizard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -40,5 +41,10 @@ public class ProfileActivity extends ActionBarActivity {
 
     public void onClick_acceptChanges(View view) {
         finish();
+    }
+
+    public void onClick_chooseAvatar(View view) {
+        Intent intent = new Intent(this, AvatarChooserActivity.class);
+        startActivity(intent);
     }
 }
