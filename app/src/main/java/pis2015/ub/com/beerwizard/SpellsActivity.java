@@ -7,17 +7,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+
+/*
+The activity where you can select a spell.
+ */
 public class SpellsActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spells);
-        getSupportActionBar().setIcon(R.drawable.cara);//pone la cara en la barra
-        //setTitle("cacaman");//para cambiar el nombre de usuario
+        getSupportActionBar().setIcon(R.drawable.cara);//change the icon, avatar
+        //setTitle("nick");//change the Nickname
     }
 
-
+    /*
+    Action bar constructor
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -26,11 +32,20 @@ public class SpellsActivity extends ActionBarActivity {
         return super.onCreateOptionsMenu(menu);
 
     }
+
+    /*
+    event of the spells
+     */
     public void onClickSpell(View v) {
 
         Intent intent = new Intent(this, CastSpellActivity.class);
         startActivity(intent);
     }
+
+
+    /*
+    options and settings
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -39,16 +54,21 @@ public class SpellsActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        //PROILE
         if (id == R.id.action_profile) {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
             return true;
         }
+
+        //TUTORIAL
         if (id == R.id.action_tutorial) {
             Intent intent = new Intent(this, TutorialActivity.class);
             startActivity(intent);
             return true;
         }
+
+        //Exit to Menu
         if (id == R.id.action_exit) {
             finish();
             return true;
