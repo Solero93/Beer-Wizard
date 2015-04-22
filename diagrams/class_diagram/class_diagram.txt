@@ -1,0 +1,7 @@
+@startuml
+
+!include classes.txt
+!include gui.txt
+!include server.txt
+
+@enduml

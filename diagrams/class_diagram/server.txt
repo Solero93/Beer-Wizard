@@ -1,0 +1,6 @@
+@startuml
+
+Server <--> Game : interacts with
+Server <--> SpellManager : communicates with
+
+@enduml

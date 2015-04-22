@@ -1,0 +1,22 @@
+@startuml
+package gui{
+	MainMenuActivity  -->  IntroActivity
+	MainMenuActivity  -->  SpellsActivity
+	MainMenuActivity  -->  CreateRoomActivity
+	MainMenuActivity  -->  ProfileActivity 
+	MainMenuActivity  -->  TutorialActivity
+	MainMenuActivity  -->  AboutPopUp
+	CreateRoomActivity  -->  SpellsActivity
+	SpellsActivity  -->  ProfileActivity
+	SpellsActivity  -->  TutorialActivity
+	SpellsActivity  -->  CastSpellActivity
+}
+
+MainMenuActivity --> Game : creates
+CreateRoomActivity --> Game
+
+SpellsActivity  -->  SpellManager
+ProfileActivity --> LocalUser
+CastSpellActivity --> Game
+
+@enduml

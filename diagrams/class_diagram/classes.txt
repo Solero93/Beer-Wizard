@@ -1,0 +1,79 @@
+@startuml
+
+class Game{
+	id : String
+	rule : String
+}
+
+Game --|> Application
+
+class User{
+	id : String
+	name : String
+	level : int	
+
+	void levelUp()
+	void levelDown()
+}
+
+class LocalUser extends User{
+			
+}
+
+class Avatar{
+	id : String
+	photo : Photo
+}
+
+class SpellManager <<static>> {
+	void getSpell(idSpell)
+	void castSpell(String idSpell, String[] params, String idUserTarget)
+}
+
+class Spell{
+	id : String
+	{final} name : String
+	{final} description : String
+	{final} quote : String
+	{final} levelToUnlock : int
+	cooldown : int
+}
+
+class SpellCanToTheFace extends Spell{
+	{static} levelToUnlock = 2
+}
+
+class SpellWizardDuel extends Spell{
+	{static} levelToUnlock = 3
+}
+
+class SpellBeerekinesis extends Spell{
+	{static} levelToUnlock = 4
+}
+
+class SpellShield extends Spell{
+	{static} levelToUnlock = 5
+}
+
+class SpellCreateRule extends Spell{
+	{static} levelToUnlock = 6
+}
+
+class SpellTruthOrShot extends Spell{
+	{static} levelToUnlock = 7
+}
+
+class SpellHatOfShame extends Spell{
+	{static} levelToUnlock = 8
+}
+
+class SpellAllInBeer extends Spell{
+	{static} levelToUnlock = 9
+}
+
+Game "1" --> "1..*" User : stores
+SpellManager "1" --> "8" Spell : has
+User "1" --> "1" SpellManager : interacts with
+User "1" --> "1" Avatar : has
+
+@enduml
