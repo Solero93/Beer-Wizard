@@ -429,6 +429,6 @@
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
 
-    </SlidingDrawer><!--TODO-->
+    </SlidingDrawer><!--TODO This is deprecated, needs to be changed ASAP-->
 
 </RelativeLayout>
