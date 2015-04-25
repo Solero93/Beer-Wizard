@@ -42,5 +42,6 @@ public class RoomCreateActivity extends ActionBarActivity {
     public void onClick_createRoom(View view) {
         Intent intent = new Intent(this, SpellsActivity.class);
         startActivity(intent);
+        finish();
     }
 }
