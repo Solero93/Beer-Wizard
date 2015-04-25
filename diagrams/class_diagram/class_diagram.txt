@@ -4,4 +4,15 @@
 !include gui.txt
 !include server.txt
 
+/'Interactions Server - Game'/
+
+Server <--> Game : interacts with
+
+/'Interactions GUI - Game'/
+
+GUIFacade --> Game
+
+/'Interactions GUI - Server '/
+GUIFacade --> Server
+
 @enduml

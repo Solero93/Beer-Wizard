@@ -1,22 +1,48 @@
 @startuml
-package gui{
+
+
+package GUI{
+	class CastSpellActivity{
+	}
+	class MainMenuActivity{
+		-void runIntroActivityOnLaunch()
+	}
+	class ProfileActivity{
+	}
+	
+	class SpellsActivity{
+	}
+  
 	MainMenuActivity  -->  IntroActivity
 	MainMenuActivity  -->  SpellsActivity
-	MainMenuActivity  -->  CreateRoomActivity
+	MainMenuActivity  -->  RoomCreateActivity
 	MainMenuActivity  -->  ProfileActivity 
 	MainMenuActivity  -->  TutorialActivity
 	MainMenuActivity  -->  AboutPopUp
-	CreateRoomActivity  -->  SpellsActivity
 	SpellsActivity  -->  ProfileActivity
 	SpellsActivity  -->  TutorialActivity
 	SpellsActivity  -->  CastSpellActivity
+	SpellsActivity  -->  AboutPopUp
 }
 
-MainMenuActivity --> Game : creates
-CreateRoomActivity --> Game
+class GUIFacade <<(F,orchid) Facade>>{
+	-idLocalUser : String
+	-idCurrentGame : String
+	.. MainMenuActivity ..
+	~String[] getAllGames()
+	~void createGame(String name)
+	~void enterGame(String idGame)
+	~void modifyUserProfile(String name, String idAvatar)
+	.. SpellsActivity ..
+	~String[] getAllUnlockedSpellsOfUser(String idUser)
+	~void modifyUserProfile(String name, String idAvatar)
+	.. CastSpellActivity ..
+	~String[] getAllUsers()
+	~String getSpellDescription(String idSpell)
+	~String getSpellQuote(String idSpell)
+	~void castSpell(String idSpell, String[] params, String idTargetUser)
+}
 
-SpellsActivity  -->  SpellManager
-ProfileActivity --> LocalUser
-CastSpellActivity --> Game
+GUI --> GUIFacade
 
 @enduml

@@ -1,6 +1,8 @@
 @startuml
 
-Server <--> Game : interacts with
-Server <--> SpellManager : communicates with
+class Server <<(F,orchid) Facade>>{
+	.. Spells ..
+	+void castSpell(String idCasterUser, String idSpell, String[] params, String idTargetUser)
+}
 
 @enduml

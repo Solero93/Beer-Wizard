@@ -1,79 +1,80 @@
 @startuml
 
-class Game{
-	id : String
-	rule : String
+class Game extends Application{
+	-id : String
+	-rule : String
+	.. Users ..
+	+void modifyUserProfile(String idUser, String name, String idAvatar)
+	.. Spells ..
+	+String[] getAllUnlockedSpellsOfUser(String idUser)
+	+String getSpellDescription(String idSpell)
+	+String getSpellQuote(String idSpell)
 }
-
-Game --|> Application
 
 class User{
-	id : String
-	name : String
-	level : int	
+	#id : String
+	#name : String
+	#level : int	
 
-	void levelUp()
-	void levelDown()
-}
-
-class LocalUser extends User{
-			
+	+void levelUp()
+	+void levelDown()
+	+void modifyMyProfile(String name, String idAvatar)
+	+String[] getAllUnlockedSpells()
 }
 
 class Avatar{
-	id : String
-	photo : Photo
+	-id : String
+	-photo : String
 }
 
-class SpellManager <<static>> {
-	void getSpell(idSpell)
-	void castSpell(String idSpell, String[] params, String idUserTarget)
+class SpellManager {
+	+String getSpell(idSpell)
 }
 
-class Spell{
-	id : String
-	{final} name : String
-	{final} description : String
-	{final} quote : String
-	{final} levelToUnlock : int
-	cooldown : int
+abstract class Spell{
+	#id : String
+	#NAME : String
+	#DESCRIPTION : String
+	#QUOTE : String
+	#LEVEL_TO_UNLOCK : int
+	#cooldown : int
 }
 
 class SpellCanToTheFace extends Spell{
-	{static} levelToUnlock = 2
+	#LEVEL_TO_UNLOCK = 2
 }
 
 class SpellWizardDuel extends Spell{
-	{static} levelToUnlock = 3
+	#LEVEL_TO_UNLOCK = 3
 }
 
 class SpellBeerekinesis extends Spell{
-	{static} levelToUnlock = 4
+	#LEVEL_TO_UNLOCK = 4
 }
 
 class SpellShield extends Spell{
-	{static} levelToUnlock = 5
+	#LEVEL_TO_UNLOCK = 5
 }
 
 class SpellCreateRule extends Spell{
-	{static} levelToUnlock = 6
+	#LEVEL_TO_UNLOCK = 6
 }
 
 class SpellTruthOrShot extends Spell{
-	{static} levelToUnlock = 7
+	#LEVEL_TO_UNLOCK = 7
 }
 
 class SpellHatOfShame extends Spell{
-	{static} levelToUnlock = 8
+	#LEVEL_TO_UNLOCK = 8
 }
 
 class SpellAllInBeer extends Spell{
-	{static} levelToUnlock = 9
+	#LEVEL_TO_UNLOCK = 9
 }
 
-Game "1" --> "1..*" User : stores
-SpellManager "1" --> "8" Spell : has
-User "1" --> "1" SpellManager : interacts with
-User "1" --> "1" Avatar : has
+Game "1" --> "1..*" User: stores
+SpellManager "1" --> "8" Spell
+User "1" --> "1" SpellManager : sends petition to
+User "1" --> "1" Avatar
 
 @enduml
