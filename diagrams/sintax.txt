@@ -1,0 +1,39 @@
+Escalar:
+	scale 800 width
+
+Flechas:
+	Extension : <|--
+	Composition : *--
+	Aggregation : o--
+
+Añadir labels a las flechas:
+	Class1 (clase inicial)
+	"1" (multiplicidad de clase inicial)
+	*-- (tipo de flecha)
+	"*" (multiplicidad clase final)
+	Class2 (clase final)
+	: contains (texto flecha)
+	> (direccionalidad)
+
+	Class1 "1" *-- "*" Class2 : contains
+
+Definir la clase
+class Class1{
+	String data
+	data : String
+	void methods()
+}
+
+Visibilidad
+	-field1 (private)
+	#field1 (protected)
+	~field1 (package private)
+	+field1 (public)
+	
+	skinparam classAttributeIconSize 0 (no sustituir dibujos por símbolo)
+
+abstract/static modificador:
+	{static} field1
+	{abstract} field1
+
+
