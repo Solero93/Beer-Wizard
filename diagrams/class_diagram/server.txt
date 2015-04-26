@@ -1,8 +1,26 @@
 @startuml
 
-class Server <<(F,orchid) Facade>>{
-	.. Spells ..
-	+void castSpell(String idCasterUser, String idSpell, String[] params, String idTargetUser)
+class Network <<(F,orchid) Facade>>{
+    .. Server ..
+    - serverIP : String
+    - serverPort : int
+    .. Spells (Synchronous) ..
+    + void castSpell(String idCasterUser, String idTargetUser, String idSpell, String[] params)
+    .. User (Asynchronous) ..
+    + void modifyUserProfile(String idUser, String name, String idAvatar)
+    + void levelUp(String idUser)
+    .. Enter Game ..
+    + void enterGame(String ip)
+    - void downloadUsers()
 }
+note right: levelUp() launches a BossException\nif encountering a Boss while leveling up
+
+class Server {
+    .. Database ..
+    - userIPDb : Database
+    - castingSpell : boolean
+}
+
+Server <--> Network
 
 @enduml
