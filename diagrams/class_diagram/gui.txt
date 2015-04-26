@@ -32,6 +32,7 @@ class GUIFacade <<(F,orchid) Facade>>{
 	~void createGame(String name)
 	~void enterGame(String serverIP)
 	~void modifyUserProfile(String name, String idAvatar)
+	~void exitGame()
 	.. SpellsActivity ..
 	~String[] getAllUnlockedSpellsOfUser()
 	~void modifyUserProfile(String name, String idAvatar)
@@ -43,5 +44,6 @@ class GUIFacade <<(F,orchid) Facade>>{
 }
 
 GUI --> GUIFacade
+GUIFacade <--> SpellManager
 
 @enduml

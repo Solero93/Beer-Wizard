@@ -6,13 +6,13 @@
 
 /'Interactions Server - Game'/
 
-Server <--> Game : interacts with
+Network <--> Game : interacts with
 
 /'Interactions GUI - Game'/
 
 GUIFacade --> Game
 
 /'Interactions GUI - Server '/
-GUIFacade --> Server
+GUIFacade --> Network
 
 @enduml

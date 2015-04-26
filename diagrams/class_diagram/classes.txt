@@ -1,17 +1,18 @@
 @startuml
 
-class Game extends Application{
+class Game {
 	-name : String
 	-rule : String
 	.. Users ..
 	+void modifyUserProfile(String idUser, String name, String idAvatar)
+	+void userExitsGame(String idUser)
 	.. Spells ..
 	+String[] getAllUnlockedSpellsOfUser(String idUser)
 	+String getSpellDescription(String idSpell)
 	+String getSpellQuote(String idSpell)
 }
 
-class User{
+class User {
 	-id : String
 	-name : String
 	-level : int	

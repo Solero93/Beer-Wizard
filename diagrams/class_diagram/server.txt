@@ -12,12 +12,16 @@ class Network <<(F,orchid) Facade>>{
     .. Enter Game ..
     + void enterGame(String ip)
     - void downloadUsers()
+    .. Exit Game ..
+    + void exitGame()
+    .. User exits the game (Synchronous) ..
+    + void userExitsGame(String idUser)
 }
 note right: levelUp() launches a BossException\nif encountering a Boss while leveling up
 
 class Server {
     .. Database ..
-    - userIPDb : Database
+    - userDb : Database
     - castingSpell : boolean
 }
 
