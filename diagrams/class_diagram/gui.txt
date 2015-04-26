@@ -27,14 +27,13 @@ package GUI{
 
 class GUIFacade <<(F,orchid) Facade>>{
 	-idLocalUser : String
-	-idCurrentGame : String
 	.. MainMenuActivity ..
 	~String[] getAllGames()
 	~void createGame(String name)
-	~void enterGame(String idGame)
+	~void enterGame(String serverIP)
 	~void modifyUserProfile(String name, String idAvatar)
 	.. SpellsActivity ..
-	~String[] getAllUnlockedSpellsOfUser(String idUser)
+	~String[] getAllUnlockedSpellsOfUser()
 	~void modifyUserProfile(String name, String idAvatar)
 	.. CastSpellActivity ..
 	~String[] getAllUsers()
