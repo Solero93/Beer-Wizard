@@ -1,7 +1,7 @@
 @startuml
 
 class Game extends Application{
-	-id : String
+	-name : String
 	-rule : String
 	.. Users ..
 	+void modifyUserProfile(String idUser, String name, String idAvatar)
@@ -12,9 +12,9 @@ class Game extends Application{
 }
 
 class User{
-	#id : String
-	#name : String
-	#level : int	
+	-id : String
+	-name : String
+	-level : int	
 
 	+void levelUp()
 	+void levelDown()
