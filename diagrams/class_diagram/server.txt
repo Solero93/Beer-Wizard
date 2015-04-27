@@ -14,8 +14,8 @@ class Network <<(F,orchid) Facade>>{
     - void downloadUsers()
     .. Exit Game ..
     + void exitGame()
-    .. User exits the game (Synchronous) ..
-    + void userExitsGame(String idUser)
+    .. User exits the game (Synchronous/Internal) ..
+    - void userExitsGame(String idUser)
 }
 note right: levelUp() launches a BossException\nif encountering a Boss while leveling up
 
@@ -25,7 +25,12 @@ class Server {
     - castingSpell : boolean
 }
 
+class ServerListener <<(T,green) Thread>> {
+    
+}
+
 Server <--> Network : communicates over the network
 Server <--> SocketServer
+Network <--> ServerListener : receives data from the server
 
 @enduml
