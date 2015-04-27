@@ -1,6 +1,6 @@
 @startuml
 
-class Game {
+class Game << (S,#FF7700) Singleton >>{
 	-name : String
 	-rule : String
 	.. Users ..
@@ -10,6 +10,8 @@ class Game {
 	+String[] getAllUnlockedSpellsOfUser(String idUser)
 	+String getSpellDescription(String idSpell)
 	+String getSpellQuote(String idSpell)
+	.. Exit ..
+	+void exitGame()
 }
 
 class User {
@@ -28,7 +30,7 @@ class Avatar{
 	-photo : String
 }
 
-class SpellManager {
+class SpellManager << (S,#FF7700) Singleton >>{
 	+String getSpell(idSpell)
 }
 
