@@ -38,7 +38,7 @@ public class ServerListener implements Runnable {
                     } else {
                         continue;
                     }
-                }
+                } //
                 InputStream inputStream = socket.getInputStream();
                 int instruction = inputStream.read();
                 switch (instruction) {
