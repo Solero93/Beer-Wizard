@@ -1,0 +1,55 @@
+@startuml
+
+/'
+For more info on syntax see: http://plantuml.sourceforge.net/usecase.html
+'/
+
+:Player\nOut: as out
+:Player\nIn: as in
+:Server: as server
+:Player: as player
+
+out ---|> player
+in ---|> player
+
+(Show\nTutorial) as tutorial
+(Show\nAbout) as about
+(Modify\nProfile) as profile
+
+player --> tutorial
+player --> about
+player --> profile
+
+(Create\nGame) as create
+(Join\nGame) as join
+(Exit\nApp) as exit_app
+
+out --> create
+out --> join
+create ..> join : <<include>>
+out --> exit_app
+
+(See\nSpells) as see_spells
+(Cast\nSpell) as cast_spell
+(Ask other to\nLvl UP) as lvl_up
+(Back to\nMenu) as back_to_menu
+(Exit\nGame) as exit_game
+(Decide\nLvl UP) as decide_lvl_up
+
+in --> see_spells
+cast_spell --> see_spells : <<extends>>
+in --> lvl_up
+in --> back_to_menu
+back_to_menu ..> exit_game : <<include>>
+in --> decide_lvl_up
+
+(Apply\nLvl UP) as apply_lvl_up
+(Assign\nBoss) as fight_boss
+(Send\nSpell) as send_spell
+
+server --> apply_lvl_up
+server --> send_spell
+fight_boss --> send_spell : <<extends>>
+apply_lvl_up ..> decide_lvl_up : <<include>>
+
+@enduml

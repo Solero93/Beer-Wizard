@@ -1,0 +1,18 @@
+@startuml
+
+!include classes.txt
+!include gui.txt
+!include server.txt
+
+/'Interactions Server - Game'/
+
+Network <--> Game : interacts with
+
+/'Interactions GUI - Game'/
+
+GUIFacade --> Game
+
+/'Interactions GUI - Server '/
+GUIFacade --> Network
+
+@enduml
