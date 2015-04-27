@@ -25,6 +25,7 @@ class Server {
     - castingSpell : boolean
 }
 
-Server <--> Network
+Server <--> Network : communicates over the network
+Server <--> SocketServer
 
 @enduml
