@@ -2,12 +2,17 @@ package pis2015.ub.com.beerwizard;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 
 
 public class CastSpellActivity extends ActionBarActivity {
@@ -58,6 +63,34 @@ public class CastSpellActivity extends ActionBarActivity {
     }
 
     public void onClick_Cast() {
-        finish();
+        LayoutInflater layoutInflater
+                = (LayoutInflater) getBaseContext()
+                .getSystemService(LAYOUT_INFLATER_SERVICE);
+        final View popupView = layoutInflater.inflate(R.layout.popup_sent_spell, null);
+        final PopupWindow popupWindow = new PopupWindow(
+                popupView,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        Button btn_castSpell = (Button) popupView.findViewById(R.id.btn_cast_spell);
+        btn_castSpell.setOnClickListener(new Button.OnClickListener() {
+            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                finish();
+            }
+        });
+        Button btn_NO_castSpell = (Button) popupView.findViewById(R.id.btn_NO_cast_spell);
+        btn_NO_castSpell.setOnClickListener(new Button.OnClickListener() {
+            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+
+            }
+        });
+        popupWindow.showAtLocation(findViewById(R.id.layout_cast_speell), Gravity.CENTER, 0, 0);
+
+
     }
 }

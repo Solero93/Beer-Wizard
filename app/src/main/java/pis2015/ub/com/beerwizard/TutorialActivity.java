@@ -2,9 +2,9 @@ package pis2015.ub.com.beerwizard;
 
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -12,7 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.PopupWindow;
 import android.widget.ViewSwitcher;
 
 public class TutorialActivity extends Activity {
@@ -35,28 +35,6 @@ public class TutorialActivity extends Activity {
         setContentView(R.layout.activity_tutorial);
 //        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fonts.ttf");
         //boto que desa el que hi ha escrit i torna a l'activity main
-        final Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                try {
-                    Button edt = (Button) findViewById(R.id.button);
-                    Float resultok = Float.valueOf(edt.getText().toString());
-                    Intent returnIntent = new Intent();
-                    returnIntent.putExtra("OK", resultok);
-                    setResult(RESULT_OK, returnIntent);
-                    finish();
-                    //Si no han introduit res, es queixa
-                } catch (java.lang.NumberFormatException exception) {
-                    Context context = getApplicationContext();
-
-                    Toast.makeText(
-                            context, "Error, introdueix les taxes",
-                            Toast.LENGTH_LONG)
-                            .show();
-
-                }
-            }
-        });
 
         buttonNext = (Button) findViewById(R.id.btn);
 //        buttonNext.setTypeface(font);
@@ -97,9 +75,36 @@ public class TutorialActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 if (curIndex == imageResources.length - 1) {
+                    LayoutInflater layoutInflater
+                            = (LayoutInflater) getBaseContext()
+                            .getSystemService(LAYOUT_INFLATER_SERVICE);
+                    View popupView = layoutInflater.inflate(R.layout.popup_ended_tutorial, null);
+                    final PopupWindow popupWindow = new PopupWindow(
+                            popupView,
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
+                    Button end_tutorial = (Button) popupView.findViewById(R.id.end_turorial);
+                    end_tutorial.setOnClickListener(new Button.OnClickListener() {
+                        //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+                        @Override
+                        public void onClick(View v) {
+                            popupWindow.dismiss();
+                            finish();
+                        }
+                    });
+                    Button repeat_tutorial = (Button) popupView.findViewById(R.id.repeat_tutorial);
+                    repeat_tutorial.setOnClickListener(new Button.OnClickListener() {
+                        //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+                        @Override
+                        public void onClick(View v) {
+                            popupWindow.dismiss();
+                            curIndex = 0;
+                            imageSwitcher.setImageResource(imageResources[curIndex]);
 
-                    curIndex = 0;
-                    imageSwitcher.setImageResource(imageResources[curIndex]);
+                        }
+                    });
+                    popupWindow.showAtLocation(findViewById(R.id.layout_tutorial), Gravity.CENTER, 0, 0);
+
 
                 } else {
                     imageSwitcher.setImageResource(imageResources[++curIndex]);
