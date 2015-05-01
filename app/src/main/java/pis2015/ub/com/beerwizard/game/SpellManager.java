@@ -1,35 +1,39 @@
 package pis2015.ub.com.beerwizard.game;
 
 import java.util.ArrayList;
+
 import pis2015.ub.com.beerwizard.game.spells.Spell;
+import pis2015.ub.com.beerwizard.game.spells.SpellAllInBeer;
+import pis2015.ub.com.beerwizard.game.spells.SpellBeerekinesis;
+import pis2015.ub.com.beerwizard.game.spells.SpellCanToTheFace;
+import pis2015.ub.com.beerwizard.game.spells.SpellCreateRule;
+import pis2015.ub.com.beerwizard.game.spells.SpellHatOfShame;
+import pis2015.ub.com.beerwizard.game.spells.SpellShield;
+import pis2015.ub.com.beerwizard.game.spells.SpellTruthOrShot;
+import pis2015.ub.com.beerwizard.game.spells.SpellWizardDuel;
 
 /**
  * SpellManager Singleton class
  */
 public class SpellManager {
-    private ArrayList<Spell> spells;
     private static SpellManager ourInstance = new SpellManager();
+    private ArrayList<Spell> spells;
 
     private SpellManager() {
+        this.spells = new ArrayList<>(8);
+        spells.set(0, new SpellCanToTheFace());
+        spells.set(1, new SpellWizardDuel());
+        spells.set(2, new SpellBeerekinesis());
+        spells.set(3, new SpellShield());
+        spells.set(4, new SpellCreateRule());
+        spells.set(5, new SpellTruthOrShot());
+        spells.set(6, new SpellHatOfShame());
+        spells.set(7, new SpellAllInBeer());
     }
 
     public static SpellManager getInstance() {
         return ourInstance;
     }
 
-    public String getSpell(String idSpell) {
-        return null;
-    }
 
-    public String[] getAllUnlockedSpellsOfUser(int levelUser){
-        //TODO Should be an ArrayList
-        //Because at Level 10 there are no Spells, ergo could fail
-        String[] unlockedSpells = new String[levelUser-1];
-        int i=0;
-        for (Spell sp : spells){
-            if sp.isUnlocked(levelUser){
-                unlockedSpells[i] = sp.getId();
-            }
-        }
-    }
 }

@@ -12,26 +12,29 @@ public class Game {
     }
 
     public static Game getInstance() {
-        return ourInstance;
+        return this.ourInstance;
     }
 
-    public void modifyUserProfile(String idUser, String name, String idAvatar) {
-
+    public String getName() {
+        return this.name;
     }
 
-    public void userExitsGame(String idUser) {
-
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String[] getAllUnlockedSpellsOfUser(String idUser) {
-        return null;
+    public String getRule() {
+        return this.rule;
     }
 
-    public String getSpellDescription(String idSpell) {
-        return null;
+    public void setRule(String rule) {
+        this.rule = rule;
     }
 
-    public void exitGame() {
 
-    }
+
+    /* TODO This shouldn't be here - speak with others
+    public void userExitsGame(String idUser) {}
+    public void exitGame() {}
+    */
 }

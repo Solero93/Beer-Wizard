@@ -1,49 +1,55 @@
 package pis2015.ub.com.beerwizard.gui;
 
+import java.util.ArrayList;
+
+import pis2015.ub.com.beerwizard.game.SpellManager;
+import pis2015.ub.com.beerwizard.network.NetworkFacade;
+
 public class GUIFacade {
     private String idLocalUser;
 
     public GUIFacade() {
-
     }
 
-    String[] getAllGames() {
-        return null;
+    static ArrayList<String> getAllGames() {
+        return NetworkFacade.getAllGames();
     }
 
-    void createGame(String name) {
-
+    static void createGame(String gameName) {
+        NetworkFacade.createGame(gameName);
+        //TODO Ask Jordi to return generated ID for user
     }
 
-    void enterGame(String serverIP) {
-
+    static void enterGame(String serverIP) {
+        NetworkFacade.enterGame(serverIP);
+        //TODO Ask Jordi to return generated ID for user
     }
 
-    void modifyUserProfile(String name, String idAvatar) {
-
+    static void modifyUserProfile(String name, String idAvatar) {
+        NetworkFacade.modifyUserProfile(idLocalUser, name, idAvatar);
     }
 
-    void exitGame() {
-
+    static void exitGame() {
+        NetworkFacade.exitGame(idLocalUser);
     }
 
-    String[] getAllUnlockedSpellsOfUser() {
-        return null;
+    static ArrayList<String> getAllUsers() {
+        return NetWorkFacade.getAllUsers();
     }
 
-    String[] getAllUsers() {
-        return null;
+    static String getSpellName(String idSpell) {
+        SpellManager.getName(idSpell);
     }
 
-    String getSpellDescription(String idSpell) {
-        return null;
+    static String getSpellDescription(String idSpell) {
+        SpellManager.getDescription(idSpell);
     }
 
-    String getSpellQuote(String idSpell) {
-        return null;
+    static String getSpellQuote(String idSpell) {
+        SpellManager.getQuote(idSpell);
     }
 
-    void castSpell(String idSpell, String[] params, String idTargetUser) {
-
+    static void castSpell(String idSpell, String[] params, String idTargetUser) {
+        NetworkFacade.castSpell(idLocalUser, idTargetUser, idSpell, params);
     }
 }
