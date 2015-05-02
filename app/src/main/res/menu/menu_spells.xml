@@ -18,7 +18,7 @@
         android:title="@string/action_exit"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_search"
+        android:id="@+id/action_lvl_up"
         android:icon="@drawable/lvl_up_cuadrado"
         android:title="@string/lvlUp"
         app:showAsAction="ifRoom" />
