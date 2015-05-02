@@ -6,10 +6,6 @@ class Game << (S,#FF7700) Singleton >>{
 	.. Users ..
 	+void modifyUserProfile(String idUser, String name, String idAvatar)
 	+void userExitsGame(String idUser)
-	.. Spells ..
-	+String[] getAllUnlockedSpellsOfUser(String idUser)
-	+String getSpellDescription(String idSpell)
-	+String getSpellQuote(String idSpell)
 	.. Exit ..
 	+void exitGame()
 }
@@ -17,12 +13,17 @@ class Game << (S,#FF7700) Singleton >>{
 class User {
 	-id : String
 	-name : String
-	-level : int	
+	-level : int
+	-hasShield : boolean
+	-avatarPhoto : String
 
 	+void levelUp()
 	+void levelDown()
 	+void modifyMyProfile(String name, String idAvatar)
-	+String[] getAllUnlockedSpells()
+}
+
+class AvatarManager << (S,#FF7700) Singleton >>{
+	{static}String getAvatarPhoto(idAvatar)
 }
 
 class Avatar{
@@ -31,53 +32,14 @@ class Avatar{
 }
 
 class SpellManager << (S,#FF7700) Singleton >>{
-	+String getSpell(idSpell)
+	{static}String getName(idSpell)
+	{static}String getDescription(idSpell)
+	{static}String getQuote(idSpell)
 }
 
-abstract class Spell{
-	#id : String
-	#NAME : String
-	#DESCRIPTION : String
-	#QUOTE : String
-	#LEVEL_TO_UNLOCK : int
-	#cooldown : int
-}
-
-class SpellCanToTheFace extends Spell{
-	#LEVEL_TO_UNLOCK = 2
-}
-
-class SpellWizardDuel extends Spell{
-	#LEVEL_TO_UNLOCK = 3
-}
-
-class SpellBeerekinesis extends Spell{
-	#LEVEL_TO_UNLOCK = 4
-}
-
-class SpellShield extends Spell{
-	#LEVEL_TO_UNLOCK = 5
-}
-
-class SpellCreateRule extends Spell{
-	#LEVEL_TO_UNLOCK = 6
-}
-
-class SpellTruthOrShot extends Spell{
-	#LEVEL_TO_UNLOCK = 7
-}
-
-class SpellHatOfShame extends Spell{
-	#LEVEL_TO_UNLOCK = 8
-}
-
-class SpellAllInBeer extends Spell{
-	#LEVEL_TO_UNLOCK = 9
-}
 
 Game "1" --> "1..*" User: stores
-SpellManager "1" --> "8" Spell
-User "1" --> "1" SpellManager : sends petition to
-User "1" --> "1" Avatar
+SpellManager "1" -> "8" Spell : manages
+AvatarManager "1" -> "*" Avatar : manages
 
 @enduml
