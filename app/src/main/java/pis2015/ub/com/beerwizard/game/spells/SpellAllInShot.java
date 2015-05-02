@@ -1,7 +1,7 @@
 package pis2015.ub.com.beerwizard.game.spells;
 
-public class SpellAllInBeer extends Spell {
-    public SpellAllInBeer() {
+public class SpellAllInShot extends Spell {
+    public SpellAllInShot() {
         super.levelToUnlock = 9;
     }
 }

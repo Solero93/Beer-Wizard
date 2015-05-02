@@ -55,6 +55,20 @@ public class GUIFacade {
     }
 
     /**
+     * Levels up the User
+     */
+    static void levelUp() {
+        NetworkFacade.levelUp(this.idLocalUser);
+    }
+
+    /**
+     * Levels down the User
+     */
+    static void levelDown() {
+        NetworkFacade.levelDown(this.idLocalUser);
+    }
+
+    /**
      * Exits the current User from the Game.
      */
     static void exitGame() {
