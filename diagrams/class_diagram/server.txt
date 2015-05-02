@@ -33,4 +33,29 @@ Server <--> Network : communicates over the network
 Server <--> SocketServer
 Network <--> ServerListener : receives data from the server
 
+
+class Game << (S,#FF7700) Singleton >>{
+	-name : String
+	-rule : String
+	.. Users ..
+	+void modifyUserProfile(byte idUser, String name, byte idAvatar)
+	+void userExitsGame(byte idUser)
+	.. Exit ..
+	+void exitGame()
+}
+
+class User {
+	-id : byte
+	-name : String
+	-level : byte
+	-hasShield : boolean
+	-avatarPhoto : byte
+
+	+void levelUp()
+	+void levelDown()
+	+void modifyMyProfile(String name, byte idAvatar)
+}
+
+Game "1" --> "1..*" User: stores
+
 @enduml

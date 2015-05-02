@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard.game;
+package pis2015.ub.com.beerwizard.network;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ public class Game {
     }
 
     public static Game getInstance() {
-        return this.ourInstance;
+        return ourInstance;
     }
 
     public String getName() {
@@ -41,13 +41,9 @@ public class Game {
     }
 
     /**
-     * Deletes a User from the list of this Game's players.
+     * Deletes a User from the list of Game's players.
      * @param idUser
      */
     public void userExitsGame(String idUser) {
     }
-
-    /* TODO This shouldn't be here - speak with others
-    public void exitGame() {}
-    */
 }

@@ -1,13 +1,28 @@
 @startuml
 
 abstract class Spell{
-	#id : String
 	#name : String
 	#description : String
 	#quote : String
 	#levelToUnlock : int
 	#cooldown : int
 }
+
+class SpellManager << (S,#FF7700) Singleton >>{
+	{static}String getName(idSpell)
+	{static}String getDescription(idSpell)
+	{static}String getQuote(idSpell)
+	{static}String getLevelToUnlock(idSpell)
+	{static}String getCooldown(idSpell)
+}
+
+SpellManager "1" --> "8" Spell : manages
+
+
+
+/'
+Sons of Spell class
+'/
 
 class SpellCanToTheFace extends Spell{
 	#levelToUnlock = 2
