@@ -1,30 +1,38 @@
 package pis2015.ub.com.beerwizard.game;
 
+/**
+ * Class that represents the User (or Player) object
+ */
 public class User {
     private String id;
     private String name;
     private int level;
-    private Avatar avatar;
+    private String avatarPhoto;
 
+    /**
+     * Level's up the User.
+     */
     public void levelUp() {
         if (this.level < 10) this.level++;
     }
 
+    /**
+     * Level's down the User.
+     */
     public void levelDown() {
         if (this.level > 2) this.level--;
     }
 
-    public void modifyMyProfile(String name, String idAvatar) {
+    /**
+     * Modifies the profile of the User.
+     */
+    public void modifyProfile(String name, String avatar) {
         this.setName(name);
-        this.setAvatar(idAvatar);
-    }
-
-    public String[] getAllUnlockedSpells() {
-        return null;
+        this.setAvatar(avatar);
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -32,18 +40,18 @@ public class User {
     }
 
     public int getLevel() {
-        return level;
+        return this.level;
     }
 
     public void setLevel(int level) {
         this.level = level;
     }
 
-    public Avatar getAvatar() {
-        return avatar;
+    public String getAvatar() {
+        return this.avatarPhoto;
     }
 
-    public void setAvatar(String idAvatar) {
-        this.avatar = avatar;
+    public void setAvatar(String avatar) {
+        this.avatarPhoto = avatar;
     }
 }

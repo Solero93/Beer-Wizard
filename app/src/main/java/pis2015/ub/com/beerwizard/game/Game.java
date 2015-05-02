@@ -1,12 +1,12 @@
 package pis2015.ub.com.beerwizard.game;
 
-/**
- * Singleton Game Class
- */
+import java.util.ArrayList;
+
 public class Game {
     private static Game ourInstance = new Game();
     private String name;
     private String rule;
+    private ArrayList<User> users;
 
     private Game() {
     }
@@ -31,10 +31,23 @@ public class Game {
         this.rule = rule;
     }
 
+    /**
+     * Modifies the profile of a User.
+     * @param idUser
+     * @param name
+     * @param avatar
+     */
+    public void modifyUserProfile(String idUser, String name, String avatar) {
+    }
 
+    /**
+     * Deletes a User from the list of this Game's players.
+     * @param idUser
+     */
+    public void userExitsGame(String idUser) {
+    }
 
     /* TODO This shouldn't be here - speak with others
-    public void userExitsGame(String idUser) {}
     public void exitGame() {}
     */
 }

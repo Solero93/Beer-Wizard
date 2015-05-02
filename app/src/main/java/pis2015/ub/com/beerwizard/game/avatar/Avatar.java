@@ -1,7 +1,7 @@
-package pis2015.ub.com.beerwizard.game;
+package pis2015.ub.com.beerwizard.game.avatar;
 
 public class Avatar {
-    String id;
+    private String id;
     private String photo;
 
     public String getPhoto() {

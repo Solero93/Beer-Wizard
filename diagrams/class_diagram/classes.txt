@@ -13,12 +13,17 @@ class Game << (S,#FF7700) Singleton >>{
 class User {
 	-id : String
 	-name : String
-	-level : int = 1
-	-hasShield : boolean = false
+	-level : int
+	-hasShield : boolean
+	-avatarPhoto : String
 
 	+void levelUp()
 	+void levelDown()
 	+void modifyMyProfile(String name, String idAvatar)
+}
+
+class AvatarManager << (S,#FF7700) Singleton >>{
+	{static}String getAvatarPhoto(idAvatar)
 }
 
 class Avatar{
@@ -32,76 +37,9 @@ class SpellManager << (S,#FF7700) Singleton >>{
 	{static}String getQuote(idSpell)
 }
 
-abstract class Spell{
-	#id : String
-	#name : String
-	#description : String
-	#quote : String
-	#levelToUnlock : int
-	#cooldown : int
-}
-
-class SpellCanToTheFace extends Spell{
-	#LEVEL_TO_UNLOCK = 2
-}
-
-class SpellWizardDuel extends Spell{
-	#LEVEL_TO_UNLOCK = 3
-	+String getRandomDuel()
-}
-class Duel{
-	-duel : String
-}
-
-SpellWizardDuel "1" --> "1..*" Duel
-
-
-class SpellBeerekinesis extends Spell{
-	#LEVEL_TO_UNLOCK = 4
-}
-
-class SpellShield extends Spell{
-	#LEVEL_TO_UNLOCK = 5
-}
-
-
-class SpellCreateRule extends Spell{
-	#LEVEL_TO_UNLOCK = 6
-	+String getRandomRule()
-}
-class Rule{
-	-rule : String
-}
-
-SpellCreateRule "1" --> "1..*" Rule
-
-
-class SpellTruthOrShot extends Spell{
-	#LEVEL_TO_UNLOCK = 7
-	+String getRandomTruth()
-}
-class Truth{
-	-truth : String
-}
-
-SpellTruthOrShot "1" --> "1..*" Truth
-
-class SpellHatOfShame extends Spell{
-	#LEVEL_TO_UNLOCK = 8
-	+String getRandomHatOfShame()
-}
-class HatOfShame{
-	-hatOfShame : String
-}
-
-SpellHatOfShame "1" --> "1..*" HatOfShame
-
-class SpellAllInShot extends Spell{
-	#LEVEL_TO_UNLOCK = 9
-}
 
 Game "1" --> "1..*" User: stores
-SpellManager "1" --> "8" Spell
-User "1" --> "1" Avatar
+SpellManager "1" -> "8" Spell : manages
+AvatarManager "1" -> "*" Avatar : manages
 
 @enduml

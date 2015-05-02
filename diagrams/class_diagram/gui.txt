@@ -34,8 +34,8 @@ class GUIFacade <<(F,orchid) Facade>>{
 	{static}void modifyUserProfile(String name, String idAvatar)
 	.. SpellsActivity ..
 	{static}void modifyUserProfile(String name, String idAvatar)
-	{static}void lvlUp()
-	{static}void lvlDown()
+	{static}void levelUp()
+	{static}void levelDown()
 	{static}void exitGame()
 	.. CastSpellActivity ..
 	{static}ArrayList<String> getAllUsers()

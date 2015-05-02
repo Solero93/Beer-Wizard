@@ -1,19 +1,9 @@
-package pis2015.ub.com.beerwizard.game;
+package pis2015.ub.com.beerwizard.game.spells;
 
 import java.util.ArrayList;
 
-import pis2015.ub.com.beerwizard.game.spells.Spell;
-import pis2015.ub.com.beerwizard.game.spells.SpellAllInBeer;
-import pis2015.ub.com.beerwizard.game.spells.SpellBeerekinesis;
-import pis2015.ub.com.beerwizard.game.spells.SpellCanToTheFace;
-import pis2015.ub.com.beerwizard.game.spells.SpellCreateRule;
-import pis2015.ub.com.beerwizard.game.spells.SpellHatOfShame;
-import pis2015.ub.com.beerwizard.game.spells.SpellShield;
-import pis2015.ub.com.beerwizard.game.spells.SpellTruthOrShot;
-import pis2015.ub.com.beerwizard.game.spells.SpellWizardDuel;
-
 /**
- * SpellManager Singleton class
+ * Singleton class that manages the Spells.
  */
 public class SpellManager {
     private static SpellManager ourInstance = new SpellManager();
@@ -35,5 +25,12 @@ public class SpellManager {
         return ourInstance;
     }
 
+    public static String getName(String idSpell){
+    }
 
+    public static String getDescription(String idSpell){
+    }
+
+    public static String getQuote(String idSpell){
+    }
 }
