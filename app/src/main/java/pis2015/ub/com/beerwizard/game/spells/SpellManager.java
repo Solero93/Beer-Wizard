@@ -26,11 +26,14 @@ public class SpellManager {
     }
 
     public static String getName(String idSpell){
+        return "name";
     }
 
     public static String getDescription(String idSpell){
+        return "description";
     }
 
     public static String getQuote(String idSpell){
+        return "quote quote quote quote quote quote quote";
     }
 }

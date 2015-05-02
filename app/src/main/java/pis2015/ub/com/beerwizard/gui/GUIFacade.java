@@ -2,9 +2,9 @@ package pis2015.ub.com.beerwizard.gui;
 
 import java.util.ArrayList;
 
+import pis2015.ub.com.beerwizard.game.avatar.AvatarManager;
 import pis2015.ub.com.beerwizard.game.spells.SpellManager;
 import pis2015.ub.com.beerwizard.network.NetworkFacade;
-import pis2015.ub.com.beerwizard.game.avatar.AvatarManager;
 
 /**
  * Façade class that has all the "services" the GUI can call.
@@ -20,7 +20,11 @@ public class GUIFacade {
      * @return Nearby game's Names
      */
     static ArrayList<String> getAllGames() {
-        return NetworkFacade.getAllGames();
+        ArrayList<String> hardcode = new ArrayList<>(2);
+        hardcode.set(0, "GAME A");
+        hardcode.set(1, "GAME B");
+        return hardcode;
+        //return NetworkFacade.getAllGames();
     }
 
     /**
@@ -62,7 +66,10 @@ public class GUIFacade {
      * @return List of all Users in current Game
      */
     static ArrayList<String> getAllUsers() {
-        return NetWorkFacade.getAllUsers();
+        ArrayList<String> hardcode = new ArrayList<>(2);
+        hardcode.set(0, "USER A");
+        hardcode.set(1, "USER B");
+        //return NetWorkFacade.getAllUsers();
     }
 
     /**
