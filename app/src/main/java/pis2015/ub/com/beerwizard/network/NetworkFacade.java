@@ -1,7 +1,5 @@
 package pis2015.ub.com.beerwizard.network;
 
-import pis2015.ub.com.beerwizard.game.Game;
-
 public class NetworkFacade {
     private String serverIP;
     private Thread serverListener;
