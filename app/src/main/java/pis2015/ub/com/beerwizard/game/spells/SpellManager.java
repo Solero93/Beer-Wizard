@@ -18,7 +18,7 @@ public class SpellManager {
         spells.set(4, new SpellCreateRule());
         spells.set(5, new SpellTruthOrShot());
         spells.set(6, new SpellHatOfShame());
-        spells.set(7, new SpellAllInBeer());
+        spells.set(7, new SpellAllInShot());
     }
 
     public static SpellManager getInstance() {
