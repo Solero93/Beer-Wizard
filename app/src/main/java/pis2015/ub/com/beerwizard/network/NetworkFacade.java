@@ -30,7 +30,7 @@ public class NetworkFacade {
     }
 
     public void exitGame() {
-
+        serverListener.stop();
     }
 
     private void userExitsGame(String idUser) {
