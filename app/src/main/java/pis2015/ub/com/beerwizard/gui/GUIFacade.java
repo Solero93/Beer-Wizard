@@ -2,124 +2,156 @@ package pis2015.ub.com.beerwizard.gui;
 
 import java.util.ArrayList;
 
-import pis2015.ub.com.beerwizard.game.avatar.AvatarManager;
-import pis2015.ub.com.beerwizard.game.spells.SpellManager;
-import pis2015.ub.com.beerwizard.network.NetworkFacade;
+import pis2015.ub.com.beerwizard.game.SpellManager;
 
 /**
  * Façade class that has all the "services" the GUI can call.
  */
+//TODO Add Exception to ServerTimeOut
 public class GUIFacade {
-    private String idLocalUser;
+    private static GUIFacade ourInstance = new GUIFacade();
+    private static byte idLocalUser;
 
-    public GUIFacade() {
+    private GUIFacade() {
+        idLocalUser = -1;
+    }
+
+    public static GUIFacade getInstance() {
+        return ourInstance;
     }
 
     /**
      * Gives all the games that are played nearby.
+     *
      * @return Nearby game's Names
      */
     static ArrayList<String> getAllGames() {
-        ArrayList<String> hardcode = new ArrayList<>(2);
-        hardcode.set(0, "GAME A");
-        hardcode.set(1, "GAME B");
-        return hardcode;
+        ArrayList<String> test = new ArrayList<>(2);
+        test.set(0, "GAME A");
+        test.set(1, "GAME B");
+        return test;
         //return NetworkFacade.getAllGames();
     }
 
     /**
+     * Gives all the Users that play the current Game
+     *
+     * @return List of all Users in current Game
+     */
+    static ArrayList<String> getAllUsers() {
+        ArrayList<String> test = new ArrayList<>(2);
+        test.set(0, "USER A");
+        test.set(1, "USER B");
+        return test;
+        //return NetWorkFacade.getAllUsers();
+    }
+
+    /**
      * Creates a Game with a given name.
+     *
      * @param gameName - name you want the Game to have
      */
     static void createGame(String gameName) {
-        NetworkFacade.createGame(gameName);
-        //TODO Ask Jordi to return generated ID for user
+        //idLocalUser = NetworkFacade.createGame(gameName);
     }
 
     /**
      * Enters a given Game.
+     *
      * @param serverIP
      */
     static void enterGame(String serverIP) {
-        NetworkFacade.enterGame(serverIP);
-        //TODO Ask Jordi to return generated ID for user
-    }
-
-    /**
-     * Modifies the current User's profile.
-     * @param name
-     * @param idAvatar
-     */
-    static void modifyUserProfile(String name, String idAvatar) {
-        NetworkFacade.modifyUserProfile(this.idLocalUser, name, AvatarManager.getAvatar(idAvatar));
-    }
-
-    /**
-     * Levels up the User
-     */
-    static void levelUp() {
-        NetworkFacade.levelUp(this.idLocalUser);
-    }
-
-    /**
-     * Levels down the User
-     */
-    static void levelDown() {
-        NetworkFacade.levelDown(this.idLocalUser);
+        //idLocalUser = NetworkFacade.enterGame(serverIP);
     }
 
     /**
      * Exits the current User from the Game.
      */
     static void exitGame() {
-        NetworkFacade.exitGame(this.idLocalUser);
+        //NetworkFacade.exitGame(idLocalUser);
+        idLocalUser = -1;
     }
 
     /**
-     * Gives all the Users that play the current Game
-     * @return List of all Users in current Game
+     * Modifies the current User's profile.
+     *
+     * @param name
+     * @param idAvatar
      */
-    static ArrayList<String> getAllUsers() {
-        ArrayList<String> hardcode = new ArrayList<>(2);
-        hardcode.set(0, "USER A");
-        hardcode.set(1, "USER B");
-        //return NetWorkFacade.getAllUsers();
+    static void modifyUserProfile(String name, int idAvatar) {
+        //NetworkFacade.modifyUserProfile(idLocalUser, name, (byte)idAvatar);
+    }
+
+    /**
+     * Levels up the User
+     */
+    static void levelUp() {
+        //NetworkFacade.levelUp(idLocalUser);
+    }
+
+    /**
+     * Levels down the User
+     */
+    static void levelDown() {
+        //NetworkFacade.levelDown(idLocalUser);
     }
 
     /**
      * Gets the Name of a given Spell
+     *
      * @param idSpell
      * @return Spell's name
      */
-    static String getSpellName(String idSpell) {
+    static String getSpellName(int idSpell) {
         return SpellManager.getName(idSpell);
     }
 
     /**
      * Gets the Description of a given Spell
+     *
      * @param idSpell
      * @return Spell's Description
      */
-    static String getSpellDescription(String idSpell) {
+    static String getSpellDescription(int idSpell) {
         return SpellManager.getDescription(idSpell);
     }
 
     /**
      * Gets the Quote of a given Spell
+     *
      * @param idSpell
      * @return Spell's Quote
      */
-    static String getSpellQuote(String idSpell) {
+    static String getSpellQuote(int idSpell) {
         return SpellManager.getQuote(idSpell);
     }
 
     /**
      * Casts a Spell at a given User
-     * @param idSpell - ID of spell to cast
-     * @param params - possible parametres (null if there aren't any)
+     *
+     * @param idSpell      - ID of spell to cast
+     * @param params       - possible parametres (null if there aren't any)
      * @param idTargetUser - ID of User to cast spell on (null if it's self inflicted)
      */
-    static void castSpell(String idSpell, String[] params, String idTargetUser) {
-        NetworkFacade.castSpell(this.idLocalUser, idTargetUser, idSpell, params);
+    static void castSpell(int idTargetUser, int idSpell, String[] params) {
+        //NetworkFacade.castSpell(idLocalUser, (byte)idTargetUser, (byte)idSpell, params);
     }
+
+    /* http://stackoverflow.com/questions/17233038/how-to-implement-synchronous-method-timeouts-in-java
+
+    ExecutorService executor = Executors.newSingleThreadExecutor();
+    Future<String> future = executor.submit(new Callable() {
+
+        public String call() throws Exception {
+            //do operations you want
+            return "OK";
+        }
+    });
+    try {
+        System.out.println(future.get(2, TimeUnit.SECONDS)); //timeout is in 2 seconds
+    } catch (TimeoutException e) {
+        System.err.println("Timeout");
+    }
+    executor.shutdownNow();
+    */
 }

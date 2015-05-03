@@ -31,17 +31,18 @@ class GUIFacade <<(F,orchid) Facade>>{
 	{static}ArrayList<String> getAllGames()
 	{static}void createGame(String gameName)
 	{static}void enterGame(String serverIP)
-	{static}void modifyUserProfile(String name, String idAvatar)
+	{static}void modifyUserProfile(String name, int idAvatar)
 	.. SpellsActivity ..
-	{static}void modifyUserProfile(String name, String idAvatar)
+	{static}void modifyUserProfile(String name, int idAvatar)
 	{static}void levelUp()
 	{static}void levelDown()
 	{static}void exitGame()
 	.. CastSpellActivity ..
 	{static}ArrayList<String> getAllUsers()
-	{static}String getSpellDescription(String idSpell)
-	{static}String getSpellQuote(String idSpell)
-	{static}void castSpell(String idTargetUser, String idSpell, String[] params)
+	{static}String getSpellName(int idSpell)
+	{static}String getSpellDescription(int idSpell)
+	{static}String getSpellQuote(int idSpell)
+	{static}void castSpell(int idTargetUser, int idSpell, String[] params)
 }
 
 GUI --> GUIFacade : sends petitions to

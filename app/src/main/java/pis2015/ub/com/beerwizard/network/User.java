@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard.game;
+package pis2015.ub.com.beerwizard.network;
 
 /**
  * Class that represents the User (or Player) object
