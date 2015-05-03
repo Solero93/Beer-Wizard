@@ -7,12 +7,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".IntroActivity"
             android:label="@string/title_activity_intro"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".RoomCreateActivity"
             android:label="@string/title_activity_room_create"
@@ -37,23 +35,26 @@
             android:label="@string/title_activity_main_menu"
             android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SpellsActivity"
             android:icon="@drawable/cara"
             android:label="@string/nick"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
-            android:name="TutorialActivity"
-            android:screenOrientation="landscape">
-        </activity>
+            android:name=".TutorialActivity"
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".AvatarChooserActivity"
             android:label="@string/title_activity_avatar_chooser"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
+
+        <service android:name=".network.ServerListener" />
+        <service android:name=".network.Server" />
     </application>
+
 </manifest>

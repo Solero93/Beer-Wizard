@@ -25,13 +25,16 @@ class Server {
     - castingSpell : boolean
 }
 
-class ServerListener <<(T,green) Thread>> {
-    
+class ServerListener <<(T,green) Thread>> implements Runnable{
+    .. Synchronous methods ..
+    + void setStop()
+    + boolean hasToStop()
 }
 
 Server <--> Network : communicates over the network
 Server <--> SocketServer
 Network <--> ServerListener : receives data from the server
+ServerListener <--> SocketServer : listens for the server
 
 
 class Game << (S,#FF7700) Singleton >>{
