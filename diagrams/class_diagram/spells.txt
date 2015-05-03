@@ -1,0 +1,84 @@
+@startuml
+
+abstract class Spell{
+	#name : String
+	#description : String
+	#quote : String
+	#levelToUnlock : int
+	#cooldown : int
+}
+
+class SpellManager << (S,#FF7700) Singleton >>{
+	{static}String getName(idSpell)
+	{static}String getDescription(idSpell)
+	{static}String getQuote(idSpell)
+	{static}String getLevelToUnlock(idSpell)
+	{static}String getCooldown(idSpell)
+}
+
+SpellManager "1" --> "8" Spell : manages
+
+
+
+/'
+Sons of Spell class
+'/
+
+class SpellCanToTheFace extends Spell{
+	#levelToUnlock = 2
+}
+
+class SpellWizardDuel extends Spell{
+	#levelToUnlock = 3
+	+String getRandomDuel()
+}
+class Duel{
+	-duel : String
+}
+
+class SpellBeerekinesis extends Spell{
+	#levelToUnlock = 4
+}
+
+class SpellShield extends Spell{
+	#levelToUnlock = 5
+}
+
+
+class SpellCreateRule extends Spell{
+	#levelToUnlock = 6
+	+String getRandomRule()
+}
+class Rule{
+	-rule : String
+}
+
+
+class SpellTruthOrShot extends Spell{
+	#levelToUnlock = 7
+	+String getRandomTruth()
+}
+class Truth{
+	-truth : String
+}
+
+
+class SpellHatOfShame extends Spell{
+	#levelToUnlock = 8
+	+String getRandomHatOfShame()
+}
+class HatOfShame{
+	-hatOfShame : String
+}
+
+
+class SpellAllInShot extends Spell{
+	#levelToUnlock = 9
+}
+
+SpellWizardDuel "1" --> "1..*" Duel
+SpellCreateRule "1" --> "1..*" Rule
+SpellTruthOrShot "1" --> "1..*" Truth
+SpellHatOfShame "1" --> "1..*" HatOfShame
+
+@enduml

@@ -1,18 +1,11 @@
 @startuml
 
-!include classes.txt
+!include spells.txt
 !include gui.txt
 !include server.txt
 
-/'Interactions Server - Game'/
-
 Network <--> Game : interacts with
-
-/'Interactions GUI - Game'/
-
-GUIFacade --> Game
-
-/'Interactions GUI - Server '/
-GUIFacade --> Network
+GUIFacade --> SpellManager : sends petition to
+GUIFacade <--> Network : interacts with
 
 @enduml

@@ -28,22 +28,23 @@ package GUI{
 class GUIFacade <<(F,orchid) Facade>>{
 	-idLocalUser : String
 	.. MainMenuActivity ..
-	~String[] getAllGames()
-	~void createGame(String name)
-	~void enterGame(String serverIP)
-	~void modifyUserProfile(String name, String idAvatar)
-	~void exitGame()
+	{static}ArrayList<String> getAllGames()
+	{static}void createGame(String gameName)
+	{static}void enterGame(String serverIP)
+	{static}void modifyUserProfile(String name, int idAvatar)
 	.. SpellsActivity ..
-	~String[] getAllUnlockedSpellsOfUser()
-	~void modifyUserProfile(String name, String idAvatar)
+	{static}void modifyUserProfile(String name, int idAvatar)
+	{static}void levelUp()
+	{static}void levelDown()
+	{static}void exitGame()
 	.. CastSpellActivity ..
-	~String[] getAllUsers()
-	~String getSpellDescription(String idSpell)
-	~String getSpellQuote(String idSpell)
-	~void castSpell(String idSpell, String[] params, String idTargetUser)
+	{static}ArrayList<String> getAllUsers()
+	{static}String getSpellName(int idSpell)
+	{static}String getSpellDescription(int idSpell)
+	{static}String getSpellQuote(int idSpell)
+	{static}void castSpell(int idTargetUser, int idSpell, String[] params)
 }
 
-GUI --> GUIFacade
-GUIFacade <--> SpellManager
+GUI --> GUIFacade : sends petitions to
 
 @enduml

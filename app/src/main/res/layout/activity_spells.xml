@@ -83,21 +83,40 @@
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
 
-                    <ImageView
-                            android:id="@+id/imageViewSpell1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face"/>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textViewSpell1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageViewSpell1"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge"/>
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px" />
+
+                            <FrameLayout
+                                android:layout_width="138dp"
+                                android:layout_height="125dp"
+                                android:layout_alignRight="@+id/textViewSpell1"
+                                android:layout_alignEnd="@+id/textViewSpell1">
+
+                                <ImageView
+                                    android:id="@+id/imageViewSpell1"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:src="@drawable/candado" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/textViewSpell1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_below="@+id/imageViewSpell1"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:text="@string/lock1"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:layout_gravity="center_horizontal" />
+
+                        </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -121,21 +140,40 @@
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
 
-                        <ImageView
-                            android:id="@+id/imageViewSpell2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face"/>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textView2Spell2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageViewSpell2"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge"/>
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px" />
+
+                            <FrameLayout
+                                android:layout_width="138dp"
+                                android:layout_height="125dp"
+                                android:layout_alignRight="@+id/textViewSpell2"
+                                android:layout_alignEnd="@+id/textViewSpell2">
+
+                                <ImageView
+                                    android:id="@+id/imageViewSpell2"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:src="@drawable/candado" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/textViewSpell2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_below="@+id/imageViewSpell2"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:text="@string/lock2"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:layout_gravity="center_horizontal" />
+
+                        </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -159,21 +197,40 @@
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
 
-                    <ImageView
-                            android:id="@+id/imageViewSpell3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face"/>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textView2Spell3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageViewSpell3"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge"/>
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px" />
+
+                            <FrameLayout
+                                android:layout_width="138dp"
+                                android:layout_height="125dp"
+                                android:layout_alignRight="@+id/textViewSpell3"
+                                android:layout_alignEnd="@+id/textViewSpell3">
+
+                                <ImageView
+                                    android:id="@+id/imageViewSpell3"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:src="@drawable/candado" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/textViewSpell3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_below="@+id/imageViewSpell3"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:text="@string/lock3"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:layout_gravity="center_horizontal" />
+
+                        </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -196,21 +253,40 @@
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
 
-                        <ImageView
-                            android:id="@+id/imageViewSpell4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face"/>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textView2Spell4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageViewSpell4"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge"/>
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px" />
+
+                            <FrameLayout
+                                android:layout_width="138dp"
+                                android:layout_height="125dp"
+                                android:layout_alignRight="@+id/textViewSpell4"
+                                android:layout_alignEnd="@+id/textViewSpell4">
+
+                                <ImageView
+                                    android:id="@+id/imageViewSpell4"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:src="@drawable/candado" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/textViewSpell4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_below="@+id/imageViewSpell4"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:text="@string/lock4"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:layout_gravity="center_horizontal" />
+
+                        </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -234,21 +310,40 @@
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
 
-                    <ImageView
-                            android:id="@+id/imageViewSpell5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face"/>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textView2Spell5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageViewSpell5"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge"/>
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px" />
+
+                            <FrameLayout
+                                android:layout_width="138dp"
+                                android:layout_height="125dp"
+                                android:layout_alignRight="@+id/textViewSpell5"
+                                android:layout_alignEnd="@+id/textViewSpell5">
+
+                                <ImageView
+                                    android:id="@+id/imageViewSpell5"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:src="@drawable/candado" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/textViewSpell5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_below="@+id/imageViewSpell5"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:text="@string/lock5"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:layout_gravity="center_horizontal" />
+
+                        </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -272,21 +367,40 @@
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
 
-                        <ImageView
-                            android:id="@+id/imageViewSpell6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face"/>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textView2Spell6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageViewSpell6"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge"/>
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px" />
+
+                            <FrameLayout
+                                android:layout_width="138dp"
+                                android:layout_height="125dp"
+                                android:layout_alignRight="@+id/textViewSpell6"
+                                android:layout_alignEnd="@+id/textViewSpell6">
+
+                                <ImageView
+                                    android:id="@+id/imageViewSpell6"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:src="@drawable/candado" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/textViewSpell6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_below="@+id/imageViewSpell6"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:text="@string/lock6"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:layout_gravity="center_horizontal" />
+
+                        </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -310,21 +424,40 @@
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
 
-                    <ImageView
-                            android:id="@+id/imageViewSpell7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face"/>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textView2Spell7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageViewSpell7"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge"/>
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px" />
+
+                            <FrameLayout
+                                android:layout_width="138dp"
+                                android:layout_height="125dp"
+                                android:layout_alignRight="@+id/textViewSpell7"
+                                android:layout_alignEnd="@+id/textViewSpell7">
+
+                                <ImageView
+                                    android:id="@+id/imageViewSpell7"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:src="@drawable/candado" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/textViewSpell7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_below="@+id/imageViewSpell7"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:text="@string/lock7"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:layout_gravity="center_horizontal" />
+
+                        </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -347,21 +480,40 @@
                         android:layout_height="220dp"
                         android:background="@drawable/fondo_spell">
 
-                    <ImageView
-                            android:id="@+id/imageViewSpell8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face"/>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textView2Spell8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageViewSpell8"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge"/>
+                            <Space
+                                android:layout_width="20px"
+                                android:layout_height="20px" />
+
+                            <FrameLayout
+                                android:layout_width="138dp"
+                                android:layout_height="125dp"
+                                android:layout_alignRight="@+id/textViewSpell8"
+                                android:layout_alignEnd="@+id/textViewSpell8">
+
+                                <ImageView
+                                    android:id="@+id/imageViewSpell8"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:src="@drawable/candado" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/textViewSpell8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_below="@+id/imageViewSpell8"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center"
+                                android:text="@string/lock8"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:layout_gravity="center_horizontal" />
+
+                        </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -369,38 +521,7 @@
                     android:layout_width="20px"
                     android:layout_height="20px"/>
 
-                <LinearLayout
-                    android:id="@+id/spell9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:gravity="center"
-                    android:onClick="onClickSpell"
-                    android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="220dp"
-                        android:background="@drawable/fondo_spell">
-
-                        <ImageView
-                            android:id="@+id/imageViewSpell9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/can_to_the_face"/>
-
-                        <TextView
-                            android:id="@+id/textView2Spell9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageViewSpell9"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="@string/spell1"
-                            android:textAppearance="?android:attr/textAppearanceLarge"/>
-                    </RelativeLayout>
-                </LinearLayout>
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -429,6 +550,6 @@
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
 
-    </SlidingDrawer><!--TODO This is deprecated, needs to be changed ASAP-->
+    </SlidingDrawer>
 
 </RelativeLayout>
