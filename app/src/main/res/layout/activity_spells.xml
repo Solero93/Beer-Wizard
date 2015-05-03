@@ -546,8 +546,22 @@
                 android:id="@+id/handle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Handle"
+                android:text="Rules"
                 android:layout_gravity="center_horizontal" />
+        <LinearLayout
+            android:id="@+id/rules"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:background="@color/yellow">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rule"
+                android:id="@+id/textView4" />
+        </LinearLayout>
         </LinearLayout>
 
     </SlidingDrawer>
