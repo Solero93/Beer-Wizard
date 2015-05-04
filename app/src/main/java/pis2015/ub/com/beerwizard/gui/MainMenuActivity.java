@@ -45,16 +45,12 @@ public class MainMenuActivity extends Activity {
 
             @Override
             public void onClick(View arg0) {
-                LayoutInflater layoutInflater
-                        = (LayoutInflater) getBaseContext()
-                        .getSystemService(LAYOUT_INFLATER_SERVICE);
+                LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = layoutInflater.inflate(R.layout.popup_about, null);
 
-                final PopupWindow popupWindow = new PopupWindow(
-                        popupView,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
 
+                final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                popupWindow.setFocusable(true);
                 Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
                 btnDismiss.setOnClickListener(new Button.OnClickListener() {
                     //                TextView wwa= (TextView)popupView.findViewById(R.id.)
@@ -84,11 +80,12 @@ public class MainMenuActivity extends Activity {
         // Third parameter - ID of the TextView to which the data is written
         // Fourth - the Array of data
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, getResources().getStringArray(R.array.str_array_available_rooms));
-
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                GUIFacade.getAllGames());
         // Assign adapter to ListView
-        listvw_available_rooms.setAdapter(adapter);
+        listvw_available_rooms.setAdapter(arrayAdapter);
 
         listvw_available_rooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
