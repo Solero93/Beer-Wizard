@@ -50,49 +50,49 @@ public class SpellsActivity extends ActionBarActivity {
         if((id == R.id.spell1 ) && (this.lvl>=2)){
             Intent intent = new Intent(this, CastSpellActivity.class);
             Bundle b = new Bundle();
-            b.putInt("id", 1); //Your id
+            b.putInt("spell", 1); //Your id
             intent.putExtras(b);
             startActivity(intent);
         }if((id == R.id.spell2)&& (this.lvl>=3)){
             Intent intent = new Intent(this, CastSpellActivity.class);
             Bundle b = new Bundle();
-            b.putInt("id", 1); //Your id
+            b.putInt("spell", 2); //Your id
             intent.putExtras(b);
             startActivity(intent);
         }if((id == R.id.spell3) && (this.lvl>=4)){
             Intent intent = new Intent(this, CastSpellActivity.class);
             Bundle b = new Bundle();
-            b.putInt("id", 1); //Your id
+            b.putInt("spell", 3); //Your id
             intent.putExtras(b);
             startActivity(intent);
         }if((id == R.id.spell4) && (this.lvl>=5)){
             Intent intent = new Intent(this, CastSpellActivity.class);
             Bundle b = new Bundle();
-            b.putInt("id", 1); //Your id
+            b.putInt("spell", 4); //Your id
             intent.putExtras(b);
             startActivity(intent);
         }if((id == R.id.spell5) && (this.lvl>=6)){
             Intent intent = new Intent(this, CastSpellActivity.class);
             Bundle b = new Bundle();
-            b.putInt("id", 1); //Your id
+            b.putInt("spell", 5); //Your id
             intent.putExtras(b);
             startActivity(intent);
         }if((id == R.id.spell6) && (this.lvl>=7)){
             Intent intent = new Intent(this, CastSpellActivity.class);
             Bundle b = new Bundle();
-            b.putInt("id", 1); //Your id
+            b.putInt("spell", 6); //Your id
             intent.putExtras(b);
             startActivity(intent);
         }if((id == R.id.spell7) && (this.lvl>=8)){
             Intent intent = new Intent(this, CastSpellActivity.class);
             Bundle b = new Bundle();
-            b.putInt("id", 1); //Your id
+            b.putInt("spell", 7); //Your id
             intent.putExtras(b);
             startActivity(intent);
         }if((id == R.id.spell8) && (this.lvl>=9)){
             Intent intent = new Intent(this, CastSpellActivity.class);
             Bundle b = new Bundle();
-            b.putInt("id", 1); //Your id
+            b.putInt("spell", 8); //Your id
             intent.putExtras(b);
             startActivity(intent);
         }

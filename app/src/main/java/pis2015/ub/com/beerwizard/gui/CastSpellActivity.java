@@ -20,12 +20,15 @@ import pis2015.ub.com.beerwizard.R;
 
 
 public class CastSpellActivity extends ActionBarActivity {
-
+    int idSpell;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
+        Bundle b = getIntent().getExtras();
+        this.idSpell = b.getInt("id");
+        setTitle(GUIFacade.getSpellName(idSpell));
         setContentView(R.layout.activity_cast_spell);
         ListView wizards = (ListView) findViewById(R.id.wizards);
 
