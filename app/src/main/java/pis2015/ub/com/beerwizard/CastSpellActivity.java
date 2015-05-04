@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +21,8 @@ public class CastSpellActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cast_spell);
         ListView wizards = (ListView) findViewById(R.id.wizards);
@@ -76,6 +80,7 @@ public class CastSpellActivity extends ActionBarActivity {
             //                TextView wwa= (TextView)popupView.findViewById(R.id.)
             @Override
             public void onClick(View v) {
+                popupWindow.setAnimationStyle(R.style.popup_animation);
                 popupWindow.dismiss();
                 finish();
             }

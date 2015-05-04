@@ -7,6 +7,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import android.widget.ViewSwitcher;
 
 public class TutorialActivity extends Activity {
     Button buttonNext;
+    Button buttonPrevious;
     ImageSwitcher imageSwitcher;
     Animation slide_in_left, slide_out_right;
 
@@ -30,13 +33,16 @@ public class TutorialActivity extends Activity {
     int curIndex;
 
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_tutorial);
 //        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fonts.ttf");
         //boto que desa el que hi ha escrit i torna a l'activity main
 
-        buttonNext = (Button) findViewById(R.id.btn);
+        buttonNext = (Button) findViewById(R.id.btn_next);
+        buttonPrevious = (Button) findViewById(R.id.btn_previous);
 //        buttonNext.setTypeface(font);
         imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
 
@@ -69,6 +75,17 @@ public class TutorialActivity extends Activity {
 
         curIndex = 0;
         imageSwitcher.setImageResource(imageResources[curIndex]);
+
+        buttonPrevious.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                if (curIndex == 0) {
+                } else {
+                    imageSwitcher.setImageResource(imageResources[--curIndex]);
+                }
+            }
+        });
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
 
@@ -103,6 +120,7 @@ public class TutorialActivity extends Activity {
 
                         }
                     });
+                    popupWindow.setAnimationStyle(R.style.popup_animation);
                     popupWindow.showAtLocation(findViewById(R.id.layout_tutorial), Gravity.CENTER, 0, 0);
 
 

@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -10,58 +10,55 @@
               android:paddingTop="@dimen/activity_vertical_margin"
               tools:context="pis2015.ub.com.beerwizard.ProfileActivity">
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="207dp"
+        android:layout_height="182dp"
+        android:layout_gravity="right|center_vertical"
+        android:src="@drawable/cara" />
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="4"
-        android:background="@color/yellow"
-        android:orientation="horizontal">
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="263dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:text="Set your name here" />
 
-        <ImageButton
-            android:id="@+id/avatarButton"
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:text="Done!" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|top">
+
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:clickable="true"
-            android:onClick="onClick_chooseAvatar"
-            android:scaleType="centerInside"
-            android:src="@drawable/cara" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="61dp"
+            android:text="Click the image to change your avatar" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_alignBaseline="@+id/textView4"
+            android:layout_alignBottom="@+id/textView4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="53dp"
+            android:layout_marginStart="53dp"
+            android:text="Profile"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </RelativeLayout>
 
-            <EditText
-                android:id="@+id/wizardName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/nick" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="onClick_acceptChanges"
-                android:text="@string/btn_profile_ok" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-</LinearLayout>
+</FrameLayout>

@@ -4,25 +4,39 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/beerwizard_icon2"
+        android:label="Beer Wizard"
         android:theme="@style/AppTheme">
+
 
         <activity
             android:name=".IntroActivity"
             android:label="@string/title_activity_intro"
             android:screenOrientation="landscape">
         </activity>
+
+        <activity
+            android:name=".SplashScreenActivity"
+            android:label="Beer Wizard"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".RoomCreateActivity"
             android:label="@string/title_activity_room_create"
             android:screenOrientation="landscape" >
         </activity>
+
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
             android:screenOrientation="landscape" >
         </activity>
+
         <activity
             android:name=".CastSpellActivity"
             android:label="@string/title_activity_cast_spell"
@@ -32,25 +46,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pis2015.ub.com.beerwizard.SpellsActivity" />
         </activity>
+
         <activity
             android:name=".MainMenuActivity"
-            android:label="@string/title_activity_main_menu"
+            android:label="BW"
             android:screenOrientation="landscape" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
+
         <activity
             android:name=".SpellsActivity"
             android:icon="@drawable/cara"
             android:label="@string/nick"
             android:screenOrientation="landscape">
         </activity>
+
         <activity
             android:name="TutorialActivity"
             android:screenOrientation="landscape">
         </activity>
+
         <activity
             android:name=".AvatarChooserActivity"
             android:label="@string/title_activity_avatar_chooser"

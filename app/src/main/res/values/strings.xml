@@ -20,6 +20,8 @@
     <!-- Intro Strings-->
     <string name="lbl_tap_to_begin">Tap to beergin!</string>
 
+    <!-- Splash Screen-->
+    <string name="splash_screen_activity">SplashScreen</string>
     <!-- Main Menu Strings (popup also included)-->
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <string name="lbl_available_rooms">Available Rooms</string>
@@ -130,6 +132,7 @@
     <!-- Tutorial Strings (popup also included) -->
 
     <string name="tutorial_btn_next">Next</string>
+    <string name="tutorial_btn_previous">Previuous</string>
 
     <!-- Popup Strings-->
     <string name="tutorial_popup_congrats">Congratulations!</string>
