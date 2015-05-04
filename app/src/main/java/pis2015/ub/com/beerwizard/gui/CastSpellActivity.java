@@ -28,7 +28,7 @@ public class CastSpellActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         Bundle b = getIntent().getExtras();
         this.idSpell = b.getInt("id");
-        setTitle(GUIFacade.getSpellName(idSpell));
+        setTitle(idSpell+"");
         setContentView(R.layout.activity_cast_spell);
         ListView wizards = (ListView) findViewById(R.id.wizards);
 
