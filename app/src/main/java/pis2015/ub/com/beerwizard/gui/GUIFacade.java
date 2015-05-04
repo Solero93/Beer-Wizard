@@ -127,21 +127,19 @@ public class GUIFacade {
 
     /**
      * Gets the Locked Text of a given Spell
-     *
      * @param idSpell
      * @return Spell's LockedText
      */
-    static int getLockedText(int idSpell) {
+    static int getSpellLockedText(int idSpell) {
         return SpellManager.getLockedText(idSpell);
     }
 
     /**
-     * Gets the Cooldown of a given Spell
-     *
+     * Gets Cooldown of Spell
      * @param idSpell
-     * @return Spell's Cooldown
+     * @return
      */
-    static int getCooldown(int idSpell) {
+    static int getSpellCooldown(int idSpell) {
         return SpellManager.getCooldown(idSpell);
     }
 

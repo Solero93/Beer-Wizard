@@ -21,8 +21,9 @@ public class SpellManager {
     private static ArrayList<Spell> spells;
 
     private SpellManager() {
-        spells = new ArrayList<>(8);
-        spells.set(0, new SpellCanToTheFace()
+        spells = new ArrayList<>();
+
+        spells.add(new SpellCanToTheFace()
                 .setName(R.string.title_spell1)
                 .setImage(-1)
                 .setDescription(R.string.description_text_spell1)
@@ -31,7 +32,7 @@ public class SpellManager {
                 .setLevelToUnlock(2)
                 .setCooldown(0));
 
-        spells.set(1, new SpellWizardDuel()
+        spells.add(new SpellWizardDuel()
                 .setName(R.string.title_spell2)
                 .setImage(-1)
                 .setDescription(R.string.description_text_spell2)
@@ -40,7 +41,7 @@ public class SpellManager {
                 .setLevelToUnlock(3)
                 .setCooldown(0));
 
-        spells.set(2, new SpellBeerekinesis()
+        spells.add(new SpellBeerekinesis()
                 .setName(R.string.title_spell3)
                 .setImage(-1)
                 .setDescription(R.string.description_text_spell3)
@@ -49,7 +50,7 @@ public class SpellManager {
                 .setLevelToUnlock(4)
                 .setCooldown(0));
 
-        spells.set(3, new SpellShield()
+        spells.add(new SpellShield()
                 .setName(R.string.title_spell4)
                 .setImage(-1)
                 .setDescription(R.string.description_quote_spell4)
@@ -58,7 +59,7 @@ public class SpellManager {
                 .setLevelToUnlock(5)
                 .setCooldown(0));
 
-        spells.set(4, new SpellCreateRule()
+        spells.add(new SpellCreateRule()
                 .setName(R.string.title_spell5)
                 .setImage(-1)
                 .setDescription(R.string.description_text_spell5)
@@ -67,7 +68,7 @@ public class SpellManager {
                 .setLevelToUnlock(6)
                 .setCooldown(0));
 
-        spells.set(5, new SpellTruthOrShot()
+        spells.add(new SpellTruthOrShot()
                 .setName(R.string.title_spell6)
                 .setImage(-1)
                 .setDescription(R.string.description_text_spell6)
@@ -76,7 +77,7 @@ public class SpellManager {
                 .setLevelToUnlock(7)
                 .setCooldown(0));
 
-        spells.set(6, new SpellHatOfShame()
+        spells.add(new SpellHatOfShame()
                 .setName(R.string.title_spell7)
                 .setImage(-1)
                 .setDescription(R.string.description_text_spell7)
@@ -85,7 +86,7 @@ public class SpellManager {
                 .setLevelToUnlock(8)
                 .setCooldown(0));
 
-        spells.set(7, new SpellAllInShot()
+        spells.add(new SpellAllInShot()
                 .setName(R.string.title_spell8)
                 .setImage(-1)
                 .setDescription(R.string.description_text_spell8)
