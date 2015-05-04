@@ -153,5 +153,8 @@
     <string name="level_up_boss_popup_bossname">You must defeat BOSS_NAME before level Up</string>
     <string name="level_up_boss_popup_eff">You are the one who can do it!</string>
     <string name="level_up_boss_popup_btn_fight">FIGHT!</string>
+    <string name="title_activity_cast_spell2">CastSpell2Activity</string>
+
+    <string name="hello_world">Hello world!</string>
     <!-- END Level Up Boss -->
 </resources>
