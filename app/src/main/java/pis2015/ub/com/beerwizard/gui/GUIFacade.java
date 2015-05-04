@@ -127,6 +127,7 @@ public class GUIFacade {
 
     /**
      * Gets the Locked Text of a given Spell
+     *
      * @param idSpell
      * @return Spell's LockedText
      */
@@ -136,6 +137,7 @@ public class GUIFacade {
 
     /**
      * Gets Cooldown of Spell
+     *
      * @param idSpell
      * @return
      */

@@ -97,5 +97,5 @@ public class ProfileActivity extends ActionBarActivity {
     }
 
 
-    }
+}
 
