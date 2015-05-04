@@ -26,9 +26,9 @@ public class GUIFacade {
      * @return Nearby game's Names
      */
     static ArrayList<String> getAllGames() {
-        ArrayList<String> test = new ArrayList<>(2);
-        test.set(0, "GAME A");
-        test.set(1, "GAME B");
+        ArrayList<String> test = new ArrayList<>();
+        test.add("GAME A");
+        test.add("GAME B");
         return test;
         //return NetworkFacade.getAllGames();
     }
@@ -39,9 +39,9 @@ public class GUIFacade {
      * @return List of all Users in current Game
      */
     static ArrayList<String> getAllUsers() {
-        ArrayList<String> test = new ArrayList<>(2);
-        test.set(0, "USER A");
-        test.set(1, "USER B");
+        ArrayList<String> test = new ArrayList<>();
+        test.add("USER A");
+        test.add("USER B");
         return test;
         //return NetWorkFacade.getAllUsers();
     }
