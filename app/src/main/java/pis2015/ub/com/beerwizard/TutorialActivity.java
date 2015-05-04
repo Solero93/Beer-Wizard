@@ -43,7 +43,7 @@ public class TutorialActivity extends Activity {
 
         buttonNext = (Button) findViewById(R.id.btn_next);
         buttonPrevious = (Button) findViewById(R.id.btn_previous);
-//        buttonNext.setTypeface(font);
+
         imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
 
         slide_in_left = AnimationUtils.loadAnimation(this,

@@ -2,10 +2,16 @@ package pis2015.ub.com.beerwizard;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.PopupWindow;
 
 
 public class ProfileActivity extends ActionBarActivity {
@@ -17,6 +23,43 @@ public class ProfileActivity extends ActionBarActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        Button btn_avatarChooser;
+        btn_avatarChooser = (Button) findViewById(R.id.avatarImage);
+        btn_avatarChooser.setOnClickListener(new Button.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                LayoutInflater layoutInflater
+                        = (LayoutInflater) getBaseContext()
+                        .getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = layoutInflater.inflate(R.layout.popup_choose_avatar, null);
+                final PopupWindow popupWindow = new PopupWindow(
+                        popupView,
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                Button dismiss_popup = (Button) popupView.findViewById(R.id.btn_back);
+                dismiss_popup.setOnClickListener(new Button.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                    }
+                });
+                Button btn_back;
+                btn_back = (Button) findViewById(R.id.btn_back);
+                btn_back.setOnClickListener(new Button.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
+                popupWindow.setAnimationStyle(R.style.popup_animation);
+                popupWindow.showAtLocation(findViewById(R.id.layout_activity_profile), Gravity.CENTER, 0, 0);
+
+            }
+        });
+
     }
 
 
