@@ -5,6 +5,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="mainMenuTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">@color/background_app</item>
+    </style>
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@null</item>
@@ -23,5 +26,10 @@
 
     <!-- Backward-compatible version of ?android:attr/buttonBarButtonStyle -->
     <style name="ButtonBarButton" />
+
+    <style name="popup_animation">
+        <item name="android:windowEnterAnimation">@anim/popup_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_hide</item>
+    </style>
 
 </resources>

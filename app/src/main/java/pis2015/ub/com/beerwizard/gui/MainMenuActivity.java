@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard;
+package pis2015.ub.com.beerwizard.gui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,11 +8,15 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+
+import pis2015.ub.com.beerwizard.R;
 
 /**
  * Activity of the Main Menu
@@ -22,7 +26,12 @@ public class MainMenuActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
+        this.setTheme(R.style.mainMenuTheme);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         setContentView(R.layout.activity_main_menu);
 
         this.init_listvw_available_rooms(); // Show available rooms
@@ -30,18 +39,18 @@ public class MainMenuActivity extends Activity {
 
         // Initializes btn_about
         btnAbout = (Button) findViewById(R.id.btn_about);
+        btnAbout.setWidth(25);
+        btnAbout.setHeight(1);
         btnAbout.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                LayoutInflater layoutInflater
-                        = (LayoutInflater) getBaseContext()
-                        .getSystemService(LAYOUT_INFLATER_SERVICE);
-                View popupView = layoutInflater.inflate(R.layout.popup_about, null);
-                final PopupWindow popupWindow = new PopupWindow(
-                        popupView,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = layoutInflater.inflate(R.layout.activity_main_menu_popup_about, null);
+
+
+                final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                popupWindow.setFocusable(true);
                 Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
                 btnDismiss.setOnClickListener(new Button.OnClickListener() {
                     //                TextView wwa= (TextView)popupView.findViewById(R.id.)
@@ -50,6 +59,8 @@ public class MainMenuActivity extends Activity {
                         popupWindow.dismiss();
                     }
                 });
+                //popupView.startAnimation(AnimationUtils.loadAnimation(getBaseContext(), android.R.anim.slide_in_left));
+                popupWindow.setAnimationStyle(R.style.popup_animation);
                 popupWindow.showAtLocation(btnAbout, Gravity.CENTER, 0, 0);
             }
         });
@@ -69,11 +80,12 @@ public class MainMenuActivity extends Activity {
         // Third parameter - ID of the TextView to which the data is written
         // Fourth - the Array of data
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, getResources().getStringArray(R.array.str_array_available_rooms));
-
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                GUIFacade.getAllGames());
         // Assign adapter to ListView
-        listvw_available_rooms.setAdapter(adapter);
+        listvw_available_rooms.setAdapter(arrayAdapter);
 
         listvw_available_rooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

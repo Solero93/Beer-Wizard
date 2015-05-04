@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard;
+package pis2015.ub.com.beerwizard.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,21 +6,28 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+
+import pis2015.ub.com.beerwizard.R;
 
 
-public class ProfileActivity extends ActionBarActivity {
+public class RoomCreateActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+
+        setContentView(R.layout.activity_main_menu_room_create);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_profile, menu);
+        getMenuInflater().inflate(R.menu.menu_room_create, menu);
         return true;
     }
 
@@ -39,12 +46,9 @@ public class ProfileActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClick_acceptChanges(View view) {
-        finish();
-    }
-
-    public void onClick_chooseAvatar(View view) {
-        Intent intent = new Intent(this, AvatarChooserActivity.class);
+    public void onClick_createRoom(View view) {
+        Intent intent = new Intent(this, SpellsActivity.class);
         startActivity(intent);
+        finish();
     }
 }

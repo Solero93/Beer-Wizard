@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center_horizontal"
+    android:layout_weight="0.12"
+    android:background="@drawable/popup_border"
+    android:orientation="vertical">
+
+    <TableRow>
+
+        <TextView
+            android:gravity="center"
+            android:text="@string/level_up_popup_not" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/level_up_popup_name" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:gravity="center"
+            android:text="@string/level_up_popup_allow" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/btn_lvlup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.13"
+            android:onClick="onClick_newGame"
+            android:text="@string/tutorial_popup_btn_yes" />
+
+
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/btn_NO_lvlup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.13"
+            android:onClick="onClick_newGame"
+            android:text="@string/tutorial_popup_btn_no" />
+    </TableRow>
+
+</TableLayout>

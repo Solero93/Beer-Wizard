@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard;
+package pis2015.ub.com.beerwizard.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,19 +9,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import pis2015.ub.com.beerwizard.R;
+
 
 /*
 The activity where you can select a spell.
  */
 public class SpellsActivity extends ActionBarActivity {
-    private int lvl;
     //temporal, cuando tengan los metodos lvl hechos
     int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
     int[] tImage= new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
+    private int lvl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spells);
+        setContentView(R.layout.activity_game_main_screen);
         getSupportActionBar().setIcon(R.drawable.cara);//change the icon, avatar
         //setTitle("nick");//change the Nickname
         lvl=1;
@@ -43,9 +46,56 @@ public class SpellsActivity extends ActionBarActivity {
     event of the spells
      */
     public void onClickSpell(View v) {
-
-        Intent intent = new Intent(this, CastSpellActivity.class);
-        startActivity(intent);
+        int id = v.getId();
+        if((id == R.id.spell1 ) && (this.lvl>=2)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("spell", 1); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell2)&& (this.lvl>=3)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("spell", 2); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell3) && (this.lvl>=4)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("spell", 3); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell4) && (this.lvl>=5)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("spell", 4); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell5) && (this.lvl>=6)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("spell", 5); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell6) && (this.lvl>=7)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("spell", 6); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell7) && (this.lvl>=8)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("spell", 7); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell8) && (this.lvl>=9)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("spell", 8); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }
     }
 
 
@@ -68,7 +118,7 @@ public class SpellsActivity extends ActionBarActivity {
                 ImageView image = (ImageView) findViewById(tImage[lvl-2]);
                 TextView text = (TextView) findViewById(tText[lvl-2]);
                 textLvl.setText("Level "+lvl);
-                text.setText("CAN TO \nTHE FACE");
+                text.setText(GUIFacade.getSpellName(lvl-2));
                 image.setImageResource(R.drawable.duel_of_wizards);
             }
 

@@ -6,57 +6,68 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/beerwizard_icon2"
+        android:label="Beer Wizard"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".IntroActivity"
+            android:name=".gui.IntroActivity"
             android:label="@string/title_activity_intro"
-            android:screenOrientation="landscape"></activity>
-        <activity
-            android:name=".RoomCreateActivity"
-            android:label="@string/title_activity_room_create"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name=".ProfileActivity"
-            android:label="@string/title_activity_profile"
-            android:screenOrientation="landscape" >
-        </activity>
-        <activity
-            android:name=".CastSpellActivity"
-            android:label="@string/title_activity_cast_spell"
-            android:parentActivityName=".SpellsActivity"
-            android:screenOrientation="landscape" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="pis2015.ub.com.beerwizard.SpellsActivity" />
-        </activity>
-        <activity
-            android:name=".MainMenuActivity"
-            android:label="@string/title_activity_main_menu"
-            android:screenOrientation="landscape" >
+            android:name=".gui.SplashScreenActivity"
+            android:label="Beer Wizard"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".SpellsActivity"
+            android:name=".gui.RoomCreateActivity"
+            android:label="@string/title_activity_room_create"
+            android:screenOrientation="landscape" >
+        </activity>
+
+        <activity
+            android:name=".gui.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:screenOrientation="landscape" >
+        </activity>
+
+        <activity
+            android:name=".gui.CastSpellActivity"
+            android:label="@string/title_activity_cast_spell"
+            android:parentActivityName=".gui.SpellsActivity"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".gui.SpellsActivity" />
+        </activity>
+
+        <activity
+            android:name=".gui.MainMenuActivity"
+            android:label="BW"
+            android:screenOrientation="landscape" >
+
+        </activity>
+
+        <activity
+            android:name=".gui.SpellsActivity"
             android:icon="@drawable/cara"
             android:label="@string/nick"
-            android:screenOrientation="landscape"></activity>
-        <activity
-            android:name=".TutorialActivity"
-            android:screenOrientation="landscape"></activity>
-        <activity
-            android:name=".AvatarChooserActivity"
-            android:label="@string/title_activity_avatar_chooser"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape">
+        </activity>
 
-        <service android:name="pis2015.ub.com.beerwizard.network.ServerListener"></service>
-        <service android:name="pis2015.ub.com.beerwizard.network.Server"></service>
+        <activity
+            android:name=".gui.TutorialActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <service android:name="pis2015.ub.com.beerwizard.network.ServerListener"/>
+        <service android:name="pis2015.ub.com.beerwizard.network.Server"/>
     </application>
 
 </manifest>
