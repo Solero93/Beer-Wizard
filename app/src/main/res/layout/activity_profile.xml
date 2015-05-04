@@ -11,7 +11,7 @@
               tools:context="pis2015.ub.com.beerwizard.ProfileActivity">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/avatarImage"
         android:layout_width="207dp"
         android:layout_height="182dp"
         android:layout_gravity="right|center_vertical"
@@ -32,6 +32,7 @@
         android:text="Done!" />
 
     <RelativeLayout
+        android:id="@+id/"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="right|top">

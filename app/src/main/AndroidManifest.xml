@@ -66,9 +66,5 @@
             android:screenOrientation="landscape">
         </activity>
 
-        <activity
-            android:name=".AvatarChooserActivity"
-            android:label="@string/title_activity_avatar_chooser"
-            android:screenOrientation="landscape"></activity>
     </application>
 </manifest>
