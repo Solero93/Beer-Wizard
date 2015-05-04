@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import pis2015.ub.com.beerwizard.R;
 
 
@@ -17,14 +16,15 @@ import pis2015.ub.com.beerwizard.R;
 The activity where you can select a spell.
  */
 public class SpellsActivity extends ActionBarActivity {
-    private int lvl;
     //temporal, cuando tengan los metodos lvl hechos
     int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
     int[] tImage= new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
+    private int lvl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spells);
+        setContentView(R.layout.activity_game_main_screen);
         getSupportActionBar().setIcon(R.drawable.cara);//change the icon, avatar
         //setTitle("nick");//change the Nickname
         lvl=1;

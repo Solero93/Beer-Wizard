@@ -29,7 +29,7 @@ public class CastSpellActivity extends ActionBarActivity {
         Bundle b = getIntent().getExtras();
         this.idSpell = b.getInt("id");
         setTitle(idSpell+"");
-        setContentView(R.layout.activity_cast_spell);
+        setContentView(R.layout.activity_game_send_spell);
         ListView wizards = (ListView) findViewById(R.id.wizards);
 
         ArrayAdapter<String> wizardList = new ArrayAdapter<String>(

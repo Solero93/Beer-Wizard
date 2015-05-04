@@ -39,7 +39,7 @@ public class TutorialActivity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_tutorial);
+        setContentView(R.layout.activity_main_menu_tutorial);
 //        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fonts.ttf");
         //boto que desa el que hi ha escrit i torna a l'activity main
 
@@ -97,7 +97,7 @@ public class TutorialActivity extends Activity {
                     LayoutInflater layoutInflater
                             = (LayoutInflater) getBaseContext()
                             .getSystemService(LAYOUT_INFLATER_SERVICE);
-                    View popupView = layoutInflater.inflate(R.layout.popup_ended_tutorial, null);
+                    View popupView = layoutInflater.inflate(R.layout.activity_main_menu_tutorial_popup_ended, null);
                     final PopupWindow popupWindow = new PopupWindow(
                             popupView,
                             ViewGroup.LayoutParams.WRAP_CONTENT,

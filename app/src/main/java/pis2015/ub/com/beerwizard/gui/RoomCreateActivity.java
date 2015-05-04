@@ -20,7 +20,7 @@ public class RoomCreateActivity extends ActionBarActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_room_create);
+        setContentView(R.layout.activity_main_menu_room_create);
     }
 
 

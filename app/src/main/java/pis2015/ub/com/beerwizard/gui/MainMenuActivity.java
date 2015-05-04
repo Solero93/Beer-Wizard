@@ -46,7 +46,7 @@ public class MainMenuActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-                View popupView = layoutInflater.inflate(R.layout.popup_about, null);
+                View popupView = layoutInflater.inflate(R.layout.activity_main_menu_popup_about, null);
 
 
                 final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

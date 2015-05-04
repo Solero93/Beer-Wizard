@@ -36,7 +36,7 @@ public class ProfileActivity extends ActionBarActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_main_menu_profile);
         Button btn_avatarChooser;
         final FrameLayout block = null;
         btn_avatarChooser = (Button) findViewById(R.id.avatarImage);
@@ -46,7 +46,7 @@ public class ProfileActivity extends ActionBarActivity {
             public void onClick(View arg0) {
 
                 LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-                View popupView = layoutInflater.inflate(R.layout.popup_choose_avatar, null);
+                View popupView = layoutInflater.inflate(R.layout.activity_main_menu_profile_change_avatar_popup, null);
                 final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 popupWindow.setFocusable(true);
                 Button dismiss_popup = (Button) popupView.findViewById(R.id.btn_back);
