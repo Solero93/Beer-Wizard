@@ -16,12 +16,30 @@ public class NetworkFacade {
     public static byte createGame(Context context, String gameName) {
         Intent intent = new Intent(context, Server.class);
         intent.putExtra(NetworkConstants.GAME_NAME_EXTRA_ID, gameName);
-        try {
-            context.startActivity(intent);
-        } catch (Exception ex) {
-            Log.e("ServerService", ex.getMessage());
-        }
+        context.startService(intent);
         return 0;
+    }
+
+    public static byte enterGame(Context context, String serverIPaddress) {
+        serverIP = serverIPaddress;
+        Intent intent = new Intent(context, ServerListener.class);
+        context.startService(intent);
+        sendPing();
+        //downloadUsers();
+        return 0;
+    }
+
+    private static void sendPing() {
+        try {
+            Log.d("NetworkHelper", "Sending ping to: " + serverIP);
+            SocketChannel channel = SocketChannel.open(
+                    new InetSocketAddress(serverIP, NetworkConstants.SERVER_PORT));
+            byte[] tmp = {NetworkConstants.PING_INST};
+            channel.write(ByteBuffer.wrap(tmp));
+            channel.close();
+        } catch (IOException ignored) {
+
+        }
     }
 
     public void castSpell(String idCasterUser, String idTargetUser, String idSpell, String[] params) {
@@ -34,14 +52,6 @@ public class NetworkFacade {
 
     public void levelUp(String idUser) throws BossException {
 
-    }
-
-    public byte enterGame(Context context, String serverIPaddress) {
-        serverIP = serverIPaddress;
-        Intent intent = new Intent(context, ServerListener.class);
-        context.startService(intent);
-        downloadUsers();
-        return 0;
     }
 
     private void downloadUsers() {

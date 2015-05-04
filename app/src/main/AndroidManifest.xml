@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pis2015.ub.com.beerwizard">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -53,8 +55,8 @@
             android:label="@string/title_activity_avatar_chooser"
             android:screenOrientation="landscape" />
 
-        <service android:name=".network.ServerListener" />
-        <service android:name=".network.Server" />
+        <service android:name="pis2015.ub.com.beerwizard.network.ServerListener"></service>
+        <service android:name="pis2015.ub.com.beerwizard.network.Server"></service>
     </application>
 
 </manifest>

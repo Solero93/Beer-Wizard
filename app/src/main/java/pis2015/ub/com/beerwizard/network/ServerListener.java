@@ -21,13 +21,16 @@ public class ServerListener extends Service {
     private static Thread thread;
 
     private static void log(String string) {
-        Log.d("BeerWizard/Networking", string);
+        Log.d("ServerListener", string);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        thread = new Thread(listener);
-        thread.start();
+        if (thread == null) {
+            thread = new Thread(listener);
+            thread.start();
+            log("Server Listener initialized");
+        }
         return START_STICKY;
     }
 
@@ -60,6 +63,7 @@ public class ServerListener extends Service {
                             continue;
                         }
                     }
+                    log("Connection established");
                     SocketChannel channel = socket.getChannel();
                     ByteBuffer buffer = ByteBuffer.allocate(200);
                     channel.read(buffer);
@@ -70,6 +74,7 @@ public class ServerListener extends Service {
                             log("Ping Received");
                             break;
                     }
+                    socket.close();
                 }
                 serverSocket.close();
 

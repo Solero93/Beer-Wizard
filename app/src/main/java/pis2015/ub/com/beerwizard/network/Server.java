@@ -3,6 +3,7 @@ package pis2015.ub.com.beerwizard.network;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -18,15 +19,24 @@ public class Server extends Service {
     private static String gameName;
     private static int userCounter = 0;
     private static List<String[]> userDb = new LinkedList<>();
+    private static Thread thread;
     private Listener listener = new Listener();
-    private Thread thread;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        gameName = intent.getStringExtra(NetworkConstants.GAME_NAME_EXTRA_ID);
-        thread = new Thread(listener);
-        thread.start();
+        if (thread == null) {
+            gameName = intent.getStringExtra(NetworkConstants.GAME_NAME_EXTRA_ID);
+            thread = new Thread(listener);
+            thread.start();
+            Log.d("ServerService",
+                    "Server initialized, awaiting connections at port " + NetworkConstants.SERVER_PORT);
+        }
         return START_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        thread.interrupt();
     }
 
     private int registerUser(String address, String name, int avatarId) {
@@ -45,6 +55,7 @@ public class Server extends Service {
             byte[] tmp = {NetworkConstants.PING_INST};
             ByteBuffer byteBuffer = ByteBuffer.wrap(tmp);
             channel.write(byteBuffer);
+            Log.d("ServerService", "Sent ping to address: " + address);
         } catch (IOException ignored) {
 
         }
@@ -61,7 +72,7 @@ public class Server extends Service {
         @Override
         public void run() {
             try {
-                serverSocket = new ServerSocket(NetworkConstants.SERVER_LISTENER_PORT);
+                serverSocket = new ServerSocket(NetworkConstants.SERVER_PORT);
                 serverSocket.setSoTimeout(1000);
                 while (true) {
                     Socket socket;
@@ -74,22 +85,22 @@ public class Server extends Service {
                             continue;
                         }
                     }
+                    Log.d("ServerService", "Connection Established");
                     SocketChannel channel = socket.getChannel();
                     ByteBuffer buffer = ByteBuffer.allocate(200);
                     channel.read(buffer);
                     buffer.compact();
                     int instruction = buffer.get();
                     switch (instruction) {
-                        case NetworkConstants.REGISTER_INST:
-                            String address = socket.getInetAddress().getHostAddress();
-                            registerUser(address, "Harri" + userCounter, 0);
-
+                        case NetworkConstants.PING_INST:
+                            sendPing(channel.socket().getInetAddress().getHostAddress());
                             break;
                     }
+                    socket.close();
                 }
                 serverSocket.close();
-            } catch (IOException ignored) {
-
+            } catch (IOException e) {
+                Log.e("ServerService", e.getMessage());
             }
         }
     }
