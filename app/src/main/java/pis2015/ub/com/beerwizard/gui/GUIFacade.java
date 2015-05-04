@@ -102,17 +102,16 @@ public class GUIFacade {
      * @param idSpell
      * @return Spell's name
      */
-    static String getSpellName(int idSpell) {
+    static int getSpellName(int idSpell) {
         return SpellManager.getName(idSpell);
     }
 
     /**
      * Gets the Description of a given Spell
-     *
      * @param idSpell
      * @return Spell's Description
      */
-    static String getSpellDescription(int idSpell) {
+    static int getSpellDescription(int idSpell) {
         return SpellManager.getDescription(idSpell);
     }
 
@@ -122,8 +121,28 @@ public class GUIFacade {
      * @param idSpell
      * @return Spell's Quote
      */
-    static String getSpellQuote(int idSpell) {
+    static int getSpellQuote(int idSpell) {
         return SpellManager.getQuote(idSpell);
+    }
+
+    /**
+     * Gets the Locked Text of a given Spell
+     *
+     * @param idSpell
+     * @return Spell's LockedText
+     */
+    static int getLockedText(int idSpell) {
+        return SpellManager.getLockedText(idSpell);
+    }
+
+    /**
+     * Gets the Cooldown of a given Spell
+     *
+     * @param idSpell
+     * @return Spell's Cooldown
+     */
+    static int getCooldown(int idSpell) {
+        return SpellManager.getCooldown(idSpell);
     }
 
     /**
