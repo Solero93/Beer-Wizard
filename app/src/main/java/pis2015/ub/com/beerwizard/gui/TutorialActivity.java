@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard;
+package pis2015.ub.com.beerwizard.gui;
 
 
 import android.app.Activity;
@@ -16,6 +16,8 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.ViewSwitcher;
+
+import pis2015.ub.com.beerwizard.R;
 
 public class TutorialActivity extends Activity {
     Button buttonNext;

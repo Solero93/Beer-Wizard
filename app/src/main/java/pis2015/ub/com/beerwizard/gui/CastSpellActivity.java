@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard;
+package pis2015.ub.com.beerwizard.gui;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -15,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+
+import pis2015.ub.com.beerwizard.R;
 
 
 public class CastSpellActivity extends ActionBarActivity {

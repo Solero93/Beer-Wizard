@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard;
+package pis2015.ub.com.beerwizard.gui;
 
 /**
  * Created by Administrador on 03/05/2015.
@@ -12,6 +12,8 @@ import android.view.WindowManager;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import pis2015.ub.com.beerwizard.R;
 
 public class SplashScreenActivity extends Activity {
 

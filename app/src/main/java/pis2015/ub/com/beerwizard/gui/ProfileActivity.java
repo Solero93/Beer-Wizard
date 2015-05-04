@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard;
+package pis2015.ub.com.beerwizard.gui;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -12,6 +12,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
+
+import pis2015.ub.com.beerwizard.R;
 
 
 public class ProfileActivity extends ActionBarActivity {

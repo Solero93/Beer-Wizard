@@ -15,7 +15,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_horizontal_margin"
     android:weightSum="1"
-    tools:context="pis2015.ub.com.beerwizard.IntroActivity">
+    tools:context="pis2015.ub.com.beerwizard.gui.IntroActivity">
 
     <ImageView
         android:id="@+id/imgvw_intro"

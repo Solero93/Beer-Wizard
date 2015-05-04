@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard;
+package pis2015.ub.com.beerwizard.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+
+import pis2015.ub.com.beerwizard.R;
 
 
 /*
@@ -43,9 +46,56 @@ public class SpellsActivity extends ActionBarActivity {
     event of the spells
      */
     public void onClickSpell(View v) {
-
-        Intent intent = new Intent(this, CastSpellActivity.class);
-        startActivity(intent);
+        int id = v.getId();
+        if((id == R.id.spell1 ) && (this.lvl>=2)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("id", 1); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell2)&& (this.lvl>=3)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("id", 1); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell3) && (this.lvl>=4)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("id", 1); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell4) && (this.lvl>=5)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("id", 1); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell5) && (this.lvl>=6)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("id", 1); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell6) && (this.lvl>=7)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("id", 1); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell7) && (this.lvl>=8)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("id", 1); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }if((id == R.id.spell8) && (this.lvl>=9)){
+            Intent intent = new Intent(this, CastSpellActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("id", 1); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
+        }
     }
 
 
@@ -68,7 +118,7 @@ public class SpellsActivity extends ActionBarActivity {
                 ImageView image = (ImageView) findViewById(tImage[lvl-2]);
                 TextView text = (TextView) findViewById(tText[lvl-2]);
                 textLvl.setText("Level "+lvl);
-                text.setText("CAN TO \nTHE FACE");
+                text.setText(GUIFacade.getSpellName(lvl-2));
                 image.setImageResource(R.drawable.duel_of_wizards);
             }
 

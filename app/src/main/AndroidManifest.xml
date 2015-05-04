@@ -10,13 +10,13 @@
 
 
         <activity
-            android:name=".IntroActivity"
+            android:name=".gui.IntroActivity"
             android:label="@string/title_activity_intro"
             android:screenOrientation="landscape">
         </activity>
 
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".gui.SplashScreenActivity"
             android:label="Beer Wizard"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -26,43 +26,43 @@
         </activity>
 
         <activity
-            android:name=".RoomCreateActivity"
+            android:name=".gui.RoomCreateActivity"
             android:label="@string/title_activity_room_create"
             android:screenOrientation="landscape" >
         </activity>
 
         <activity
-            android:name=".ProfileActivity"
+            android:name=".gui.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:screenOrientation="landscape" >
         </activity>
 
         <activity
-            android:name=".CastSpellActivity"
+            android:name=".gui.CastSpellActivity"
             android:label="@string/title_activity_cast_spell"
-            android:parentActivityName=".SpellsActivity"
+            android:parentActivityName=".gui.SpellsActivity"
             android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="pis2015.ub.com.beerwizard.SpellsActivity" />
+                android:value=".gui.SpellsActivity" />
         </activity>
 
         <activity
-            android:name=".MainMenuActivity"
+            android:name=".gui.MainMenuActivity"
             android:label="BW"
             android:screenOrientation="landscape" >
 
         </activity>
 
         <activity
-            android:name=".SpellsActivity"
+            android:name=".gui.SpellsActivity"
             android:icon="@drawable/cara"
             android:label="@string/nick"
             android:screenOrientation="landscape">
         </activity>
 
         <activity
-            android:name="TutorialActivity"
+            android:name=".gui.TutorialActivity"
             android:screenOrientation="landscape">
         </activity>
 

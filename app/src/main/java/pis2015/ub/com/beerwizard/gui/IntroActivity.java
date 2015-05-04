@@ -1,10 +1,12 @@
-package pis2015.ub.com.beerwizard;
+package pis2015.ub.com.beerwizard.gui;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import pis2015.ub.com.beerwizard.R;
 
 /**
  * Activity of the Intro
