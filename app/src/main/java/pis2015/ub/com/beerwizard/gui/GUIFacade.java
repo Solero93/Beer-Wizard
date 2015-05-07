@@ -72,6 +72,7 @@ public class GUIFacade {
         idLocalUser = -1;
     }
 
+
     /**
      * Modifies the current User's profile.
      *
@@ -95,6 +96,7 @@ public class GUIFacade {
     static void levelDown() {
         //NetworkFacade.levelDown(idLocalUser);
     }
+
 
     /**
      * Gets the Name of a given Spell
@@ -142,6 +144,7 @@ public class GUIFacade {
     static int getSpellCooldown(int idSpell) {
         return SpellManager.getCooldown(idSpell);
     }
+
 
     /**
      * Casts a Spell at a given User
