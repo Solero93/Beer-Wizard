@@ -7,29 +7,29 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.util.LinkedList;
+import java.util.List;
 
-/**
- * Created by jordi on 4/27/15.
- */
-public class ServerListener extends Service {
-
-    private static Listener listener = new Listener();
+public class Server extends Service {
+    private static String gameName;
+    private static int userCounter = 0;
+    private static List<String[]> userDb = new LinkedList<>();
     private static Thread thread;
-
-    private static void log(String string) {
-        Log.d("ServerListener", string);
-    }
+    private Listener listener = new Listener();
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (thread == null) {
+            gameName = intent.getStringExtra(NetworkConstants.GAME_NAME_EXTRA_ID);
             thread = new Thread(listener);
             thread.start();
-            log("Server Listener initialized");
+            Log.d("ServerService",
+                    "Server initialized, awaiting connections at port " + NetworkConstants.SERVER_PORT);
         }
         return START_STICKY;
     }
@@ -39,18 +39,40 @@ public class ServerListener extends Service {
         thread.interrupt();
     }
 
+    private int registerUser(String address, String name, int avatarId) {
+        for (String[] user : userDb) {
+            sendPing(user[0]);
+        }
+        String[] array = {address, name, String.valueOf(avatarId)};
+        userDb.add(array);
+        return userCounter++;
+    }
+
+    private void sendPing(String address) {
+        try {
+            SocketChannel channel = SocketChannel.open(
+                    new InetSocketAddress(address, NetworkConstants.SERVER_LISTENER_PORT));
+            byte[] tmp = {NetworkConstants.PING_INST};
+            ByteBuffer byteBuffer = ByteBuffer.wrap(tmp);
+            channel.write(byteBuffer);
+            Log.d("ServerService", "Sent ping to address: " + address);
+        } catch (IOException ignored) {
+
+        }
+    }
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
 
-    private static class Listener implements Runnable {
+    private class Listener implements Runnable {
         private ServerSocket serverSocket;
 
         @Override
         public void run() {
             try {
-                serverSocket = new ServerSocket(NetworkConstants.SERVER_LISTENER_PORT);
+                serverSocket = new ServerSocket(NetworkConstants.SERVER_PORT);
                 serverSocket.setSoTimeout(1000);
                 while (true) {
                     Socket socket;
@@ -63,7 +85,7 @@ public class ServerListener extends Service {
                             continue;
                         }
                     }
-                    log("Connection established");
+                    Log.d("ServerService", "Connection Established");
                     SocketChannel channel = socket.getChannel();
                     ByteBuffer buffer = ByteBuffer.allocate(200);
                     channel.read(buffer);
@@ -71,17 +93,15 @@ public class ServerListener extends Service {
                     int instruction = buffer.get();
                     switch (instruction) {
                         case NetworkConstants.PING_INST:
-                            log("Ping Received");
+                            sendPing(channel.socket().getInetAddress().getHostAddress());
                             break;
                     }
                     socket.close();
                 }
                 serverSocket.close();
-
-            } catch (IOException ignored) {
-
+            } catch (IOException e) {
+                Log.e("ServerService", e.getMessage());
             }
         }
     }
-
 }
