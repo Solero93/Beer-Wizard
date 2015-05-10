@@ -15,7 +15,7 @@ public class NetworkFacade {
 
     public static byte createGame(Context context, String gameName) {
         Intent intent = new Intent(context, Server.class);
-        intent.putExtra(NetworkConstants.GAME_NAME_EXTRA_ID, gameName);
+        intent.putExtra(Constants.GAME_NAME_EXTRA_ID, gameName);
         context.startService(intent);
         return 0;
     }
@@ -33,8 +33,8 @@ public class NetworkFacade {
         try {
             Log.d("NetworkHelper", "Sending ping to: " + serverIP);
             SocketChannel channel = SocketChannel.open(
-                    new InetSocketAddress(serverIP, NetworkConstants.SERVER_PORT));
-            byte[] tmp = {NetworkConstants.PING_INST};
+                    new InetSocketAddress(serverIP, Constants.SERVER_PORT));
+            byte[] tmp = {Constants.PING_INST};
             channel.write(ByteBuffer.wrap(tmp));
             channel.close();
         } catch (IOException ignored) {
@@ -57,7 +57,7 @@ public class NetworkFacade {
     private void downloadUsers() {
         try {
             SocketChannel server = SocketChannel.open(
-                    new InetSocketAddress(serverIP, NetworkConstants.SERVER_PORT));
+                    new InetSocketAddress(serverIP, Constants.SERVER_PORT));
             ByteBuffer buffer = ByteBuffer.allocate(10);
             // TODO implementar l'instrucció de descàrrega d'usuaris
             server.write(buffer);
