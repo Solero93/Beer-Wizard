@@ -4,10 +4,10 @@ package pis2015.ub.com.beerwizard.network;
  * Class that represents the User (or Player) object
  */
 public class User {
-    private String id;
+    private byte id;
     private String name;
     private int level;
-    private String avatarPhoto;
+    private int avatarPhoto;
 
     /**
      * Level's up the User.
@@ -26,9 +26,13 @@ public class User {
     /**
      * Modifies the profile of the User.
      */
-    public void modifyProfile(String name, String avatar) {
+    public void modifyProfile(String name, int avatar) {
         this.setName(name);
         this.setAvatar(avatar);
+    }
+
+    public byte getId() {
+        return this.id;
     }
 
     public String getName() {
@@ -47,11 +51,11 @@ public class User {
         this.level = level;
     }
 
-    public String getAvatar() {
+    public int getAvatar() {
         return this.avatarPhoto;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(int avatar) {
         this.avatarPhoto = avatar;
     }
 }

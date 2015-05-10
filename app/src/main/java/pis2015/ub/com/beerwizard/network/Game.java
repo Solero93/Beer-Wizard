@@ -37,13 +37,19 @@ public class Game {
      * @param name
      * @param avatar
      */
-    public void modifyUserProfile(String idUser, String name, String avatar) {
+    public void modifyUserProfile(byte idUser, String name, int avatar) {
     }
 
     /**
      * Deletes a User from the list of Game's players.
      * @param idUser
      */
-    public void userExitsGame(String idUser) {
+    public void userExitsGame(byte idUser) {
+        for (User user : users) {
+            if (user.getId() == idUser) {
+                this.users.remove(user);
+                break;
+            }
+        }
     }
 }
