@@ -43,6 +43,13 @@ public class SpellsActivity extends ActionBarActivity {
     }
 
     /*
+        Disable back button
+     */
+    @Override
+    public void onBackPressed() {
+    }
+
+    /*
     event of the spells
      */
     public void onClickSpell(View v) {
