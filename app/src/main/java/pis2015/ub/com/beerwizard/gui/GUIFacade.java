@@ -26,9 +26,9 @@ public class GUIFacade {
      * @return Nearby game's Names
      */
     static ArrayList<String> getAllGames() {
-        ArrayList<String> test = new ArrayList<>(2);
-        test.set(0, "GAME A");
-        test.set(1, "GAME B");
+        ArrayList<String> test = new ArrayList<>();
+        test.add("GAME A");
+        test.add("GAME B");
         return test;
         //return NetworkFacade.getAllGames();
     }
@@ -39,9 +39,9 @@ public class GUIFacade {
      * @return List of all Users in current Game
      */
     static ArrayList<String> getAllUsers() {
-        ArrayList<String> test = new ArrayList<>(2);
-        test.set(0, "USER A");
-        test.set(1, "USER B");
+        ArrayList<String> test = new ArrayList<>();
+        test.add("USER A");
+        test.add("USER B");
         return test;
         //return NetWorkFacade.getAllUsers();
     }
@@ -72,6 +72,7 @@ public class GUIFacade {
         idLocalUser = -1;
     }
 
+
     /**
      * Modifies the current User's profile.
      *
@@ -95,6 +96,7 @@ public class GUIFacade {
     static void levelDown() {
         //NetworkFacade.levelDown(idLocalUser);
     }
+
 
     /**
      * Gets the Name of a given Spell
@@ -127,23 +129,22 @@ public class GUIFacade {
 
     /**
      * Gets the Locked Text of a given Spell
-     *
      * @param idSpell
      * @return Spell's LockedText
      */
-    static int getLockedText(int idSpell) {
+    static int getSpellLockedText(int idSpell) {
         return SpellManager.getLockedText(idSpell);
     }
 
     /**
-     * Gets the Cooldown of a given Spell
-     *
+     * Gets Cooldown of Spell
      * @param idSpell
-     * @return Spell's Cooldown
+     * @return
      */
-    static int getCooldown(int idSpell) {
+    static int getSpellCooldown(int idSpell) {
         return SpellManager.getCooldown(idSpell);
     }
+
 
     /**
      * Casts a Spell at a given User

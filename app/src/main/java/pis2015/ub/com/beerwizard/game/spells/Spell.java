@@ -12,7 +12,6 @@ public abstract class Spell {
     protected int levelToUnlock;
     protected int cooldown;
 
-    //This constructor is for purposes of testing
     public Spell() {
     }
 
@@ -20,62 +19,61 @@ public abstract class Spell {
         return name;
     }
 
-    public Spell setName(int name) {
+    public void setName(int name) {
         this.name = name;
-        return this;
     }
+
 
     public int getImage() {
         return image;
     }
 
-    public Spell setImage(int image) {
+    public void setImage(int image) {
         this.image = image;
-        return this;
     }
+
 
     public int getDescription() {
         return description;
     }
 
-    public Spell setDescription(int description) {
+    public void setDescription(int description) {
         this.description = description;
-        return this;
     }
+
 
     public int getQuote() {
         return quote;
     }
 
-    public Spell setQuote(int quote) {
+    public void setQuote(int quote) {
         this.quote = quote;
-        return this;
     }
+
 
     public int getLockedText() {
         return this.lockedText;
     }
 
-    public Spell setLockedText(int lockedText) {
+    public void setLockedText(int lockedText) {
         this.lockedText = lockedText;
-        return this;
     }
+
 
     public int getLevelToUnlock() {
         return this.levelToUnlock;
     }
 
-    public Spell setLevelToUnlock(int levelToUnlock) {
+    public void setLevelToUnlock(int levelToUnlock) {
         this.levelToUnlock = levelToUnlock;
-        return this;
     }
+
 
     public int getCooldown() {
         return this.cooldown;
     }
 
-    public Spell setCooldown(int cooldown) {
+    public void setCooldown(int cooldown) {
         this.cooldown = cooldown;
-        return this;
     }
 }
