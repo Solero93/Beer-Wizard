@@ -31,7 +31,7 @@ public class NetworkFacade {
         serverListener.stop();
     }
 
-    private void userExitsGame(String idUser) {
+    private void userExitsGame(byte idUser) {
         Game game = Game.getInstance();
         game.userExitsGame(idUser);
     }
