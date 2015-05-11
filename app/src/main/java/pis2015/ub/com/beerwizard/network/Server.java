@@ -8,16 +8,22 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
+import android.util.Log;
 
+import org.alljoyn.bus.AboutObj;
 import org.alljoyn.bus.BusAttachment;
 import org.alljoyn.bus.BusException;
-import org.alljoyn.bus.BusListener;
 import org.alljoyn.bus.Mutable;
+import org.alljoyn.bus.Observer;
 import org.alljoyn.bus.PropertyChangedEmitter;
+import org.alljoyn.bus.ProxyBusObject;
 import org.alljoyn.bus.SessionOpts;
 import org.alljoyn.bus.SessionPortListener;
+import org.alljoyn.bus.SignalEmitter;
 import org.alljoyn.bus.Status;
 import org.alljoyn.bus.Variant;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Server extends Service {
 
@@ -25,6 +31,7 @@ public class Server extends Service {
         System.loadLibrary("alljoyn_java");
     }
 
+    private final ConcurrentHashMap<UserInterface, ProxyBusObject> userDb = new ConcurrentHashMap<>();
     private User user = null;
     private BusHandler busHandler = null;
     private Messenger messenger;
@@ -45,7 +52,8 @@ public class Server extends Service {
     @Override
     public void onDestroy() {
         messenger = null;
-        busHandler.getLooper().quit();
+        busHandler.sendMessage(busHandler.obtainMessage(BusHandler.DISCONNECT));
+        userDb.clear();
     }
 
     @Override
@@ -53,13 +61,19 @@ public class Server extends Service {
         return messenger.getBinder();
     }
 
-    private class BusHandler extends Handler {
+    public class BusHandler extends Handler {
         public static final int CONNECT = 1;
         public static final int DISCONNECT = 2;
         public static final int UPDATE_PROPERTIES = 3;
+        public static final int JOIN_GAME = 4;
         private static final String SERVICE_NAME = "pis2015.ub.com.beerwizard.user";
         private static final short CONTACT_PORT = 42;
+
         private BusAttachment mBus;
+        private AboutObj aboutObj;
+        private LocalAboutDataListener aboutData;
+
+        private Observer observer;
 
         public BusHandler(Looper looper) {
             super(looper);
@@ -70,8 +84,6 @@ public class Server extends Service {
                 case CONNECT:
                     org.alljoyn.bus.alljoyn.DaemonInit.PrepareDaemon(getApplicationContext());
                     mBus = new BusAttachment(getPackageName(), BusAttachment.RemoteMessage.Receive);
-
-                    mBus.registerBusListener(new BusListener());
 
                     /*
                     * Register the BusObject with the path "/userProperties"
@@ -95,18 +107,14 @@ public class Server extends Service {
 
                     SessionOpts sessionOpts = new SessionOpts();
                     sessionOpts.traffic = SessionOpts.TRAFFIC_MESSAGES;
-                    sessionOpts.isMultipoint = true;
+                    sessionOpts.isMultipoint = false;
                     sessionOpts.proximity = SessionOpts.PROXIMITY_ANY;
                     sessionOpts.transports = SessionOpts.TRANSPORT_ANY;
 
                     status = mBus.bindSessionPort(contactPort, sessionOpts, new SessionPortListener() {
                         @Override
                         public boolean acceptSessionJoiner(short sessionPort, String joiner, SessionOpts sessionOpts) {
-                            if (sessionPort == CONTACT_PORT) {
-                                return true;
-                            } else {
-                                return false;
-                            }
+                            return sessionPort == CONTACT_PORT;
                         }
                     });
                     if (status != Status.OK) {
@@ -114,37 +122,38 @@ public class Server extends Service {
                         return;
                     }
 
-                    /*
-                     * request a well-known name from the bus
-                     */
-                    int flag = BusAttachment.ALLJOYN_REQUESTNAME_FLAG_REPLACE_EXISTING | BusAttachment.ALLJOYN_REQUESTNAME_FLAG_DO_NOT_QUEUE;
-
-                    status = mBus.requestName(SERVICE_NAME, flag);
-                    if (status == Status.OK) {
-                    /*
-                     * If we successfully obtain a well-known name from the bus
-                     * advertise the same well-known name
-                     */
-                        status = mBus.advertiseName(SERVICE_NAME, SessionOpts.TRANSPORT_ANY);
-                        if (status != Status.OK) {
-                        /*
-                         * If we are unable to advertise the name, release
-                         * the name from the local bus.
-                         */
-                            status = mBus.releaseName(SERVICE_NAME);
-                            // FAIL
-                            return;
-                        }
+                    aboutObj = new AboutObj(mBus);
+                    aboutData = new LocalAboutDataListener();
+                    status = aboutObj.announce(CONTACT_PORT, aboutData);
+                    if (status != Status.OK) {
+                        Log.e("BusHandler", "Problem while sending about info");
+                        return;
                     }
 
+                    observer = new Observer(mBus, new Class[]{UserInterface.class});
+                    observer.registerListener(new Observer.Listener() {
+                        @Override
+                        public void objectDiscovered(ProxyBusObject proxyBusObject) {
+                            Message msg = obtainMessage(JOIN_GAME);
+                            msg.obj = proxyBusObject;
+                            sendMessage(msg);
+                        }
+
+                        @Override
+                        public void objectLost(ProxyBusObject proxyBusObject) {
+
+                        }
+                    });
                     break;
                 case DISCONNECT:
                     mBus.unregisterBusObject(user);
+                    aboutObj.unannounce();
                     mBus.disconnect();
                     busHandler.getLooper().quit();
                     break;
                 case UPDATE_PROPERTIES:
-                    PropertyChangedEmitter propertyChangedEmitter = new PropertyChangedEmitter(user);
+                    PropertyChangedEmitter propertyChangedEmitter = new PropertyChangedEmitter(
+                            user, BusAttachment.SESSION_ID_ALL_HOSTED, SignalEmitter.GlobalBroadcast.Off);
                     try {
                         propertyChangedEmitter.PropertyChanged(SERVICE_NAME,
                                 msg.getData().getString(Constants.PROPERTY_CHANGED_KEY),
@@ -153,8 +162,10 @@ public class Server extends Service {
                         e.printStackTrace();
                     }
                     break;
-                //case BOSS_ENCOUNTERED:
-                //    break;
+                case JOIN_GAME:
+                    ProxyBusObject obj = (ProxyBusObject) msg.obj;
+                    obj.enablePropertyCaching();
+                    break;
             }
         }
     }
