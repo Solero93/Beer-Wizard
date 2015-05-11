@@ -1,5 +1,9 @@
 package pis2015.ub.com.beerwizard.gui;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
 import java.util.ArrayList;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
@@ -79,8 +83,8 @@ public class GUIFacade {
      * @param name
      * @param idAvatar
      */
-    static void modifyUserProfile(String name, int idAvatar) {
-        //NetworkFacade.modifyUserProfile(idLocalUser, name, (byte)idAvatar);
+    static void notifyUserProfileChanged(String name, int idAvatar) {
+        //NetworkFacade.modifyUserProfile(name, idAvatar);
     }
 
     /**
@@ -152,12 +156,21 @@ public class GUIFacade {
      * Casts a Spell at a given User
      *
      * @param idSpell      - ID of spell to cast
-     * @param params       - possible parametres (null if there aren't any)
+     * @param param        - possible parametre (null if there aren't any)
      * @param idTargetUser - ID of User to cast spell on (null if it's self inflicted)
      */
-    static void castSpell(int idTargetUser, int idSpell, String[] params) {
-        //NetworkFacade.castSpell(idLocalUser, (byte)idTargetUser, (byte)idSpell, params);
+    static void castSpell(int idTargetUser, int idSpell, String param) {
+        //NetworkFacade.castSpell(idLocalUser, (byte)idTargetUser, (byte)idSpell, param);
     }
+
+    //HANDLERS
+    Handler spellHandler = new Handler(Looper.getMainLooper()){
+        @Override
+        public void handleMessage(Message inputMessage){
+            Object tmp = inputMessage.obj;
+
+        }
+    };
 
     /* http://stackoverflow.com/questions/17233038/how-to-implement-synchronous-method-timeouts-in-java
 
