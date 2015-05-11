@@ -1,5 +1,9 @@
 package pis2015.ub.com.beerwizard.network;
 
+import android.os.Build;
+
+import java.util.UUID;
+
 /**
  * Created by jordi on 4/27/15.
  */
@@ -18,4 +22,7 @@ public class Constants {
     public static final int REGISTER_INST = 0x02;
     public static final int RECEIVE_USERS_INST = 0x03;
     public static final int UPDATE_USER_INST = 0x04;
+    public static final String UUID_STRING = UUID.randomUUID().toString();
+    public static final String VERSION_NUMBER = Build.VERSION.RELEASE;
+    public static final byte[] APP_ID = {42, 42, 42};
 }
