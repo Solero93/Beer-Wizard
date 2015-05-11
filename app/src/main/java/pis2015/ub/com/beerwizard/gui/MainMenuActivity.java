@@ -97,7 +97,6 @@ public class MainMenuActivity extends Activity {
                 TextView clickedView = (TextView) view;
 */
                 Intent intent = new Intent(view.getContext(), SpellsActivity.class);
-                overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
                 startActivity(intent);
             }
         });
