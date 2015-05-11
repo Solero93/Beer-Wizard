@@ -19,13 +19,15 @@ public class CastSpell2Activity extends ActionBarActivity {
         b = getIntent().getExtras();
         idSpell = b.getInt("spell");//id spell de 1 a 8
 
-        setTitle(GUIFacade.getSpellName(idSpell - 1));//title
 
         //description and Quote
         TextView description = (TextView) findViewById(R.id.descriptionText);
+        TextView title = (TextView) findViewById(R.id.titleText);
         TextView quote = (TextView) findViewById(R.id.quoteText);
+        title.setText(GUIFacade.getSpellName(idSpell - 1));
         description.setText(GUIFacade.getSpellDescription(idSpell - 1));
         quote.setText(GUIFacade.getSpellQuote(idSpell - 1));
+        getActionBar().hide();
 
     }
 

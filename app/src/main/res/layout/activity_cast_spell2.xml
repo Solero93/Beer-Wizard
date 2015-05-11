@@ -28,9 +28,21 @@
                 android:orientation="vertical">
 
                 <Space
+                    android:layout_width="13dp"
+                    android:layout_height="20px"
+                    android:layout_weight="0.17" />
+
+                <TextView
+                    android:id="@+id/titleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Title" />
+
+                <Space
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="0.31" />
+                    android:layout_weight="0.09" />
 
                 <TextView
                     android:id="@+id/descriptionText"
@@ -46,7 +58,7 @@
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="0.30" />
+                    android:layout_weight="0.16" />
 
                 <TextView
                     android:id="@+id/quoteText"
@@ -63,7 +75,7 @@
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="0.19" />
+                    android:layout_weight="0.09" />
 
                 <Button
                     android:id="@+id/button2"
