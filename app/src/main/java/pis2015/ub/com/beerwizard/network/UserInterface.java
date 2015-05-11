@@ -8,21 +8,21 @@ import org.alljoyn.bus.annotation.BusProperty;
  */
 @BusInterface(name = "pis2015.ub.com.beerwizard.user", announced = "true")
 public interface UserInterface {
-    @BusProperty
+    @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
     public String getName();
 
     @BusProperty
     public void setName(String name);
 
-    @BusProperty
+    @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
     public int getLevel();
 
     @BusProperty
     public void setLevel(int level);
 
-    @BusProperty
-    public String getAvatar();
+    @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
+    public int getAvatar();
 
     @BusProperty
-    public void setAvatar(String avatar);
+    public void setAvatar(int avatar);
 }
