@@ -1,43 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pis2015.ub.com.beerwizard">
-
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    package="pis2015.ub.com.beerwizard" >
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/beerwizard_icon2"
         android:label="Beer Wizard"
-        android:theme="@style/AppTheme">
-
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".gui.IntroActivity"
             android:label="@string/title_activity_intro"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
-
         <activity
             android:name=".gui.SplashScreenActivity"
             android:label="Beer Wizard"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".gui.RoomCreateActivity"
             android:label="@string/title_activity_room_create"
             android:screenOrientation="landscape" >
         </activity>
-
         <activity
             android:name=".gui.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:screenOrientation="landscape" >
         </activity>
-
         <activity
             android:name=".gui.CastSpellActivity"
             android:label="@string/title_activity_cast_spell"
@@ -47,26 +41,25 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".gui.SpellsActivity" />
         </activity>
-
         <activity
             android:name=".gui.MainMenuActivity"
             android:label="BW"
             android:screenOrientation="landscape" >
-
         </activity>
-
         <activity
             android:name=".gui.SpellsActivity"
             android:icon="@drawable/cara"
             android:label="@string/nick"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
-
         <activity
             android:name=".gui.TutorialActivity"
-            android:screenOrientation="landscape"></activity>
-
-        <service android:name="pis2015.ub.com.beerwizard.network.ServerListener" />
-        <service android:name="pis2015.ub.com.beerwizard.network.Server" />
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".gui.CastSpell2Activity"
+            android:label="@string/title_activity_cast_spell2" >
+        </activity>
     </application>
+
 </manifest>
