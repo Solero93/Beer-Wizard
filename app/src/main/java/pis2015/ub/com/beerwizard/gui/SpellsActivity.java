@@ -47,65 +47,79 @@ public class SpellsActivity extends ActionBarActivity {
      */
     public void onClickSpell(View v) {
         int id = v.getId();
-        if ((id == R.id.spell1) && (this.lvl >= 2)) {
-            Intent intent = new Intent(this, CastSpellActivity.class);
-            Bundle b = new Bundle();
-            b.putInt("spell", 1); //Your id
-            intent.putExtras(b);
+        if((id == R.id.spell1 ) && (this.lvl>=2)){
+            Intent intent = new Intent(this, CastSpell2Activity.class);
+            intent.putExtra("spell", 1); //Your id
             startActivity(intent);
-        }
-        if ((id == R.id.spell2) && (this.lvl >= 3)) {
-            Intent intent = new Intent(this, CastSpellActivity.class);
-            Bundle b = new Bundle();
-            b.putInt("spell", 2); //Your id
-            intent.putExtras(b);
+        }if((id == R.id.spell2)&& (this.lvl>=3)){
+            Intent intent = new Intent(this, CastSpell2Activity.class);
+            intent.putExtra("spell", 2); //Your id
             startActivity(intent);
-        }
-        if ((id == R.id.spell3) && (this.lvl >= 4)) {
-            Intent intent = new Intent(this, CastSpellActivity.class);
-            Bundle b = new Bundle();
-            b.putInt("spell", 3); //Your id
-            intent.putExtras(b);
+        }if((id == R.id.spell3) && (this.lvl>=4)){
+            Intent intent = new Intent(this, CastSpell2Activity.class);
+            intent.putExtra("spell", 3); //Your id
             startActivity(intent);
-        }
-        if ((id == R.id.spell4) && (this.lvl >= 5)) {
-            Intent intent = new Intent(this, CastSpellActivity.class);
-            Bundle b = new Bundle();
-            b.putInt("spell", 4); //Your id
-            intent.putExtras(b);
+        }if((id == R.id.spell4) && (this.lvl>=5)){
+            Intent intent = new Intent(this, CastSpell2Activity.class);
+            intent.putExtra("spell", 4); //Your id
             startActivity(intent);
-        }
-        if ((id == R.id.spell5) && (this.lvl >= 6)) {
-            Intent intent = new Intent(this, CastSpellActivity.class);
-            Bundle b = new Bundle();
-            b.putInt("spell", 5); //Your id
-            intent.putExtras(b);
+        }if((id == R.id.spell5) && (this.lvl>=6)){
+            Intent intent = new Intent(this, CastSpell2Activity.class);
+            intent.putExtra("spell", 5); //Your id
             startActivity(intent);
-        }
-        if ((id == R.id.spell6) && (this.lvl >= 7)) {
-            Intent intent = new Intent(this, CastSpellActivity.class);
-            Bundle b = new Bundle();
-            b.putInt("spell", 6); //Your id
-            intent.putExtras(b);
+        }if((id == R.id.spell6) && (this.lvl>=7)){
+            Intent intent = new Intent(this, CastSpell2Activity.class);
+            intent.putExtra("spell", 6); //Your id
             startActivity(intent);
-        }
-        if ((id == R.id.spell7) && (this.lvl >= 8)) {
-            Intent intent = new Intent(this, CastSpellActivity.class);
-            Bundle b = new Bundle();
-            b.putInt("spell", 7); //Your id
-            intent.putExtras(b);
+        }if((id == R.id.spell7) && (this.lvl>=8)){
+            Intent intent = new Intent(this, CastSpell2Activity.class);
+            intent.putExtra("spell", 7); //Your id
             startActivity(intent);
-        }
-        if ((id == R.id.spell8) && (this.lvl >= 9)) {
-            Intent intent = new Intent(this, CastSpellActivity.class);
-            Bundle b = new Bundle();
-            b.putInt("spell", 8); //Your id
-            intent.putExtras(b);
+        }if((id == R.id.spell8) && (this.lvl>=9)){
+            Intent intent = new Intent(this, CastSpell2Activity.class);
+            intent.putExtra("spell", 8); //Your id
             startActivity(intent);
         }
     }
 
 
+    public void lvlUp() {
+
+        if (lvl < 9) {
+            lvl++;
+            TextView textLvl = (TextView) findViewById(R.id.textLvl);
+            ImageView image = (ImageView) findViewById(tImage[lvl - 2]);
+            TextView text = (TextView) findViewById(tText[lvl - 2]);
+            textLvl.setText("Level " + lvl);
+            text.setText(GUIFacade.getSpellName(lvl - 2));
+            image.setImageResource(R.drawable.duel_of_wizards);
+        }
+    }
+
+
+    public void lvlDown() {
+
+        if (lvl > 1) {
+            lvl--;
+            TextView textLvl = (TextView) findViewById(R.id.textLvl);
+            ImageView image = (ImageView) findViewById(tImage[lvl - 1]);
+            TextView text = (TextView) findViewById(tText[lvl - 1]);
+            textLvl.setText("Level " + lvl);
+            text.setText(GUIFacade.getSpellLockedText(lvl - 1));
+            image.setImageResource(R.drawable.candado);
+        }
+    }
+
+    public void masterUp() {
+        TextView textLvl = (TextView) findViewById(R.id.textLvl);
+        textLvl.setText("MASTER");
+    }
+
+
+    public void masterDown() {
+        TextView textLvl = (TextView) findViewById(R.id.textLvl);
+        textLvl.setText("Level " + lvl);
+    }
     /*
     options and settings
      */
@@ -119,15 +133,7 @@ public class SpellsActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         //PROILE
         if (id == R.id.action_lvl_up) {
-            lvl++;
-            if(lvl<10){
-                TextView textLvl = (TextView) findViewById(R.id.textLvl);
-                ImageView image = (ImageView) findViewById(tImage[lvl-2]);
-                TextView text = (TextView) findViewById(tText[lvl-2]);
-                textLvl.setText("Level "+lvl);
-                text.setText(GUIFacade.getSpellName(lvl - 2));
-                image.setImageResource(R.drawable.duel_of_wizards);
-            }
+            lvlUp();
 
         }
         if (id == R.id.action_profile) {

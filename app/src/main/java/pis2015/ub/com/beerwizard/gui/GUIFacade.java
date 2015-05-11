@@ -1,9 +1,5 @@
 package pis2015.ub.com.beerwizard.gui;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
 import java.util.ArrayList;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
@@ -83,8 +79,8 @@ public class GUIFacade {
      * @param name
      * @param idAvatar
      */
-    static void notifyUserProfileChanged(String name, int idAvatar) {
-        //NetworkFacade.modifyUserProfile(name, idAvatar);
+    static void modifyUserProfile(String name, int idAvatar) {
+        //NetworkFacade.modifyUserProfile(idLocalUser, name, (byte)idAvatar);
     }
 
     /**
@@ -133,7 +129,6 @@ public class GUIFacade {
 
     /**
      * Gets the Locked Text of a given Spell
-     *
      * @param idSpell
      * @return Spell's LockedText
      */
@@ -143,7 +138,6 @@ public class GUIFacade {
 
     /**
      * Gets Cooldown of Spell
-     *
      * @param idSpell
      * @return
      */
@@ -156,21 +150,12 @@ public class GUIFacade {
      * Casts a Spell at a given User
      *
      * @param idSpell      - ID of spell to cast
-     * @param param        - possible parametre (null if there aren't any)
+     * @param params       - possible parametres (null if there aren't any)
      * @param idTargetUser - ID of User to cast spell on (null if it's self inflicted)
      */
-    static void castSpell(int idTargetUser, int idSpell, String param) {
-        //NetworkFacade.castSpell(idLocalUser, (byte)idTargetUser, (byte)idSpell, param);
+    static void castSpell(int idTargetUser, int idSpell, String[] params) {
+        //NetworkFacade.castSpell(idLocalUser, (byte)idTargetUser, (byte)idSpell, params);
     }
-
-    //HANDLERS
-    Handler spellHandler = new Handler(Looper.getMainLooper()){
-        @Override
-        public void handleMessage(Message inputMessage){
-            Object tmp = inputMessage.obj;
-
-        }
-    };
 
     /* http://stackoverflow.com/questions/17233038/how-to-implement-synchronous-method-timeouts-in-java
 
