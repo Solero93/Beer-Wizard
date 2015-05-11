@@ -30,7 +30,7 @@ public class GUIFacade {
         test.add("GAME A");
         test.add("GAME B");
         return test;
-        //return NetworkFacade.getAllGames();
+        //return NetworkHelper.getAllGames();
     }
 
     /**
@@ -52,7 +52,7 @@ public class GUIFacade {
      * @param gameName - name you want the Game to have
      */
     static void createGame(String gameName) {
-        //idLocalUser = NetworkFacade.createGame(gameName);
+        //idLocalUser = NetworkHelper.createGame(gameName);
     }
 
     /**
@@ -61,14 +61,14 @@ public class GUIFacade {
      * @param serverIP
      */
     static void enterGame(String serverIP) {
-        //idLocalUser = NetworkFacade.enterGame(serverIP);
+        //idLocalUser = NetworkHelper.enterGame(serverIP);
     }
 
     /**
      * Exits the current User from the Game.
      */
     static void exitGame() {
-        //NetworkFacade.exitGame(idLocalUser);
+        //NetworkHelper.exitGame(idLocalUser);
         idLocalUser = "";
     }
 
@@ -80,21 +80,21 @@ public class GUIFacade {
      * @param idAvatar
      */
     static void modifyUserProfile(String name, String idAvatar) {
-        //NetworkFacade.modifyUserProfile(idLocalUser, name, (byte)idAvatar);
+        //NetworkHelper.modifyUserProfile(idLocalUser, name, (byte)idAvatar);
     }
 
     /**
      * Levels up the User
      */
     static void levelUp() {
-        //NetworkFacade.levelUp(idLocalUser);
+        //NetworkHelper.levelUp(idLocalUser);
     }
 
     /**
      * Levels down the User
      */
     static void levelDown() {
-        //NetworkFacade.levelDown(idLocalUser);
+        //NetworkHelper.levelDown(idLocalUser);
     }
 
 
@@ -154,7 +154,7 @@ public class GUIFacade {
      * @param idTargetUser - ID of User to cast spell on (null if it's self inflicted)
      */
     static void castSpell(int idTargetUser, int idSpell, String param) {
-        //NetworkFacade.castSpell(idLocalUser, (String)idTargetUser, (byte)idSpell, param);
+        //NetworkHelper.castSpell(idLocalUser, (String)idTargetUser, (byte)idSpell, param);
     }
 
     /* http://stackoverflow.com/questions/17233038/how-to-implement-synchronous-method-timeouts-in-java

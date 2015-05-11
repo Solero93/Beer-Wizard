@@ -9,14 +9,8 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import android.util.Log;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
-
-public class NetworkFacade {
+public class NetworkHelper {
 
     private static String serverIP;
     private static Messenger messenger;
@@ -32,33 +26,16 @@ public class NetworkFacade {
         }
     };
 
-    public static byte createGame(Context context, String gameName) {
+    public static byte createGame(Context context) {
         Intent intent = new Intent(context, Server.class);
-        intent.putExtra(Constants.GAME_NAME_EXTRA_ID, gameName);
         context.startService(intent);
         return 0;
     }
 
-    public static byte enterGame(Context context, String serverIPaddress) {
-        serverIP = serverIPaddress;
-        Intent intent = new Intent(context, ServerListener.class);
+    public static byte enterGame(Context context) {
+        Intent intent = new Intent(context, Server.class);
         context.startService(intent);
-        sendPing();
-        //downloadUsers();
         return 0;
-    }
-
-    private static void sendPing() {
-        try {
-            Log.d("NetworkHelper", "Sending ping to: " + serverIP);
-            SocketChannel channel = SocketChannel.open(
-                    new InetSocketAddress(serverIP, Constants.SERVER_PORT));
-            byte[] tmp = {Constants.PING_INST};
-            channel.write(ByteBuffer.wrap(tmp));
-            channel.close();
-        } catch (IOException ignored) {
-
-        }
     }
 
     public static void notifyUserProfileChanged(Context context, String name, String avatar, String level) {
@@ -92,12 +69,10 @@ public class NetworkFacade {
     }
 
     public void exitGame(Context context) {
-        Intent intent = new Intent(context, ServerListener.class);
+        Intent intent = new Intent(context, Server.class);
         context.stopService(intent);
     }
 
     private void userExitsGame(byte idUser) {
-        Game game = Game.getInstance();
-        game.userExitsGame(idUser);
     }
 }
