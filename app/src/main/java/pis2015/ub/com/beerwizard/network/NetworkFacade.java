@@ -96,7 +96,7 @@ public class NetworkFacade {
         context.stopService(intent);
     }
 
-    private void userExitsGame(String idUser) {
+    private void userExitsGame(byte idUser) {
         Game game = Game.getInstance();
         game.userExitsGame(idUser);
     }

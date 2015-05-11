@@ -7,7 +7,7 @@
         \n THE FACE</string>
     <string name="lvl">Level 1</string>
     <string name="app_name">Beer Wizard</string>
-    <string name="action_settings">Settings</string>
+
     <string name="title_activity_room_create">Create Room</string>
     <string name="create_room_hint">Room Name</string>
     <string name="create_room_button">Create Room</string>
@@ -37,6 +37,7 @@
         <item>Room 5</item>
         <item>Room 6</item>
     </string-array>
+
     <!-- Popup Strings -->
     <string name="main_menu_popup_about">About us</string>
     <string name="main_menu_popup_done">Done by:</string>
@@ -54,9 +55,8 @@
         <item>Several Snapple</item>
         <item>Eh Mion</item>
     </string-array>
-    <string name="description_text">Call out someone of a lower level than you and make them take a drink</string>
-    <string name="description_quote">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand
-        in the darkness bind them</string>
+    <string name="description_text">Descripcion</string>
+    <string name="description_quote">cita</string>
     <!--Popup Strings -->
     <string name="cast_spell_popup_spell_name">SPELL_NAME</string>
     <string name="cast_spell_popup_spell_intro">Are you sure want to cast SPELL_NAME to PLAYER_NAME?</string>
@@ -70,62 +70,65 @@
     <string name="choose_avatar_text">Choose your Avatar</string>
 
     <string name="title_activity_intro">IntroActivity</string>
+
+
+    <!-- Settings names-->
     <string name="action_profile">Profile</string>
     <string name="action_tutorial">Tutorial</string>
-    <string name="action_exit">Exit to Menu</string>
-
+    <string name="action_exit">Exit Game</string>
+    <string name="action_settings">Settings</string>
     <!-- Spells text-->
     <!-- Spell1 text-->
     <string name="lock1">Unlock \n lvl. 2</string>
     <string name="title_spell1">CAN TO
         \n THE FACE</string>
-    <string name="description_text_spell1">Call out someone of a lower level than you and make them take a drink</string>
+    <string name="description_text_spell1">Call out someone of a lower level \n than you and make them take a drink</string>
     <string name="description_quote_spell1">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell2 text-->
     <string name="lock2">Unlock \n lvl. 3</string>
     <string name="title_spell2">DUEL OF
         \n WIZARDS</string>
-    <string name="description_text_spell2">Call out someone of a lower level than you and make them take a drink</string>
+    <string name="description_text_spell2">Call out someone of a lower level \n than you and make them take a drink</string>
     <string name="description_quote_spell2">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell3 text-->
     <string name="lock3">Unlock \n lvl. 4</string>
     <string name="title_spell3">BEEREKINESIS</string>
-    <string name="description_text_spell3">Call out someone of a lower level than you and make them take a drink</string>
+    <string name="description_text_spell3">Call out someone of a lower level \n than you and make them take a drink</string>
     <string name="description_quote_spell3">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell4 text-->
     <string name="lock4">Unlock \n lvl. 5</string>
     <string name="title_spell4">SHILD</string>
-    <string name="description_text_spell4">Call out someone of a lower level than you and make them take a drink</string>
+    <string name="description_text_spell4">Call out someone of a lower level \n than you and make them take a drink</string>
     <string name="description_quote_spell4">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell5 text-->
     <string name="lock5">Unlock \n lvl. 6</string>
     <string name="title_spell5">RULE</string>
-    <string name="description_text_spell5">Call out someone of a lower level than you and make them take a drink</string>
+    <string name="description_text_spell5">Call out someone of a lower level \n than you and make them take a drink</string>
     <string name="description_quote_spell5">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell6 text-->
     <string name="lock6">Unlock \n lvl. 7</string>
     <string name="title_spell6">TRUTH OR
         \n SHOT</string>
-    <string name="description_text_spell6">Call out someone of a lower level than you and make them take a drink</string>
+    <string name="description_text_spell6">Call out someone of a lower level \n than you and make them take a drink</string>
     <string name="description_quote_spell6">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell7 text-->
     <string name="lock7">Unlock \n lvl. 8</string>
     <string name="title_spell7">HAT OF
         \n SHAME</string>
-    <string name="description_text_spell7">Call out someone of a lower level than you and make them take a drink</string>
+    <string name="description_text_spell7">Call out someone of a lower level \n than you and make them take a drink</string>
     <string name="description_quote_spell7">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell8 text-->
     <string name="lock8">Unlock \n lvl. 9</string>
     <string name="title_spell8">ALL
         \n IN BEER</string>
-    <string name="description_text_spell8">Call out someone of a lower level than you and make them take a drink</string>
+    <string name="description_text_spell8">Call out someone of a lower level \n than you and make them take a drink</string>
     <string name="description_quote_spell8">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
 
@@ -153,5 +156,8 @@
     <string name="level_up_boss_popup_bossname">You must defeat BOSS_NAME before level Up</string>
     <string name="level_up_boss_popup_eff">You are the one who can do it!</string>
     <string name="level_up_boss_popup_btn_fight">FIGHT!</string>
+    <string name="title_activity_cast_spell2">CastSpell2Activity</string>
+
+    <string name="hello_world">Hello world!</string>
     <!-- END Level Up Boss -->
 </resources>

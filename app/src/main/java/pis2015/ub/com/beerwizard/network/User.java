@@ -6,12 +6,10 @@ import org.alljoyn.bus.BusObject;
  * Class that represents the User (or Player) object
  */
 public class User implements UserInterface, BusObject {
-    private String id;
+    private byte id;
     private String name;
     private int level;
-    private String avatarPhoto;
-
-    private Server server;
+    private int avatarPhoto;
 
     /**
      * Level's up the User.
@@ -30,9 +28,13 @@ public class User implements UserInterface, BusObject {
     /**
      * Modifies the profile of the User.
      */
-    public void modifyProfile(String name, String avatar) {
+    public void modifyProfile(String name, int avatar) {
         this.setName(name);
         this.setAvatar(avatar);
+    }
+
+    public byte getId() {
+        return this.id;
     }
 
     public String getName() {
@@ -41,7 +43,6 @@ public class User implements UserInterface, BusObject {
 
     public void setName(String name) {
         this.name = name;
-
     }
 
     public int getLevel() {
@@ -52,13 +53,11 @@ public class User implements UserInterface, BusObject {
         this.level = level;
     }
 
-    public String getAvatar() {
+    public int getAvatar() {
         return this.avatarPhoto;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(int avatar) {
         this.avatarPhoto = avatar;
-
     }
-
 }

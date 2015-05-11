@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -7,16 +6,14 @@
     android:layout_centerHorizontal="true"
     android:layout_gravity="center_horizontal"
     android:layout_weight="0.12"
-    android:background="@drawable/scroll"
-    android:clickable="true"
-    android:orientation="horizontal">
+    android:background="@drawable/popup_border"
+    android:orientation="vertical">
 
     <TableRow>
 
         <TextView
-            android:background="#00ffffff"
             android:gravity="center"
-            android:text="@string/main_menu_popup_about" />
+            android:text="@string/cast_spell_popup_spell_name" />
 
     </TableRow>
 
@@ -25,34 +22,34 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#00ffffff"
             android:gravity="center_horizontal"
-            android:text="@string/main_menu_popup_names_1" />
+            android:text="@string/cast_spell_popup_spell_intro" />
     </TableRow>
 
     <TableRow>
 
-        <TextView
-            android:background="#00ffffff"
-            android:gravity="center"
-            android:text="@string/main_menu_popup_names_2" />
-    </TableRow>
+        <Button
+            android:id="@+id/btn_cast_spell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.13"
+            android:onClick="onClick_newGame"
+            android:text="@string/cast_spell_popup_btn_yes" />
 
-    <TableRow>
 
     </TableRow>
 
     <TableRow>
 
         <Button
-            android:id="@+id/dismiss"
+            android:id="@+id/btn_NO_cast_spell"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.13"
-            android:background="#00ffffff"
             android:onClick="onClick_newGame"
-            android:text="@string/main_menu_popup_btn_dismiss" />
+            android:text="@string/cast_spell_popup_btn_no" />
     </TableRow>
 
 </TableLayout>
