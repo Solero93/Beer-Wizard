@@ -1,53 +1,51 @@
 package pis2015.ub.com.beerwizard.network;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InterruptedIOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+import android.app.Service;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
 
 /**
  * Created by jordi on 4/27/15.
  */
-public class ServerListener implements Runnable {
-    private ServerSocket serverSocket;
-    private boolean stop = false;
+public class ServerListener extends Service {
 
-    public ServerListener() {
+    private BackgroundHandler handler = null;
+
+    private static void log(String string) {
+        Log.d("ServerListener", string);
     }
 
-    public synchronized boolean hasToStop() {
-        return stop;
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        HandlerThread thread = new HandlerThread("BackgroundHandler");
+        thread.start();
+        handler = new BackgroundHandler(thread.getLooper());
+        return START_STICKY;
     }
 
-    public synchronized void setStop() {
-        stop = true;
+    @Override
+    public void onDestroy() {
+
     }
 
-    public void run() {
-        try {
-            serverSocket = new ServerSocket(NetworkConstants.SERVER_PORT);
-            serverSocket.setSoTimeout(1000);
-            while (true) {
-                Socket socket;
-                try {
-                    socket = serverSocket.accept();
-                } catch (InterruptedIOException e) {
-                    if (hasToStop()) {
-                        break;
-                    } else {
-                        continue;
-                    }
-                }
-                InputStream inputStream = socket.getInputStream();
-                int instruction = inputStream.read();
-                switch (instruction) {
-                    case 0:
-                        break;
-                }
-            }
-        } catch (IOException e) {
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    private final class BackgroundHandler extends Handler {
+        public BackgroundHandler(Looper looper) {
+            super(looper);
+        }
+
+        public void handleMessage(Message msg) {
 
         }
     }
+
 }
