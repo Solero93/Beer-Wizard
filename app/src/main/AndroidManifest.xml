@@ -58,8 +58,8 @@
         </activity>
         <activity
             android:name=".gui.CastSpell2Activity"
-            android:label="@string/title_activity_cast_spell2" >
-        </activity>
+            android:label="@string/title_activity_cast_spell2"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>
