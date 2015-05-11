@@ -1,13 +1,17 @@
 package pis2015.ub.com.beerwizard.network;
 
+import org.alljoyn.bus.BusObject;
+
 /**
  * Class that represents the User (or Player) object
  */
-public class User {
+public class User implements UserInterface, BusObject {
     private String id;
     private String name;
     private int level;
     private String avatarPhoto;
+
+    private Server server;
 
     /**
      * Level's up the User.
@@ -37,6 +41,7 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+
     }
 
     public int getLevel() {
@@ -53,5 +58,7 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatarPhoto = avatar;
+
     }
+
 }

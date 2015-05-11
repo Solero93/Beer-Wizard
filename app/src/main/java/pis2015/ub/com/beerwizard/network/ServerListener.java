@@ -21,10 +21,14 @@ public class ServerListener extends Service {
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public void onCreate() {
         HandlerThread thread = new HandlerThread("BackgroundHandler");
         thread.start();
         handler = new BackgroundHandler(thread.getLooper());
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
         return START_STICKY;
     }
 
