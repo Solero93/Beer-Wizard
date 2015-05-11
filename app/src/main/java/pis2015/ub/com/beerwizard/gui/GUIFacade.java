@@ -10,10 +10,10 @@ import pis2015.ub.com.beerwizard.game.SpellManager;
 //TODO Add Exception to ServerTimeOut
 public class GUIFacade {
     private static GUIFacade ourInstance = new GUIFacade();
-    private static byte idLocalUser;
+    private static String idLocalUser;
 
     private GUIFacade() {
-        idLocalUser = -1;
+        idLocalUser = "";
     }
 
     public static GUIFacade getInstance() {
@@ -69,7 +69,7 @@ public class GUIFacade {
      */
     static void exitGame() {
         //NetworkFacade.exitGame(idLocalUser);
-        idLocalUser = -1;
+        idLocalUser = "";
     }
 
 
@@ -79,7 +79,7 @@ public class GUIFacade {
      * @param name
      * @param idAvatar
      */
-    static void modifyUserProfile(String name, int idAvatar) {
+    static void modifyUserProfile(String name, String idAvatar) {
         //NetworkFacade.modifyUserProfile(idLocalUser, name, (byte)idAvatar);
     }
 
@@ -150,11 +150,11 @@ public class GUIFacade {
      * Casts a Spell at a given User
      *
      * @param idSpell      - ID of spell to cast
-     * @param params       - possible parametres (null if there aren't any)
+     * @param param       - possible parametres (null if there aren't any)
      * @param idTargetUser - ID of User to cast spell on (null if it's self inflicted)
      */
-    static void castSpell(int idTargetUser, int idSpell, String[] params) {
-        //NetworkFacade.castSpell(idLocalUser, (byte)idTargetUser, (byte)idSpell, params);
+    static void castSpell(int idTargetUser, int idSpell, String param) {
+        //NetworkFacade.castSpell(idLocalUser, (String)idTargetUser, (byte)idSpell, param);
     }
 
     /* http://stackoverflow.com/questions/17233038/how-to-implement-synchronous-method-timeouts-in-java
