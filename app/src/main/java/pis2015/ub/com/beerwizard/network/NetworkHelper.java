@@ -58,6 +58,12 @@ public class NetworkHelper {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+        context.unbindService(mConnection);
+    }
+
+    public static void exitGame(Context context) {
+        Intent intent = new Intent(context, Server.class);
+        context.stopService(intent);
     }
 
     public void castSpell(String idCasterUser, String idTargetUser, String idSpell, String[] params) {
@@ -66,11 +72,6 @@ public class NetworkHelper {
 
     public void levelUp(String idUser) {
 
-    }
-
-    public void exitGame(Context context) {
-        Intent intent = new Intent(context, Server.class);
-        context.stopService(intent);
     }
 
     private void userExitsGame(byte idUser) {

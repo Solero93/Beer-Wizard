@@ -11,6 +11,9 @@ public class User implements UserInterface, BusObject {
     private int level;
     private int avatarPhoto;
 
+    public User(String name) {
+        this.name = name;
+    }
     /**
      * Level's up the User.
      */

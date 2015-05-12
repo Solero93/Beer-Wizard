@@ -9,7 +9,7 @@ import org.alljoyn.bus.annotation.BusProperty;
  */
 @BusInterface(name = "pis2015.ub.com.beerwizard.user", announced = "true")
 public interface UserInterface {
-    @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
+    @BusProperty
     public String getName() throws BusException;
 
     @BusProperty

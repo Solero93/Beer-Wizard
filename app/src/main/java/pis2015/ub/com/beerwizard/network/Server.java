@@ -28,10 +28,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Server extends Service {
     private static final String TAG = "ServerService";
 
-    static {
-        System.loadLibrary("alljoyn_java");
-    }
-
     private final CopyOnWriteArrayList<UserInterface> userDb = new CopyOnWriteArrayList<>();
     private User user = null;
     private BusHandler busHandler = null;
@@ -43,18 +39,23 @@ public class Server extends Service {
         thread.start();
         busHandler = new BusHandler(thread.getLooper());
         messenger = new Messenger(busHandler);
+        user = new User("Pep" + Math.random());
+        busHandler.sendMessage(busHandler.obtainMessage(BusHandler.CONNECT));
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, "Starting Server");
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
+        Log.d(TAG, "Shutting Server");
         messenger = null;
         busHandler.sendMessage(busHandler.obtainMessage(BusHandler.DISCONNECT));
         userDb.clear();
+        user = null;
     }
 
     @Override
@@ -83,6 +84,7 @@ public class Server extends Service {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case CONNECT:
+                    Log.d(TAG, "Initializing AllJoyn Framework");
                     org.alljoyn.bus.alljoyn.DaemonInit.PrepareDaemon(getApplicationContext());
                     mBus = new BusAttachment(getPackageName(), BusAttachment.RemoteMessage.Receive);
 
@@ -91,13 +93,13 @@ public class Server extends Service {
                     */
                     Status status = mBus.registerBusObject(user, "/userProperties");
                     if (status != Status.OK) {
-                        // FAIL
+                        Log.e(TAG, "Failed to register bus object");
                         return;
                     }
 
                     status = mBus.connect();
                     if (status != Status.OK) {
-                        // FAIL
+                        Log.e(TAG, "Failed to connect to the buss");
                         return;
                     }
 
@@ -119,7 +121,7 @@ public class Server extends Service {
                         }
                     });
                     if (status != Status.OK) {
-                        // FAIL
+                        Log.e(TAG, "Failed to bind a session port");
                         return;
                     }
 
@@ -142,18 +144,14 @@ public class Server extends Service {
 
                         @Override
                         public void objectLost(ProxyBusObject proxyBusObject) {
-                            UserInterface userInterface = proxyBusObject.getInterface(UserInterface.class);
-                            try {
-                                String userName = userInterface.getName();
-                                Log.d(TAG, "Lost user " + userName);
-                            } catch (BusException e) {
-                                Log.e(TAG, e.toString());
-                            }
-                            userDb.remove(userInterface);
+                            UserInterface user = proxyBusObject.getInterface(UserInterface.class);
+                            Log.d(TAG + "LostUser", "Lost user");
+                            userDb.remove(user);
                         }
                     });
                     break;
                 case DISCONNECT:
+                    Log.d(TAG, "Shutting down the AllJoyn Framework");
                     mBus.unregisterBusObject(user);
                     aboutObj.unannounce();
                     mBus.disconnect();
@@ -167,7 +165,7 @@ public class Server extends Service {
                                 msg.getData().getString(Constants.PROPERTY_CHANGED_KEY),
                                 new Variant(msg.getData().getString(Constants.NEW_PROPERTY_VALUE)));
                     } catch (BusException e) {
-                        e.printStackTrace();
+                        Log.e(TAG + "Changed", e.getMessage());
                     }
                     break;
                 case JOIN_GAME:
@@ -175,12 +173,16 @@ public class Server extends Service {
                     obj.enablePropertyCaching();
                     UserInterface userInterface = obj.getInterface(UserInterface.class);
                     try {
+                        Log.d(TAG + "JoinGame", obj.getBusName() + "  " + obj.getObjPath());
                         String name = userInterface.getName();
-                        Log.d(TAG, "Discovered user " + name);
+                        Log.d(TAG + "JoinGame", "Discovered user " + name);
                     } catch (BusException e) {
-                        Log.e(TAG, e.toString());
+                        Log.e(TAG + "JoinGame", e.getMessage());
                     }
                     userDb.add(obj.getInterface(UserInterface.class));
+                    break;
+                default:
+                    super.handleMessage(msg);
                     break;
             }
         }

@@ -14,31 +14,39 @@ import java.util.Map;
 public class LocalAboutDataListener implements AboutDataListener {
 
     @Override
-    public Map<String, Variant> getAboutData(String s) throws ErrorReplyBusException {
-        Map<String, Variant> map = new HashMap<>();
-        map.put("AppId", new Variant(Constants.APP_ID));
-        map.put("DefaultLanguage", new Variant("en"));
-        map.put("DeviceId", new Variant(Constants.UUID_STRING));
-        map.put("AppName", new Variant("pis2015.ub.com.beerwizard"));
-        map.put("Manufacturer", new Variant("PIS_12"));
-        map.put("ModelNumber", new Variant("TEST"));
-        map.put("SupportedLanguages", new Variant(new String[]{"en"}));
-        map.put("Description", new Variant("A game of drink and fire"));
-        map.put("SoftwareVersion", new Variant(Constants.VERSION_NUMBER));
-        map.put("AJSoftwareVersion", new Variant(Version.get()));
-        return map;
+    public Map<String, Variant> getAboutData(String language)
+            throws ErrorReplyBusException {
+        Map<String, Variant> aboutData = new HashMap<String, Variant>();
+        // nonlocalized values
+        aboutData.put("AppId", new Variant(Constants.APP_ID));
+        aboutData.put("DefaultLanguage", new Variant(new String("en")));
+        aboutData.put("DeviceId", new Variant(Constants.UUID_STRING));
+        aboutData.put("ModelNumber", new Variant(new String("A1B2C3")));
+        aboutData.put("SupportedLanguages", new Variant(new String[]{"en"}));
+        aboutData.put("DateOfManufacture", new Variant(new String("2014-09-23")));
+        aboutData.put("SoftwareVersion", new Variant(Constants.VERSION_NUMBER));
+        aboutData.put("AJSoftwareVersion", new Variant(Version.get()));
+        aboutData.put("HardwareVersion", new Variant(new String("0.1alpha")));
+        aboutData.put("SupportUrl", new Variant(new String("http://www.example.com/support")));
+        aboutData.put("DeviceName", new Variant(new String("A device name")));
+        aboutData.put("AppName", new Variant(new String("Beer Wizard")));
+        aboutData.put("Manufacturer", new Variant(new String("A mighty manufacturing company")));
+        aboutData.put("Description",
+                new Variant(new String("Sample showing the about feature in a service application")));
+        return aboutData;
     }
 
     @Override
-    public Map<String, Variant> getAnnouncedAboutData() throws ErrorReplyBusException {
+    public Map<String, Variant> getAnnouncedAboutData()
+            throws ErrorReplyBusException {
         Map<String, Variant> aboutData = new HashMap<String, Variant>();
-        aboutData.put("AppId", new Variant(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}));
-        aboutData.put("DefaultLanguage", new Variant("en"));
-        aboutData.put("DeviceName", new Variant(""));
+        aboutData.put("AppId", new Variant(Constants.APP_ID));
+        aboutData.put("DefaultLanguage", new Variant(new String("en")));
+        aboutData.put("DeviceName", new Variant(new String("A device name")));
         aboutData.put("DeviceId", new Variant(Constants.UUID_STRING));
-        aboutData.put("AppName", new Variant("pis2015.ub.com.beerwizard"));
-        aboutData.put("Manufacturer", new Variant("PIS_12"));
-        aboutData.put("ModelNumber", new Variant("TEST"));
+        aboutData.put("AppName", new Variant(new String("Beer Wizard")));
+        aboutData.put("Manufacturer", new Variant(new String("A mighty manufacturing company")));
+        aboutData.put("ModelNumber", new Variant(new String("A1B2C3")));
         return aboutData;
     }
 }

@@ -24,5 +24,5 @@ public class Constants {
     public static final int UPDATE_USER_INST = 0x04;
     public static final String UUID_STRING = UUID.randomUUID().toString();
     public static final String VERSION_NUMBER = Build.VERSION.RELEASE;
-    public static final byte[] APP_ID = {42, 42, 42};
+    public static final byte[] APP_ID = {42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42};
 }
