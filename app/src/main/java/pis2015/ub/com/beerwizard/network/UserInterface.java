@@ -1,5 +1,6 @@
 package pis2015.ub.com.beerwizard.network;
 
+import org.alljoyn.bus.BusException;
 import org.alljoyn.bus.annotation.BusInterface;
 import org.alljoyn.bus.annotation.BusProperty;
 
@@ -9,20 +10,20 @@ import org.alljoyn.bus.annotation.BusProperty;
 @BusInterface(name = "pis2015.ub.com.beerwizard.user", announced = "true")
 public interface UserInterface {
     @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
-    public String getName();
+    public String getName() throws BusException;
 
     @BusProperty
-    public void setName(String name);
+    public void setName(String name) throws BusException;
 
     @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
-    public int getLevel();
+    public int getLevel() throws BusException;
 
     @BusProperty
-    public void setLevel(int level);
+    public void setLevel(int level) throws BusException;
 
     @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
-    public int getAvatar();
+    public int getAvatar() throws BusException;
 
     @BusProperty
-    public void setAvatar(int avatar);
+    public void setAvatar(int avatar) throws BusException;
 }
