@@ -3,6 +3,7 @@ package pis2015.ub.com.beerwizard.gui;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
 
@@ -64,6 +66,14 @@ public class MainMenuActivity extends Activity {
                 popupWindow.showAtLocation(btnAbout, Gravity.CENTER, 0, 0);
             }
         });
+
+        //ESTO ES PARA PROBAR LA LERRTRA CUSTOM
+        // ELIMINAR
+        TextView customFont;
+
+        customFont = (TextView) findViewById(R.id.cambioLetra);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Augusta.ttf");
+        customFont.setTypeface(font);
     }
 
     /**
@@ -144,5 +154,6 @@ public class MainMenuActivity extends Activity {
     public void onClick_tutorial(View vw) {
         Intent intent = new Intent(this, TutorialActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
     }
 }
