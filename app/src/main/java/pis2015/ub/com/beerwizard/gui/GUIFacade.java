@@ -1,8 +1,11 @@
 package pis2015.ub.com.beerwizard.gui;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
+import pis2015.ub.com.beerwizard.network.NetworkHelper;
 
 /**
  * Façade class that has all the "services" the GUI can call.
@@ -51,8 +54,8 @@ public class GUIFacade {
      *
      * @param gameName - name you want the Game to have
      */
-    static void createGame(String gameName) {
-        //idLocalUser = NetworkHelper.createGame(gameName);
+    static void createGame(Context context, String gameName) {
+        NetworkHelper.createGame(context);
     }
 
     /**
@@ -67,9 +70,8 @@ public class GUIFacade {
     /**
      * Exits the current User from the Game.
      */
-    static void exitGame() {
-        //NetworkHelper.exitGame(idLocalUser);
-        idLocalUser = "";
+    static void exitGame(Context context) {
+        NetworkHelper.exitGame(context);
     }
 
 
