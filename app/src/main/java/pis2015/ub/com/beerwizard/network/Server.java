@@ -23,15 +23,16 @@ import org.alljoyn.bus.SignalEmitter;
 import org.alljoyn.bus.Status;
 import org.alljoyn.bus.Variant;
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Server extends Service {
+    private static final String TAG = "ServerService";
 
     static {
         System.loadLibrary("alljoyn_java");
     }
 
-    private final ConcurrentHashMap<UserInterface, ProxyBusObject> userDb = new ConcurrentHashMap<>();
+    private final CopyOnWriteArrayList<UserInterface> userDb = new CopyOnWriteArrayList<>();
     private User user = null;
     private BusHandler busHandler = null;
     private Messenger messenger;
@@ -141,7 +142,14 @@ public class Server extends Service {
 
                         @Override
                         public void objectLost(ProxyBusObject proxyBusObject) {
-
+                            UserInterface userInterface = proxyBusObject.getInterface(UserInterface.class);
+                            try {
+                                String userName = userInterface.getName();
+                                Log.d(TAG, "Lost user " + userName);
+                            } catch (BusException e) {
+                                Log.e(TAG, e.toString());
+                            }
+                            userDb.remove(userInterface);
                         }
                     });
                     break;
@@ -165,6 +173,14 @@ public class Server extends Service {
                 case JOIN_GAME:
                     ProxyBusObject obj = (ProxyBusObject) msg.obj;
                     obj.enablePropertyCaching();
+                    UserInterface userInterface = obj.getInterface(UserInterface.class);
+                    try {
+                        String name = userInterface.getName();
+                        Log.d(TAG, "Discovered user " + name);
+                    } catch (BusException e) {
+                        Log.e(TAG, e.toString());
+                    }
+                    userDb.add(obj.getInterface(UserInterface.class));
                     break;
             }
         }
