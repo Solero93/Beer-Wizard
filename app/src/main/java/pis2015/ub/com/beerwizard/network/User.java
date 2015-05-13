@@ -11,6 +11,9 @@ public class User implements UserInterface, BusObject {
     private int level;
     private int avatarPhoto;
 
+    public User() {
+        this("");
+    }
     public User(String name) {
         this.name = name;
     }
@@ -34,6 +37,10 @@ public class User implements UserInterface, BusObject {
     public void modifyProfile(String name, int avatar) {
         this.setName(name);
         this.setAvatar(avatar);
+    }
+
+    public String getUUID() {
+        return Constants.UUID_STRING;
     }
 
     public byte getId() {
