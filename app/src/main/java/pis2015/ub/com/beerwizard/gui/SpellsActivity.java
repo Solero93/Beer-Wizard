@@ -155,6 +155,7 @@ public class SpellsActivity extends ActionBarActivity {
 
         //Exit to Menu
         if (id == R.id.action_exit) {
+            GUIFacade.exitGame(this);
             finish();
             return true;
         }

@@ -1,14 +1,19 @@
 package pis2015.ub.com.beerwizard.network;
 
+import org.alljoyn.bus.BusObject;
+
 /**
  * Class that represents the User (or Player) object
  */
-public class User {
+public class User implements UserInterface, BusObject {
     private byte id;
     private String name;
     private int level;
     private int avatarPhoto;
 
+    public User(String name) {
+        this.name = name;
+    }
     /**
      * Level's up the User.
      */
