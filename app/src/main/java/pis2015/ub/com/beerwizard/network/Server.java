@@ -7,7 +7,6 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import android.os.Messenger;
 import android.util.Log;
 
 import org.alljoyn.bus.AboutObj;
@@ -15,32 +14,49 @@ import org.alljoyn.bus.BusAttachment;
 import org.alljoyn.bus.BusException;
 import org.alljoyn.bus.Mutable;
 import org.alljoyn.bus.Observer;
-import org.alljoyn.bus.PropertyChangedEmitter;
 import org.alljoyn.bus.ProxyBusObject;
 import org.alljoyn.bus.SessionOpts;
 import org.alljoyn.bus.SessionPortListener;
-import org.alljoyn.bus.SignalEmitter;
 import org.alljoyn.bus.Status;
-import org.alljoyn.bus.Variant;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Server extends Service {
     private static final String TAG = "ServerService";
-
-    private final CopyOnWriteArrayList<UserInterface> userDb = new CopyOnWriteArrayList<>();
-    private User user = null;
-    private BusHandler busHandler = null;
-    private Messenger messenger;
+    static BusHandler busHandler = null;
+    private final CopyOnWriteArrayList<UserInterface> userDb = GameData.getInstance().getUsers();
+    private User user = GameData.getInstance().getUser();
+    private Thread printer;
 
     @Override
     public void onCreate() {
         HandlerThread thread = new HandlerThread("UserProvider");
         thread.start();
         busHandler = new BusHandler(thread.getLooper());
-        messenger = new Messenger(busHandler);
-        user = new User("Pep" + Math.random());
         busHandler.sendMessage(busHandler.obtainMessage(BusHandler.CONNECT));
+        printer = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    while (true) {
+                        Thread.sleep(5000);
+                        String tmp = "";
+                        for (UserInterface user : userDb) {
+                            try {
+                                tmp = tmp + user.getName() + ",";
+                            } catch (BusException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.d(TAG + "Printer", tmp);
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
+        });
+        printer.start();
     }
 
     @Override
@@ -52,15 +68,15 @@ public class Server extends Service {
     @Override
     public void onDestroy() {
         Log.d(TAG, "Shutting Server");
-        messenger = null;
-        busHandler.sendMessage(busHandler.obtainMessage(BusHandler.DISCONNECT));
+        printer.interrupt();
         userDb.clear();
+        busHandler.sendMessage(busHandler.obtainMessage(BusHandler.DISCONNECT));
         user = null;
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        return messenger.getBinder();
+        return null;
     }
 
     public class BusHandler extends Handler {
@@ -68,7 +84,6 @@ public class Server extends Service {
         public static final int DISCONNECT = 2;
         public static final int UPDATE_PROPERTIES = 3;
         public static final int JOIN_GAME = 4;
-        private static final String SERVICE_NAME = "pis2015.ub.com.beerwizard.user";
         private static final short CONTACT_PORT = 42;
 
         private BusAttachment mBus;
@@ -157,24 +172,14 @@ public class Server extends Service {
                     mBus.disconnect();
                     busHandler.getLooper().quit();
                     break;
-                case UPDATE_PROPERTIES:
-                    PropertyChangedEmitter propertyChangedEmitter = new PropertyChangedEmitter(
-                            user, BusAttachment.SESSION_ID_ALL_HOSTED, SignalEmitter.GlobalBroadcast.Off);
-                    try {
-                        propertyChangedEmitter.PropertyChanged(SERVICE_NAME,
-                                msg.getData().getString(Constants.PROPERTY_CHANGED_KEY),
-                                new Variant(msg.getData().getString(Constants.NEW_PROPERTY_VALUE)));
-                    } catch (BusException e) {
-                        Log.e(TAG + "Changed", e.getMessage());
-                    }
-                    break;
                 case JOIN_GAME:
                     ProxyBusObject obj = (ProxyBusObject) msg.obj;
                     obj.enablePropertyCaching();
-                    UserInterface userInterface = obj.getInterface(UserInterface.class);
+                    UserInterface user = obj.getInterface(UserInterface.class);
                     try {
-                        Log.d(TAG + "JoinGame", obj.getBusName() + "  " + obj.getObjPath());
-                        String name = userInterface.getName();
+                        if (user.getUUID().equals(Constants.UUID_STRING))
+                            break;
+                        String name = user.getName();
                         Log.d(TAG + "JoinGame", "Discovered user " + name);
                     } catch (BusException e) {
                         Log.e(TAG + "JoinGame", e.getMessage());
