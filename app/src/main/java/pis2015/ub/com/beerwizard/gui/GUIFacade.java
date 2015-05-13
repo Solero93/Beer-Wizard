@@ -5,7 +5,9 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
+import pis2015.ub.com.beerwizard.network.GameData;
 import pis2015.ub.com.beerwizard.network.NetworkHelper;
+import pis2015.ub.com.beerwizard.network.User;
 
 /**
  * Façade class that has all the "services" the GUI can call.
@@ -37,9 +39,9 @@ public class GUIFacade {
     }
 
     /**
-     * Gives all the Users that play the current Game
+     * Gives all the Users that play the current GameData
      *
-     * @return List of all Users in current Game
+     * @return List of all Users in current GameData
      */
     static ArrayList<String> getAllUsers() {
         ArrayList<String> test = new ArrayList<>();
@@ -50,16 +52,16 @@ public class GUIFacade {
     }
 
     /**
-     * Creates a Game with a given name.
+     * Creates a GameData with a given name.
      *
-     * @param gameName - name you want the Game to have
+     * @param gameName - name you want the GameData to have
      */
     static void createGame(Context context, String gameName) {
         NetworkHelper.createGame(context);
     }
 
     /**
-     * Enters a given Game.
+     * Enters a given GameData.
      *
      * @param serverIP
      */
@@ -68,7 +70,7 @@ public class GUIFacade {
     }
 
     /**
-     * Exits the current User from the Game.
+     * Exits the current User from the GameData.
      */
     static void exitGame(Context context) {
         NetworkHelper.exitGame(context);
@@ -81,8 +83,10 @@ public class GUIFacade {
      * @param name
      * @param idAvatar
      */
-    static void modifyUserProfile(String name, String idAvatar) {
-        //NetworkHelper.modifyUserProfile(idLocalUser, name, (byte)idAvatar);
+    static void modifyUserProfile(String name, int idAvatar) {
+        User user = GameData.getInstance().getUser();
+        user.setName(name);
+        // user.setAvatar(idAvatar);
     }
 
     /**
