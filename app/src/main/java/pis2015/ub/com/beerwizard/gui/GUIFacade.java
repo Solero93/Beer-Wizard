@@ -1,10 +1,14 @@
 package pis2015.ub.com.beerwizard.gui;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 import java.util.ArrayList;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
+import pis2015.ub.com.beerwizard.network.Constants;
 import pis2015.ub.com.beerwizard.network.GameData;
 import pis2015.ub.com.beerwizard.network.NetworkHelper;
 import pis2015.ub.com.beerwizard.network.User;
@@ -14,11 +18,37 @@ import pis2015.ub.com.beerwizard.network.User;
  */
 //TODO Add Exception to ServerTimeOut
 public class GUIFacade {
+    public static Handler lvlUpHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message inputMessage) {
+            //ArrayList<String> castedSpell = (ArrayList<String>) inputMessage.obj;
+
+            switch (inputMessage.what) {
+                case Constants.MSG_COMPLETE:
+                /*  Context cont = GameData.getContext();
+                    LayoutInflater layoutInflater = (LayoutInflater) cont.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View popupView = layoutInflater.inflate(R.layout.activity_main_menu_popup_about, null);
+
+
+                    final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    popupWindow.setFocusable(true);
+                    Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
+                    btnDismiss.setOnClickListener(new Button.OnClickListener() {
+                        //TextView wwa= (TextView)popupView.findViewById(R.id.)
+                        @Override
+                        public void onClick(View v) {
+                            popupWindow.dismiss();
+                        }
+                    }); */
+                    break;
+            }
+        }
+    };
     private static GUIFacade ourInstance = new GUIFacade();
-    private static String idLocalUser;
+    private static int idLocalUser;
 
     private GUIFacade() {
-        idLocalUser = "";
+        idLocalUser = -1;
     }
 
     public static GUIFacade getInstance() {
@@ -76,7 +106,6 @@ public class GUIFacade {
         NetworkHelper.exitGame(context);
     }
 
-
     /**
      * Modifies the current User's profile.
      *
@@ -102,7 +131,6 @@ public class GUIFacade {
     static void levelDown() {
         //NetworkHelper.levelDown(idLocalUser);
     }
-
 
     /**
      * Gets the Name of a given Spell
@@ -151,7 +179,6 @@ public class GUIFacade {
         return SpellManager.getCooldown(idSpell);
     }
 
-
     /**
      * Casts a Spell at a given User
      *
@@ -160,7 +187,11 @@ public class GUIFacade {
      * @param idTargetUser - ID of User to cast spell on (null if it's self inflicted)
      */
     static void castSpell(int idTargetUser, int idSpell, String param) {
-        //NetworkHelper.castSpell(idLocalUser, (String)idTargetUser, (byte)idSpell, param);
+        //NetworkFacade.castSpell(idLocalUser, idTargetUser, idSpell, param);
+    }
+
+    public void test_handler() {
+        this.lvlUpHandler.sendMessage(lvlUpHandler.obtainMessage(Constants.MSG_COMPLETE));
     }
 
     /* http://stackoverflow.com/questions/17233038/how-to-implement-synchronous-method-timeouts-in-java
