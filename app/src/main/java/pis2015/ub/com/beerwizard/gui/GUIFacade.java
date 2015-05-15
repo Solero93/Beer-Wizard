@@ -88,7 +88,7 @@ public class GUIFacade {
      * Levels up the User.
      */
     static void levelUp() {
-        //NetworkHelper.levelUp();
+        NetworkHelper.levelUp();
     }
 
     /**
@@ -97,7 +97,7 @@ public class GUIFacade {
      * @param targetUser
      */
     static void levelUp(String targetUser) {
-        //NetworkHelper.levelUp(targetUser);
+        NetworkHelper.levelUp(targetUser);
     }
 
     /**
