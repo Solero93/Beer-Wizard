@@ -268,7 +268,7 @@ public class SpellsActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         //PROILE
         if (id == R.id.action_lvl_up) {
-            lvlUp();
+            GUIFacade.levelUp();
 
         }
         if (id == R.id.action_profile) {
