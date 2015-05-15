@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 
 import pis2015.ub.com.beerwizard.R;
@@ -37,7 +39,7 @@ public class ProfileActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu_profile);
         Button btn_avatarChooser;
-
+        final FrameLayout block = null;
         btn_avatarChooser = (Button) findViewById(R.id.avatarImage);
         btn_avatarChooser.setOnClickListener(new Button.OnClickListener() {
 
@@ -95,6 +97,10 @@ public class ProfileActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    public void onClick_saveChanges(View view) {
+        String name = ((EditText) findViewById(R.id.editText2)).getText().toString();
+        GUIFacade.modifyUserProfile(name, -1);
+        finish();
     }
+}
 

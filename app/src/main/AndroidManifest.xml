@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pis2015.ub.com.beerwizard" >
+<manifest
+    package="pis2015.ub.com.beerwizard"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"></uses-permission>
@@ -8,6 +9,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
 
     <application
+        android:name="pis2015.ub.com.beerwizard.network.GameData"
         android:allowBackup="true"
         android:icon="@drawable/beerwizard_icon2"
         android:label="Beer Wizard"

@@ -2,10 +2,16 @@ package pis2015.ub.com.beerwizard.gui;
 
 import android.content.Context;
 
+import org.alljoyn.bus.BusException;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
+import pis2015.ub.com.beerwizard.network.GameData;
 import pis2015.ub.com.beerwizard.network.NetworkHelper;
+import pis2015.ub.com.beerwizard.network.User;
+import pis2015.ub.com.beerwizard.network.UserInterface;
 
 /**
  * Façade class that has all the "services" the GUI can call.
@@ -13,10 +19,8 @@ import pis2015.ub.com.beerwizard.network.NetworkHelper;
 //TODO Add Exception to ServerTimeOut
 public class GUIFacade {
     private static GUIFacade ourInstance = new GUIFacade();
-    private static String idLocalUser;
 
     private GUIFacade() {
-        idLocalUser = "";
     }
 
     public static GUIFacade getInstance() {
@@ -24,56 +28,50 @@ public class GUIFacade {
     }
 
     /**
-     * Gives all the games that are played nearby.
+     * Gives all the Users that play the current GameData
      *
-     * @return Nearby game's Names
+     * @return List of all Users in current GameData
      */
-    static ArrayList<String> getAllGames() {
-        ArrayList<String> test = new ArrayList<>();
-        test.add("GAME A");
-        test.add("GAME B");
-        return test;
-        //return NetworkHelper.getAllGames();
-    }
-
-    /**
-     * Gives all the Users that play the current Game
-     *
-     * @return List of all Users in current Game
-     */
-    static ArrayList<String> getAllUsers() {
-        ArrayList<String> test = new ArrayList<>();
-        test.add("USER A");
-        test.add("USER B");
-        return test;
+    static List<String> getAllUsers() {
+        List<UserInterface> users = GameData.getInstance().getUsers();
+        ArrayList<String> array = new ArrayList<>();
+        for (UserInterface user : users) {
+            try {
+                array.add(user.getName());
+            } catch (BusException e) {
+                e.printStackTrace();
+            }
+        }
+        return array;
         //return NetWorkFacade.getAllUsers();
     }
 
     /**
-     * Creates a Game with a given name.
+     * Returns the name of a User
      *
-     * @param gameName - name you want the Game to have
+     * @param userPosition
+     * @return User Name
+     */
+    static String getUserName(int userPosition) {
+        return "UserK";
+        //return NetworkHelper.getUser(userPosition);
+    }
+
+    /**
+     * Creates a GameData with a given name.
+     *
+     * @param gameName - name you want the GameData to have
      */
     static void createGame(Context context, String gameName) {
         NetworkHelper.createGame(context);
     }
 
     /**
-     * Enters a given Game.
-     *
-     * @param serverIP
-     */
-    static void enterGame(String serverIP) {
-        //idLocalUser = NetworkHelper.enterGame(serverIP);
-    }
-
-    /**
-     * Exits the current User from the Game.
+     * Exits the current User from the GameData.
      */
     static void exitGame(Context context) {
         NetworkHelper.exitGame(context);
     }
-
 
     /**
      * Modifies the current User's profile.
@@ -81,24 +79,34 @@ public class GUIFacade {
      * @param name
      * @param idAvatar
      */
-    static void modifyUserProfile(String name, String idAvatar) {
-        //NetworkHelper.modifyUserProfile(idLocalUser, name, (byte)idAvatar);
+    static void modifyUserProfile(String name, int idAvatar) {
+        User user = GameData.getInstance().getUser();
+        user.setName(name);
+        // user.setAvatar(idAvatar);
     }
 
     /**
-     * Levels up the User
+     * Levels up the User.
      */
     static void levelUp() {
-        //NetworkHelper.levelUp(idLocalUser);
+        //NetworkHelper.levelUp();
+    }
+
+    /**
+     * Decides whether to levelUp a specific user.
+     *
+     * @param targetUser
+     */
+    static void levelUp(String targetUser) {
+        //NetworkHelper.levelUp(targetUser);
     }
 
     /**
      * Levels down the User
      */
     static void levelDown() {
-        //NetworkHelper.levelDown(idLocalUser);
+        //NetworkHelper.levelDown();
     }
-
 
     /**
      * Gets the Name of a given Spell
@@ -111,7 +119,7 @@ public class GUIFacade {
     }
 
     /**
-     * Gets the Description of a given Spell
+     * Gets the Description of a given Spell.
      * @param idSpell
      * @return Spell's Description
      */
@@ -139,7 +147,7 @@ public class GUIFacade {
     }
 
     /**
-     * Gets Cooldown of Spell
+     * Gets Cooldown of Spell.
      * @param idSpell
      * @return
      */
@@ -147,19 +155,18 @@ public class GUIFacade {
         return SpellManager.getCooldown(idSpell);
     }
 
-
     /**
-     * Casts a Spell at a given User
+     * Casts a Spell at a given User.
      *
      * @param idSpell      - ID of spell to cast
      * @param param       - possible parametres (null if there aren't any)
      * @param idTargetUser - ID of User to cast spell on (null if it's self inflicted)
      */
     static void castSpell(int idTargetUser, int idSpell, String param) {
-        //NetworkHelper.castSpell(idLocalUser, (String)idTargetUser, (byte)idSpell, param);
+        //NetworkHelper.castSpell(idTargetUser, idSpell, param);
     }
 
-    /* http://stackoverflow.com/questions/17233038/how-to-implement-synchronous-method-timeouts-in-java
+    /* http://stackoverflow.com/questions/17233038/htargetUserow-to-implement-synchronous-method-timeouts-in-java
 
     ExecutorService executor = Executors.newSingleThreadExecutor();
     Future<String> future = executor.submit(new Callable() {

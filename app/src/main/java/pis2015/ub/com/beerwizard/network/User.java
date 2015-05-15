@@ -1,5 +1,8 @@
 package pis2015.ub.com.beerwizard.network;
 
+import android.os.Handler;
+import android.os.Message;
+
 import org.alljoyn.bus.BusObject;
 
 /**
@@ -11,6 +14,9 @@ public class User implements UserInterface, BusObject {
     private int level;
     private int avatarPhoto;
 
+    public User() {
+        this("");
+    }
     public User(String name) {
         this.name = name;
     }
@@ -18,7 +24,11 @@ public class User implements UserInterface, BusObject {
      * Level's up the User.
      */
     public void levelUp() {
-        if (this.level < 10) this.level++;
+        if (this.level < 10) {
+            this.setLevel(this.getLevel() + 1);
+        }
+        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        handler.sendMessage(handler.obtainMessage(Constants.MSG_LEVEL_UP));
     }
 
     /**
@@ -34,6 +44,10 @@ public class User implements UserInterface, BusObject {
     public void modifyProfile(String name, int avatar) {
         this.setName(name);
         this.setAvatar(avatar);
+    }
+
+    public String getUUID() {
+        return Constants.UUID_STRING;
     }
 
     public byte getId() {
@@ -62,5 +76,12 @@ public class User implements UserInterface, BusObject {
 
     public void setAvatar(int avatar) {
         this.avatarPhoto = avatar;
+    }
+
+    public void acceptsLevelUp(String uuid) {
+        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        Message msg = handler.obtainMessage(Constants.MSG_DECIDE_LEVEL);
+        msg.obj = uuid;
+        handler.sendMessage(msg);
     }
 }

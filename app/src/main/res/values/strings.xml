@@ -2,7 +2,7 @@
 <resources>
 
     <string name="lvlUp">Level Up</string>
-    <string name="nick">Harri Potter</string>
+    <string name="nick">Harry Potter</string>
     <string name="spell1">CAN TO
         \n THE FACE</string>
     <string name="lvl">Level 1</string>
@@ -59,7 +59,8 @@
     <string name="description_quote">cita</string>
     <!--Popup Strings -->
     <string name="cast_spell_popup_spell_name">SPELL_NAME</string>
-    <string name="cast_spell_popup_spell_intro">Are you sure want to cast SPELL_NAME to PLAYER_NAME?</string>
+    <string name="cast_spell_popup_spell_intro">Are you sure want to cast SPELL_NAME?</string>
+    <string name="cast_spell_popup_spell_user">Select user to cast spell?</string>
     <string name="cast_spell_popup_btn_yes">YES</string>
     <string name="cast_spell_popup_btn_no">NO</string>
     <!-- END Cast Spell testing data -->

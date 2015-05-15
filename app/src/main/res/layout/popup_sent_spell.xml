@@ -12,6 +12,7 @@
     <TableRow>
 
         <TextView
+            android:id="@+id/sent_spell_Name"
             android:gravity="center"
             android:text="@string/cast_spell_popup_spell_name" />
 
@@ -20,6 +21,7 @@
     <TableRow>
 
         <TextView
+            android:id="@+id/sent_spell_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
