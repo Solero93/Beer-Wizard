@@ -21,7 +21,7 @@
     <TableRow>
 
         <TextView
-            android:id="@+id/sent-spell_text"
+            android:id="@+id/sent_spell_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
