@@ -35,7 +35,11 @@ public class User implements UserInterface, BusObject {
      * Level's down the User.
      */
     public void levelDown() {
-        if (this.level > 2) this.level--;
+        if (this.level > 2) {
+            this.setLevel(this.getLevel() - 1);
+        }
+        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        handler.sendMessage(handler.obtainMessage(Constants.MSG_LEVEL_DOWN));
     }
 
     /**
