@@ -1,20 +1,14 @@
 package pis2015.ub.com.beerwizard.network;
 
 import android.app.Application;
-import android.content.Context;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameData extends Application {
     private static GameData ourInstance = new GameData();
-    private static Context context;
     private String rule;
     private User user = new User();
     private CopyOnWriteArrayList<UserInterface> users = new CopyOnWriteArrayList<>();
-
-    public static Context getContext() {
-        return context;
-    }
 
     public static GameData getInstance() {
         return ourInstance;
@@ -22,7 +16,6 @@ public class GameData extends Application {
 
     public void onCreate() {
         super.onCreate();
-        context = getApplicationContext();
     }
 
     public User getUser() {
