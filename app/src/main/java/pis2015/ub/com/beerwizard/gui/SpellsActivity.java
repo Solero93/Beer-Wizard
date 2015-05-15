@@ -14,18 +14,23 @@ import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.network.Constants;
+import pis2015.ub.com.beerwizard.network.GameData;
 
 
 /*
 The activity where you can select a spell.
  */
 public class SpellsActivity extends ActionBarActivity {
-    public Handler decideLvlHandler = new Handler(Looper.getMainLooper()) {
+    //temporal, cuando tengan los metodos lvl hechos
+    int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
+    int[] tImage = new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
+    private int lvl;
+    public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
             switch (inputMessage.what) {
-                case Constants.MSG_COMPLETE:
-                    String targetUser = (String) inputMessage.obj;
+                case Constants.MSG_DECIDE_LEVEL:
+                    String targetUser1 = (String) inputMessage.obj;
 
                     /* TODO Alberto
                         - Crear el popUp de decidir lvlUp (lo tienes por allí en layouts)
@@ -35,29 +40,21 @@ public class SpellsActivity extends ActionBarActivity {
                      */
 
                     break;
-            }
-        }
-    };
-    //temporal, cuando tengan los metodos lvl hechos
-    int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
-    int[] tImage= new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
-    private int lvl;
-    public Handler lvlUpHandler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message inputMessage) {
-            switch (inputMessage.what) {
-                case Constants.MSG_COMPLETE:
+                case Constants.MSG_LEVEL_UP:
+                    String targetUser2 = (String) inputMessage.obj;
                     lvlUp();
                     break;
-            }
-        }
-    };
-    public Handler lvlDownHandler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message inputMessage) {
-            switch (inputMessage.what) {
-                case Constants.MSG_COMPLETE:
+
+                case Constants.MSG_LEVEL_DOWN:
+                    String targetUser3 = (String) inputMessage.obj;
                     lvlDown();
+                    break;
+                case Constants.MSG_CASTED_SPELL:
+                    /* TODO Alberto
+                        - Crear el popUp de cuándo alguien te lanzó hechizo (lo tienes por allí en layouts)
+                        - Ten en cuenta que hay cambios en función del hechizo
+                            - Por ejemplo,
+                     */
                     break;
             }
         }
@@ -70,6 +67,7 @@ public class SpellsActivity extends ActionBarActivity {
         getSupportActionBar().setIcon(R.drawable.cara);//change the icon, avatar
         //setTitle("nick");//change the Nickname
         lvl=1;
+        GameData.setSpellsActivityHandler(this.spellsHandler); // Assigns Handler to GameData
     }
 
     /*

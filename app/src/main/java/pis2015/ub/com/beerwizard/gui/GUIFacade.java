@@ -29,11 +29,22 @@ public class GUIFacade {
      * @return List of all Users in current GameData
      */
     static ArrayList<String> getAllUsers() {
-        ArrayList<String> test = new ArrayList<>();
-        test.add("USER A");
-        test.add("USER B");
-        return test;
-        //return NetWorkFacade.getAllUsers();
+        ArrayList<String> xorra = new ArrayList<>();
+        xorra.add("UserA");
+        xorra.add("UserB");
+        return xorra;
+        //return NetworkHelper.getAllUsers();
+    }
+
+    /**
+     * Returns the name of a User
+     *
+     * @param userPosition
+     * @return User Name
+     */
+    static String getUserName(int userPosition) {
+        return "UserK";
+        //return NetworkHelper.getUser(userPosition);
     }
 
     /**
@@ -43,15 +54,6 @@ public class GUIFacade {
      */
     static void createGame(Context context, String gameName) {
         NetworkHelper.createGame(context);
-    }
-
-    /**
-     * Enters a given GameData.
-     *
-     * @param serverIP
-     */
-    static void enterGame(String serverIP) {
-        //idLocalUser = NetworkHelper.enterGame(serverIP);
     }
 
     /**
@@ -74,20 +76,19 @@ public class GUIFacade {
     }
 
     /**
-     * Levels up the User
+     * Levels up the User.
      */
     static void levelUp() {
         //NetworkHelper.levelUp();
     }
 
     /**
-     * Decides whether to levelUp a specific user
+     * Decides whether to levelUp a specific user.
      *
      * @param targetUser
-     * @param success
      */
-    static void levelUp(String targetUser, boolean success) {
-        //NetworkHelper.levelUp(targetUser, success);
+    static void levelUp(String targetUser) {
+        //NetworkHelper.levelUp(targetUser);
     }
 
     /**
@@ -108,7 +109,7 @@ public class GUIFacade {
     }
 
     /**
-     * Gets the Description of a given Spell
+     * Gets the Description of a given Spell.
      * @param idSpell
      * @return Spell's Description
      */
@@ -136,7 +137,7 @@ public class GUIFacade {
     }
 
     /**
-     * Gets Cooldown of Spell
+     * Gets Cooldown of Spell.
      * @param idSpell
      * @return
      */
@@ -145,17 +146,17 @@ public class GUIFacade {
     }
 
     /**
-     * Casts a Spell at a given User
+     * Casts a Spell at a given User.
      *
      * @param idSpell      - ID of spell to cast
      * @param param       - possible parametres (null if there aren't any)
      * @param idTargetUser - ID of User to cast spell on (null if it's self inflicted)
      */
     static void castSpell(int idTargetUser, int idSpell, String param) {
-        //NetworkFacade.castSpell(idTargetUser, idSpell, param);
+        //NetworkHelper.castSpell(idTargetUser, idSpell, param);
     }
 
-    /* http://stackoverflow.com/questions/17233038/how-to-implement-synchronous-method-timeouts-in-java
+    /* http://stackoverflow.com/questions/17233038/htargetUserow-to-implement-synchronous-method-timeouts-in-java
 
     ExecutorService executor = Executors.newSingleThreadExecutor();
     Future<String> future = executor.submit(new Callable() {

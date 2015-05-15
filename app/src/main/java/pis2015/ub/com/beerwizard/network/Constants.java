@@ -14,5 +14,8 @@ public class Constants {
     public static final String UUID_STRING = UUID.randomUUID().toString();
     public static final String VERSION_NUMBER = Build.VERSION.RELEASE;
     public static final byte[] APP_ID = {42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42};
-    public static final int MSG_COMPLETE = 0;
+    public static final int MSG_DECIDE_LEVEL = 0;
+    public static final int MSG_LEVEL_UP = 1;
+    public static final int MSG_LEVEL_DOWN = 2;
+    public static final int MSG_CASTED_SPELL = 3;
 }
