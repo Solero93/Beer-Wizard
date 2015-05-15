@@ -82,7 +82,7 @@ public class SpellsActivity extends ActionBarActivity {
 
                         @Override
                         public void onClick(View v) {
-                            GUIFacade.levelUp(targetUser1);
+
                             popupWindow.dismiss();
                         }
                     });
@@ -135,7 +135,15 @@ public class SpellsActivity extends ActionBarActivity {
                             String edited = String.format(edit, name, spellName);
                             changetext2.setText(edited);
                             break;
-                        //case "Spell"
+//                        case "SpellWizardDuel":
+//                            descr = getResources().getString(R.string.short_desc_duel);
+//                            name = GUIFacade.getUserName(0);
+//                            spellName = getResources().getString(GUIFacade.getSpellName(0));
+//                            String edit = getResources().getString(R.string.popup_received_spell_user_spell);
+//                            TextView changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
+//                            String edited = String.format(edit, name, spellName);
+//                            changetext2.setText(edited);
+//                            break;
                     }
                     //Now we change the text on the TextView to show WHO wants to level up
 //                    final String who_lvl = GUIFacade.getUserName(0);
@@ -165,7 +173,7 @@ public class SpellsActivity extends ActionBarActivity {
                         - Ten en cuenta que hay cambios en función del hechizo
                             - Por ejemplo,
                      */
-
+                   
                     ;
                     break;
             }

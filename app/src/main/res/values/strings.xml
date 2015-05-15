@@ -167,7 +167,7 @@
     <string name="popup_received_spell_user_spell">%1$s sent you a %2$s</string>
     <string name="popup_received_spell_descr">Now you must %1$s</string>
     <string name="popup_received_spell_btn"> Beer it!</string>
-    <!-- END Level Up Boss -->
+    <!-- short description spell-->
     <string name="short_desc_can">You must bring him a beer!</string>
 
 
