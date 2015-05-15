@@ -161,4 +161,8 @@
 
     <string name="hello_world">Hello world!</string>
     <!-- END Level Up Boss -->
+
+    <!-- popup Received spell -->
+    <string name="popup_received_spell_not">Hey!</string>
+    <string name="popup_received_spell_">2eweqw</string>
 </resources>
