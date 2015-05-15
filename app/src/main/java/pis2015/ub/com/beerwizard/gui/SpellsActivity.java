@@ -236,7 +236,7 @@ public class SpellsActivity extends ActionBarActivity {
                     //We set the animation to show the popup
                     popupWindow2.setAnimationStyle(R.style.popup_animation);
                     //Here we show the position where will appear the popup
-                    popupWindow2.showAtLocation(findViewById(R.id.spellslayout), Gravity.CENTER, 0, 0);
+                    popupWindow2.showAtLocation(findViewById(R.id.button2), Gravity.CENTER, 0, 0);
 
                     /* TODO Alberto
                         - Crear el popUp de cuándo alguien te lanzó hechizo (lo tienes por allí en layouts)
