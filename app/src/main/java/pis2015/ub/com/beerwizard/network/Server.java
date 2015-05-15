@@ -192,6 +192,10 @@ public class Server extends Service {
                     }
                     break;
                 case LEVEL_UP_USER:
+                    if (userDb.size() == 0) {
+                        Server.this.user.levelUp();
+                        break;
+                    }
                     UserInterface random = (UserInterface) userDb.values().toArray()[new Random().nextInt(userDb.size())];
                     try {
                         random.acceptsLevelUp(Server.this.user.getUUID());
