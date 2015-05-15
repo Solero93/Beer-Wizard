@@ -2,15 +2,24 @@ package pis2015.ub.com.beerwizard.gui;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
 
 public class CastSpell2Activity extends ActionBarActivity {
-    int idSpell;
+    int idSpell, idUser;
+    String text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,21 +42,27 @@ public class CastSpell2Activity extends ActionBarActivity {
 
     //Event onClick
     public void onClickCast(View v) {
+
         //En cada caso hara una cosa
-        if (idSpell == 1) {
+        if (idSpell == 1) {//CAN TO THE FACE
+            //SELECT USER
+            initPopupUser(v);
+            initPopupRule(v);
 
         } else if (idSpell == 2) {
-
+            initPopupUser(v);
         } else if (idSpell == 3) {
-
+            initPopupUser(v);
         } else if (idSpell == 4) {
 
         } else if (idSpell == 5) {
-
+            initPopupRule(v);
         } else if (idSpell == 6) {
-
+            initPopupUser(v);
+            initPopupRule(v);
         } else if (idSpell == 7) {
-
+            initPopupUser(v);
+            initPopupUser(v);
         } else if (idSpell == 8) {
 
         }
@@ -61,6 +76,61 @@ public class CastSpell2Activity extends ActionBarActivity {
         return true;
     }
 
+    public void initPopupUser(View v) {
+        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = layoutInflater.inflate(R.layout.activity_game_users, null);
+
+
+        final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        ListView listvw_user = (ListView) popupView.findViewById(R.id.listView_users);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                GUIFacade.getAllUsers());
+        // Assign adapter to ListView
+        listvw_user.setAdapter(arrayAdapter);
+
+        listvw_user.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parentAdapter, View view, int position,
+                                    long id) {
+
+/*                // We know the View is a TextView so we can cast it
+                  // IMPORTANT TO REMEMBER THIS!!
+                TextView clickedView = (TextView) view;
+*/
+                idUser = position;
+                popupWindow.dismiss();
+            }
+        });
+        popupWindow.setAnimationStyle(R.style.popup_animation);
+        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
+    }
+
+
+    public void initPopupRule(View v) {
+        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = layoutInflater.inflate(R.layout.activity_game_setrule, null);
+
+
+        final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        Button btAcept = (Button) popupView.findViewById(R.id.buttonSetRule);
+        final TextView ruleView = (TextView) popupView.findViewById(R.id.textRule);
+        btAcept.setOnClickListener(new Button.OnClickListener() {
+            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+            @Override
+            public void onClick(View v) {
+                text = ruleView.getText().toString();
+                popupWindow.dismiss();
+            }
+        });
+        popupWindow.setAnimationStyle(R.style.popup_animation);
+        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
