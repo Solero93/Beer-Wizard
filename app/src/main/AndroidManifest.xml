@@ -13,7 +13,7 @@
         android:allowBackup="true"
         android:icon="@drawable/beerwizard_icon2"
         android:label="Beer Wizard"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".gui.IntroActivity"
             android:label="@string/title_activity_intro"

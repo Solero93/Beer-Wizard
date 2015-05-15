@@ -40,7 +40,7 @@ public class TutorialActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main_menu_tutorial);
-//        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fonts.ttf");
+        //Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fonts.ttf");
         //boto que desa el que hi ha escrit i torna a l'activity main
 
         buttonNext = (Button) findViewById(R.id.btn_next);
@@ -109,6 +109,7 @@ public class TutorialActivity extends Activity {
                         public void onClick(View v) {
                             popupWindow.dismiss();
                             finish();
+                            overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
                         }
                     });
                     Button repeat_tutorial = (Button) popupView.findViewById(R.id.repeat_tutorial);
@@ -117,6 +118,7 @@ public class TutorialActivity extends Activity {
                         @Override
                         public void onClick(View v) {
                             popupWindow.dismiss();
+
                             curIndex = 0;
                             imageSwitcher.setImageResource(imageResources[curIndex]);
 

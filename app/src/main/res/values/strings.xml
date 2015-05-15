@@ -39,7 +39,7 @@
     </string-array>
 
     <!-- Popup Strings -->
-    <string name="main_menu_popup_about">About us</string>
+    <string name="main_menu_popup_about">About us %1$s</string>
     <string name="main_menu_popup_done">Done by:</string>
     <string name="main_menu_popup_names_1">Christian Soler, Jordi Olivares</string>
     <string name="main_menu_popup_names_2">Nico Forteza and Alberto Leiva</string>
@@ -148,7 +148,7 @@
 
     <!-- Level Up popup -->
     <string name="level_up_popup_not">Hey!</string>
-    <string name="level_up_popup_name">PLAYER_NAME wants to level up</string>
+    <string name="level_up_popup_name">%1$s wants to level up</string>
     <string name="level_up_popup_allow">Allow him to do it? </string>
     <!-- END Level Up popup -->
 
@@ -161,4 +161,8 @@
 
     <string name="hello_world">Hello world!</string>
     <!-- END Level Up Boss -->
+
+    <!-- popup Received spell -->
+    <string name="popup_received_spell_not">Hey!</string>
+    <string name="popup_received_spell_">2eweqw</string>
 </resources>

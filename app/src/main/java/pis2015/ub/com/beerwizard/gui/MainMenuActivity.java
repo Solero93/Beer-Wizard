@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -48,9 +47,9 @@ public class MainMenuActivity extends Activity {
                 LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = layoutInflater.inflate(R.layout.activity_main_menu_popup_about, null);
 
-
                 final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 popupWindow.setFocusable(true);
+
                 Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
                 btnDismiss.setOnClickListener(new Button.OnClickListener() {
                     //                TextView wwa= (TextView)popupView.findViewById(R.id.)
@@ -59,11 +58,14 @@ public class MainMenuActivity extends Activity {
                         popupWindow.dismiss();
                     }
                 });
+
                 //popupView.startAnimation(AnimationUtils.loadAnimation(getBaseContext(), android.R.anim.slide_in_left));
                 popupWindow.setAnimationStyle(R.style.popup_animation);
                 popupWindow.showAtLocation(btnAbout, Gravity.CENTER, 0, 0);
             }
         });
+
+
     }
 
     /**
@@ -80,12 +82,12 @@ public class MainMenuActivity extends Activity {
         // Third parameter - ID of the TextView to which the data is written
         // Fourth - the Array of data
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                GUIFacade.getAllGames());
-        // Assign adapter to ListView
-        listvw_available_rooms.setAdapter(arrayAdapter);
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+//                this,
+//                android.R.layout.simple_list_item_1,
+//                //GUIFacade.getAllGames());
+//        // Assign adapter to ListView
+//        listvw_available_rooms.setAdapter(arrayAdapter);
 
         listvw_available_rooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -144,5 +146,6 @@ public class MainMenuActivity extends Activity {
     public void onClick_tutorial(View vw) {
         Intent intent = new Intent(this, TutorialActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
     }
 }
