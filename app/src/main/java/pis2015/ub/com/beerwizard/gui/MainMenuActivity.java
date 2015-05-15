@@ -3,7 +3,6 @@ package pis2015.ub.com.beerwizard.gui;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,11 +11,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
 
@@ -67,13 +64,7 @@ public class MainMenuActivity extends Activity {
             }
         });
 
-        //ESTO ES PARA PROBAR LA LERRTRA CUSTOM
-        // ELIMINAR
-        TextView customFont;
 
-        customFont = (TextView) findViewById(R.id.cambioLetra);
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Augusta.ttf");
-        customFont.setTypeface(font);
     }
 
     /**
@@ -90,12 +81,12 @@ public class MainMenuActivity extends Activity {
         // Third parameter - ID of the TextView to which the data is written
         // Fourth - the Array of data
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                GUIFacade.getAllGames());
-        // Assign adapter to ListView
-        listvw_available_rooms.setAdapter(arrayAdapter);
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+//                this,
+//                android.R.layout.simple_list_item_1,
+//                //GUIFacade.getAllGames());
+//        // Assign adapter to ListView
+//        listvw_available_rooms.setAdapter(arrayAdapter);
 
         listvw_available_rooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

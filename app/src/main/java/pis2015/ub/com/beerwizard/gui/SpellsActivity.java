@@ -6,12 +6,17 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
@@ -32,7 +37,47 @@ public class SpellsActivity extends ActionBarActivity {
         public void handleMessage(Message inputMessage) {
             switch (inputMessage.what) {
                 case Constants.MSG_DECIDE_LEVEL:
-                    String targetUser1 = (String) inputMessage.obj;
+                    final String targetUser1 = (String) inputMessage.obj;
+
+                    /**
+                     * Here we create a popup using a LayoutInflater to allow players to lvl up
+                     * sending a request to another player, this player can accept the level up
+                     * or deny it
+                     */
+                    //Here we create the layout inflater
+                    LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                    //Here we associate the layout inflater with the layout we need, in this case popup_lvlup
+                    View popupView = layoutInflater.inflate(R.layout.popup_lvlup, null);
+                    //Now we create the popup window
+                    final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    //Time to only interact with the popup
+                    popupWindow.setFocusable(true);
+                    //Now we declarate the 2 possible buttons, player can level ul, or player cannot level up
+                    //this button increases the player level in 1
+                    Button btnlvlup = (Button) popupView.findViewById(R.id.btn_lvlup);
+                    btnlvlup.setOnClickListener(new Button.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            GUIFacade.levelUp(targetUser1);
+                            popupWindow.dismiss();
+                        }
+                    });
+                    // If player tries to fake a level up, the player who receives this popup can dismiss his intent to level up
+                    Button btn_NO_lvlup = (Button) popupView.findViewById(R.id.btn_NO_lvlup);
+                    btn_NO_lvlup.setOnClickListener(new Button.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            GUIFacade.levelUp(targetUser1);
+                            popupWindow.dismiss();
+                        }
+                    });
+
+                    //We set the animation to show the popup
+                    popupWindow.setAnimationStyle(R.style.popup_animation);
+                    //Here we show the position where will appear the popup
+                    popupWindow.showAtLocation(findViewById(R.id.spellslayout), Gravity.CENTER, 0, 0);
 
                     /* TODO Alberto
                         - Crear el popUp de decidir lvlUp (lo tienes por allí en layouts)

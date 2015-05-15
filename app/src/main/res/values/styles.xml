@@ -8,6 +8,11 @@
     <style name="mainMenuTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:background">@color/background_app</item>
     </style>
+
+    <style name="woodenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">@drawable/madera</item>
+    </style>
+
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@null</item>

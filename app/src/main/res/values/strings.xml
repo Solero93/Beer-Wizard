@@ -148,7 +148,7 @@
 
     <!-- Level Up popup -->
     <string name="level_up_popup_not">Hey!</string>
-    <string name="level_up_popup_name">PLAYER_NAME wants to level up</string>
+    <string name="level_up_popup_name">1234 wants to level up</string>
     <string name="level_up_popup_allow">Allow him to do it? </string>
     <!-- END Level Up popup -->
 
