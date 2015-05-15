@@ -1,7 +1,7 @@
 package pis2015.ub.com.beerwizard.gui;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
 
-public class CastSpell2Activity extends ActionBarActivity {
+public class CastSpell2Activity extends Activity {
     int idSpell, idUser;
     String textRule;
     boolean send;
@@ -37,7 +37,6 @@ public class CastSpell2Activity extends ActionBarActivity {
         title.setText(GUIFacade.getSpellName(idSpell - 1));
         description.setText(GUIFacade.getSpellDescription(idSpell - 1));
         quote.setText(GUIFacade.getSpellQuote(idSpell - 1));
-        getActionBar().hide();
 
     }
 
