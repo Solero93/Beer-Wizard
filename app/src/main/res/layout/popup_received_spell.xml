@@ -30,6 +30,7 @@
     <TableRow>
 
         <TextView
+            android:id="@+id/order"
             android:gravity="center"
             android:text="@string/popup_received_spell_descr" />
     </TableRow>

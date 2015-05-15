@@ -31,12 +31,14 @@ public class SpellsActivity extends ActionBarActivity {
     //temporal, cuando tengan los metodos lvl hechos
     int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
     int[] tImage = new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
+    String edited;
+    TextView changetext2;
+    String edit;
     private int lvl;
     private String idSpell;
     private String descr;
     private String name;
     private String spellName;
-
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -130,20 +132,28 @@ public class SpellsActivity extends ActionBarActivity {
                             descr = getResources().getString(R.string.short_desc_can);
                             name = GUIFacade.getUserName(0);
                             spellName = getResources().getString(GUIFacade.getSpellName(0));
-                            String edit = getResources().getString(R.string.popup_received_spell_user_spell);
-                            TextView changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
-                            String edited = String.format(edit, name, spellName);
+
+                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
+                            edited = String.format(edit, name, spellName);
+                            changetext2.setText(edited);
+
+                            edit = getResources().getString(R.string.popup_received_spell_descr);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
+                            edited = String.format(edit, descr);
+                            changetext2.setText(edited);
+
+                            break;
+
+                        case "SpellWizardDuel":
+                            descr = getResources().getString(R.string.short_desc_duel);
+                            name = GUIFacade.getUserName(0);
+                            spellName = getResources().getString(GUIFacade.getSpellName(1));
+                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
+                            edited = String.format(edit, name, spellName);
                             changetext2.setText(edited);
                             break;
-//                        case "SpellWizardDuel":
-//                            descr = getResources().getString(R.string.short_desc_duel);
-//                            name = GUIFacade.getUserName(0);
-//                            spellName = getResources().getString(GUIFacade.getSpellName(0));
-//                            String edit = getResources().getString(R.string.popup_received_spell_user_spell);
-//                            TextView changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
-//                            String edited = String.format(edit, name, spellName);
-//                            changetext2.setText(edited);
-//                            break;
                     }
                     //Now we change the text on the TextView to show WHO wants to level up
 //                    final String who_lvl = GUIFacade.getUserName(0);
@@ -173,7 +183,7 @@ public class SpellsActivity extends ActionBarActivity {
                         - Ten en cuenta que hay cambios en función del hechizo
                             - Por ejemplo,
                      */
-                   
+
                     ;
                     break;
             }

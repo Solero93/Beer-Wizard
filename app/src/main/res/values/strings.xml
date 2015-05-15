@@ -169,6 +169,6 @@
     <string name="popup_received_spell_btn"> Beer it!</string>
     <!-- short description spell-->
     <string name="short_desc_can">You must bring him a beer!</string>
-
+    <string name="short_desc_duel">Ready to face him a duel?</string>
 
 </resources>
