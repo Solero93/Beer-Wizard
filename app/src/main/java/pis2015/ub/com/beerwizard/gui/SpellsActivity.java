@@ -149,20 +149,80 @@ public class SpellsActivity extends ActionBarActivity {
                             descr = getResources().getString(R.string.short_desc_duel);
                             name = GUIFacade.getUserName(0);
                             spellName = getResources().getString(GUIFacade.getSpellName(1));
+
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
                             changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
                             edited = String.format(edit, name, spellName);
                             changetext2.setText(edited);
+
+                            edit = getResources().getString(R.string.popup_received_spell_descr);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
+                            edited = String.format(edit, descr);
+                            changetext2.setText(edited);
+                            break;
+
+                        case "SpellBeerekinesis":
+                            descr = getResources().getString(R.string.short_desc_beerk);
+                            name = GUIFacade.getUserName(0);
+                            spellName = getResources().getString(GUIFacade.getSpellName(2));
+
+                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
+                            edited = String.format(edit, name, spellName);
+                            changetext2.setText(edited);
+
+                            edit = getResources().getString(R.string.popup_received_spell_descr);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
+                            edited = String.format(edit, descr);
+                            changetext2.setText(edited);
+                            break;
+                        case "SpellTruthOrShot":
+                            descr = getResources().getString(R.string.short_desc_truth);
+                            name = GUIFacade.getUserName(0);
+                            spellName = getResources().getString(GUIFacade.getSpellName(6));
+
+                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
+                            edited = String.format(edit, name, spellName);
+                            changetext2.setText(edited);
+
+                            edit = getResources().getString(R.string.popup_received_spell_descr);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
+                            edited = String.format(edit, descr);
+                            changetext2.setText(edited);
+                            break;
+                        case "SpellHatOfShame":
+                            descr = getResources().getString(R.string.short_desc_hat);
+                            name = GUIFacade.getUserName(0);
+                            spellName = getResources().getString(GUIFacade.getSpellName(7));
+
+                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
+                            edited = String.format(edit, name, spellName);
+                            changetext2.setText(edited);
+
+                            edit = getResources().getString(R.string.popup_received_spell_descr);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
+                            edited = String.format(edit, descr);
+                            changetext2.setText(edited);
+                            break;
+                        case "SpellAllInShot":
+                            descr = getResources().getString(R.string.short_desc_all);
+                            name = GUIFacade.getUserName(0);
+                            spellName = getResources().getString(GUIFacade.getSpellName(8));
+
+                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
+                            edited = String.format(edit, name, spellName);
+                            changetext2.setText(edited);
+
+                            edit = getResources().getString(R.string.popup_received_spell_descr);
+                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
+                            edited = String.format(edit, descr);
+                            changetext2.setText(edited);
                             break;
                     }
-                    //Now we change the text on the TextView to show WHO wants to level up
-//                    final String who_lvl = GUIFacade.getUserName(0);
-//                    String texto = getResources().getString(R.string.level_up_popup_name);
-//                    String strMeatMsg = String.format(texto, who_lvl);
-//                    TextView changetext = (TextView) popupView.findViewById(R.id.name_lvl);
-//                    changetext.setText(strMeatMsg);
 
-                    //Now we declarate the button to dismiss the notification
                     Button got = (Button) popupView2.findViewById(R.id.btn_got);
                     got.setOnClickListener(new Button.OnClickListener() {
 
@@ -176,7 +236,7 @@ public class SpellsActivity extends ActionBarActivity {
                     //We set the animation to show the popup
                     popupWindow2.setAnimationStyle(R.style.popup_animation);
                     //Here we show the position where will appear the popup
-                    popupWindow2.showAtLocation(findViewById(R.id.spellslayout), Gravity.CENTER, 0, 0);
+                    popupWindow2.showAtLocation(findViewById(R.id.button2), Gravity.CENTER, 0, 0);
 
                     /* TODO Alberto
                         - Crear el popUp de cuándo alguien te lanzó hechizo (lo tienes por allí en layouts)

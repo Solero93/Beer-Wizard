@@ -168,7 +168,10 @@
     <string name="popup_received_spell_descr">Now you must %1$s</string>
     <string name="popup_received_spell_btn"> Beer it!</string>
     <!-- short description spell-->
-    <string name="short_desc_can">You must bring him a beer!</string>
-    <string name="short_desc_duel">Ready to face him a duel?</string>
-
+    <string name="short_desc_can">take your beer!</string>
+    <string name="short_desc_duel">be ready to face him a duel!</string>
+    <string name="short_desc_beerk">take him a beer</string>
+    <string name="short_desc_hat">take something and is your new hat!</string>
+    <string name="short_desc_truth">TRUTH OR SHOT?</string>
+    <string name="short_desc_all">DRINK,DRINK,DRINK!!!</string>
 </resources>
