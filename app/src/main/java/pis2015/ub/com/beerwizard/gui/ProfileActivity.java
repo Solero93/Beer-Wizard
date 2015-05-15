@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 
@@ -98,9 +97,9 @@ public class ProfileActivity extends ActionBarActivity {
     }
 
     public void onClick_saveChanges(View view) {
-        String name = ((EditText) findViewById(R.id.editText2)).getText().toString();
-        int idAvatar = 0;
-        GUIFacade.modifyUserProfile(name, idAvatar);
+        //String name = ((EditText) findViewById(R.id.editText2)).getText().toString();
+        //int idAvatar = 0;
+        //GUIFacade.modifyUserProfile(name, idAvatar);
         finish();
     }
 }

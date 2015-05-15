@@ -13,7 +13,7 @@
 
         <TextView
             android:gravity="center"
-            android:text="@string/level_up_popup_not" />
+            android:text="@string/popup_received_spell_not" />
 
     </TableRow>
 
@@ -24,26 +24,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="@string/level_up_popup_name" />
+            android:text="@string/popup_received_spell_user_spell" />
     </TableRow>
 
     <TableRow>
 
         <TextView
             android:gravity="center"
-            android:text="@string/level_up_popup_allow" />
+            android:text="@string/popup_received_spell_descr" />
     </TableRow>
 
     <TableRow>
 
         <Button
-            android:id="@+id/btn_lvlup"
+            android:id="@+id/btn_got"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.13"
             android:onClick="onClick_newGame"
-            android:text="@string/tutorial_popup_btn_yes" />
+            android:text="@string/popup_received_spell_btn" />
 
 
     </TableRow>

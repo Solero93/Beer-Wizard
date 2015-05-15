@@ -105,11 +105,51 @@ public class SpellsActivity extends ActionBarActivity {
                     lvlDown();
                     break;
                 case Constants.MSG_CASTED_SPELL:
+                    /**
+                     * Here we create a popup using a LayoutInflater to allow players to lvl up
+                     * sending a request to another player, this player can accept the level up
+                     * or deny it
+                     */
+                    //Here we create the layout inflater
+                    LayoutInflater layoutInflater2 = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                    //Here we associate the layout inflater with the layout we need, in this case popup_lvlup
+                    View popupView2 = layoutInflater2.inflate(R.layout.popup_received_spell, null);
+                    //Now we create the popup window
+                    final PopupWindow popupWindow2 = new PopupWindow(popupView2, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    //Time to only interact with the popup
+                    popupWindow2.setFocusable(true);
+
+                    //Now we change the text on the TextView to show WHO wants to level up
+//                    final String who_lvl = GUIFacade.getUserName(0);
+//                    String texto = getResources().getString(R.string.level_up_popup_name);
+//                    String strMeatMsg = String.format(texto, who_lvl);
+//                    TextView changetext = (TextView) popupView.findViewById(R.id.name_lvl);
+//                    changetext.setText(strMeatMsg);
+
+                    //Now we declarate the button to dismiss the notification
+                    Button got = (Button) popupView2.findViewById(R.id.btn_got);
+                    got.setOnClickListener(new Button.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+
+                            popupWindow2.dismiss();
+                        }
+                    });
+
+
+                    //We set the animation to show the popup
+                    popupWindow2.setAnimationStyle(R.style.popup_animation);
+                    //Here we show the position where will appear the popup
+                    popupWindow2.showAtLocation(findViewById(R.id.spellslayout), Gravity.CENTER, 0, 0);
+
                     /* TODO Alberto
                         - Crear el popUp de cuándo alguien te lanzó hechizo (lo tienes por allí en layouts)
                         - Ten en cuenta que hay cambios en función del hechizo
                             - Por ejemplo,
                      */
+
+
                     break;
             }
         }

@@ -164,5 +164,7 @@
 
     <!-- popup Received spell -->
     <string name="popup_received_spell_not">Hey!</string>
-    <string name="popup_received_spell_">2eweqw</string>
+    <string name="popup_received_spell_user_spell">%1$s sent you a %2$s</string>
+    <string name="popup_received_spell_descr">Now you must %1$s</string>
+    <string name="popup_received_spell_btn"> Beer it!</string>
 </resources>
