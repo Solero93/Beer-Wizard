@@ -19,7 +19,8 @@ import pis2015.ub.com.beerwizard.R;
 
 public class CastSpell2Activity extends ActionBarActivity {
     int idSpell, idUser;
-    String text;
+    String textRule;
+    boolean send;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,7 @@ public class CastSpell2Activity extends ActionBarActivity {
         Bundle b = new Bundle();
         b = getIntent().getExtras();
         idSpell = b.getInt("spell");//id spell de 1 a 8
-
+        send = false;
 
         //description and Quote
         TextView description = (TextView) findViewById(R.id.descriptionText);
@@ -47,26 +48,54 @@ public class CastSpell2Activity extends ActionBarActivity {
         if (idSpell == 1) {//CAN TO THE FACE
             //SELECT USER
             initPopupUser(v);
+            initPopupAccept(v);
+            if (send) {
+                GUIFacade.castSpell(idUser, idSpell - 1, "");
+            }
+        } else if (idSpell == 2) {//Duel
+            initPopupUser(v);
+            initPopupAccept(v);
+            if (send) {
+                GUIFacade.castSpell(idUser, idSpell - 1, "");
+            }
+        } else if (idSpell == 3) {//beerkineesis
+            initPopupUser(v);
+            initPopupAccept(v);
+            if (send) {
+                GUIFacade.castSpell(idUser, idSpell - 1, "");
+            }
+        } else if (idSpell == 4) {//Shild
+            initPopupAccept(v);
+            if (send) {
+                GUIFacade.castSpell(idUser, idSpell - 1, "");
+            }
+        } else if (idSpell == 5) {//rule
             initPopupRule(v);
-
-        } else if (idSpell == 2) {
-            initPopupUser(v);
-        } else if (idSpell == 3) {
-            initPopupUser(v);
-        } else if (idSpell == 4) {
-
-        } else if (idSpell == 5) {
-            initPopupRule(v);
-        } else if (idSpell == 6) {
+            initPopupAccept(v);
+            if (send) {
+                GUIFacade.castSpell(idUser, idSpell - 1, textRule);
+            }
+        } else if (idSpell == 6) {//Truth
             initPopupUser(v);
             initPopupRule(v);
-        } else if (idSpell == 7) {
+            initPopupAccept(v);
+            if (send) {
+                GUIFacade.castSpell(idUser, idSpell - 1, textRule);
+            }
+        } else if (idSpell == 7) {//Hat
             initPopupUser(v);
             initPopupUser(v);
-        } else if (idSpell == 8) {
-
+            initPopupAccept(v);
+            if (send) {
+                GUIFacade.castSpell(idUser, idSpell - 1, textRule);
+            }
+        } else if (idSpell == 8) {//all
+            initPopupAccept(v);
+            if (send) {
+                GUIFacade.castSpell(idUser, idSpell - 1, "");
+            }
         }
-        finish();
+        if (send) finish();
 
     }
     @Override
@@ -123,10 +152,45 @@ public class CastSpell2Activity extends ActionBarActivity {
             //                TextView wwa= (TextView)popupView.findViewById(R.id.)
             @Override
             public void onClick(View v) {
-                text = ruleView.getText().toString();
+                textRule = ruleView.getText().toString();
                 popupWindow.dismiss();
             }
         });
+        popupWindow.setAnimationStyle(R.style.popup_animation);
+        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
+    }
+
+    public void initPopupAccept(View v) {
+        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = layoutInflater.inflate(R.layout.activity_game_send_spell, null);
+
+
+        final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        TextView name = (TextView) popupView.findViewById(R.id.sent_spell_Name);
+        TextView text = (TextView) popupView.findViewById(R.id.sent_spell_text);
+        name.setText(GUIFacade.getSpellName(idSpell) + "");
+        text.setText("Are you sure want to cast " + GUIFacade.getSpellName(idSpell) + "?");
+        Button btOk = (Button) popupView.findViewById(R.id.btn_cast_spell);
+        Button btNo = (Button) popupView.findViewById(R.id.btn_NO_cast_spell);
+        btOk.setOnClickListener(new Button.OnClickListener() {
+            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+            @Override
+            public void onClick(View v) {
+                send = true;
+                popupWindow.dismiss();
+            }
+        });
+        btNo.setOnClickListener(new Button.OnClickListener() {
+            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+            @Override
+            public void onClick(View v) {
+                send = false;
+                popupWindow.dismiss();
+            }
+        });
+
         popupWindow.setAnimationStyle(R.style.popup_animation);
         popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
 
