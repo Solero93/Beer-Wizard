@@ -2,6 +2,7 @@ package pis2015.ub.com.beerwizard.network;
 
 import org.alljoyn.bus.BusException;
 import org.alljoyn.bus.annotation.BusInterface;
+import org.alljoyn.bus.annotation.BusMethod;
 import org.alljoyn.bus.annotation.BusProperty;
 
 /**
@@ -29,4 +30,10 @@ public interface UserInterface {
 
     @BusProperty
     public String getUUID() throws BusException;
+
+    @BusMethod
+    public void levelUp();
+
+    @BusMethod
+    public void acceptsLevelUp(String uuid);
 }

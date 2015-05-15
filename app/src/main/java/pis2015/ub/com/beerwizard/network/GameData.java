@@ -2,6 +2,7 @@ package pis2015.ub.com.beerwizard.network;
 
 import android.app.Application;
 
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameData extends Application {
@@ -22,7 +23,7 @@ public class GameData extends Application {
         return user;
     }
 
-    public CopyOnWriteArrayList getUsers() {
+    public List<UserInterface> getUsers() {
         return users;
     }
 

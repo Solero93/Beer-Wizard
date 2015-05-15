@@ -2,12 +2,16 @@ package pis2015.ub.com.beerwizard.gui;
 
 import android.content.Context;
 
+import org.alljoyn.bus.BusException;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
 import pis2015.ub.com.beerwizard.network.GameData;
 import pis2015.ub.com.beerwizard.network.NetworkHelper;
 import pis2015.ub.com.beerwizard.network.User;
+import pis2015.ub.com.beerwizard.network.UserInterface;
 
 /**
  * Façade class that has all the "services" the GUI can call.
@@ -28,11 +32,17 @@ public class GUIFacade {
      *
      * @return List of all Users in current GameData
      */
-    static ArrayList<String> getAllUsers() {
-        ArrayList<String> test = new ArrayList<>();
-        test.add("USER A");
-        test.add("USER B");
-        return test;
+    static List<String> getAllUsers() {
+        List<UserInterface> users = GameData.getInstance().getUsers();
+        ArrayList<String> array = new ArrayList<>();
+        for (UserInterface user : users) {
+            try {
+                array.add(user.getName());
+            } catch (BusException e) {
+                e.printStackTrace();
+            }
+        }
+        return array;
         //return NetWorkFacade.getAllUsers();
     }
 

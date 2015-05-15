@@ -1,5 +1,7 @@
 package pis2015.ub.com.beerwizard.network;
 
+import android.os.Handler;
+
 import org.alljoyn.bus.BusObject;
 
 /**
@@ -21,7 +23,11 @@ public class User implements UserInterface, BusObject {
      * Level's up the User.
      */
     public void levelUp() {
-        if (this.level < 10) this.level++;
+        if (this.level < 10) {
+            this.setLevel(this.getLevel() + 1);
+        }
+        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        handler.sendMessage(handler.obtainMessage(Constants.MSG_LEVEL_UP));
     }
 
     /**
@@ -69,5 +75,9 @@ public class User implements UserInterface, BusObject {
 
     public void setAvatar(int avatar) {
         this.avatarPhoto = avatar;
+    }
+
+    public void acceptsLevelUp(String uuid) {
+
     }
 }
