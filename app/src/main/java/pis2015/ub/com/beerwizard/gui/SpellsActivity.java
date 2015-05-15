@@ -2,6 +2,9 @@ package pis2015.ub.com.beerwizard.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,16 +13,55 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
+import pis2015.ub.com.beerwizard.network.Constants;
 
 
 /*
 The activity where you can select a spell.
  */
 public class SpellsActivity extends ActionBarActivity {
+    public Handler decideLvlHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message inputMessage) {
+            switch (inputMessage.what) {
+                case Constants.MSG_COMPLETE:
+                    String targetUser = (String) inputMessage.obj;
+
+                    /* TODO Alberto
+                        - Crear el popUp de decidir lvlUp (lo tienes por allí en layouts)
+                        - Implementar botones
+                            - YES => llamar GUIFacade.levelUp(targetUser, true)
+                            - NO => llamar GUIFacade.levelUp(targetUser, false)
+                     */
+
+                    break;
+            }
+        }
+    };
     //temporal, cuando tengan los metodos lvl hechos
     int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
     int[] tImage= new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
     private int lvl;
+    public Handler lvlUpHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message inputMessage) {
+            switch (inputMessage.what) {
+                case Constants.MSG_COMPLETE:
+                    lvlUp();
+                    break;
+            }
+        }
+    };
+    public Handler lvlDownHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message inputMessage) {
+            switch (inputMessage.what) {
+                case Constants.MSG_COMPLETE:
+                    lvlDown();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +124,6 @@ public class SpellsActivity extends ActionBarActivity {
         }
     }
 
-
     public void lvlUp() {
 
         if (lvl < 9) {
@@ -95,7 +136,6 @@ public class SpellsActivity extends ActionBarActivity {
             image.setImageResource(R.drawable.duel_of_wizards);
         }
     }
-
 
     public void lvlDown() {
 
@@ -115,11 +155,11 @@ public class SpellsActivity extends ActionBarActivity {
         textLvl.setText("MASTER");
     }
 
-
     public void masterDown() {
         TextView textLvl = (TextView) findViewById(R.id.textLvl);
         textLvl.setText("Level " + lvl);
     }
+
     /*
     options and settings
      */
