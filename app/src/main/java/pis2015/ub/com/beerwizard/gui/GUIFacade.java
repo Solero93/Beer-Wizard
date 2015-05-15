@@ -43,7 +43,6 @@ public class GUIFacade {
             }
         }
         return array;
-        //return NetWorkFacade.getAllUsers();
     }
 
     /**
@@ -93,7 +92,7 @@ public class GUIFacade {
     }
 
     /**
-     * Decides whether to levelUp a specific user.
+     * Levels Up a specific user.
      *
      * @param targetUser
      */
@@ -165,6 +164,15 @@ public class GUIFacade {
     static void castSpell(int idTargetUser, int idSpell, String param) {
         //NetworkHelper.castSpell(idTargetUser, idSpell, param);
     }
+
+    public static ArrayList<String> getAllGames() {
+        ArrayList<String> tmp = new ArrayList<>();
+        tmp.add("A");
+        tmp.add("B");
+        return tmp;
+    }
+
+
 
     /* http://stackoverflow.com/questions/17233038/htargetUserow-to-implement-synchronous-method-timeouts-in-java
 
