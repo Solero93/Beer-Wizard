@@ -32,6 +32,11 @@ public class SpellsActivity extends ActionBarActivity {
     int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
     int[] tImage = new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
     private int lvl;
+    private String idSpell;
+    private String descr;
+    private String name;
+    private String spellName;
+
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -85,7 +90,7 @@ public class SpellsActivity extends ActionBarActivity {
                     //We set the animation to show the popup
                     popupWindow.setAnimationStyle(R.style.popup_animation);
                     //Here we show the position where will appear the popup
-                    popupWindow.showAtLocation(findViewById(R.id.spellslayout), Gravity.CENTER, 0, 0);
+                    popupWindow.showAtLocation(findViewById(R.id.button2), Gravity.CENTER, 0, 0);
 
                     /* TODO Alberto
                         - Crear el popUp de decidir lvlUp (lo tienes por allí en layouts)
@@ -119,6 +124,18 @@ public class SpellsActivity extends ActionBarActivity {
                     //Time to only interact with the popup
                     popupWindow2.setFocusable(true);
 
+                    //here we edit the popup to show what spell the casted
+                    switch (idSpell) {
+                        case "SpellCanToTheFace":
+                            descr = getResources().getString(R.string.short_desc_can);
+                            name = GUIFacade.getUserName(0);
+                            spellName = getResources().getString(GUIFacade.getSpellName(0));
+                            TextView changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
+                            //String edited = String.format(changetext2, name, spellName);
+                            //changetext2.setText(edited);
+
+
+                    }
                     //Now we change the text on the TextView to show WHO wants to level up
 //                    final String who_lvl = GUIFacade.getUserName(0);
 //                    String texto = getResources().getString(R.string.level_up_popup_name);
@@ -149,7 +166,7 @@ public class SpellsActivity extends ActionBarActivity {
                             - Por ejemplo,
                      */
 
-
+                    ;
                     break;
             }
         }

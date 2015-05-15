@@ -39,7 +39,7 @@
     </string-array>
 
     <!-- Popup Strings -->
-    <string name="main_menu_popup_about">About us %1$s</string>
+    <string name="main_menu_popup_about">About us</string>
     <string name="main_menu_popup_done">Done by:</string>
     <string name="main_menu_popup_names_1">Christian Soler, Jordi Olivares</string>
     <string name="main_menu_popup_names_2">Nico Forteza and Alberto Leiva</string>
@@ -167,4 +167,8 @@
     <string name="popup_received_spell_user_spell">%1$s sent you a %2$s</string>
     <string name="popup_received_spell_descr">Now you must %1$s</string>
     <string name="popup_received_spell_btn"> Beer it!</string>
+    <!-- END Level Up Boss -->
+    <string name="short_desc_can">You must bring him a beer!</string>
+
+
 </resources>
