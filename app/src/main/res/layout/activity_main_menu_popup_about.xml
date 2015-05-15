@@ -7,13 +7,14 @@
     android:layout_centerHorizontal="true"
     android:layout_gravity="center_horizontal"
     android:layout_weight="0.12"
-    android:background="@drawable/scroll"
+    android:background="@color/yellow"
     android:clickable="true"
     android:orientation="horizontal">
 
     <TableRow>
 
         <TextView
+            android:id="@+id/change_test"
             android:background="#00ffffff"
             android:gravity="center"
             android:text="@string/main_menu_popup_about" />

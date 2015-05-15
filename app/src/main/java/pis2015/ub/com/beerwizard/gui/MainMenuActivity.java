@@ -47,9 +47,9 @@ public class MainMenuActivity extends Activity {
                 LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = layoutInflater.inflate(R.layout.activity_main_menu_popup_about, null);
 
-
                 final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 popupWindow.setFocusable(true);
+
                 Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
                 btnDismiss.setOnClickListener(new Button.OnClickListener() {
                     //                TextView wwa= (TextView)popupView.findViewById(R.id.)
@@ -58,6 +58,7 @@ public class MainMenuActivity extends Activity {
                         popupWindow.dismiss();
                     }
                 });
+
                 //popupView.startAnimation(AnimationUtils.loadAnimation(getBaseContext(), android.R.anim.slide_in_left));
                 popupWindow.setAnimationStyle(R.style.popup_animation);
                 popupWindow.showAtLocation(btnAbout, Gravity.CENTER, 0, 0);

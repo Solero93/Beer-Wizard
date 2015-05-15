@@ -52,6 +52,14 @@ public class SpellsActivity extends ActionBarActivity {
                     final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     //Time to only interact with the popup
                     popupWindow.setFocusable(true);
+
+                    //Now we change the text on the TextView to show WHO wants to level up
+                    final String who_lvl = GUIFacade.getUserName(0);
+                    String texto = getResources().getString(R.string.level_up_popup_name);
+                    String strMeatMsg = String.format(texto, who_lvl);
+                    TextView changetext = (TextView) popupView.findViewById(R.id.name_lvl);
+                    changetext.setText(strMeatMsg);
+
                     //Now we declarate the 2 possible buttons, player can level ul, or player cannot level up
                     //this button increases the player level in 1
                     Button btnlvlup = (Button) popupView.findViewById(R.id.btn_lvlup);
