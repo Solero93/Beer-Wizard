@@ -19,12 +19,13 @@ import org.alljoyn.bus.SessionOpts;
 import org.alljoyn.bus.SessionPortListener;
 import org.alljoyn.bus.Status;
 
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Server extends Service {
     private static final String TAG = "ServerService";
     static BusHandler busHandler = null;
-    private final CopyOnWriteArrayList<UserInterface> userDb = GameData.getInstance().getUsers();
+    private final List<UserInterface> userDb = GameData.getInstance().getUsers();
     private User user = GameData.getInstance().getUser();
     private Thread printer;
 
@@ -82,7 +83,7 @@ public class Server extends Service {
     public class BusHandler extends Handler {
         public static final int CONNECT = 1;
         public static final int DISCONNECT = 2;
-        public static final int UPDATE_PROPERTIES = 3;
+        public static final int LEVEL_UP_USER = 3;
         public static final int JOIN_GAME = 4;
         private static final short CONTACT_PORT = 42;
 
@@ -185,6 +186,10 @@ public class Server extends Service {
                         Log.e(TAG + "JoinGame", e.getMessage());
                     }
                     userDb.add(obj.getInterface(UserInterface.class));
+                    break;
+                case LEVEL_UP_USER:
+                    UserInterface random = userDb.get(new Random().nextInt(userDb.size()));
+                    random.acceptsLevelUp(Server.this.user.getUUID());
                     break;
                 default:
                     super.handleMessage(msg);
