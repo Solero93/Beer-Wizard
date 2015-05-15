@@ -99,7 +99,8 @@ public class ProfileActivity extends ActionBarActivity {
 
     public void onClick_saveChanges(View view) {
         String name = ((EditText) findViewById(R.id.editText2)).getText().toString();
-        GUIFacade.modifyUserProfile(name, -1);
+        int idAvatar = 0;
+        GUIFacade.modifyUserProfile(name, idAvatar);
         finish();
     }
 }
