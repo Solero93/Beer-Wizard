@@ -33,6 +33,14 @@ public class NetworkHelper {
         }
     }
 
+    public static void levelDown(String uuidUser) {
+        try {
+            GameData.getInstance().getUserDb().get(uuidUser).levelDown();
+        } catch (BusException e) {
+            Log.e("LevelUpUser", e.getMessage());
+        }
+    }
+
     public void castSpell(String idCasterUser, String idTargetUser, String idSpell, String[] params) {
 
     }

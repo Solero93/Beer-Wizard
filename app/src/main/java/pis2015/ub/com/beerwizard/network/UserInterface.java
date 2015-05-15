@@ -35,5 +35,8 @@ public interface UserInterface {
     public void levelUp() throws BusException;
 
     @BusMethod
+    public void levelDown() throws BusException;
+
+    @BusMethod
     public void acceptsLevelUp(String uuid) throws BusException;
 }
