@@ -130,11 +130,12 @@ public class SpellsActivity extends ActionBarActivity {
                             descr = getResources().getString(R.string.short_desc_can);
                             name = GUIFacade.getUserName(0);
                             spellName = getResources().getString(GUIFacade.getSpellName(0));
+                            String edit = getResources().getString(R.string.popup_received_spell_user_spell);
                             TextView changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
-                            //String edited = String.format(changetext2, name, spellName);
-                            //changetext2.setText(edited);
-
-
+                            String edited = String.format(edit, name, spellName);
+                            changetext2.setText(edited);
+                            break;
+                        //case "Spell"
                     }
                     //Now we change the text on the TextView to show WHO wants to level up
 //                    final String who_lvl = GUIFacade.getUserName(0);
@@ -153,7 +154,6 @@ public class SpellsActivity extends ActionBarActivity {
                             popupWindow2.dismiss();
                         }
                     });
-
 
                     //We set the animation to show the popup
                     popupWindow2.setAnimationStyle(R.style.popup_animation);
