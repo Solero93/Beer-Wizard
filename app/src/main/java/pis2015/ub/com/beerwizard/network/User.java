@@ -1,6 +1,8 @@
 package pis2015.ub.com.beerwizard.network;
 
 import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 
 import org.alljoyn.bus.BusObject;
 
@@ -8,7 +10,7 @@ import org.alljoyn.bus.BusObject;
  * Class that represents the User (or Player) object
  */
 public class User implements UserInterface, BusObject {
-    private byte id;
+    private static final String TAG = "User";
     private String name;
     private int level;
     private int avatarPhoto;
@@ -25,6 +27,7 @@ public class User implements UserInterface, BusObject {
     public void levelUp() {
         if (this.level < 10) {
             this.setLevel(this.getLevel() + 1);
+            Log.d(TAG, "User has leveled up: " + this.getLevel());
         }
         Handler handler = GameData.getInstance().getSpellsActivityHandler();
         handler.sendMessage(handler.obtainMessage(Constants.MSG_LEVEL_UP));
@@ -34,7 +37,12 @@ public class User implements UserInterface, BusObject {
      * Level's down the User.
      */
     public void levelDown() {
-        if (this.level > 2) this.level--;
+        if (this.level > 2) {
+            this.setLevel(this.getLevel() - 1);
+            Log.d(TAG, "User has leveled down: " + this.getLevel());
+        }
+        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        handler.sendMessage(handler.obtainMessage(Constants.MSG_LEVEL_DOWN));
     }
 
     /**
@@ -47,10 +55,6 @@ public class User implements UserInterface, BusObject {
 
     public String getUUID() {
         return Constants.UUID_STRING;
-    }
-
-    public byte getId() {
-        return this.id;
     }
 
     public String getName() {
@@ -78,6 +82,9 @@ public class User implements UserInterface, BusObject {
     }
 
     public void acceptsLevelUp(String uuid) {
-
+        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        Message msg = handler.obtainMessage(Constants.MSG_DECIDE_LEVEL);
+        msg.obj = uuid;
+        handler.sendMessage(msg);
     }
 }

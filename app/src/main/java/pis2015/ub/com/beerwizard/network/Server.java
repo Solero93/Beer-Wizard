@@ -19,13 +19,14 @@ import org.alljoyn.bus.SessionOpts;
 import org.alljoyn.bus.SessionPortListener;
 import org.alljoyn.bus.Status;
 
-import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Server extends Service {
     private static final String TAG = "ServerService";
     static BusHandler busHandler = null;
-    private final List<UserInterface> userDb = GameData.getInstance().getUsers();
+    private final ConcurrentHashMap<String, UserInterface> userDb = GameData.getInstance().getUserDb();
+    private final ConcurrentHashMap<UserInterface, String> reverseUserDb = new ConcurrentHashMap<>();
     private User user = GameData.getInstance().getUser();
     private Thread printer;
 
@@ -42,7 +43,7 @@ public class Server extends Service {
                     while (true) {
                         Thread.sleep(5000);
                         String tmp = "";
-                        for (UserInterface user : userDb) {
+                        for (UserInterface user : userDb.values()) {
                             try {
                                 tmp = tmp + user.getName() + ",";
                             } catch (BusException e) {
@@ -162,7 +163,8 @@ public class Server extends Service {
                         public void objectLost(ProxyBusObject proxyBusObject) {
                             UserInterface user = proxyBusObject.getInterface(UserInterface.class);
                             Log.d(TAG + "LostUser", "Lost user");
-                            userDb.remove(user);
+                            String uuid = reverseUserDb.get(user);
+                            userDb.remove(uuid);
                         }
                     });
                     break;
@@ -182,14 +184,20 @@ public class Server extends Service {
                             break;
                         String name = user.getName();
                         Log.d(TAG + "JoinGame", "Discovered user " + name);
+                        String uuid = user.getUUID();
+                        userDb.put(uuid, user);
+                        reverseUserDb.put(user, uuid);
                     } catch (BusException e) {
                         Log.e(TAG + "JoinGame", e.getMessage());
                     }
-                    userDb.add(obj.getInterface(UserInterface.class));
                     break;
                 case LEVEL_UP_USER:
-                    UserInterface random = userDb.get(new Random().nextInt(userDb.size()));
-                    random.acceptsLevelUp(Server.this.user.getUUID());
+                    UserInterface random = (UserInterface) userDb.values().toArray()[new Random().nextInt(userDb.size())];
+                    try {
+                        random.acceptsLevelUp(Server.this.user.getUUID());
+                    } catch (BusException e) {
+                        Log.e(TAG + "LevelUp", e.getMessage());
+                    }
                     break;
                 default:
                     super.handleMessage(msg);

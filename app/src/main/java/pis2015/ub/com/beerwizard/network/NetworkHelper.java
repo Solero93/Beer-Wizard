@@ -2,6 +2,9 @@ package pis2015.ub.com.beerwizard.network;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+
+import org.alljoyn.bus.BusException;
 
 public class NetworkHelper {
 
@@ -22,11 +25,23 @@ public class NetworkHelper {
         context.stopService(intent);
     }
 
-    public void castSpell(String idCasterUser, String idTargetUser, String idSpell, String[] params) {
-
+    public static void levelUp(String uuidUser) {
+        try {
+            GameData.getInstance().getUserDb().get(uuidUser).levelUp();
+        } catch (BusException e) {
+            Log.e("LevelUpUser", e.getMessage());
+        }
     }
 
-    public void levelUp(String idUser) {
+    public static void levelDown(String uuidUser) {
+        try {
+            GameData.getInstance().getUserDb().get(uuidUser).levelDown();
+        } catch (BusException e) {
+            Log.e("LevelUpUser", e.getMessage());
+        }
+    }
+
+    public void castSpell(String idCasterUser, String idTargetUser, String idSpell, String[] params) {
 
     }
 

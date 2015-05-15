@@ -3,15 +3,16 @@ package pis2015.ub.com.beerwizard.network;
 import android.app.Application;
 import android.os.Handler;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class GameData extends Application {
     private static GameData ourInstance = new GameData();
     private static Handler spellsActivityHandler;
     private String rule;
     private User user = new User();
-    private CopyOnWriteArrayList<UserInterface> users = new CopyOnWriteArrayList<>();
+    private ConcurrentHashMap<String, UserInterface> users = new ConcurrentHashMap<>();
 
     public static GameData getInstance() {
         return ourInstance;
@@ -34,6 +35,10 @@ public class GameData extends Application {
     }
 
     public List<UserInterface> getUsers() {
+        return new ArrayList<>(users.values());
+    }
+
+    public ConcurrentHashMap<String, UserInterface> getUserDb() {
         return users;
     }
 
