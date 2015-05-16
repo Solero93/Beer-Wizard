@@ -10,9 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.PopupWindow;
 
 import pis2015.ub.com.beerwizard.R;
@@ -33,7 +31,6 @@ public class MainMenuActivity extends Activity {
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         setContentView(R.layout.activity_main_menu);
 
-        this.init_listvw_available_rooms(); // Show available rooms
         this.run_IntroActivity_at_launch(); // Run intro activity at launch
 
         // Initializes btn_about
@@ -69,42 +66,6 @@ public class MainMenuActivity extends Activity {
     }
 
     /**
-     * Initializes the available rooms' list
-     * Fills the list with currently available rooms
-     * and associates onClick event to entering the room you chose
-     */
-    public void init_listvw_available_rooms() {
-        // Get ListView object from xml
-        ListView listvw_available_rooms = (ListView) findViewById(R.id.listvw_available_rooms);
-        // Define a new Adapter
-        // First parameter - Context
-        // Second parameter - Layout for the row
-        // Third parameter - ID of the TextView to which the data is written
-        // Fourth - the Array of data
-
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-//                this,
-//                android.R.layout.simple_list_item_1,
-//                //GUIFacade.getAllGames());
-//        // Assign adapter to ListView
-//        listvw_available_rooms.setAdapter(arrayAdapter);
-
-        listvw_available_rooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            public void onItemClick(AdapterView<?> parentAdapter, View view, int position,
-                                    long id) {
-
-/*                // We know the View is a TextView so we can cast it
-                  // IMPORTANT TO REMEMBER THIS!!
-                TextView clickedView = (TextView) view;
-*/
-                Intent intent = new Intent(view.getContext(), SpellsActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    /**
      * Runs IntroActivity at launch
      * and never again.
      */
@@ -126,7 +87,8 @@ public class MainMenuActivity extends Activity {
      * Enters to a new game, but before has to create a Room.
      */
     public void onClick_newGame(View vw) {
-        Intent intent = new Intent(this, MainMenuActivity.class);
+        GUIFacade.createGame(this, "");
+        Intent intent = new Intent(this, SpellsActivity.class);
         startActivity(intent);
     }
 
