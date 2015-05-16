@@ -28,7 +28,6 @@ public class Server extends Service {
     private final ConcurrentHashMap<String, UserInterface> userDb = GameData.getInstance().getUserDb();
     private final ConcurrentHashMap<UserInterface, String> reverseUserDb = new ConcurrentHashMap<>();
     private User user = GameData.getInstance().getUser();
-    private Thread printer;
 
     @Override
     public void onCreate() {
@@ -36,29 +35,6 @@ public class Server extends Service {
         thread.start();
         busHandler = new BusHandler(thread.getLooper());
         busHandler.sendMessage(busHandler.obtainMessage(BusHandler.CONNECT));
-        printer = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (true) {
-                        Thread.sleep(5000);
-                        String tmp = "";
-                        for (UserInterface user : userDb.values()) {
-                            try {
-                                tmp = tmp + user.getName() + ",";
-                            } catch (BusException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        Log.d(TAG + "Printer", tmp);
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    return;
-                }
-            }
-        });
-        printer.start();
     }
 
     @Override
@@ -70,7 +46,6 @@ public class Server extends Service {
     @Override
     public void onDestroy() {
         Log.d(TAG, "Shutting Server");
-        printer.interrupt();
         userDb.clear();
         busHandler.sendMessage(busHandler.obtainMessage(BusHandler.DISCONNECT));
         user = null;
