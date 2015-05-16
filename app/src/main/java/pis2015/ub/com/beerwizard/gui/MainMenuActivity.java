@@ -126,7 +126,7 @@ public class MainMenuActivity extends Activity {
      * Enters to a new game, but before has to create a Room.
      */
     public void onClick_newGame(View vw) {
-        Intent intent = new Intent(this, RoomCreateActivity.class);
+        Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
     }
 

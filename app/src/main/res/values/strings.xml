@@ -25,7 +25,7 @@
     <!-- Main Menu Strings (popup also included)-->
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <string name="lbl_available_rooms">Available Rooms</string>
-    <string name="btn_new_game">New Game</string>
+    <string name="btn_new_game">Play</string>
     <string name="btn_profile">Profile</string>
     <string name="btn_tutorial">Tutorial</string>
     <string name="btn_about">About</string>
