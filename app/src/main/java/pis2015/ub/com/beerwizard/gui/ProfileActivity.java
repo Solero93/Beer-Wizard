@@ -39,6 +39,20 @@ public class ProfileActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main_menu_profile);
         Button btn_avatarChooser;
         final FrameLayout block = null;
+
+        Button end_profile = (Button) findViewById(R.id.btn_back);
+        end_profile.setOnClickListener(new Button.OnClickListener() {
+
+            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+            @Override
+            public void onClick(View v) {
+
+                finish();
+                //overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
+            }
+        });
+
+
         btn_avatarChooser = (Button) findViewById(R.id.avatarImage);
         btn_avatarChooser.setOnClickListener(new Button.OnClickListener() {
 
@@ -102,5 +116,6 @@ public class ProfileActivity extends ActionBarActivity {
         //GUIFacade.modifyUserProfile(name, idAvatar);
         finish();
     }
+
 }
 

@@ -109,7 +109,7 @@ public class TutorialActivity extends Activity {
                         public void onClick(View v) {
                             popupWindow.dismiss();
                             finish();
-                            overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
+                            //overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
                         }
                     });
                     Button repeat_tutorial = (Button) popupView.findViewById(R.id.repeat_tutorial);
