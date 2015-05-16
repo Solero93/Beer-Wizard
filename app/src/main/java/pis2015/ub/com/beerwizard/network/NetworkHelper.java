@@ -47,10 +47,7 @@ public class NetworkHelper {
         }
     }
 
-    public void castSpell(String idCasterUser, String idTargetUser, String idSpell, String[] params) {
+    public static void castSpell(String idCasterUser, String idTargetUser, int idSpell, String params) {
 
-    }
-
-    private void userExitsGame(byte idUser) {
     }
 }

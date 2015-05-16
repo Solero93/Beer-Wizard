@@ -163,7 +163,25 @@ public class GUIFacade {
      * @param userPosition - ID of User to cast spell on (null if it's self inflicted)
      */
     static void castSpell(int userPosition, int idSpell, String param) {
-        //NetworkHelper.getUserId(userPosition);
-        //NetworkHelper.castSpell(idTargetUser, idSpell, param);
+        try {
+            String targetUserId = GameData.getInstance().getUser(userPosition).getUUID();
+            String casterUserId = GameData.getInstance().getUser().getUUID();
+            switch (idSpell) {
+                case 3: //Shield
+                    GameData.getInstance().getUser().setShield(true);
+                    break;
+                case 4: //Create Rule
+                    GameData.getInstance().setRule(param);
+                default:
+                    if (GameData.getInstance().getUser(targetUserId).getShield()) {
+                        GameData.getInstance().getUser(targetUserId).setShield(false);
+                    } else {
+                        NetworkHelper.castSpell(casterUserId, targetUserId, idSpell, param);
+                    }
+
+            }
+        } catch (BusException e) {
+            e.printStackTrace();
+        }
     }
 }
