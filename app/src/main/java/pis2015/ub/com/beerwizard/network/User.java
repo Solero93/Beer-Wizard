@@ -89,10 +89,10 @@ public class User implements UserInterface, BusObject {
         handler.sendMessage(msg);
     }
 
-    public void castedSpell(int i, String uuid) {
+    public void castedSpell(int idSpell, String uuid) {
         Handler handler = GameData.getInstance().getSpellsActivityHandler();
         Message msg = handler.obtainMessage(Constants.MSG_CASTED_SPELL);
-        msg.obj = new Object[]{i, uuid};
+        msg.obj = new Object[]{idSpell, uuid};
         handler.sendMessage(msg);
     }
 

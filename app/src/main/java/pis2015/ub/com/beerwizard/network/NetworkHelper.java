@@ -48,6 +48,11 @@ public class NetworkHelper {
     }
 
     public static void castSpell(String idCasterUser, String idTargetUser, int idSpell, String params) {
-
+        UserInterface user = GameData.getInstance().getUser(idTargetUser);
+        try {
+            user.castedSpell(idSpell, idCasterUser);
+        } catch (BusException e) {
+            e.printStackTrace();
+        }
     }
 }
