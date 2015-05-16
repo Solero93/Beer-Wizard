@@ -105,8 +105,8 @@ public class SpellsActivity extends ActionBarActivity {
                 case Constants.MSG_CASTED_SPELL:
 
                     // Needs to be taken out from Message - just default value
-                    int idSpell = 0;
-                    String targetUser = "idUser";
+                    int idSpell = (int) ((Object[]) inputMessage.obj)[0];
+                    String targetUser = (String) ((Object[]) inputMessage.obj)[1];
 
                     String descr = getResources().getString(GUIFacade.getSpellDescription(idSpell));
 

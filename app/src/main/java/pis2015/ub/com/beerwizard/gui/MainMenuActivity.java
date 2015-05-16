@@ -108,6 +108,6 @@ public class MainMenuActivity extends Activity {
     public void onClick_tutorial(View vw) {
         Intent intent = new Intent(this, TutorialActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
+        //overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
     }
 }

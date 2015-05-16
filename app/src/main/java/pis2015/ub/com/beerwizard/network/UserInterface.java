@@ -39,4 +39,7 @@ public interface UserInterface {
 
     @BusMethod
     public void acceptsLevelUp(String uuid) throws BusException;
+
+    @BusMethod
+    public void castedSpell(int i, String uuid) throws BusException;
 }
