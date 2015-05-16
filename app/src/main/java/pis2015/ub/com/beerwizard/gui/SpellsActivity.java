@@ -33,8 +33,6 @@ public class SpellsActivity extends ActionBarActivity {
     String edited;
     TextView changetext2;
     String edit;
-    private int lvl;
-
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -256,6 +254,7 @@ public class SpellsActivity extends ActionBarActivity {
             }
         }
     };
+    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -287,35 +286,35 @@ public class SpellsActivity extends ActionBarActivity {
     public void onClickSpell(View v) {
         int id = v.getId();
         if((id == R.id.spell1 ) && (this.lvl>=2)){
-            Intent intent = new Intent(this, CastSpell2Activity.class);
+            Intent intent = new Intent(this, CastSpellActivity.class);
             intent.putExtra("spell", 1); //Your id
             startActivity(intent);
         }if((id == R.id.spell2)&& (this.lvl>=3)){
-            Intent intent = new Intent(this, CastSpell2Activity.class);
+            Intent intent = new Intent(this, CastSpellActivity.class);
             intent.putExtra("spell", 2); //Your id
             startActivity(intent);
         }if((id == R.id.spell3) && (this.lvl>=4)){
-            Intent intent = new Intent(this, CastSpell2Activity.class);
+            Intent intent = new Intent(this, CastSpellActivity.class);
             intent.putExtra("spell", 3); //Your id
             startActivity(intent);
         }if((id == R.id.spell4) && (this.lvl>=5)){
-            Intent intent = new Intent(this, CastSpell2Activity.class);
+            Intent intent = new Intent(this, CastSpellActivity.class);
             intent.putExtra("spell", 4); //Your id
             startActivity(intent);
         }if((id == R.id.spell5) && (this.lvl>=6)){
-            Intent intent = new Intent(this, CastSpell2Activity.class);
+            Intent intent = new Intent(this, CastSpellActivity.class);
             intent.putExtra("spell", 5); //Your id
             startActivity(intent);
         }if((id == R.id.spell6) && (this.lvl>=7)){
-            Intent intent = new Intent(this, CastSpell2Activity.class);
+            Intent intent = new Intent(this, CastSpellActivity.class);
             intent.putExtra("spell", 6); //Your id
             startActivity(intent);
         }if((id == R.id.spell7) && (this.lvl>=8)){
-            Intent intent = new Intent(this, CastSpell2Activity.class);
+            Intent intent = new Intent(this, CastSpellActivity.class);
             intent.putExtra("spell", 7); //Your id
             startActivity(intent);
         }if((id == R.id.spell8) && (this.lvl>=9)){
-            Intent intent = new Intent(this, CastSpell2Activity.class);
+            Intent intent = new Intent(this, CastSpellActivity.class);
             intent.putExtra("spell", 8); //Your id
             startActivity(intent);
         }

@@ -1,61 +1,189 @@
 package pis2015.ub.com.beerwizard.gui;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
 
-
-public class CastSpellActivity extends ActionBarActivity {
-    int idSpell;
+public class CastSpellActivity extends Activity {
+    int idSpell, idUser;
+    String textRule;
+    boolean oRule;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        Bundle b = getIntent().getExtras();
-        this.idSpell = b.getInt("id");
-        setTitle(idSpell+"");
-        setContentView(R.layout.activity_game_send_spell);
-        ListView wizards = (ListView) findViewById(R.id.wizards);
+        setContentView(R.layout.activity_cast_spell);
+        Bundle b = new Bundle();
+        b = getIntent().getExtras();
+        idSpell = b.getInt("spell");//id spell de 1 a
+        idUser = 0;
+        textRule = "";
 
-        ArrayAdapter<String> wizardList = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1,
-                getResources().getStringArray(R.array.str_wizards_test_data));
-
-        wizards.setAdapter(wizardList);
-        wizards.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                onClick_Cast();
-            }
-        });
+        //description and Quote
+        TextView description = (TextView) findViewById(R.id.descriptionText);
+        TextView title = (TextView) findViewById(R.id.titleText);
+        TextView quote = (TextView) findViewById(R.id.quoteText);
+        title.setText(GUIFacade.getSpellName(idSpell - 1));
+        description.setText(GUIFacade.getSpellDescription(idSpell - 1));
+        quote.setText(GUIFacade.getSpellQuote(idSpell - 1));
 
     }
 
+    //Event onClick
+    public void onClickCast(View v) {
+        oRule = false;
+        //En cada caso hara una cosa
+        if (idSpell == 1) {//CAN TO THE FACE
+            //SELECT USER
 
+            initPopupUser(v);
+        } else if (idSpell == 2) {//Duel
+
+            initPopupUser(v);
+        } else if (idSpell == 3) {//beerkineesis
+
+            initPopupUser(v);
+        } else if (idSpell == 4) {//Shild
+
+            initPopupAccept(v);
+        } else if (idSpell == 5) {//rule
+            oRule = true;
+            initPopupRule(v);
+
+        } else if (idSpell == 6) {//Truth
+            oRule = true;
+            initPopupUser(v);
+        } else if (idSpell == 7) {//Hat
+
+            initPopupUser(v);
+        } else if (idSpell == 8) {//all
+            initPopupAccept(v);
+        }
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_cast_spell, menu);
+        getMenuInflater().inflate(R.menu.menu_cast_spell2, menu);
         return true;
     }
 
+    public void initPopupUser(final View v) {
+        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = layoutInflater.inflate(R.layout.activity_game_users, null);
+
+
+        final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        ListView listvw_user = (ListView) popupView.findViewById(R.id.listView_users);
+        Button btCancel = (Button) popupView.findViewById(R.id.btn_cancel_user);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                GUIFacade.getAllUsers());
+        // Assign adapter to ListView
+        listvw_user.setAdapter(arrayAdapter);
+        btCancel.setOnClickListener(new Button.OnClickListener() {
+            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+
+            }
+        });
+        listvw_user.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parentAdapter, View view, int position,
+                                    long id) {
+
+/*                // We know the View is a TextView so we can cast it
+                  // IMPORTANT TO REMEMBER THIS!!
+                TextView clickedView = (TextView) view;
+*/
+                idUser = position;
+                popupWindow.dismiss();
+                if (oRule) {
+                    initPopupRule(v);
+                } else {
+                    initPopupAccept(v);
+                }
+            }
+        });
+        popupWindow.setAnimationStyle(R.style.popup_animation);
+        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
+    }
+
+
+    public void initPopupRule(View v) {
+        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = layoutInflater.inflate(R.layout.activity_game_setrule, null);
+
+
+        final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        Button btAcept = (Button) popupView.findViewById(R.id.buttonSetRule);
+        final TextView ruleView = (TextView) popupView.findViewById(R.id.textRule);
+        btAcept.setOnClickListener(new Button.OnClickListener() {
+            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+            @Override
+            public void onClick(View v) {
+                textRule = ruleView.getText().toString();
+                popupWindow.dismiss();
+                initPopupAccept(v);
+            }
+        });
+        popupWindow.setAnimationStyle(R.style.popup_animation);
+        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
+    }
+
+    public void initPopupAccept(View v) {
+        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = layoutInflater.inflate(R.layout.popup_sent_spell, null);
+
+
+        final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        TextView name = (TextView) popupView.findViewById(R.id.sent_spell_Name);
+        TextView text = (TextView) popupView.findViewById(R.id.sent_spell_text);
+        name.setText(GUIFacade.getSpellName(idSpell) + "");
+        text.setText("Are you sure want to cast " + GUIFacade.getSpellName(idSpell) + "?");
+        Button btOk = (Button) popupView.findViewById(R.id.btn_cast_spell);
+        Button btNo = (Button) popupView.findViewById(R.id.btn_NO_cast_spell);
+        btOk.setOnClickListener(new Button.OnClickListener() {
+            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                GUIFacade.castSpell(idUser, idSpell - 1, textRule);
+                finish();
+            }
+        });
+        btNo.setOnClickListener(new Button.OnClickListener() {
+            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+
+        popupWindow.setAnimationStyle(R.style.popup_animation);
+        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -69,38 +197,5 @@ public class CastSpellActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void onClick_Cast() {
-        LayoutInflater layoutInflater
-                = (LayoutInflater) getBaseContext()
-                .getSystemService(LAYOUT_INFLATER_SERVICE);
-        final View popupView = layoutInflater.inflate(R.layout.popup_sent_spell, null);
-        final PopupWindow popupWindow = new PopupWindow(
-                popupView,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        Button btn_castSpell = (Button) popupView.findViewById(R.id.btn_cast_spell);
-        btn_castSpell.setOnClickListener(new Button.OnClickListener() {
-            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
-            @Override
-            public void onClick(View v) {
-                popupWindow.setAnimationStyle(R.style.popup_animation);
-                popupWindow.dismiss();
-                finish();
-            }
-        });
-        Button btn_NO_castSpell = (Button) popupView.findViewById(R.id.btn_NO_cast_spell);
-        btn_NO_castSpell.setOnClickListener(new Button.OnClickListener() {
-            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-
-            }
-        });
-        popupWindow.showAtLocation(findViewById(R.id.layout_cast_speell), Gravity.CENTER, 0, 0);
-
-
     }
 }
