@@ -265,6 +265,12 @@ public class SpellsActivity extends ActionBarActivity {
         getSupportActionBar().setIcon(R.drawable.cara);//change the icon, avatar
         //setTitle("nick");//change the Nickname
         lvl=1;
+        int i;
+        if (savedInstanceState != null) {
+            for (i = 0; i < savedInstanceState.getInt("lvl"); i++) {
+                lvlUp();
+            }
+        }
         GameData.setSpellsActivityHandler(this.spellsHandler); // Assigns Handler to GameData
     }
 
@@ -283,6 +289,11 @@ public class SpellsActivity extends ActionBarActivity {
     public void onBackPressed() {
     }
 
+    //Save de info if it restarts
+    protected void onSaveInstanceState(Bundle icicle) {
+        super.onSaveInstanceState(icicle);
+        icicle.putLong("lvl", lvl);
+    }
     /*
     event of the spells
      */
