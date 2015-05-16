@@ -20,15 +20,16 @@ import pis2015.ub.com.beerwizard.R;
 public class CastSpell2Activity extends Activity {
     int idSpell, idUser;
     String textRule;
-    boolean send;
+    boolean oRule;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cast_spell2);
         Bundle b = new Bundle();
         b = getIntent().getExtras();
-        idSpell = b.getInt("spell");//id spell de 1 a 8
-        send = false;
+        idSpell = b.getInt("spell");//id spell de 1 a
+        idUser = 0;
+        textRule = "";
 
         //description and Quote
         TextView description = (TextView) findViewById(R.id.descriptionText);
@@ -42,59 +43,34 @@ public class CastSpell2Activity extends Activity {
 
     //Event onClick
     public void onClickCast(View v) {
-
+        oRule = false;
         //En cada caso hara una cosa
         if (idSpell == 1) {//CAN TO THE FACE
             //SELECT USER
+
             initPopupUser(v);
-            initPopupAccept(v);
-            if (send) {
-                GUIFacade.castSpell(idUser, idSpell - 1, "");
-            }
         } else if (idSpell == 2) {//Duel
+
             initPopupUser(v);
-            initPopupAccept(v);
-            if (send) {
-                GUIFacade.castSpell(idUser, idSpell - 1, "");
-            }
         } else if (idSpell == 3) {//beerkineesis
+
             initPopupUser(v);
-            initPopupAccept(v);
-            if (send) {
-                GUIFacade.castSpell(idUser, idSpell - 1, "");
-            }
         } else if (idSpell == 4) {//Shild
+
             initPopupAccept(v);
-            if (send) {
-                GUIFacade.castSpell(idUser, idSpell - 1, "");
-            }
         } else if (idSpell == 5) {//rule
+            oRule = true;
             initPopupRule(v);
-            initPopupAccept(v);
-            if (send) {
-                GUIFacade.castSpell(idUser, idSpell - 1, textRule);
-            }
+
         } else if (idSpell == 6) {//Truth
+            oRule = true;
             initPopupUser(v);
-            initPopupRule(v);
-            initPopupAccept(v);
-            if (send) {
-                GUIFacade.castSpell(idUser, idSpell - 1, textRule);
-            }
         } else if (idSpell == 7) {//Hat
+
             initPopupUser(v);
-            initPopupUser(v);
-            initPopupAccept(v);
-            if (send) {
-                GUIFacade.castSpell(idUser, idSpell - 1, textRule);
-            }
         } else if (idSpell == 8) {//all
             initPopupAccept(v);
-            if (send) {
-                GUIFacade.castSpell(idUser, idSpell - 1, "");
-            }
         }
-        if (send) finish();
 
     }
     @Override
@@ -104,7 +80,7 @@ public class CastSpell2Activity extends Activity {
         return true;
     }
 
-    public void initPopupUser(View v) {
+    public void initPopupUser(final View v) {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.activity_game_users, null);
 
@@ -130,6 +106,11 @@ public class CastSpell2Activity extends Activity {
 */
                 idUser = position;
                 popupWindow.dismiss();
+                if (oRule) {
+                    initPopupRule(v);
+                } else {
+                    initPopupAccept(v);
+                }
             }
         });
         popupWindow.setAnimationStyle(R.style.popup_animation);
@@ -153,6 +134,7 @@ public class CastSpell2Activity extends Activity {
             public void onClick(View v) {
                 textRule = ruleView.getText().toString();
                 popupWindow.dismiss();
+                initPopupAccept(v);
             }
         });
         popupWindow.setAnimationStyle(R.style.popup_animation);
@@ -177,15 +159,15 @@ public class CastSpell2Activity extends Activity {
             //                TextView wwa= (TextView)popupView.findViewById(R.id.)
             @Override
             public void onClick(View v) {
-                send = true;
                 popupWindow.dismiss();
+                GUIFacade.castSpell(idUser, idSpell - 1, textRule);
+                finish();
             }
         });
         btNo.setOnClickListener(new Button.OnClickListener() {
             //                TextView wwa= (TextView)popupView.findViewById(R.id.)
             @Override
             public void onClick(View v) {
-                send = false;
                 popupWindow.dismiss();
             }
         });
