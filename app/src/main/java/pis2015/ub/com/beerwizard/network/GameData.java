@@ -34,6 +34,10 @@ public class GameData extends Application {
         return user;
     }
 
+    public UserInterface getUser(String uuid) {
+        return users.get(uuid);
+    }
+
     public List<UserInterface> getUsers() {
         return new ArrayList<>(users.values());
     }
