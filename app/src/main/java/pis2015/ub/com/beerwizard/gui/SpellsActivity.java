@@ -87,7 +87,7 @@ public class SpellsActivity extends ActionBarActivity {
                     //We set the animation to show the popup
                     popupWindow.setAnimationStyle(R.style.popup_animation);
                     //Here we show the position where will appear the popup
-                    popupWindow.showAtLocation(findViewById(R.id.button2), Gravity.CENTER, 0, 0);
+                    popupWindow.showAtLocation(findViewById(R.id.handle), Gravity.CENTER, 0, 0);
 
                     /* TODO Alberto
                         - Crear el popUp de decidir lvlUp (lo tienes por allí en layouts)
