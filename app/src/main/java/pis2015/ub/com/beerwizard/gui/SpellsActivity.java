@@ -35,17 +35,13 @@ public class SpellsActivity extends ActionBarActivity {
     TextView changetext2;
     String edit;
     private int lvl;
-    private String idSpell;
-    private String descr;
-    private String name;
-    private String spellName;
+
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
             switch (inputMessage.what) {
                 case Constants.MSG_DECIDE_LEVEL:
                     final String targetUser1 = (String) inputMessage.obj;
-
                     /**
                      * Here we create a popup using a LayoutInflater to allow players to lvl up
                      * sending a request to another player, this player can accept the level up
@@ -61,7 +57,7 @@ public class SpellsActivity extends ActionBarActivity {
                     popupWindow.setFocusable(true);
 
                     //Now we change the text on the TextView to show WHO wants to level up
-                    final String who_lvl = GUIFacade.getUserName(0);
+                    final String who_lvl = GUIFacade.getUserName(targetUser1);
                     String texto = getResources().getString(R.string.level_up_popup_name);
                     String strMeatMsg = String.format(texto, who_lvl);
                     TextView changetext = (TextView) popupView.findViewById(R.id.name_lvl);
@@ -112,6 +108,17 @@ public class SpellsActivity extends ActionBarActivity {
                     lvlDown();
                     break;
                 case Constants.MSG_CASTED_SPELL:
+                    // Needs to be taken out from Message - just default value
+                    int idSpell = 0;
+                    String targetUser = "idUser";
+
+                    String descr = getResources().getString(GUIFacade.getSpellDescription(idSpell));
+
+                    // idSpell needs to changed to targetUser
+                    String name = GUIFacade.getUserName(targetUser);
+
+                    String spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
+
                     /**
                      * Here we create a popup using a LayoutInflater to allow players to lvl up
                      * sending a request to another player, this player can accept the level up
@@ -128,9 +135,9 @@ public class SpellsActivity extends ActionBarActivity {
 
                     //here we edit the popup to show what spell the casted
                     switch (idSpell) {
-                        case "SpellCanToTheFace":
+                        case 0: // Can to the face
                             descr = getResources().getString(R.string.short_desc_can);
-                            name = GUIFacade.getUserName(0);
+                            name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(0));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
@@ -145,9 +152,9 @@ public class SpellsActivity extends ActionBarActivity {
 
                             break;
 
-                        case "SpellWizardDuel":
+                        case 1: // Wizard Duel
                             descr = getResources().getString(R.string.short_desc_duel);
-                            name = GUIFacade.getUserName(0);
+                            name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(1));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
@@ -161,9 +168,9 @@ public class SpellsActivity extends ActionBarActivity {
                             changetext2.setText(edited);
                             break;
 
-                        case "SpellBeerekinesis":
+                        case 2: // Beerekinesis
                             descr = getResources().getString(R.string.short_desc_beerk);
-                            name = GUIFacade.getUserName(0);
+                            name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(2));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
@@ -176,9 +183,10 @@ public class SpellsActivity extends ActionBarActivity {
                             edited = String.format(edit, descr);
                             changetext2.setText(edited);
                             break;
-                        case "SpellTruthOrShot":
+
+                        case 3: // Shield
                             descr = getResources().getString(R.string.short_desc_truth);
-                            name = GUIFacade.getUserName(0);
+                            name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(6));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
@@ -191,9 +199,10 @@ public class SpellsActivity extends ActionBarActivity {
                             edited = String.format(edit, descr);
                             changetext2.setText(edited);
                             break;
-                        case "SpellHatOfShame":
+
+                        case 4: // Create Rule
                             descr = getResources().getString(R.string.short_desc_hat);
-                            name = GUIFacade.getUserName(0);
+                            name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(7));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
@@ -206,9 +215,10 @@ public class SpellsActivity extends ActionBarActivity {
                             edited = String.format(edit, descr);
                             changetext2.setText(edited);
                             break;
-                        case "SpellAllInShot":
+
+                        case 5: // Truth or shot
                             descr = getResources().getString(R.string.short_desc_all);
-                            name = GUIFacade.getUserName(0);
+                            name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(8));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
@@ -220,6 +230,12 @@ public class SpellsActivity extends ActionBarActivity {
                             changetext2 = (TextView) popupView2.findViewById(R.id.order);
                             edited = String.format(edit, descr);
                             changetext2.setText(edited);
+                            break;
+
+                        case 6: // Hat of Shame:
+                            break;
+
+                        case 7: // All in Shot
                             break;
                     }
 
@@ -244,7 +260,6 @@ public class SpellsActivity extends ActionBarActivity {
                             - Por ejemplo,
                      */
 
-                    ;
                     break;
             }
         }

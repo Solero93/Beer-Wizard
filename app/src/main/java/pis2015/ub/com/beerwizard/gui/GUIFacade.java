@@ -47,13 +47,12 @@ public class GUIFacade {
 
     /**
      * Returns the name of a User
-     *
-     * @param userPosition
-     * @return User Name
+     * @param idUser
+     * @return
      */
-    static String getUserName(int userPosition) {
-        return "UserK";
-        //return NetworkHelper.getUser(userPosition);
+    static String getUserName(String idUser) {
+        return "Userk";
+        //return NetworkHelper.getUser(idUser);
     }
 
     /**
@@ -159,22 +158,15 @@ public class GUIFacade {
      *
      * @param idSpell      - ID of spell to cast
      * @param param       - possible parametres (null if there aren't any)
-     * @param idTargetUser - ID of User to cast spell on (null if it's self inflicted)
+     * @param userPosition - ID of User to cast spell on (null if it's self inflicted)
      */
-    static void castSpell(int idTargetUser, int idSpell, String param) {
+    static void castSpell(int userPosition, int idSpell, String param) {
+        //NetworkHelper.getUserId(userPosition);
         //NetworkHelper.castSpell(idTargetUser, idSpell, param);
     }
 
-    public static ArrayList<String> getAllGames() {
-        ArrayList<String> tmp = new ArrayList<>();
-        tmp.add("A");
-        tmp.add("B");
-        return tmp;
-    }
-
-
-
-    /* http://stackoverflow.com/questions/17233038/htargetUserow-to-implement-synchronous-method-timeouts-in-java
+    /*
+    http://stackoverflow.com/questions/17233038/htargetUserow-to-implement-synchronous-method-timeouts-in-java
 
     ExecutorService executor = Executors.newSingleThreadExecutor();
     Future<String> future = executor.submit(new Callable() {
