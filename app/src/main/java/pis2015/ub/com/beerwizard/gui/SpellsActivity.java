@@ -33,7 +33,6 @@ public class SpellsActivity extends ActionBarActivity {
     String edited;
     TextView changetext2;
     String edit;
-    private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -243,7 +242,7 @@ public class SpellsActivity extends ActionBarActivity {
                     //We set the animation to show the popup
                     popupWindow2.setAnimationStyle(R.style.popup_animation);
                     //Here we show the position where will appear the popup
-                    popupWindow2.showAtLocation(findViewById(R.id.handle), Gravity.CENTER, 0, 0);
+                    popupWindow2.showAtLocation(findViewById(R.id.button2), Gravity.CENTER, 0, 0);
 
                     /* TODO Alberto
                         - Crear el popUp de cuándo alguien te lanzó hechizo (lo tienes por allí en layouts)
@@ -255,6 +254,7 @@ public class SpellsActivity extends ActionBarActivity {
             }
         }
     };
+    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -278,6 +278,9 @@ public class SpellsActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         return super.onCreateOptionsMenu(menu);
 
+    }
+
+    public void onBackPressed() {
     }
 
     /*
