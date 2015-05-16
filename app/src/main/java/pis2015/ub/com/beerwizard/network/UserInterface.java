@@ -42,4 +42,10 @@ public interface UserInterface {
 
     @BusMethod
     public void castedSpell(int i, String uuid) throws BusException;
+
+    @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
+    public boolean getShield() throws BusException;
+
+    @BusProperty
+    public void setShield(boolean bool) throws BusException;
 }

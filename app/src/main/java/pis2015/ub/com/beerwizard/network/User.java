@@ -14,6 +14,7 @@ public class User implements UserInterface, BusObject {
     private String name;
     private int level;
     private int avatarPhoto;
+    private boolean hasShield;
 
     public User() {
         this("");
@@ -93,5 +94,13 @@ public class User implements UserInterface, BusObject {
         Message msg = handler.obtainMessage(Constants.MSG_CASTED_SPELL);
         msg.obj = new Object[]{i, uuid};
         handler.sendMessage(msg);
+    }
+
+    public boolean getShield() {
+        return this.hasShield;
+    }
+
+    public void setShield(boolean hasShield) {
+        this.hasShield = hasShield;
     }
 }
