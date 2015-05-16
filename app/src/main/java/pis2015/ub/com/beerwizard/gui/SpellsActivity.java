@@ -23,7 +23,6 @@ import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.network.Constants;
 import pis2015.ub.com.beerwizard.network.GameData;
 
-
 /*
 The activity where you can select a spell.
  */
@@ -99,15 +98,14 @@ public class SpellsActivity extends ActionBarActivity {
 
                     break;
                 case Constants.MSG_LEVEL_UP:
-                    String targetUser2 = (String) inputMessage.obj;
                     lvlUp();
                     break;
 
                 case Constants.MSG_LEVEL_DOWN:
-                    String targetUser3 = (String) inputMessage.obj;
                     lvlDown();
                     break;
                 case Constants.MSG_CASTED_SPELL:
+
                     // Needs to be taken out from Message - just default value
                     int idSpell = 0;
                     String targetUser = "idUser";
@@ -138,7 +136,7 @@ public class SpellsActivity extends ActionBarActivity {
                         case 0: // Can to the face
                             descr = getResources().getString(R.string.short_desc_can);
                             name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(0));
+                            spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
                             changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
@@ -155,7 +153,7 @@ public class SpellsActivity extends ActionBarActivity {
                         case 1: // Wizard Duel
                             descr = getResources().getString(R.string.short_desc_duel);
                             name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(1));
+                            spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
                             changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
@@ -184,10 +182,10 @@ public class SpellsActivity extends ActionBarActivity {
                             changetext2.setText(edited);
                             break;
 
-                        case 3: // Shield
+                        case 6: // Truth
                             descr = getResources().getString(R.string.short_desc_truth);
                             name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(6));
+                            spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
                             changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
@@ -200,10 +198,10 @@ public class SpellsActivity extends ActionBarActivity {
                             changetext2.setText(edited);
                             break;
 
-                        case 4: // Create Rule
+                        case 7: // Hat of Shame
                             descr = getResources().getString(R.string.short_desc_hat);
                             name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(7));
+                            spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
                             changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
@@ -216,10 +214,10 @@ public class SpellsActivity extends ActionBarActivity {
                             changetext2.setText(edited);
                             break;
 
-                        case 5: // Truth or shot
+                        case 8: // All in Shot
                             descr = getResources().getString(R.string.short_desc_all);
                             name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(8));
+                            spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
 
                             edit = getResources().getString(R.string.popup_received_spell_user_spell);
                             changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
@@ -230,12 +228,6 @@ public class SpellsActivity extends ActionBarActivity {
                             changetext2 = (TextView) popupView2.findViewById(R.id.order);
                             edited = String.format(edit, descr);
                             changetext2.setText(edited);
-                            break;
-
-                        case 6: // Hat of Shame:
-                            break;
-
-                        case 7: // All in Shot
                             break;
                     }
 
