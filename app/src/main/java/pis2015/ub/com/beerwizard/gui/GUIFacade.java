@@ -47,11 +47,15 @@ public class GUIFacade {
 
     /**
      * Returns the name of a User
-     * @param idUser
+     * @param uuid the uuid of the user
      * @return
      */
-    static String getUserName(String idUser) {
-        return "Userk";
+    static String getUserName(String uuid) {
+        try {
+            return GameData.getInstance().getUser(uuid).getName();
+        } catch (BusException ignored) {
+            return "";
+        }
         //return NetworkHelper.getUser(idUser);
     }
 
