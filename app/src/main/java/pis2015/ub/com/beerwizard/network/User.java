@@ -87,4 +87,11 @@ public class User implements UserInterface, BusObject {
         msg.obj = uuid;
         handler.sendMessage(msg);
     }
+
+    public void castedSpell(int i, String uuid) {
+        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        Message msg = handler.obtainMessage(Constants.MSG_CASTED_SPELL);
+        msg.obj = new Object[]{i, uuid};
+        handler.sendMessage(msg);
+    }
 }
