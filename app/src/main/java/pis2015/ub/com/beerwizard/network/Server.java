@@ -153,6 +153,7 @@ public class Server extends Service {
                 case JOIN_GAME:
                     ProxyBusObject obj = (ProxyBusObject) msg.obj;
                     obj.enablePropertyCaching();
+                    obj.setReplyTimeout(5000);
                     UserInterface user = obj.getInterface(UserInterface.class);
                     try {
                         if (user.getUUID().equals(Constants.UUID_STRING))

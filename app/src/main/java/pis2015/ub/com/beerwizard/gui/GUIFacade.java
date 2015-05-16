@@ -16,7 +16,6 @@ import pis2015.ub.com.beerwizard.network.UserInterface;
 /**
  * Façade class that has all the "services" the GUI can call.
  */
-//TODO Add Exception to ServerTimeOut
 public class GUIFacade {
     private static GUIFacade ourInstance = new GUIFacade();
 
@@ -56,7 +55,6 @@ public class GUIFacade {
         } catch (BusException ignored) {
             return "";
         }
-        //return NetworkHelper.getUser(idUser);
     }
 
     /**
@@ -84,7 +82,7 @@ public class GUIFacade {
     static void modifyUserProfile(String name, int idAvatar) {
         User user = GameData.getInstance().getUser();
         user.setName(name);
-        // user.setAvatar(idAvatar);
+        user.setAvatar(idAvatar);
     }
 
     /**
@@ -106,8 +104,8 @@ public class GUIFacade {
     /**
      * Levels down the User
      */
-    static void levelDown() {
-        //NetworkHelper.levelDown();
+    static void levelDown(String targetUser) {
+        NetworkHelper.levelDown(targetUser);
     }
 
     /**
@@ -168,23 +166,4 @@ public class GUIFacade {
         //NetworkHelper.getUserId(userPosition);
         //NetworkHelper.castSpell(idTargetUser, idSpell, param);
     }
-
-    /*
-    http://stackoverflow.com/questions/17233038/htargetUserow-to-implement-synchronous-method-timeouts-in-java
-
-    ExecutorService executor = Executors.newSingleThreadExecutor();
-    Future<String> future = executor.submit(new Callable() {
-
-        public String call() throws Exception {
-            //do operations you want
-            return "OK";
-        }
-    });
-    try {
-        System.out.println(future.get(2, TimeUnit.SECONDS)); //timeout is in 2 seconds
-    } catch (TimeoutException e) {
-        System.err.println("Timeout");
-    }
-    executor.shutdownNow();
-    */
 }
