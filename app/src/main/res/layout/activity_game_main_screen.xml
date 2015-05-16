@@ -1,7 +1,6 @@
-<RelativeLayout
-    android:id="@+id/spellsLayaut"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spellsLayaut"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,46 +10,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="pis2015.ub.com.beerwizard.SpellsActivity">
-
-    <SlidingDrawer
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:content="@+id/content"
-        android:handle="@+id/handle"
-        android:id="@+id/slidingDrawer"
-        android:layout_alignParentTop="false"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentRight="false">
-
-        <LinearLayout
-            android:id="@+id/content"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/handle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rules"
-                android:layout_gravity="center_horizontal" />
-        <LinearLayout
-            android:id="@+id/rules"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:background="@color/yellow">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rule"
-                android:id="@+id/textView4" />
-        </LinearLayout>
-        </LinearLayout>
-
-    </SlidingDrawer>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -124,9 +83,9 @@
                         android:background="@drawable/fondo_spell">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
 
                             <Space
                                 android:layout_width="20px"
@@ -135,10 +94,10 @@
                             <FrameLayout
                                 android:layout_width="138dp"
                                 android:layout_height="125dp"
-                                android:layout_alignRight="@+id/textViewSpell1"
-                                android:layout_alignEnd="@+id/textViewSpell1">
+                                android:layout_alignEnd="@+id/textViewSpell1"
+                                android:layout_alignRight="@+id/textViewSpell1">
 
-                                <ImageView
+                            <ImageView
                                     android:id="@+id/imageViewSpell1"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -151,10 +110,10 @@
                                 android:layout_height="fill_parent"
                                 android:layout_below="@+id/imageViewSpell1"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
                                 android:gravity="center"
                                 android:text="@string/lock1"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:layout_gravity="center_horizontal" />
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -181,9 +140,9 @@
                         android:background="@drawable/fondo_spell">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
 
                             <Space
                                 android:layout_width="20px"
@@ -192,10 +151,10 @@
                             <FrameLayout
                                 android:layout_width="138dp"
                                 android:layout_height="125dp"
-                                android:layout_alignRight="@+id/textViewSpell2"
-                                android:layout_alignEnd="@+id/textViewSpell2">
+                                android:layout_alignEnd="@+id/textViewSpell2"
+                                android:layout_alignRight="@+id/textViewSpell2">
 
-                                <ImageView
+                            <ImageView
                                     android:id="@+id/imageViewSpell2"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -208,10 +167,10 @@
                                 android:layout_height="fill_parent"
                                 android:layout_below="@+id/imageViewSpell2"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
                                 android:gravity="center"
                                 android:text="@string/lock2"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:layout_gravity="center_horizontal" />
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -238,9 +197,9 @@
                         android:background="@drawable/fondo_spell">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
 
                             <Space
                                 android:layout_width="20px"
@@ -249,10 +208,10 @@
                             <FrameLayout
                                 android:layout_width="138dp"
                                 android:layout_height="125dp"
-                                android:layout_alignRight="@+id/textViewSpell3"
-                                android:layout_alignEnd="@+id/textViewSpell3">
+                                android:layout_alignEnd="@+id/textViewSpell3"
+                                android:layout_alignRight="@+id/textViewSpell3">
 
-                                <ImageView
+                            <ImageView
                                     android:id="@+id/imageViewSpell3"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -265,10 +224,10 @@
                                 android:layout_height="fill_parent"
                                 android:layout_below="@+id/imageViewSpell3"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
                                 android:gravity="center"
                                 android:text="@string/lock3"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:layout_gravity="center_horizontal" />
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -294,9 +253,9 @@
                         android:background="@drawable/fondo_spell">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
 
                             <Space
                                 android:layout_width="20px"
@@ -305,10 +264,10 @@
                             <FrameLayout
                                 android:layout_width="138dp"
                                 android:layout_height="125dp"
-                                android:layout_alignRight="@+id/textViewSpell4"
-                                android:layout_alignEnd="@+id/textViewSpell4">
+                                android:layout_alignEnd="@+id/textViewSpell4"
+                                android:layout_alignRight="@+id/textViewSpell4">
 
-                                <ImageView
+                            <ImageView
                                     android:id="@+id/imageViewSpell4"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -321,10 +280,10 @@
                                 android:layout_height="fill_parent"
                                 android:layout_below="@+id/imageViewSpell4"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
                                 android:gravity="center"
                                 android:text="@string/lock4"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:layout_gravity="center_horizontal" />
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -351,9 +310,9 @@
                         android:background="@drawable/fondo_spell">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
 
                             <Space
                                 android:layout_width="20px"
@@ -362,10 +321,10 @@
                             <FrameLayout
                                 android:layout_width="138dp"
                                 android:layout_height="125dp"
-                                android:layout_alignRight="@+id/textViewSpell5"
-                                android:layout_alignEnd="@+id/textViewSpell5">
+                                android:layout_alignEnd="@+id/textViewSpell5"
+                                android:layout_alignRight="@+id/textViewSpell5">
 
-                                <ImageView
+                            <ImageView
                                     android:id="@+id/imageViewSpell5"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -378,10 +337,10 @@
                                 android:layout_height="fill_parent"
                                 android:layout_below="@+id/imageViewSpell5"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
                                 android:gravity="center"
                                 android:text="@string/lock5"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:layout_gravity="center_horizontal" />
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -408,9 +367,9 @@
                         android:background="@drawable/fondo_spell">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
 
                             <Space
                                 android:layout_width="20px"
@@ -419,10 +378,10 @@
                             <FrameLayout
                                 android:layout_width="138dp"
                                 android:layout_height="125dp"
-                                android:layout_alignRight="@+id/textViewSpell6"
-                                android:layout_alignEnd="@+id/textViewSpell6">
+                                android:layout_alignEnd="@+id/textViewSpell6"
+                                android:layout_alignRight="@+id/textViewSpell6">
 
-                                <ImageView
+                            <ImageView
                                     android:id="@+id/imageViewSpell6"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -435,10 +394,10 @@
                                 android:layout_height="fill_parent"
                                 android:layout_below="@+id/imageViewSpell6"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
                                 android:gravity="center"
                                 android:text="@string/lock6"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:layout_gravity="center_horizontal" />
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -465,9 +424,9 @@
                         android:background="@drawable/fondo_spell">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
 
                             <Space
                                 android:layout_width="20px"
@@ -476,10 +435,10 @@
                             <FrameLayout
                                 android:layout_width="138dp"
                                 android:layout_height="125dp"
-                                android:layout_alignRight="@+id/textViewSpell7"
-                                android:layout_alignEnd="@+id/textViewSpell7">
+                                android:layout_alignEnd="@+id/textViewSpell7"
+                                android:layout_alignRight="@+id/textViewSpell7">
 
-                                <ImageView
+                            <ImageView
                                     android:id="@+id/imageViewSpell7"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -492,10 +451,10 @@
                                 android:layout_height="fill_parent"
                                 android:layout_below="@+id/imageViewSpell7"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
                                 android:gravity="center"
                                 android:text="@string/lock7"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:layout_gravity="center_horizontal" />
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -521,9 +480,9 @@
                         android:background="@drawable/fondo_spell">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
 
                             <Space
                                 android:layout_width="20px"
@@ -532,10 +491,10 @@
                             <FrameLayout
                                 android:layout_width="138dp"
                                 android:layout_height="125dp"
-                                android:layout_alignRight="@+id/textViewSpell8"
-                                android:layout_alignEnd="@+id/textViewSpell8">
+                                android:layout_alignEnd="@+id/textViewSpell8"
+                                android:layout_alignRight="@+id/textViewSpell8">
 
-                                <ImageView
+                            <ImageView
                                     android:id="@+id/imageViewSpell8"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -548,10 +507,10 @@
                                 android:layout_height="fill_parent"
                                 android:layout_below="@+id/imageViewSpell8"
                                 android:layout_centerHorizontal="true"
+                                android:layout_gravity="center_horizontal"
                                 android:gravity="center"
                                 android:text="@string/lock8"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:layout_gravity="center_horizontal" />
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -566,5 +525,46 @@
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>
+
+    <SlidingDrawer
+        android:id="@+id/slidingDrawer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:content="@+id/content"
+        android:handle="@+id/handle">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/handle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Rules" />
+
+            <LinearLayout
+                android:id="@+id/rules"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/yellow"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rule" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </SlidingDrawer>
 
 </RelativeLayout>
