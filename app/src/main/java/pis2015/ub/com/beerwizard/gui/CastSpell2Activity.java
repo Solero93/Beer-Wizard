@@ -162,7 +162,7 @@ public class CastSpell2Activity extends Activity {
 
     public void initPopupAccept(View v) {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = layoutInflater.inflate(R.layout.activity_game_send_spell, null);
+        View popupView = layoutInflater.inflate(R.layout.popup_sent_spell, null);
 
 
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
