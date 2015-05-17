@@ -5,7 +5,11 @@ import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 
+import org.alljoyn.bus.BusAttachment;
 import org.alljoyn.bus.BusException;
+import org.alljoyn.bus.SignalEmitter;
+
+import pis2015.ub.com.beerwizard.game.SpellManager;
 
 public class NetworkHelper {
 
@@ -48,9 +52,18 @@ public class NetworkHelper {
     }
 
     public static void castSpell(String idCasterUser, String idTargetUser, int idSpell, String params) {
-        UserInterface user = GameData.getInstance().getUser(idTargetUser);
         try {
-            user.castedSpell(idSpell, idCasterUser);
+            if (idTargetUser == null) {
+                if (idSpell == SpellManager.CREATE_RULE) {
+                    SignalEmitter emitter = new SignalEmitter(GameData.getInstance().getUser(), BusAttachment.SESSION_ID_ALL_HOSTED, SignalEmitter.GlobalBroadcast.Off);
+                    UserInterface userInterface = emitter.getInterface(UserInterface.class);
+                    userInterface.updateRule(GameData.getInstance().getRule());
+                }
+                return;
+            } else {
+                UserInterface user = GameData.getInstance().getUser(idTargetUser);
+                user.castedSpell(idSpell, idCasterUser);
+            }
         } catch (BusException e) {
             e.printStackTrace();
         }
