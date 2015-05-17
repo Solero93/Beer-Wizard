@@ -140,6 +140,19 @@ public class CastSpellActivity extends Activity {
 
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
+        TextView titulo = (TextView) findViewById(R.id.textRule);
+        switch (idSpell) {
+            case SpellManager.WIZARD_DUEL:
+                titulo.setText("Write the duel");
+                break;
+            case SpellManager.CREATE_RULE:
+                titulo.setText("Write the rule");
+                break;
+            case SpellManager.TRUTH_OR_SHOT:
+                titulo.setText("Write the truth");
+                break;
+
+        }
         Button btAcept = (Button) popupView.findViewById(R.id.buttonSetRule);
         final EditText ruleView = (EditText) popupView.findViewById(R.id.editTextRule);
         btAcept.setOnClickListener(new Button.OnClickListener() {

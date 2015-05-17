@@ -16,7 +16,7 @@
     <string name="title_activity_cast_spell">Cast Spell</string>
 
 
-    <string name="rule">Not Rule aviable</string>
+    <string name="rule">Not Rule jet</string>
     <!-- Intro Strings-->
     <string name="lbl_tap_to_begin">Tap to beergin!</string>
 
@@ -95,7 +95,7 @@
 
     <!-- Spell3 text-->
     <string name="lock3">Unlock \n lvl. 4</string>
-    <string name="title_spell3">BEEREKINESIS</string>
+    <string name="title_spell3">BEER-\nEKINESIS</string>
     <string name="description_text_spell3">Retrive a beer through Magic, ie,\n making someone get you a beer</string>
     <string name="description_quote_spell3">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
