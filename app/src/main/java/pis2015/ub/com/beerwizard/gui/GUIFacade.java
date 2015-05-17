@@ -58,6 +58,14 @@ public class GUIFacade {
     }
 
     /**
+     * Returns the name of the current User
+     * @return User's Name
+     */
+    static String getUserName() {
+        return GameData.getInstance().getUser().getName();
+    }
+
+    /**
      * Creates a GameData with a given name.
      *
      * @param gameName - name you want the GameData to have
