@@ -38,6 +38,8 @@ public class ProfileActivity extends Activity {
         setContentView(R.layout.activity_main_menu_profile);
         Button btn_avatarChooser;
         final FrameLayout block = null;
+        ((EditText) findViewById(R.id.profileName)).setText(GUIFacade.getUserName());
+
 
         Button end_profile = (Button) findViewById(R.id.btn_back);
         end_profile.setOnClickListener(new Button.OnClickListener() {
