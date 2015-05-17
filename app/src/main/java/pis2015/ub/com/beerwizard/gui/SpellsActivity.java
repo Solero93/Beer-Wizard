@@ -105,7 +105,7 @@ public class SpellsActivity extends ActionBarActivity {
                     String targetUser = (String) ((Object[]) inputMessage.obj)[1];
                     /*
                      * TODO Alberto -> el param tiene el texto a mostrar
-                     * Mételo en TruthOrShot y WizardDuel para que muestren en el popUp
+                     * MÃ©telo en TruthOrShot y WizardDuel para que muestren en el popUp
                      */
                     String param = (String) ((Object[]) inputMessage.obj)[2];
 
@@ -325,7 +325,7 @@ public class SpellsActivity extends ActionBarActivity {
 
 
                     /*
-                    * En funcion del botón:
+                    * En funcion del botÃ³n:
                     *   User1 click:
                     *       GUIFacade.levelUp(user1)
                     *       GUIFacade.levelDown(user2)

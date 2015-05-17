@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
+import pis2015.ub.com.beerwizard.network.Constants;
 import pis2015.ub.com.beerwizard.network.GameData;
 import pis2015.ub.com.beerwizard.network.NetworkHelper;
 import pis2015.ub.com.beerwizard.network.User;
@@ -51,6 +52,8 @@ public class GUIFacade {
      */
     static String getUserName(String uuid) {
         try {
+            if (uuid.equals(Constants.UUID_STRING))
+                return GameData.getUser().getName();
             return GameData.getUser(uuid).getName();
         } catch (BusException ignored) {
             return "";
