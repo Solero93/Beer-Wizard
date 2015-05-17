@@ -20,33 +20,38 @@
 
     <TableRow>
 
-        <TextView
-            android:id="@+id/duel_what"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/duel_what" />
     </TableRow>
 
     <TableRow>
 
-        <TextView
-            android:gravity="center"
-            android:text="@string/level_up_boss_popup_eff" />
     </TableRow>
 
     <TableRow>
 
         <Button
-            android:id="@+id/btn_got"
+            android:id="@+id/player1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.13"
             android:onClick="onClick_newGame"
-            android:text="@string/level_up_boss_popup_btn_fight" />
+            android:text="@string/duel_user1" />
 
 
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/player2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.13"
+            android:onClick="onClick_newGame"
+            android:text="@string/duel_user1" />
     </TableRow>
 
 

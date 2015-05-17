@@ -263,11 +263,11 @@ public class SpellsActivity extends ActionBarActivity {
                     ruleText.setText(newRule);
                     break;
                 case Constants.MSG_DECIDE_DUEL:
-                    String user1 = (String) ((Object[]) inputMessage.obj)[0];
-                    String user1_name = GUIFacade.getUserName(user1);
+                    final String user1 = (String) ((Object[]) inputMessage.obj)[0];
+                    final String user1_name = GUIFacade.getUserName(user1);
 
-                    String user2 = (String) ((Object[]) inputMessage.obj)[1];
-                    String user2_name = GUIFacade.getUserName(user2);
+                    final String user2 = (String) ((Object[]) inputMessage.obj)[1];
+                    final String user2_name = GUIFacade.getUserName(user2);
 
                     /*
                     * TODO Alberto -> crear popUp para decidir duelo
@@ -282,26 +282,37 @@ public class SpellsActivity extends ActionBarActivity {
                     //Time to only interact with the popup
                     popupWindow3.setFocusable(true);
 
-                    edit = getResources().getString(R.string.duel_info);
-                    changetext2 = (TextView) popupView3.findViewById(R.id.name_duel);
+                    edit = getResources().getString(R.string.duel_user1);
+                    changetext2 = (Button) popupView3.findViewById(R.id.player1);
                     edited = String.format(edit, user1_name);
                     changetext2.setText(edited);
 
-                    edit = getResources().getString(R.string.duel_what);
-                    changetext2 = (TextView) popupView3.findViewById(R.id.duel_what);
-                    //edited = String.format(edit, param);
+                    edit = getResources().getString(R.string.duel_user2);
+                    changetext2 = (Button) popupView3.findViewById(R.id.player2);
+                    edited = String.format(edit, user2_name);
                     changetext2.setText(edited);
 
-                    Button got1 = (Button) popupView3.findViewById(R.id.btn_got);
-                    got1.setOnClickListener(new Button.OnClickListener() {
+                    Button win1 = (Button) popupView3.findViewById(R.id.player1);
+                    Button win2 = (Button) popupView3.findViewById(R.id.player2);
+                    win1.setOnClickListener(new Button.OnClickListener() {
 
                         @Override
                         public void onClick(View v) {
+                            GUIFacade.levelUp(user1);
+                            GUIFacade.levelDown(user2);
+                            popupWindow3.dismiss();
+                        }
 
+                    });
+                    win2.setOnClickListener(new Button.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            GUIFacade.levelUp(user2);
+                            GUIFacade.levelDown(user1);
                             popupWindow3.dismiss();
                         }
                     });
-
 
                     //We set the animation to show the popup
                     popupWindow3.setAnimationStyle(R.style.popup_animation);

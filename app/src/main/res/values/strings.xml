@@ -180,8 +180,8 @@
     <string name="profile_change_name">Set your profile name</string>
 
     <!-- popup_duel texts-->
-    <string name="duel_info">%1$s wants a duel!</string>
+    <string name="duel_info">Who won the duel?</string>
     <string name="duel_what">Now you must %1$s</string>
-    <string name="duel_user1"></string>
-    <string name="duel_user2"></string>
+    <string name="duel_user1">%1$s</string>
+    <string name="duel_user2">%1$s</string>
 </resources>
