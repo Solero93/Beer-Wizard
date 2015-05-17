@@ -100,13 +100,8 @@ public class SpellsActivity extends ActionBarActivity {
                     break;
                 case Constants.MSG_CASTED_SPELL:
 
-                    // Needs to be taken out from Message - just default value
                     int idSpell = (int) ((Object[]) inputMessage.obj)[0];
                     String targetUser = (String) ((Object[]) inputMessage.obj)[1];
-                    /*
-                     * TODO Alberto -> el param tiene el texto a mostrar
-                     * Mételo en TruthOrShot y WizardDuel para que muestren en el popUp
-                     */
                     String param = (String) ((Object[]) inputMessage.obj)[2];
 
 
@@ -269,10 +264,6 @@ public class SpellsActivity extends ActionBarActivity {
                     final String user2 = (String) ((Object[]) inputMessage.obj)[1];
                     final String user2_name = GUIFacade.getUserName(user2);
 
-                    /*
-                    * TODO Alberto -> crear popUp para decidir duelo
-                    * Who won? "User1" o "User2"?
-                     */
                     //Here we create the layout inflater
                     LayoutInflater layoutInflater3 = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                     //Here we associate the layout inflater with the layout we need, in this case popup_lvlup
@@ -319,20 +310,6 @@ public class SpellsActivity extends ActionBarActivity {
                     //Here we show the position where will appear the popup
                     popupWindow3.showAtLocation(findViewById(R.id.handle), Gravity.CENTER, 0, 0);
 
-
-
-
-
-
-                    /*
-                    * En funcion del botón:
-                    *   User1 click:
-                    *       GUIFacade.levelUp(user1)
-                    *       GUIFacade.levelDown(user2)
-                    *   User2 click:
-                        *   GUIFacade.levelUp(user2)
-                        *   GUIFacade.levelDown(user1)
-                     */
                     break;
 
             }
@@ -459,9 +436,9 @@ public class SpellsActivity extends ActionBarActivity {
             lvl--;
             ImageView image = (ImageView) findViewById(tImage[lvl - 1]);
             TextView text = (TextView) findViewById(tText[lvl - 1]);
-                textLvl.setText("Level " + lvl);
-                text.setText(GUIFacade.getSpellLockedText(lvl - 1));
-                image.setImageResource(R.drawable.candado);
+            textLvl.setText("Level " + lvl);
+            text.setText(GUIFacade.getSpellLockedText(lvl - 1));
+            image.setImageResource(R.drawable.candado);
         }
     }
 
