@@ -18,4 +18,6 @@ public class Constants {
     public static final int MSG_LEVEL_UP = 1;
     public static final int MSG_LEVEL_DOWN = 2;
     public static final int MSG_CASTED_SPELL = 3;
+    public static final String INTERFACE_NAME = "pis2015.ub.com.beerwizard.user";
+    public static final int MSG_UPDATE_RULE = 4;
 }

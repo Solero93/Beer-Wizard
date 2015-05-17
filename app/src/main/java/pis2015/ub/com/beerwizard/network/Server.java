@@ -18,6 +18,7 @@ import org.alljoyn.bus.ProxyBusObject;
 import org.alljoyn.bus.SessionOpts;
 import org.alljoyn.bus.SessionPortListener;
 import org.alljoyn.bus.Status;
+import org.alljoyn.bus.annotation.BusSignalHandler;
 
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
@@ -57,11 +58,19 @@ public class Server extends Service {
         return null;
     }
 
+    @BusSignalHandler(iface = Constants.INTERFACE_NAME, signal = "updateRule")
+    public void updateRule(String newRule) {
+        Message msg = busHandler.obtainMessage(BusHandler.UPDATE_RULE);
+        msg.obj = newRule;
+        busHandler.sendMessage(msg);
+    }
+
     public class BusHandler extends Handler {
         public static final int CONNECT = 1;
         public static final int DISCONNECT = 2;
         public static final int LEVEL_UP_USER = 3;
         public static final int JOIN_GAME = 4;
+        public static final int UPDATE_RULE = 5;
         private static final short CONTACT_PORT = 42;
 
         private BusAttachment mBus;
@@ -181,6 +190,12 @@ public class Server extends Service {
                     } catch (BusException e) {
                         Log.e(TAG + "LevelUp", e.getMessage());
                     }
+                    break;
+                case UPDATE_RULE:
+                    String newRule = (String) msg.obj;
+                    GameData.getInstance().setRule(newRule);
+                    Handler h = GameData.getInstance().getSpellsActivityHandler();
+                    h.sendMessage(h.obtainMessage(Constants.MSG_UPDATE_RULE));
                     break;
                 default:
                     super.handleMessage(msg);
