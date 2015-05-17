@@ -32,7 +32,7 @@ public class GUIFacade {
      * @return List of all Users in current GameData
      */
     static List<String> getAllUsers() {
-        List<UserInterface> users = GameData.getInstance().getUsers();
+        List<UserInterface> users = GameData.getUsers();
         ArrayList<String> array = new ArrayList<>();
         for (UserInterface user : users) {
             try {
@@ -51,7 +51,7 @@ public class GUIFacade {
      */
     static String getUserName(String uuid) {
         try {
-            return GameData.getInstance().getUser(uuid).getName();
+            return GameData.getUser(uuid).getName();
         } catch (BusException ignored) {
             return "";
         }
@@ -62,7 +62,7 @@ public class GUIFacade {
      * @return User's Name
      */
     static String getUserName() {
-        return GameData.getInstance().getUser().getName();
+        return GameData.getUser().getName();
     }
 
     /**
@@ -71,14 +71,14 @@ public class GUIFacade {
      * @return
      */
     static boolean haveShield() {
-        return GameData.getInstance().getUser().getShield();
+        return GameData.getUser().getShield();
     }
 
     /**
      * Breaks shield of User
      */
     static void breakShield() {
-        GameData.getInstance().getUser().setShield(false);
+        GameData.getUser().setShield(false);
     }
 
     /**
@@ -104,7 +104,7 @@ public class GUIFacade {
      * @param idAvatar
      */
     static void modifyUserProfile(String name, int idAvatar) {
-        User user = GameData.getInstance().getUser();
+        User user = GameData.getUser();
         user.setName(name);
         user.setAvatar(idAvatar);
     }
@@ -113,7 +113,7 @@ public class GUIFacade {
      * Levels up the User.
      */
     static void levelUp() {
-        if (GameData.getInstance().getUser().getLevel() < 10) {
+        if (GameData.getUser().getLevel() < 10) {
             NetworkHelper.levelUp();
         }
     }
@@ -190,20 +190,20 @@ public class GUIFacade {
      */
     static void castSpell(int userPosition, int idSpell, String param) {
         try {
-            String casterUserId = GameData.getInstance().getUser().getUUID();
+            String casterUserId = GameData.getUser().getUUID();
             switch (idSpell) {
                 case SpellManager.SHIELD:
-                    GameData.getInstance().getUser().setShield(true);
+                    GameData.getUser().setShield(true);
                     break;
                 case SpellManager.CREATE_RULE:
-                    GameData.getInstance().setRule(param);
+                    GameData.setRule(param);
                     NetworkHelper.castSpell(casterUserId, null, idSpell, param); // has to be sent to everyone
                     break;
                 case SpellManager.ALL_IN_BEER:
                     NetworkHelper.castSpell(casterUserId, null, idSpell, param); // has to be sent to everyone
                     break;
                 default: // Rest of cases
-                    String targetUserId = GameData.getInstance().getUser(userPosition).getUUID();
+                    String targetUserId = GameData.getUser(userPosition).getUUID();
                     NetworkHelper.castSpell(casterUserId, targetUserId, idSpell, param);
                     break;
             }
@@ -214,6 +214,6 @@ public class GUIFacade {
     }
 
     static String getRule() {
-        return GameData.getInstance().getRule();
+        return GameData.getRule();
     }
 }

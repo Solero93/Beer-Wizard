@@ -37,7 +37,7 @@ public class NetworkHelper {
 
     public static void levelUp(String uuidUser) {
         try {
-            GameData.getInstance().getUserDb().get(uuidUser).levelUp();
+            GameData.getUserDb().get(uuidUser).levelUp();
         } catch (BusException e) {
             Log.e("LevelUpUser", e.getMessage());
         }
@@ -45,7 +45,7 @@ public class NetworkHelper {
 
     public static void levelDown(String uuidUser) {
         try {
-            GameData.getInstance().getUserDb().get(uuidUser).levelDown();
+            GameData.getUserDb().get(uuidUser).levelDown();
         } catch (BusException e) {
             Log.e("LevelUpUser", e.getMessage());
         }
@@ -55,13 +55,13 @@ public class NetworkHelper {
         try {
             if (idTargetUser == null) {
                 if (idSpell == SpellManager.CREATE_RULE) {
-                    SignalEmitter emitter = new SignalEmitter(GameData.getInstance().getUser(), BusAttachment.SESSION_ID_ALL_HOSTED, SignalEmitter.GlobalBroadcast.Off);
+                    SignalEmitter emitter = new SignalEmitter(GameData.getUser(), BusAttachment.SESSION_ID_ALL_HOSTED, SignalEmitter.GlobalBroadcast.Off);
                     UserInterface userInterface = emitter.getInterface(UserInterface.class);
-                    userInterface.updateRule(GameData.getInstance().getRule());
+                    userInterface.updateRule(GameData.getRule());
                 }
                 return;
             } else {
-                UserInterface user = GameData.getInstance().getUser(idTargetUser);
+                UserInterface user = GameData.getUser(idTargetUser);
                 user.castedSpell(idSpell, idCasterUser, params);
             }
         } catch (BusException e) {
