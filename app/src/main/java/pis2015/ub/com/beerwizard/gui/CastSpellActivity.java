@@ -96,7 +96,6 @@ public class CastSpellActivity extends Activity {
         // Assign adapter to ListView
         listvw_user.setAdapter(arrayAdapter);
         btCancel.setOnClickListener(new Button.OnClickListener() {
-            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
             @Override
             public void onClick(View v) {
                 popupWindow.dismiss();

@@ -27,7 +27,9 @@
             android:id="@+id/listView_users"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_column="0" />
+            android:layout_column="0"
+            android:background="#00ffffff"
+            android:choiceMode="singleChoice" />
     </TableRow>
 
     <TableRow>
