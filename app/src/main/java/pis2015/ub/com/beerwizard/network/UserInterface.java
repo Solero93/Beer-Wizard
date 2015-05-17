@@ -4,6 +4,7 @@ import org.alljoyn.bus.BusException;
 import org.alljoyn.bus.annotation.BusInterface;
 import org.alljoyn.bus.annotation.BusMethod;
 import org.alljoyn.bus.annotation.BusProperty;
+import org.alljoyn.bus.annotation.BusSignal;
 
 /**
  * Created by jordi on 5/11/15.
@@ -42,6 +43,9 @@ public interface UserInterface {
 
     @BusMethod
     public void castedSpell(int i, String uuid) throws BusException;
+
+    @BusSignal
+    public void updateRule(String newRule) throws BusException;
 
     @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
     public boolean getShield() throws BusException;

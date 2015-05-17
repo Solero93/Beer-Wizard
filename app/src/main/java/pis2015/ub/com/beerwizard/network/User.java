@@ -103,4 +103,8 @@ public class User implements UserInterface, BusObject {
     public void setShield(boolean hasShield) {
         this.hasShield = hasShield;
     }
+
+    public void updateRule(String newRule) {
+
+    }
 }
