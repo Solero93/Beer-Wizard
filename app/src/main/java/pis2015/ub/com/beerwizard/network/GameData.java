@@ -7,12 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+import pis2015.ub.com.beerwizard.R;
+
 public class GameData extends Application {
     private static GameData ourInstance = new GameData();
     private static Handler spellsActivityHandler;
     private String rule;
     private User user = new User("Harri Potter");
     private ConcurrentHashMap<String, UserInterface> users = new ConcurrentHashMap<>();
+
+    private GameData() {
+        this.rule = getText(R.string.rule).toString();
+    }
 
     public static GameData getInstance() {
         return ourInstance;
