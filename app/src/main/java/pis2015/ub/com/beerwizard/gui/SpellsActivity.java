@@ -35,6 +35,7 @@ public class SpellsActivity extends ActionBarActivity {
     String edited;
     TextView changetext2;
     String edit;
+    private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -202,7 +203,7 @@ public class SpellsActivity extends ActionBarActivity {
 
                             edit = getResources().getString(R.string.popup_received_spell_descr);
                             changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                            edited = String.format(edit, descr);
+                            edited = String.format(edit, param);
                             changetext2.setText(edited);
                             break;
 
@@ -263,7 +264,6 @@ public class SpellsActivity extends ActionBarActivity {
             }
         }
     };
-    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
