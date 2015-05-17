@@ -26,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Server extends Service {
     private static final String TAG = "ServerService";
     static BusHandler busHandler = null;
-    private final ConcurrentHashMap<String, UserInterface> userDb = GameData.getInstance().getUserDb();
+    private final ConcurrentHashMap<String, UserInterface> userDb = GameData.getUserDb();
     private final ConcurrentHashMap<UserInterface, String> reverseUserDb = new ConcurrentHashMap<>();
     private User user;
 
@@ -34,7 +34,7 @@ public class Server extends Service {
     public void onCreate() {
         HandlerThread thread = new HandlerThread("UserProvider");
         thread.start();
-        user = GameData.getInstance().getUser();
+        user = GameData.getUser();
         busHandler = new BusHandler(thread.getLooper());
         busHandler.sendMessage(busHandler.obtainMessage(BusHandler.CONNECT));
         super.onCreate();
@@ -199,10 +199,10 @@ public class Server extends Service {
                     break;
                 case UPDATE_RULE:
                     String newRule = (String) msg.obj;
-                    Handler h = GameData.getInstance().getSpellsActivityHandler();
+                    Handler h = GameData.getSpellsActivityHandler();
                     Message message = h.obtainMessage(Constants.MSG_UPDATE_RULE);
                     message.obj = msg.obj;
-                    GameData.getInstance().setRule(newRule);
+                    GameData.setRule(newRule);
                     h.sendMessage(message);
                     break;
                 default:
