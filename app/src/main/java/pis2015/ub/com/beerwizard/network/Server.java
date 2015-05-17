@@ -199,9 +199,11 @@ public class Server extends Service {
                     break;
                 case UPDATE_RULE:
                     String newRule = (String) msg.obj;
-                    GameData.getInstance().setRule(newRule);
                     Handler h = GameData.getInstance().getSpellsActivityHandler();
-                    h.sendMessage(h.obtainMessage(Constants.MSG_UPDATE_RULE));
+                    Message message = h.obtainMessage(Constants.MSG_UPDATE_RULE);
+                    message.obj = msg.obj;
+                    GameData.getInstance().setRule(newRule);
+                    h.sendMessage(message);
                     break;
                 default:
                     super.handleMessage(msg);
