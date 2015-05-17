@@ -1,6 +1,6 @@
 package pis2015.ub.com.beerwizard.network;
 
-import android.content.res.Resources;
+import android.app.Application;
 import android.os.Handler;
 
 import java.util.ArrayList;
@@ -9,15 +9,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import pis2015.ub.com.beerwizard.R;
 
-public class GameData {
+public class GameData extends Application {
     private static GameData ourInstance = new GameData();
     private static Handler spellsActivityHandler;
     private String rule;
-    private User user = new User("Harri Potter");
+    private User user = new User("Test User");
     private ConcurrentHashMap<String, UserInterface> users = new ConcurrentHashMap<>();
 
-    private GameData() {
-        this.rule = Resources.getSystem().getString(R.string.rule);
+    public GameData() {
     }
 
     public static GameData getInstance() {
@@ -30,6 +29,11 @@ public class GameData {
 
     public static void setSpellsActivityHandler(Handler spellsActivityHandler) {
         GameData.spellsActivityHandler = spellsActivityHandler;
+    }
+
+    public void onCreate() {
+        super.onCreate();
+        this.rule = getString(R.string.rule);
     }
 
     public User getUser() {
