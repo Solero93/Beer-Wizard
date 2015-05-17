@@ -140,7 +140,7 @@ public class CastSpellActivity extends Activity {
 
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
-        TextView titulo = (TextView) findViewById(R.id.textRule);
+        TextView titulo = (TextView) popupView.findViewById(R.id.textRule);
         switch (idSpell) {
             case SpellManager.WIZARD_DUEL:
                 titulo.setText("Write the duel");
