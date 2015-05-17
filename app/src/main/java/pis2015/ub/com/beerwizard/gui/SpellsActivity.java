@@ -459,9 +459,9 @@ public class SpellsActivity extends ActionBarActivity {
             lvl--;
             ImageView image = (ImageView) findViewById(tImage[lvl - 1]);
             TextView text = (TextView) findViewById(tText[lvl - 1]);
-                textLvl.setText("Level " + lvl);
-                text.setText(GUIFacade.getSpellLockedText(lvl - 1));
-                image.setImageResource(R.drawable.candado);
+            textLvl.setText("Level " + lvl);
+            text.setText(GUIFacade.getSpellLockedText(lvl - 1));
+            image.setImageResource(R.drawable.candado);
         }
     }
 
