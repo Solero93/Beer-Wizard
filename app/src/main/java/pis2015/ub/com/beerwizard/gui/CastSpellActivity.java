@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,10 +24,12 @@ public class CastSpellActivity extends Activity {
     int idSpell, idUser;
     String textRule;
     boolean oRule;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cast_spell);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Bundle b = new Bundle();
         b = getIntent().getExtras();
         idSpell = b.getInt("spell");//id spell de 1 a
@@ -40,9 +43,7 @@ public class CastSpellActivity extends Activity {
         TextView quote = (TextView) findViewById(R.id.quoteText);
         title.setText(GUIFacade.getSpellName(idSpell));
         description.setText(GUIFacade.getSpellDescription(idSpell));
-        quote.setText(GUIFacade.getSpellQuote(idSpell
-
-        ));
+        quote.setText(GUIFacade.getSpellQuote(idSpell));
 
     }
 
@@ -78,6 +79,7 @@ public class CastSpellActivity extends Activity {
         }
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -188,6 +190,7 @@ public class CastSpellActivity extends Activity {
         popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
