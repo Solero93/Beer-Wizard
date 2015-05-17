@@ -33,7 +33,6 @@ public class SpellsActivity extends ActionBarActivity {
     String edited;
     TextView changetext2;
     String edit;
-    private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -255,6 +254,7 @@ public class SpellsActivity extends ActionBarActivity {
             }
         }
     };
+    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -344,6 +344,10 @@ public class SpellsActivity extends ActionBarActivity {
             text.setText(GUIFacade.getSpellName(lvl - 2));
             image.setImageResource(R.drawable.duel_of_wizards);
         }
+        if (lvl == 9) {
+            lvl++;
+            masterUp();
+        }
     }
 
     public void lvlDown() {
@@ -353,9 +357,11 @@ public class SpellsActivity extends ActionBarActivity {
             TextView textLvl = (TextView) findViewById(R.id.textLvl);
             ImageView image = (ImageView) findViewById(tImage[lvl - 1]);
             TextView text = (TextView) findViewById(tText[lvl - 1]);
-            textLvl.setText("Level " + lvl);
-            text.setText(GUIFacade.getSpellLockedText(lvl - 1));
-            image.setImageResource(R.drawable.candado);
+            if (lvl >= 9) {
+                textLvl.setText("Level " + lvl);
+                text.setText(GUIFacade.getSpellLockedText(lvl - 1));
+                image.setImageResource(R.drawable.candado);
+            }
         }
     }
 
