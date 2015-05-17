@@ -66,6 +66,22 @@ public class GUIFacade {
     }
 
     /**
+     * Shows whether User has shield
+     *
+     * @return
+     */
+    static boolean haveShield() {
+        return GameData.getInstance().getUser().getShield();
+    }
+
+    /**
+     * Breaks shield of User
+     */
+    static void breakShield() {
+        GameData.getInstance().getUser().setShield(false);
+    }
+
+    /**
      * Creates a GameData with a given name.
      *
      * @param gameName - name you want the GameData to have
@@ -181,21 +197,18 @@ public class GUIFacade {
                     break;
                 case SpellManager.CREATE_RULE:
                     GameData.getInstance().setRule(param);
-                    NetworkHelper.castSpell(casterUserId, null, idSpell, param);
+                    NetworkHelper.castSpell(casterUserId, null, idSpell, param); // has to be sent to everyone
                     break;
                 case SpellManager.ALL_IN_BEER:
                     NetworkHelper.castSpell(casterUserId, null, idSpell, param); // has to be sent to everyone
                     break;
                 default: // Rest of cases
                     String targetUserId = GameData.getInstance().getUser(userPosition).getUUID();
-                    if (GameData.getInstance().getUser(targetUserId).getShield()) {
-                        GameData.getInstance().getUser(targetUserId).setShield(false);
-                    } else {
-                        NetworkHelper.castSpell(casterUserId, targetUserId, idSpell, param);
-                    }
+                    NetworkHelper.castSpell(casterUserId, targetUserId, idSpell, param);
                     break;
             }
         } catch (BusException e) {
+            //TODO see what to put here
             e.printStackTrace();
         }
     }

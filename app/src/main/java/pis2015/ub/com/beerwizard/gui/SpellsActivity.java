@@ -104,6 +104,15 @@ public class SpellsActivity extends ActionBarActivity {
                     int idSpell = (int) ((Object[]) inputMessage.obj)[0];
                     String targetUser = (String) ((Object[]) inputMessage.obj)[1];
 
+                    /*
+                    * If user has shield, spell is not casted
+                    * And shield is broken.
+                     */
+                    if (GUIFacade.haveShield()) {
+                        GUIFacade.breakShield();
+                        break;
+                    }
+
                     String descr = getResources().getString(GUIFacade.getSpellDescription(idSpell));
 
                     // idSpell needs to changed to targetUser
