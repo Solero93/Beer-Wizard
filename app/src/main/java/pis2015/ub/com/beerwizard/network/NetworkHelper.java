@@ -62,7 +62,7 @@ public class NetworkHelper {
                 return;
             } else {
                 UserInterface user = GameData.getInstance().getUser(idTargetUser);
-                user.castedSpell(idSpell, idCasterUser);
+                user.castedSpell(idSpell, idCasterUser, params);
             }
         } catch (BusException e) {
             e.printStackTrace();

@@ -42,10 +42,13 @@ public interface UserInterface {
     public void acceptsLevelUp(String uuid) throws BusException;
 
     @BusMethod
-    public void castedSpell(int i, String uuid) throws BusException;
+    public void castedSpell(int i, String uuid, String param) throws BusException;
 
     @BusSignal
     public void updateRule(String newRule) throws BusException;
+
+    @BusMethod
+    public String getRule() throws BusException;
 
     @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
     public boolean getShield() throws BusException;

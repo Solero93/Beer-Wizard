@@ -89,10 +89,10 @@ public class User implements UserInterface, BusObject {
         handler.sendMessage(msg);
     }
 
-    public void castedSpell(int idSpell, String uuid) {
+    public void castedSpell(int idSpell, String uuid, String param) {
         Handler handler = GameData.getInstance().getSpellsActivityHandler();
         Message msg = handler.obtainMessage(Constants.MSG_CASTED_SPELL);
-        msg.obj = new Object[]{idSpell, uuid};
+        msg.obj = new Object[]{idSpell, uuid, param};
         handler.sendMessage(msg);
     }
 
@@ -102,6 +102,10 @@ public class User implements UserInterface, BusObject {
 
     public void setShield(boolean hasShield) {
         this.hasShield = hasShield;
+    }
+
+    public String getRule() {
+        return GameData.getInstance().getRule();
     }
 
     public void updateRule(String newRule) {
