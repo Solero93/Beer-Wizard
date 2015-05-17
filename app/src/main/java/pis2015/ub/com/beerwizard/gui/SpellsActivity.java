@@ -301,9 +301,14 @@ public class SpellsActivity extends ActionBarActivity {
         setTitle(GUIFacade.getUserName());//change the Nickname
         TextView ruleText = (TextView) findViewById(R.id.textRule);
         ruleText.setText(GUIFacade.getRule());
+
         lvl = 1;
         if (savedInstanceState != null) {
             for (int i = 1; i < savedInstanceState.getInt("lvl"); i++) {
+                lvlUp();
+            }
+        } else if (GUIFacade.getLevel() > 1) {
+            for (int i = 1; i < GUIFacade.getLevel(); i++) {
                 lvlUp();
             }
         }
