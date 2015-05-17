@@ -533,8 +533,9 @@
         android:layout_alignParentRight="false"
         android:layout_alignParentTop="false"
         android:layout_centerHorizontal="true"
+        android:allowSingleTap="false"
         android:content="@+id/content"
-        android:handle="@+id/handle">
+        android:handle="@+id/handle"><!-- Para que no suba si lo apritas, solo si lo arrastras-->
 
         <LinearLayout
             android:id="@+id/content"
@@ -558,7 +559,7 @@
 
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textRule"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/rule" />

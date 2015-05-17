@@ -29,6 +29,7 @@ public class CastSpellActivity extends Activity {
         Bundle b = new Bundle();
         b = getIntent().getExtras();
         idSpell = b.getInt("spell");//id spell de 1 a
+        idSpell = idSpell - 1;
         idUser = 0;
         textRule = "";
 
@@ -36,9 +37,11 @@ public class CastSpellActivity extends Activity {
         TextView description = (TextView) findViewById(R.id.descriptionText);
         TextView title = (TextView) findViewById(R.id.titleText);
         TextView quote = (TextView) findViewById(R.id.quoteText);
-        title.setText(GUIFacade.getSpellName(idSpell - 1));
-        description.setText(GUIFacade.getSpellDescription(idSpell - 1));
-        quote.setText(GUIFacade.getSpellQuote(idSpell - 1));
+        title.setText(GUIFacade.getSpellName(idSpell));
+        description.setText(GUIFacade.getSpellDescription(idSpell));
+        quote.setText(GUIFacade.getSpellQuote(idSpell
+
+        ));
 
     }
 
@@ -159,8 +162,8 @@ public class CastSpellActivity extends Activity {
         popupWindow.setFocusable(true);
         TextView name = (TextView) popupView.findViewById(R.id.sent_spell_Name);
         TextView text = (TextView) popupView.findViewById(R.id.sent_spell_text);
-        name.setText(getText(GUIFacade.getSpellName(idSpell - 1)) + "");
-        text.setText("Are you sure want to cast " + getText(GUIFacade.getSpellName(idSpell - 1)) + "?");
+        name.setText(getText(GUIFacade.getSpellName(idSpell)) + "");
+        text.setText("Are you sure want to cast " + getText(GUIFacade.getSpellName(idSpell)) + "?");
         Button btOk = (Button) popupView.findViewById(R.id.btn_cast_spell);
         Button btNo = (Button) popupView.findViewById(R.id.btn_NO_cast_spell);
         btOk.setOnClickListener(new Button.OnClickListener() {
@@ -168,7 +171,7 @@ public class CastSpellActivity extends Activity {
             @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
-                GUIFacade.castSpell(idUser, idSpell - 1, textRule);
+                GUIFacade.castSpell(idUser, idSpell, textRule);
                 finish();
             }
         });
