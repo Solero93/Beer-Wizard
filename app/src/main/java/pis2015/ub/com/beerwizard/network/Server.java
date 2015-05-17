@@ -164,6 +164,7 @@ public class Server extends Service {
                     observer.close();
                     mBus.unregisterBusObject(user);
                     userDb.clear();
+                    user.setLevel(1);
                     user = null;
                     mBus.disconnect();
                     getLooper().quit();
