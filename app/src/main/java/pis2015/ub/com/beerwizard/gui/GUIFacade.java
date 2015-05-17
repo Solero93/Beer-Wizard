@@ -97,7 +97,7 @@ public class GUIFacade {
      * Levels up the User.
      */
     static void levelUp() {
-        if (GameData.getInstance().getUser().getLevel() >= 10) {
+        if (GameData.getInstance().getUser().getLevel() < 10) {
             NetworkHelper.levelUp();
         }
     }
