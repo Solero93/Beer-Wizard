@@ -104,6 +104,13 @@ public class User implements UserInterface, BusObject {
         this.hasShield = hasShield;
     }
 
+    public void beJudge(String uuidCaster, String uuidVictim) {
+        Handler h = GameData.getSpellsActivityHandler();
+        Message msg = h.obtainMessage(Constants.MSG_DECIDE_DUEL);
+        msg.obj = new Object[]{uuidCaster, uuidVictim};
+        h.sendMessage(msg);
+    }
+
     public String getRule() {
         return GameData.getRule();
     }

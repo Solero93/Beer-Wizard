@@ -50,6 +50,9 @@ public interface UserInterface {
     @BusMethod
     public String getRule() throws BusException;
 
+    @BusMethod
+    public void beJudge(String uuidCaster, String uuidVictim) throws BusException;
+
     @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
     public boolean getShield() throws BusException;
 

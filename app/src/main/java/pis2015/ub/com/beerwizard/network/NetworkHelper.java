@@ -9,17 +9,14 @@ import org.alljoyn.bus.BusAttachment;
 import org.alljoyn.bus.BusException;
 import org.alljoyn.bus.SignalEmitter;
 
+import java.util.List;
+import java.util.Random;
+
 import pis2015.ub.com.beerwizard.game.SpellManager;
 
 public class NetworkHelper {
 
     public static byte createGame(Context context) {
-        Intent intent = new Intent(context, Server.class);
-        context.startService(intent);
-        return 0;
-    }
-
-    public static byte enterGame(Context context) {
         Intent intent = new Intent(context, Server.class);
         context.startService(intent);
         return 0;
@@ -60,6 +57,11 @@ public class NetworkHelper {
                     userInterface.updateRule(GameData.getRule());
                 }
                 return;
+            } else if (idSpell == SpellManager.WIZARD_DUEL) {
+                Random random = new Random();
+                List<UserInterface> list = GameData.getUsers();
+                UserInterface user = list.get(random.nextInt(list.size()));
+                user.beJudge(idCasterUser, idTargetUser);
             } else {
                 UserInterface user = GameData.getUser(idTargetUser);
                 user.castedSpell(idSpell, idCasterUser, params);
