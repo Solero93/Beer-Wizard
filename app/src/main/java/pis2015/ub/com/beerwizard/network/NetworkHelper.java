@@ -49,6 +49,8 @@ public class NetworkHelper {
     }
 
     public static void castSpell(String idCasterUser, String idTargetUser, int idSpell, String params) {
+        if (params == null)
+            params = "";
         try {
             if (idTargetUser == null) {
                 if (idSpell == SpellManager.CREATE_RULE) {
@@ -57,7 +59,7 @@ public class NetworkHelper {
                     userInterface.updateRule(GameData.getRule());
                 } else if (idSpell == SpellManager.ALL_IN_BEER) {
                     for (UserInterface user : GameData.getUsers()) {
-                        user.castedSpell(idSpell, idCasterUser, null);
+                        user.castedSpell(idSpell, idCasterUser, params);
                     }
                 }
                 return;
