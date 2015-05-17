@@ -52,8 +52,11 @@ public class NetworkHelper {
         if (params == null)
             params = "";
         try {
-            if (idTargetUser == null) {
+            if (idTargetUser == Constants.BROADCAST) {
                 if (idSpell == SpellManager.CREATE_RULE) {
+                    /*
+                    We emit a signal for all to update the rule
+                     */
                     SignalEmitter emitter = new SignalEmitter(GameData.getUser(), BusAttachment.SESSION_ID_ALL_HOSTED, SignalEmitter.GlobalBroadcast.Off);
                     UserInterface userInterface = emitter.getInterface(UserInterface.class);
                     userInterface.updateRule(GameData.getRule());
@@ -62,7 +65,6 @@ public class NetworkHelper {
                         user.castedSpell(idSpell, idCasterUser, params);
                     }
                 }
-                return;
             } else if (idSpell == SpellManager.WIZARD_DUEL) {
                 Random random = new Random();
                 List<UserInterface> list = GameData.getUsers();
