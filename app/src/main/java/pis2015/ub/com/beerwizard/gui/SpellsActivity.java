@@ -35,7 +35,6 @@ public class SpellsActivity extends ActionBarActivity {
     String edited;
     TextView changetext2;
     String edit;
-    private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -103,6 +102,12 @@ public class SpellsActivity extends ActionBarActivity {
                     // Needs to be taken out from Message - just default value
                     int idSpell = (int) ((Object[]) inputMessage.obj)[0];
                     String targetUser = (String) ((Object[]) inputMessage.obj)[1];
+                    /*
+                     * TODO Alberto -> el param tiene el texto a mostrar
+                     * Mételo en TruthOrShot y WizardDuel para que muestren en el popUp
+                     */
+                    String param = (String) ((Object[]) inputMessage.obj)[2];
+
 
                     /*
                     * If user has shield, spell is not casted
@@ -258,6 +263,7 @@ public class SpellsActivity extends ActionBarActivity {
             }
         }
     };
+    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -267,6 +273,8 @@ public class SpellsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_game_main_screen);
         getSupportActionBar().setIcon(R.drawable.cara);//change the icon, avatar
         setTitle(GUIFacade.getUserName());//change the Nickname
+        TextView ruleText = (TextView) findViewById(R.id.textRule);
+        ruleText.setText(GUIFacade.getRule());
         lvl = 1;
         if (savedInstanceState != null) {
             for (int i = 1; i < savedInstanceState.getInt("lvl"); i++) {
