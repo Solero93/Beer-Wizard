@@ -35,6 +35,7 @@ public class SpellsActivity extends ActionBarActivity {
     String edited;
     TextView changetext2;
     String edit;
+    private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -262,18 +263,66 @@ public class SpellsActivity extends ActionBarActivity {
                     ruleText.setText(newRule);
                     break;
                 case Constants.MSG_DECIDE_DUEL:
-                    String user1 = (String) ((Object[]) inputMessage.obj)[0];
-                    String user1_name = GUIFacade.getUserName(user1);
+                    final String user1 = (String) ((Object[]) inputMessage.obj)[0];
+                    final String user1_name = GUIFacade.getUserName(user1);
 
-                    String user2 = (String) ((Object[]) inputMessage.obj)[1];
-                    String user2_name = GUIFacade.getUserName(user2);
+                    final String user2 = (String) ((Object[]) inputMessage.obj)[1];
+                    final String user2_name = GUIFacade.getUserName(user2);
 
                     /*
                     * TODO Alberto -> crear popUp para decidir duelo
                     * Who won? "User1" o "User2"?
                      */
+                    //Here we create the layout inflater
+                    LayoutInflater layoutInflater3 = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                    //Here we associate the layout inflater with the layout we need, in this case popup_lvlup
+                    View popupView3 = layoutInflater3.inflate(R.layout.popup_duel, null);
+                    //Now we create the popup window
+                    final PopupWindow popupWindow3 = new PopupWindow(popupView3, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    //Time to only interact with the popup
+                    popupWindow3.setFocusable(true);
 
-                    // Insertar PopUp Aquí
+                    edit = getResources().getString(R.string.duel_user1);
+                    changetext2 = (Button) popupView3.findViewById(R.id.player1);
+                    edited = String.format(edit, user1_name);
+                    changetext2.setText(edited);
+
+                    edit = getResources().getString(R.string.duel_user2);
+                    changetext2 = (Button) popupView3.findViewById(R.id.player2);
+                    edited = String.format(edit, user2_name);
+                    changetext2.setText(edited);
+
+                    Button win1 = (Button) popupView3.findViewById(R.id.player1);
+                    Button win2 = (Button) popupView3.findViewById(R.id.player2);
+                    win1.setOnClickListener(new Button.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            GUIFacade.levelUp(user1);
+                            GUIFacade.levelDown(user2);
+                            popupWindow3.dismiss();
+                        }
+
+                    });
+                    win2.setOnClickListener(new Button.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            GUIFacade.levelUp(user2);
+                            GUIFacade.levelDown(user1);
+                            popupWindow3.dismiss();
+                        }
+                    });
+
+                    //We set the animation to show the popup
+                    popupWindow3.setAnimationStyle(R.style.popup_animation);
+                    //Here we show the position where will appear the popup
+                    popupWindow3.showAtLocation(findViewById(R.id.handle), Gravity.CENTER, 0, 0);
+
+
+
+
+
 
                     /*
                     * En funcion del botón:
@@ -289,7 +338,6 @@ public class SpellsActivity extends ActionBarActivity {
             }
         }
     };
-    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
