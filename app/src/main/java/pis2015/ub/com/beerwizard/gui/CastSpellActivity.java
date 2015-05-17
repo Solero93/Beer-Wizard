@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -138,7 +139,7 @@ public class CastSpellActivity extends Activity {
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         Button btAcept = (Button) popupView.findViewById(R.id.buttonSetRule);
-        final TextView ruleView = (TextView) popupView.findViewById(R.id.textRule);
+        final EditText ruleView = (EditText) popupView.findViewById(R.id.editTextRule);
         btAcept.setOnClickListener(new Button.OnClickListener() {
             //                TextView wwa= (TextView)popupView.findViewById(R.id.)
             @Override
