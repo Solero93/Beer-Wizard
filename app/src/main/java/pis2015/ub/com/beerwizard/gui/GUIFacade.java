@@ -109,6 +109,10 @@ public class GUIFacade {
         user.setAvatar(idAvatar);
     }
 
+    static int getLevel() {
+        return GameData.getUser().getLevel();
+    }
+
     /**
      * Levels up the User.
      */
