@@ -99,6 +99,7 @@ public class Server extends Service {
                         return;
                     }
 
+                    mBus.registerSignalHandlers(Server.this);
                     status = mBus.connect();
                     if (status != Status.OK) {
                         Log.e(TAG, "Failed to connect to the bus");
