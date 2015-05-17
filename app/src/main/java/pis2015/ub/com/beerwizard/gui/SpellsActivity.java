@@ -386,6 +386,7 @@ public class SpellsActivity extends ActionBarActivity {
         if (id == R.id.action_profile) {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
+            setTitle(GUIFacade.getUserName());
             return true;
         }
 
