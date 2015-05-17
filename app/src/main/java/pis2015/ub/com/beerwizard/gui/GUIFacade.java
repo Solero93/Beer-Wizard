@@ -212,4 +212,8 @@ public class GUIFacade {
             e.printStackTrace();
         }
     }
+
+    static String getRule() {
+        return GameData.getInstance().getRule();
+    }
 }
