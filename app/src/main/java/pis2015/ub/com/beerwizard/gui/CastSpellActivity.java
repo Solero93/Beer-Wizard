@@ -16,6 +16,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
+import pis2015.ub.com.beerwizard.game.SpellManager;
 
 public class CastSpellActivity extends Activity {
     int idSpell, idUser;
@@ -45,30 +46,30 @@ public class CastSpellActivity extends Activity {
     public void onClickCast(View v) {
         oRule = false;
         //En cada caso hara una cosa
-        if (idSpell == 1) {//CAN TO THE FACE
+        if (idSpell == SpellManager.CAN_TO_THE_FACE) {//CAN TO THE FACE
             //SELECT USER
 
             initPopupUser(v);
-        } else if (idSpell == 2) {//Duel
+        } else if (idSpell == SpellManager.WIZARD_DUEL) {//Duel
 
             initPopupUser(v);
-        } else if (idSpell == 3) {//beerkineesis
+        } else if (idSpell == SpellManager.BEEREKINESIS) {//beerkineesis
 
             initPopupUser(v);
-        } else if (idSpell == 4) {//Shild
+        } else if (idSpell == SpellManager.SHIELD) {//Shild
 
             initPopupAccept(v);
-        } else if (idSpell == 5) {//rule
+        } else if (idSpell == SpellManager.CREATE_RULE) {//rule
             oRule = true;
             initPopupRule(v);
 
-        } else if (idSpell == 6) {//Truth
+        } else if (idSpell == SpellManager.TRUTH_OR_SHOT) {//Truth
             oRule = true;
             initPopupUser(v);
-        } else if (idSpell == 7) {//Hat
+        } else if (idSpell == SpellManager.HAT_OF_SHAME) {//Hat
 
             initPopupUser(v);
-        } else if (idSpell == 8) {//all
+        } else if (idSpell == SpellManager.ALL_IN_BEER) {//all
             initPopupAccept(v);
         }
 

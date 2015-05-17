@@ -20,6 +20,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
+import pis2015.ub.com.beerwizard.game.SpellManager;
 import pis2015.ub.com.beerwizard.network.Constants;
 import pis2015.ub.com.beerwizard.network.GameData;
 
@@ -33,6 +34,7 @@ public class SpellsActivity extends ActionBarActivity {
     String edited;
     TextView changetext2;
     String edit;
+    private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -131,7 +133,7 @@ public class SpellsActivity extends ActionBarActivity {
 
                     //here we edit the popup to show what spell the casted
                     switch (idSpell) {
-                        case 0: // Can to the face
+                        case SpellManager.CAN_TO_THE_FACE:
                             descr = getResources().getString(R.string.short_desc_can);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
@@ -148,7 +150,7 @@ public class SpellsActivity extends ActionBarActivity {
 
                             break;
 
-                        case 1: // Wizard Duel
+                        case SpellManager.WIZARD_DUEL:
                             descr = getResources().getString(R.string.short_desc_duel);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
@@ -164,7 +166,7 @@ public class SpellsActivity extends ActionBarActivity {
                             changetext2.setText(edited);
                             break;
 
-                        case 2: // Beerekinesis
+                        case SpellManager.BEEREKINESIS:
                             descr = getResources().getString(R.string.short_desc_beerk);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(2));
@@ -180,7 +182,7 @@ public class SpellsActivity extends ActionBarActivity {
                             changetext2.setText(edited);
                             break;
 
-                        case 6: // Truth
+                        case SpellManager.TRUTH_OR_SHOT:
                             descr = getResources().getString(R.string.short_desc_truth);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
@@ -196,7 +198,7 @@ public class SpellsActivity extends ActionBarActivity {
                             changetext2.setText(edited);
                             break;
 
-                        case 7: // Hat of Shame
+                        case SpellManager.HAT_OF_SHAME:
                             descr = getResources().getString(R.string.short_desc_hat);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
@@ -212,7 +214,7 @@ public class SpellsActivity extends ActionBarActivity {
                             changetext2.setText(edited);
                             break;
 
-                        case 8: // All in Shot
+                        case SpellManager.ALL_IN_BEER:
                             descr = getResources().getString(R.string.short_desc_all);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
@@ -254,7 +256,6 @@ public class SpellsActivity extends ActionBarActivity {
             }
         }
     };
-    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
