@@ -285,6 +285,7 @@ public class SpellsActivity extends ActionBarActivity {
                         *   GUIFacade.levelUp(user2)
                         *   GUIFacade.levelDown(user1)
                      */
+                    break;
 
             }
         }
