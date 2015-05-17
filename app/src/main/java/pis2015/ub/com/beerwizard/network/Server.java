@@ -27,14 +27,16 @@ public class Server extends Service {
     static BusHandler busHandler = null;
     private final ConcurrentHashMap<String, UserInterface> userDb = GameData.getInstance().getUserDb();
     private final ConcurrentHashMap<UserInterface, String> reverseUserDb = new ConcurrentHashMap<>();
-    private User user = GameData.getInstance().getUser();
+    private User user;
 
     @Override
     public void onCreate() {
         HandlerThread thread = new HandlerThread("UserProvider");
         thread.start();
+        user = GameData.getInstance().getUser();
         busHandler = new BusHandler(thread.getLooper());
         busHandler.sendMessage(busHandler.obtainMessage(BusHandler.CONNECT));
+        super.onCreate();
     }
 
     @Override
@@ -46,9 +48,8 @@ public class Server extends Service {
     @Override
     public void onDestroy() {
         Log.d(TAG, "Shutting Server");
-        userDb.clear();
         busHandler.sendMessage(busHandler.obtainMessage(BusHandler.DISCONNECT));
-        user = null;
+        super.onDestroy();
     }
 
     @Override
@@ -85,13 +86,13 @@ public class Server extends Service {
                     */
                     Status status = mBus.registerBusObject(user, "/userProperties");
                     if (status != Status.OK) {
-                        Log.e(TAG, "Failed to register bus object");
+                        Log.e(TAG, "Failed to register bus object: " + status.toString());
                         return;
                     }
 
                     status = mBus.connect();
                     if (status != Status.OK) {
-                        Log.e(TAG, "Failed to connect to the buss");
+                        Log.e(TAG, "Failed to connect to the bus");
                         return;
                     }
 
@@ -145,10 +146,12 @@ public class Server extends Service {
                     break;
                 case DISCONNECT:
                     Log.d(TAG, "Shutting down the AllJoyn Framework");
+                    observer.close();
                     mBus.unregisterBusObject(user);
-                    aboutObj.unannounce();
+                    userDb.clear();
+                    user = null;
                     mBus.disconnect();
-                    busHandler.getLooper().quit();
+                    getLooper().quit();
                     break;
                 case JOIN_GAME:
                     ProxyBusObject obj = (ProxyBusObject) msg.obj;
