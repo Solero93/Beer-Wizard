@@ -167,18 +167,23 @@ public class GUIFacade {
             String targetUserId = GameData.getInstance().getUser(userPosition).getUUID();
             String casterUserId = GameData.getInstance().getUser().getUUID();
             switch (idSpell) {
-                case 3: //Shield
+                case SpellManager.SHIELD:
                     GameData.getInstance().getUser().setShield(true);
                     break;
-                case 4: //Create Rule
+                case SpellManager.CREATE_RULE:
                     GameData.getInstance().setRule(param);
-                default:
+                    NetworkHelper.castSpell(casterUserId, null, idSpell, param);
+                    break;
+                case SpellManager.ALL_IN_BEER:
+                    NetworkHelper.castSpell(casterUserId, null, idSpell, param); // has to be sent to everyone
+                    break;
+                default: // Rest of cases
                     if (GameData.getInstance().getUser(targetUserId).getShield()) {
                         GameData.getInstance().getUser(targetUserId).setShield(false);
                     } else {
                         NetworkHelper.castSpell(casterUserId, targetUserId, idSpell, param);
                     }
-
+                    break;
             }
         } catch (BusException e) {
             e.printStackTrace();
