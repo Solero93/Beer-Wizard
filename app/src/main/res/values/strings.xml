@@ -174,4 +174,8 @@
     <string name="short_desc_hat">take something and is your new hat!</string>
     <string name="short_desc_truth">TRUTH OR SHOT?</string>
     <string name="short_desc_all">DRINK,DRINK,DRINK!!!</string>
+
+    <!-- Profile layout texts-->
+    <string name="profile_info_pic">Tap to change your avatar</string>
+    <string name="profile_change_name">Set your profile name</string>
 </resources>
