@@ -43,9 +43,7 @@ public class CastSpellActivity extends Activity {
         TextView quote = (TextView) findViewById(R.id.quoteText);
         title.setText(GUIFacade.getSpellName(idSpell));
         description.setText(GUIFacade.getSpellDescription(idSpell));
-        quote.setText(GUIFacade.getSpellQuote(idSpell
-
-        ));
+        quote.setText(GUIFacade.getSpellQuote(idSpell));
 
     }
 

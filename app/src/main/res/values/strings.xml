@@ -90,13 +90,13 @@
     <string name="lock2">Unlock \n lvl. 3</string>
     <string name="title_spell2">DUEL OF
         \n WIZARDS</string>
-    <string name="description_text_spell2">Challenge someone to a common drinking activity.</string>
+    <string name="description_text_spell2">Challenge someone to a common \ndrinking activity.</string>
     <string name="description_quote_spell2">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell3 text-->
     <string name="lock3">Unlock \n lvl. 4</string>
     <string name="title_spell3">BEEREKINESIS</string>
-    <string name="description_text_spell3">Retrive a beer through Magic, ie, making someone get you a beer</string>
+    <string name="description_text_spell3">Retrive a beer through Magic, ie,\n making someone get you a beer</string>
     <string name="description_quote_spell3">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell4 text-->
@@ -108,21 +108,21 @@
     <!-- Spell5 text-->
     <string name="lock5">Unlock \n lvl. 6</string>
     <string name="title_spell5">RULE</string>
-    <string name="description_text_spell5">When you reach this level, create a rule that all must follow under penalty of drinking.</string>
+    <string name="description_text_spell5">When you reach this level, create a\n rule that all must follow under penalty of drinking.</string>
     <string name="description_quote_spell5">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell6 text-->
     <string name="lock6">Unlock \n lvl. 7</string>
     <string name="title_spell6">TRUTH OR
         \n SHOT</string>
-    <string name="description_text_spell6">You can ask your target a question that needs to be answered; in case your buddy s a pussy he s gotta drink a shot.</string>
+    <string name="description_text_spell6">You can ask your target a question that\n needs to be answered; in case your buddy s a pussy\n he s gotta drink a shot.</string>
     <string name="description_quote_spell6">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell7 text-->
     <string name="lock7">Unlock \n lvl. 8</string>
     <string name="title_spell7">HAT OF
         \n SHAME</string>
-    <string name="description_text_spell7">Humiliate a Wizard by forcing them to wear a humorous headpiece for your enjoyment.</string>
+    <string name="description_text_spell7">Humiliate a Wizard by forcing them to\n wear a humorous headpiece for your enjoyment.</string>
     <string name="description_quote_spell7">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
 
     <!-- Spell8 text-->
