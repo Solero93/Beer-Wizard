@@ -89,13 +89,6 @@ public class SpellsActivity extends ActionBarActivity {
                     //Here we show the position where will appear the popup
                     popupWindow.showAtLocation(findViewById(R.id.handle), Gravity.CENTER, 0, 0);
 
-                    /* TODO Alberto
-                        - Crear el popUp de decidir lvlUp (lo tienes por allí en layouts)
-                        - Implementar botones
-                            - YES => llamar GUIFacade.levelUp(targetUser, true)
-                            - NO => llamar GUIFacade.levelUp(targetUser, false)
-                     */
-
                     break;
                 case Constants.MSG_LEVEL_UP:
                     lvlUp();
@@ -246,13 +239,11 @@ public class SpellsActivity extends ActionBarActivity {
                     //Here we show the position where will appear the popup
                     popupWindow2.showAtLocation(findViewById(R.id.handle), Gravity.CENTER, 0, 0);
 
-                    /* TODO Alberto
-                        - Crear el popUp de cuándo alguien te lanzó hechizo (lo tienes por allí en layouts)
-                        - Ten en cuenta que hay cambios en función del hechizo
-                            - Por ejemplo,
-                     */
-
                     break;
+                case Constants.MSG_UPDATE_RULE:
+                    String newRule = (String) inputMessage.obj;
+                    /* TODO Nico - actualizar regla de la pantalla
+                     */
             }
         }
     };
