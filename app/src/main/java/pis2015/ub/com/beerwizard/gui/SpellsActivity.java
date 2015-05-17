@@ -402,17 +402,18 @@ public class SpellsActivity extends ActionBarActivity {
     }
 
     public void lvlDown() {
-
-        if (lvl > 1) {
+        TextView textLvl = (TextView) findViewById(R.id.textLvl);
+        textLvl.setText("Level " + lvl);
+        if (lvl > 9) {
             lvl--;
-            TextView textLvl = (TextView) findViewById(R.id.textLvl);
+            textLvl.setText("Level " + lvl);
+        } else if (lvl > 1) {
+            lvl--;
             ImageView image = (ImageView) findViewById(tImage[lvl - 1]);
             TextView text = (TextView) findViewById(tText[lvl - 1]);
-            if (lvl >= 9) {
                 textLvl.setText("Level " + lvl);
                 text.setText(GUIFacade.getSpellLockedText(lvl - 1));
                 image.setImageResource(R.drawable.candado);
-            }
         }
     }
 
