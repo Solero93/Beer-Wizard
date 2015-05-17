@@ -99,15 +99,15 @@ public class Server extends Service {
                         return;
                     }
 
-                    status = mBus.registerSignalHandlers(Server.this);
-                    if (status != Status.OK) {
-                        Log.e(TAG, "Failed to register signal handler");
-                        return;
-                    }
-
                     status = mBus.connect();
                     if (status != Status.OK) {
                         Log.e(TAG, "Failed to connect to the bus");
+                        return;
+                    }
+
+                    status = mBus.registerSignalHandlers(Server.this);
+                    if (status != Status.OK) {
+                        Log.e(TAG, "Failed to register signal handler");
                         return;
                     }
 
