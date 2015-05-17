@@ -158,8 +158,8 @@ public class CastSpellActivity extends Activity {
         popupWindow.setFocusable(true);
         TextView name = (TextView) popupView.findViewById(R.id.sent_spell_Name);
         TextView text = (TextView) popupView.findViewById(R.id.sent_spell_text);
-        name.setText(GUIFacade.getSpellName(idSpell - 1) + "");
-        text.setText("Are you sure want to cast " + GUIFacade.getSpellName(idSpell - 1) + "?");
+        name.setText(getText(GUIFacade.getSpellName(idSpell - 1)) + "");
+        text.setText("Are you sure want to cast " + getText(GUIFacade.getSpellName(idSpell - 1)) + "?");
         Button btOk = (Button) popupView.findViewById(R.id.btn_cast_spell);
         Button btNo = (Button) popupView.findViewById(R.id.btn_NO_cast_spell);
         btOk.setOnClickListener(new Button.OnClickListener() {
