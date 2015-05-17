@@ -35,6 +35,7 @@ public class SpellsActivity extends ActionBarActivity {
     String edited;
     TextView changetext2;
     String edit;
+    private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -104,7 +105,7 @@ public class SpellsActivity extends ActionBarActivity {
                     String targetUser = (String) ((Object[]) inputMessage.obj)[1];
                     /*
                      * TODO Alberto -> el param tiene el texto a mostrar
-                     * M√©telo en TruthOrShot y WizardDuel para que muestren en el popUp
+                     * MÈtelo en TruthOrShot y WizardDuel para que muestren en el popUp
                      */
                     String param = (String) ((Object[]) inputMessage.obj)[2];
 
@@ -272,11 +273,48 @@ public class SpellsActivity extends ActionBarActivity {
                     * TODO Alberto -> crear popUp para decidir duelo
                     * Who won? "User1" o "User2"?
                      */
+                    //Here we create the layout inflater
+                    LayoutInflater layoutInflater3 = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                    //Here we associate the layout inflater with the layout we need, in this case popup_lvlup
+                    View popupView3 = layoutInflater3.inflate(R.layout.popup_duel, null);
+                    //Now we create the popup window
+                    final PopupWindow popupWindow3 = new PopupWindow(popupView3, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    //Time to only interact with the popup
+                    popupWindow3.setFocusable(true);
 
-                    // Insertar PopUp Aqu√≠
+                    edit = getResources().getString(R.string.duel_info);
+                    changetext2 = (TextView) popupView3.findViewById(R.id.name_duel);
+                    edited = String.format(edit, user1_name);
+                    changetext2.setText(edited);
+
+                    edit = getResources().getString(R.string.duel_what);
+                    changetext2 = (TextView) popupView3.findViewById(R.id.duel_what);
+                    //edited = String.format(edit, param);
+                    changetext2.setText(edited);
+
+                    Button got1 = (Button) popupView3.findViewById(R.id.btn_got);
+                    got1.setOnClickListener(new Button.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+
+                            popupWindow3.dismiss();
+                        }
+                    });
+
+
+                    //We set the animation to show the popup
+                    popupWindow3.setAnimationStyle(R.style.popup_animation);
+                    //Here we show the position where will appear the popup
+                    popupWindow3.showAtLocation(findViewById(R.id.handle), Gravity.CENTER, 0, 0);
+
+
+
+
+
 
                     /*
-                    * En funcion del bot√≥n:
+                    * En funcion del botÛn:
                     *   User1 click:
                     *       GUIFacade.levelUp(user1)
                     *       GUIFacade.levelDown(user2)
@@ -289,7 +327,6 @@ public class SpellsActivity extends ActionBarActivity {
             }
         }
     };
-    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
