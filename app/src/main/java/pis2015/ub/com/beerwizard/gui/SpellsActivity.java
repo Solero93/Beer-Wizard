@@ -244,8 +244,8 @@ public class SpellsActivity extends ActionBarActivity {
                 case Constants.MSG_UPDATE_RULE:
                     String newRule = (String) inputMessage.obj;
                     Log.d("Rule", newRule);
-                    /* TODO Nico - actualizar regla de la pantalla
-                     */
+                    TextView ruleText = (TextView) findViewById(R.id.textRule);
+                    ruleText.setText(newRule);
             }
         }
     };
@@ -257,7 +257,7 @@ public class SpellsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_main_screen);
         getSupportActionBar().setIcon(R.drawable.cara);//change the icon, avatar
-        //setTitle("nick");//change the Nickname
+        setTitle(GUIFacade.getUserName());//change the Nickname
         lvl = 1;
         if (savedInstanceState != null) {
             for (int i = 1; i < savedInstanceState.getInt("lvl"); i++) {
