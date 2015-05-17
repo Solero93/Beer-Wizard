@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -242,6 +243,7 @@ public class SpellsActivity extends ActionBarActivity {
                     break;
                 case Constants.MSG_UPDATE_RULE:
                     String newRule = (String) inputMessage.obj;
+                    Log.d("Rule", newRule);
                     /* TODO Nico - actualizar regla de la pantalla
                      */
             }
