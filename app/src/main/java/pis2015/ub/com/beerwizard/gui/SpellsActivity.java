@@ -33,6 +33,7 @@ public class SpellsActivity extends ActionBarActivity {
     String edited;
     TextView changetext2;
     String edit;
+    private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -254,7 +255,6 @@ public class SpellsActivity extends ActionBarActivity {
             }
         }
     };
-    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -264,10 +264,9 @@ public class SpellsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_game_main_screen);
         getSupportActionBar().setIcon(R.drawable.cara);//change the icon, avatar
         //setTitle("nick");//change the Nickname
-        lvl=1;
-        int i;
+        lvl = 1;
         if (savedInstanceState != null) {
-            for (i = 0; i < savedInstanceState.getInt("lvl"); i++) {
+            for (int i = 1; i < savedInstanceState.getInt("lvl"); i++) {
                 lvlUp();
             }
         }
@@ -292,7 +291,7 @@ public class SpellsActivity extends ActionBarActivity {
     //Save de info if it restarts
     protected void onSaveInstanceState(Bundle icicle) {
         super.onSaveInstanceState(icicle);
-        icicle.putLong("lvl", lvl);
+        icicle.putInt("lvl", lvl);
     }
     /*
     event of the spells

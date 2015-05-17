@@ -12,7 +12,7 @@ import org.alljoyn.bus.BusObject;
 public class User implements UserInterface, BusObject {
     private static final String TAG = "User";
     private String name;
-    private int level;
+    private int level = 1;
     private int avatarPhoto;
     private boolean hasShield;
 
