@@ -174,7 +174,6 @@ public class GUIFacade {
      */
     static void castSpell(int userPosition, int idSpell, String param) {
         try {
-            String targetUserId = GameData.getInstance().getUser(userPosition).getUUID();
             String casterUserId = GameData.getInstance().getUser().getUUID();
             switch (idSpell) {
                 case SpellManager.SHIELD:
@@ -188,6 +187,7 @@ public class GUIFacade {
                     NetworkHelper.castSpell(casterUserId, null, idSpell, param); // has to be sent to everyone
                     break;
                 default: // Rest of cases
+                    String targetUserId = GameData.getInstance().getUser(userPosition).getUUID();
                     if (GameData.getInstance().getUser(targetUserId).getShield()) {
                         GameData.getInstance().getUser(targetUserId).setShield(false);
                     } else {
