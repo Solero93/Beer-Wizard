@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
 
     <application
-        android:name="pis2015.ub.com.beerwizard.network.GameData"
         android:allowBackup="true"
         android:icon="@drawable/beerwizard_icon2"
         android:label="Beer Wizard"
