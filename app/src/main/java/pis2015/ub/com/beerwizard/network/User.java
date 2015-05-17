@@ -30,7 +30,7 @@ public class User implements UserInterface, BusObject {
             this.setLevel(this.getLevel() + 1);
             Log.d(TAG, "User has leveled up: " + this.getLevel());
         }
-        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        Handler handler = GameData.getSpellsActivityHandler();
         handler.sendMessage(handler.obtainMessage(Constants.MSG_LEVEL_UP));
     }
 
@@ -42,7 +42,7 @@ public class User implements UserInterface, BusObject {
             this.setLevel(this.getLevel() - 1);
             Log.d(TAG, "User has leveled down: " + this.getLevel());
         }
-        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        Handler handler = GameData.getSpellsActivityHandler();
         handler.sendMessage(handler.obtainMessage(Constants.MSG_LEVEL_DOWN));
     }
 
@@ -83,14 +83,14 @@ public class User implements UserInterface, BusObject {
     }
 
     public void acceptsLevelUp(String uuid) {
-        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        Handler handler = GameData.getSpellsActivityHandler();
         Message msg = handler.obtainMessage(Constants.MSG_DECIDE_LEVEL);
         msg.obj = uuid;
         handler.sendMessage(msg);
     }
 
     public void castedSpell(int idSpell, String uuid, String param) {
-        Handler handler = GameData.getInstance().getSpellsActivityHandler();
+        Handler handler = GameData.getSpellsActivityHandler();
         Message msg = handler.obtainMessage(Constants.MSG_CASTED_SPELL);
         msg.obj = new Object[]{idSpell, uuid, param};
         handler.sendMessage(msg);
@@ -105,7 +105,7 @@ public class User implements UserInterface, BusObject {
     }
 
     public String getRule() {
-        return GameData.getInstance().getRule();
+        return GameData.getRule();
     }
 
     public void updateRule(String newRule) {
