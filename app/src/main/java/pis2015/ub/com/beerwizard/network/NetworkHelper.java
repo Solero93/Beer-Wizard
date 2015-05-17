@@ -56,7 +56,9 @@ public class NetworkHelper {
                     UserInterface userInterface = emitter.getInterface(UserInterface.class);
                     userInterface.updateRule(GameData.getRule());
                 } else if (idSpell == SpellManager.ALL_IN_BEER) {
-
+                    for (UserInterface user : GameData.getUsers()) {
+                        user.castedSpell(idSpell, idCasterUser, null);
+                    }
                 }
                 return;
             } else if (idSpell == SpellManager.WIZARD_DUEL) {
