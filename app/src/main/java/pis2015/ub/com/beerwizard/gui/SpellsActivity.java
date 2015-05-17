@@ -35,7 +35,6 @@ public class SpellsActivity extends ActionBarActivity {
     String edited;
     TextView changetext2;
     String edit;
-    private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -285,10 +284,12 @@ public class SpellsActivity extends ActionBarActivity {
                         *   GUIFacade.levelUp(user2)
                         *   GUIFacade.levelDown(user1)
                      */
+                    break;
 
             }
         }
     };
+    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -386,6 +387,15 @@ public class SpellsActivity extends ActionBarActivity {
         }
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Intent refresh = new Intent(this, SpellsActivity.class);
+            startActivity(refresh);
+            this.finish();
+        }
+    }
+
     public void lvlDown() {
 
         if (lvl > 1) {
@@ -429,7 +439,7 @@ public class SpellsActivity extends ActionBarActivity {
         }
         if (id == R.id.action_profile) {
             Intent intent = new Intent(this, ProfileActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, 1);
             setTitle(GUIFacade.getUserName());
             return true;
         }
@@ -449,4 +459,5 @@ public class SpellsActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

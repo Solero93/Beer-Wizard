@@ -56,7 +56,7 @@ public class CastSpellActivity extends Activity {
 
             initPopupUser(v);
         } else if (idSpell == SpellManager.WIZARD_DUEL) {//Duel
-
+            oRule = true;
             initPopupUser(v);
         } else if (idSpell == SpellManager.BEEREKINESIS) {//beerkineesis
 
