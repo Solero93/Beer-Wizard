@@ -103,6 +103,12 @@ public class SpellsActivity extends ActionBarActivity {
                     // Needs to be taken out from Message - just default value
                     int idSpell = (int) ((Object[]) inputMessage.obj)[0];
                     String targetUser = (String) ((Object[]) inputMessage.obj)[1];
+                    /*
+                     * TODO Alberto -> el param tiene el texto a mostrar
+                     * Mételo en TruthOrShot y WizardDuel para que muestren en el popUp
+                     */
+                    String param = (String) ((Object[]) inputMessage.obj)[2];
+
 
                     /*
                     * If user has shield, spell is not casted
