@@ -11,7 +11,7 @@ public class GameData extends Application {
     private static GameData ourInstance = new GameData();
     private static Handler spellsActivityHandler;
     private String rule;
-    private User user = new User();
+    private User user = new User("Harri Potter");
     private ConcurrentHashMap<String, UserInterface> users = new ConcurrentHashMap<>();
 
     public static GameData getInstance() {
