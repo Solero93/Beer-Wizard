@@ -261,6 +261,31 @@ public class SpellsActivity extends ActionBarActivity {
                     Log.d("Rule", newRule);
                     TextView ruleText = (TextView) findViewById(R.id.textRule);
                     ruleText.setText(newRule);
+                    break;
+                case Constants.MSG_DECIDE_DUEL:
+                    String user1 = (String) ((Object[]) inputMessage.obj)[0];
+                    String user1_name = GUIFacade.getUserName(user1);
+
+                    String user2 = (String) ((Object[]) inputMessage.obj)[1];
+                    String user2_name = GUIFacade.getUserName(user2);
+
+                    /*
+                    * TODO Alberto -> crear popUp para decidir duelo
+                    * Who won? "User1" o "User2"?
+                     */
+
+                    // Insertar PopUp Aquí
+
+                    /*
+                    * En funcion del botón:
+                    *   User1 click:
+                    *       GUIFacade.levelUp(user1)
+                    *       GUIFacade.levelDown(user2)
+                    *   User2 click:
+                        *   GUIFacade.levelUp(user2)
+                        *   GUIFacade.levelDown(user1)
+                     */
+
             }
         }
     };
