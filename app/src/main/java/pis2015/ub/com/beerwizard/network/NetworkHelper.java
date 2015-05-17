@@ -60,8 +60,16 @@ public class NetworkHelper {
             } else if (idSpell == SpellManager.WIZARD_DUEL) {
                 Random random = new Random();
                 List<UserInterface> list = GameData.getUsers();
-                UserInterface user = list.get(random.nextInt(list.size()));
+                UserInterface user;
+                if (list.size() <= 1) {
+                    user = list.get(random.nextInt(list.size()));
+                } else {
+                    user = list.get(random.nextInt(list.size()));
+                    while (user.getUUID().equals(idCasterUser) || user.getUUID().equals(idTargetUser))
+                        user = list.get(random.nextInt(list.size()));
+                }
                 user.beJudge(idCasterUser, idTargetUser);
+                ;
             } else {
                 UserInterface user = GameData.getUser(idTargetUser);
                 user.castedSpell(idSpell, idCasterUser, params);
