@@ -50,6 +50,7 @@ public class ProfileActivity extends Activity {
                 String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
                 int idAvatar = 0;
                 GUIFacade.modifyUserProfile(name, idAvatar);
+                getParent().setTitle(name);
                 finish();
                 //overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
             }
