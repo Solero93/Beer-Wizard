@@ -44,7 +44,7 @@ public class NetworkHelper {
         try {
             GameData.getUserDb().get(uuidUser).levelDown();
         } catch (BusException e) {
-            Log.e("LevelUpUser", e.getMessage());
+            Log.e("LevelDownUser", e.getMessage());
         }
     }
 
@@ -55,6 +55,8 @@ public class NetworkHelper {
                     SignalEmitter emitter = new SignalEmitter(GameData.getUser(), BusAttachment.SESSION_ID_ALL_HOSTED, SignalEmitter.GlobalBroadcast.Off);
                     UserInterface userInterface = emitter.getInterface(UserInterface.class);
                     userInterface.updateRule(GameData.getRule());
+                } else if (idSpell == SpellManager.ALL_IN_BEER) {
+
                 }
                 return;
             } else if (idSpell == SpellManager.WIZARD_DUEL) {
@@ -69,7 +71,6 @@ public class NetworkHelper {
                         user = list.get(random.nextInt(list.size()));
                 }
                 user.beJudge(idCasterUser, idTargetUser);
-                ;
             } else {
                 UserInterface user = GameData.getUser(idTargetUser);
                 user.castedSpell(idSpell, idCasterUser, params);
