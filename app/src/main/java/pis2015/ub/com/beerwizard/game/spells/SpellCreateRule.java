@@ -6,7 +6,7 @@ public class SpellCreateRule extends Spell {
     public SpellCreateRule() {
         super();
         setName(R.string.title_spell5);
-        setImage(R.drawable.duel_of_wizards); // More images need to arrive
+        setImage(R.drawable.rule); // More images need to arrive
         setDescription(R.string.description_text_spell5);
         setQuote(R.string.description_quote_spell5);
         setLockedText(R.string.lock5);
