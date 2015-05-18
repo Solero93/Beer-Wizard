@@ -18,6 +18,6 @@ public class Constants {
     public static final String INTERFACE_NAME = "pis2015.ub.com.beerwizard.user";
     public static final int MSG_UPDATE_RULE = 4;
     public static final int MSG_DECIDE_DUEL = 5;
-    public static final String BROADCAST = null;
+    public static final String BROADCAST = "";
     public static final String SHARED_PREFERENCES_NAME = "beer_wizard";
 }

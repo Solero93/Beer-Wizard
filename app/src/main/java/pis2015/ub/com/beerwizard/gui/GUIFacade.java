@@ -204,10 +204,10 @@ public class GUIFacade {
                     break;
                 case SpellManager.CREATE_RULE:
                     GameData.setRule(param);
-                    NetworkHelper.castSpell(casterUserId, null, idSpell, param); // has to be sent to everyone
+                    NetworkHelper.castSpell(casterUserId, Constants.BROADCAST, idSpell, param); // has to be sent to everyone
                     break;
                 case SpellManager.ALL_IN_BEER:
-                    NetworkHelper.castSpell(casterUserId, null, idSpell, param); // has to be sent to everyone
+                    NetworkHelper.castSpell(casterUserId, Constants.BROADCAST, idSpell, param); // has to be sent to everyone
                     break;
                 default: // Rest of cases
                     String targetUserId = GameData.getUser(userPosition).getUUID();

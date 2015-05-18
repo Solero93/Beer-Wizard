@@ -52,7 +52,7 @@ public class NetworkHelper {
         if (params == null)
             params = "";
         try {
-            if (idTargetUser == Constants.BROADCAST) {
+            if (idTargetUser.equals(Constants.BROADCAST)) {
                 if (idSpell == SpellManager.CREATE_RULE) {
                     /*
                     We emit a signal for all to update the rule
