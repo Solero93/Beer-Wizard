@@ -403,8 +403,7 @@ public class SpellsActivity extends ActionBarActivity {
             textLvl.setText("Level " + lvl);
             text.setText(GUIFacade.getSpellName(lvl - 2));
             image.setImageResource(R.drawable.duel_of_wizards);
-        }
-        if (lvl == 9) {
+        } else if (lvl == 9) {
             lvl++;
             masterUp();
         }
