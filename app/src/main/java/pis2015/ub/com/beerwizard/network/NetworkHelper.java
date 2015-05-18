@@ -35,7 +35,10 @@ public class NetworkHelper {
 
     public static void levelUp(String uuidUser) {
         try {
-            GameData.getUserDb().get(uuidUser).levelUp();
+            if (uuidUser.equals(Constants.UUID_STRING))
+                GameData.getUser().levelUp();
+            else
+                GameData.getUserDb().get(uuidUser).levelUp();
         } catch (BusException e) {
             Log.e("LevelUpUser", e.getMessage());
         }
@@ -43,7 +46,10 @@ public class NetworkHelper {
 
     public static void levelDown(String uuidUser) {
         try {
-            GameData.getUserDb().get(uuidUser).levelDown();
+            if (uuidUser.equals(Constants.UUID_STRING))
+                GameData.getUser().levelDown();
+            else
+                GameData.getUserDb().get(uuidUser).levelDown();
         } catch (BusException e) {
             Log.e("LevelDownUser", e.getMessage());
         }
