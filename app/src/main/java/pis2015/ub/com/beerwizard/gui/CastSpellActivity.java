@@ -47,6 +47,11 @@ public class CastSpellActivity extends Activity {
 
     }
 
+    public void onBackPressed() {
+        setResult(-2, null);
+        finish();
+    }
+
     //Event onClick
     public void onClickCast(View v) {
         oRule = false;

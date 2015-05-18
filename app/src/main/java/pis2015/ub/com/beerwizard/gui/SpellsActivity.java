@@ -359,7 +359,7 @@ public class SpellsActivity extends ActionBarActivity {
 
             public void onFinish() {
                 image.setImageResource(R.drawable.duel_of_wizards);
-                text.setText(GUIFacade.getSpellLockedText(idSpell));
+                text.setText(GUIFacade.getSpellName(idSpell));
             }
         }
                 .start();
