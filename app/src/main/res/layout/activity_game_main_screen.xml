@@ -46,7 +46,7 @@
 
         <Space
             android:layout_width="20px"
-            android:layout_height="20px"/>
+            android:layout_height="20px" />
 
         <HorizontalScrollView
             android:id="@+id/hsv"
@@ -97,7 +97,7 @@
                                 android:layout_alignEnd="@+id/textViewSpell1"
                                 android:layout_alignRight="@+id/textViewSpell1">
 
-                            <ImageView
+                                <ImageView
                                     android:id="@+id/imageViewSpell1"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -121,7 +121,7 @@
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px"/>
+                    android:layout_height="20px" />
 
                 <LinearLayout
                     android:id="@+id/spell2"
@@ -154,7 +154,7 @@
                                 android:layout_alignEnd="@+id/textViewSpell2"
                                 android:layout_alignRight="@+id/textViewSpell2">
 
-                            <ImageView
+                                <ImageView
                                     android:id="@+id/imageViewSpell2"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -178,7 +178,7 @@
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px"/>
+                    android:layout_height="20px" />
 
                 <LinearLayout
                     android:id="@+id/spell3"
@@ -211,7 +211,7 @@
                                 android:layout_alignEnd="@+id/textViewSpell3"
                                 android:layout_alignRight="@+id/textViewSpell3">
 
-                            <ImageView
+                                <ImageView
                                     android:id="@+id/imageViewSpell3"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -235,7 +235,7 @@
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px"/>
+                    android:layout_height="20px" />
 
                 <LinearLayout
                     android:id="@+id/spell4"
@@ -267,7 +267,7 @@
                                 android:layout_alignEnd="@+id/textViewSpell4"
                                 android:layout_alignRight="@+id/textViewSpell4">
 
-                            <ImageView
+                                <ImageView
                                     android:id="@+id/imageViewSpell4"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -291,7 +291,7 @@
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px"/>
+                    android:layout_height="20px" />
 
 
                 <LinearLayout
@@ -324,7 +324,7 @@
                                 android:layout_alignEnd="@+id/textViewSpell5"
                                 android:layout_alignRight="@+id/textViewSpell5">
 
-                            <ImageView
+                                <ImageView
                                     android:id="@+id/imageViewSpell5"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -348,7 +348,7 @@
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px"/>
+                    android:layout_height="20px" />
 
                 <LinearLayout
                     android:id="@+id/spell6"
@@ -381,7 +381,7 @@
                                 android:layout_alignEnd="@+id/textViewSpell6"
                                 android:layout_alignRight="@+id/textViewSpell6">
 
-                            <ImageView
+                                <ImageView
                                     android:id="@+id/imageViewSpell6"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -405,7 +405,7 @@
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px"/>
+                    android:layout_height="20px" />
 
 
                 <LinearLayout
@@ -438,7 +438,7 @@
                                 android:layout_alignEnd="@+id/textViewSpell7"
                                 android:layout_alignRight="@+id/textViewSpell7">
 
-                            <ImageView
+                                <ImageView
                                     android:id="@+id/imageViewSpell7"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -462,7 +462,7 @@
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px"/>
+                    android:layout_height="20px" />
 
                 <LinearLayout
                     android:id="@+id/spell8"
@@ -494,7 +494,7 @@
                                 android:layout_alignEnd="@+id/textViewSpell8"
                                 android:layout_alignRight="@+id/textViewSpell8">
 
-                            <ImageView
+                                <ImageView
                                     android:id="@+id/imageViewSpell8"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
@@ -518,8 +518,7 @@
 
                 <Space
                     android:layout_width="20px"
-                    android:layout_height="20px"/>
-
+                    android:layout_height="20px" />
 
 
             </LinearLayout>
