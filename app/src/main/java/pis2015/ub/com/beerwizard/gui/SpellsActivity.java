@@ -22,7 +22,6 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
-import pis2015.ub.com.beerwizard.game.SpellManager;
 import pis2015.ub.com.beerwizard.network.GameData;
 import pis2015.ub.com.beerwizard.util.Constants;
 
@@ -213,6 +212,7 @@ public class SpellsActivity extends ActionBarActivity {
     };
     int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
     int[] tImage = new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
+    int[] tSpell = new int[]{R.id.spell1, R.id.spell2, R.id.spell3, R.id.spell4, R.id.spell5, R.id.spell6, R.id.spell7, R.id.spell8};
     private int lvl;
 
     @Override
@@ -263,6 +263,17 @@ public class SpellsActivity extends ActionBarActivity {
      */
     public void onClickSpell(View v) {
         int id = v.getId();
+        int i;
+        for (i = 0; i <= 7; i++) {
+            if ((id == tSpell[i]) && (lvl >= (i + 2)) && (!GUIFacade.getSpellIsCooldown(i))) {
+                Intent intent = new Intent(this, CastSpellActivity.class);
+                intent.putExtra("spell", i); //Your id
+                startActivityForResult(intent, 1);
+                break;
+            }
+
+        }
+        /*
         Intent intent = new Intent(this, CastSpellActivity.class);
         if ((id == R.id.spell1) && (this.lvl >= 2)) {
             intent.putExtra("spell", SpellManager.CAN_TO_THE_FACE); //Your id
@@ -288,7 +299,7 @@ public class SpellsActivity extends ActionBarActivity {
         } else if ((id == R.id.spell8) && (this.lvl >= 9)) {
             intent.putExtra("spell", SpellManager.ALL_IN_BEER); //Your id
             startActivityForResult(intent, 1);
-        }
+        }*/
     }
 
     public void lvlUp() {
@@ -300,7 +311,7 @@ public class SpellsActivity extends ActionBarActivity {
             TextView text = (TextView) findViewById(tText[lvl - 2]);
             textLvl.setText("Level " + lvl);
             text.setText(GUIFacade.getSpellName(lvl - 2));
-            image.setImageResource(R.drawable.duel_of_wizards);
+            image.setImageResource(GUIFacade.getSpellImage(lvl - 2));
         } else if (lvl == 9) {
             lvl++;
             masterUp();
@@ -350,7 +361,8 @@ public class SpellsActivity extends ActionBarActivity {
         final ImageView image = (ImageView) findViewById(tImage[idSpell]);
         final TextView text = (TextView) findViewById(tText[idSpell]);
         image.setImageResource(R.drawable.candado);
-        new CountDownTimer(30000, 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
+        GUIFacade.setSpellIsCooldown(idSpell, true);
+        new CountDownTimer(GUIFacade.getSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
 
             public void onTick(long millisUntilFinished) {
                 text.setText("" + millisUntilFinished / 1000);
@@ -358,8 +370,9 @@ public class SpellsActivity extends ActionBarActivity {
             }
 
             public void onFinish() {
-                image.setImageResource(R.drawable.duel_of_wizards);
+                image.setImageResource(GUIFacade.getSpellImage(idSpell));
                 text.setText(GUIFacade.getSpellName(idSpell));
+                GUIFacade.setSpellIsCooldown(idSpell, false);
             }
         }
                 .start();
