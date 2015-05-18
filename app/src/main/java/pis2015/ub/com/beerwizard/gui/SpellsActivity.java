@@ -2,6 +2,7 @@ package pis2015.ub.com.beerwizard.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -29,9 +30,6 @@ import pis2015.ub.com.beerwizard.util.Constants;
 The activity where you can select a spell.
  */
 public class SpellsActivity extends ActionBarActivity {
-    int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
-    int[] tImage = new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
-    private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
@@ -213,6 +211,9 @@ public class SpellsActivity extends ActionBarActivity {
             }
         }
     };
+    int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
+    int[] tImage = new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
+    private int lvl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -265,28 +266,28 @@ public class SpellsActivity extends ActionBarActivity {
         Intent intent = new Intent(this, CastSpellActivity.class);
         if ((id == R.id.spell1) && (this.lvl >= 2)) {
             intent.putExtra("spell", SpellManager.CAN_TO_THE_FACE); //Your id
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         } else if ((id == R.id.spell2) && (this.lvl >= 3)) {
             intent.putExtra("spell", SpellManager.WIZARD_DUEL); //Your id
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         } else if ((id == R.id.spell3) && (this.lvl >= 4)) {
             intent.putExtra("spell", SpellManager.BEEREKINESIS); //Your id
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         } else if ((id == R.id.spell4) && (this.lvl >= 5)) {
             intent.putExtra("spell", SpellManager.SHIELD); //Your id
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         } else if ((id == R.id.spell5) && (this.lvl >= 6)) {
             intent.putExtra("spell", SpellManager.CREATE_RULE); //Your id
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         } else if ((id == R.id.spell6) && (this.lvl >= 7)) {
             intent.putExtra("spell", SpellManager.TRUTH_OR_SHOT); //Your id
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         } else if ((id == R.id.spell7) && (this.lvl >= 8)) {
             intent.putExtra("spell", SpellManager.HAT_OF_SHAME); //Your id
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         } else if ((id == R.id.spell8) && (this.lvl >= 9)) {
             intent.putExtra("spell", SpellManager.ALL_IN_BEER); //Your id
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         }
     }
 
@@ -312,6 +313,9 @@ public class SpellsActivity extends ActionBarActivity {
             Intent refresh = new Intent(this, SpellsActivity.class);
             startActivity(refresh);
             this.finish();
+        } else if ((resultCode <= 7) && (resultCode >= 0)) {
+            cooldown(resultCode);
+
         }
     }
 
@@ -342,6 +346,24 @@ public class SpellsActivity extends ActionBarActivity {
         textLvl.setText("Level " + lvl);
     }
 
+    public void cooldown(final int idSpell) {
+        final ImageView image = (ImageView) findViewById(tImage[idSpell]);
+        final TextView text = (TextView) findViewById(tText[idSpell]);
+        image.setImageResource(R.drawable.candado);
+        new CountDownTimer(30000, 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
+
+            public void onTick(long millisUntilFinished) {
+                text.setText("" + millisUntilFinished / 1000);
+                //here you can have your logic to set text to edittext
+            }
+
+            public void onFinish() {
+                image.setImageResource(R.drawable.duel_of_wizards);
+                text.setText(GUIFacade.getSpellLockedText(idSpell));
+            }
+        }
+                .start();
+    }
     /*
     options and settings
      */
@@ -358,7 +380,6 @@ public class SpellsActivity extends ActionBarActivity {
             case R.id.action_profile: // Profile
                 intent = new Intent(this, ProfileActivity.class);
                 startActivityForResult(intent, 1);
-                setTitle(GUIFacade.getUserName());
                 break;
             case R.id.action_tutorial: // Tutorial
                 intent = new Intent(this, TutorialActivity.class);

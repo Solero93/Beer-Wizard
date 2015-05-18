@@ -196,6 +196,7 @@ public class CastSpellActivity extends Activity {
             public void onClick(View v) {
                 popupWindow.dismiss();
                 GUIFacade.castSpell(idUser, idSpell, textRule);
+                setResult(idSpell, null);
                 finish();
             }
         });
