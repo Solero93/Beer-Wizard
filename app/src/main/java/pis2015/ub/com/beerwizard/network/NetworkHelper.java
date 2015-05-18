@@ -84,6 +84,7 @@ public class NetworkHelper {
                         user = list.get(random.nextInt(list.size()));
                 }
                 user.beJudge(idCasterUser, idTargetUser);
+                GameData.getUser(idTargetUser).castedSpell(idSpell, idCasterUser, params);
             } else {
                 UserInterface user = GameData.getUser(idTargetUser);
                 user.castedSpell(idSpell, idCasterUser, params);
