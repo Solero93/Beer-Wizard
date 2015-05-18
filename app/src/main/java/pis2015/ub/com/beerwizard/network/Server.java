@@ -165,6 +165,7 @@ public class Server extends Service {
                     mBus.unregisterBusObject(user);
                     userDb.clear();
                     user.setLevel(1);
+                    GameData.setRule("");
                     user = null;
                     mBus.disconnect();
                     getLooper().quit();
