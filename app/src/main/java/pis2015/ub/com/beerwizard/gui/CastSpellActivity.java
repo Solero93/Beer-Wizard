@@ -145,6 +145,9 @@ public class CastSpellActivity extends Activity {
 
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
+        Drawable bg = getBaseContext().getResources().getDrawable(R.drawable.popup_border);
+        popupWindow.setBackgroundDrawable(bg);
+        popupWindow.setOutsideTouchable(true);
         TextView titulo = (TextView) popupView.findViewById(R.id.textRule);
         switch (idSpell) {
             case SpellManager.WIZARD_DUEL:
