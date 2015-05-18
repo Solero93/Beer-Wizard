@@ -109,10 +109,6 @@ public class SpellsActivity extends ActionBarActivity {
                         break;
                     }
 
-                    String descr = getResources().getString(GUIFacade.getSpellDescription(idSpell));
-                    String name = GUIFacade.getUserName(targetUser);
-                    String spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-
                     /**
                      * Here we create a popup using a LayoutInflater to allow players to lvl up
                      * sending a request to another player, this player can accept the level up
@@ -123,38 +119,10 @@ public class SpellsActivity extends ActionBarActivity {
                     final PopupWindow popupWindow2 = new PopupWindow(popupView2, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     popupWindow2.setFocusable(true);
 
-                    switch (idSpell) {
-                        case SpellManager.CAN_TO_THE_FACE:
-                            descr = getResources().getString(R.string.short_desc_can);
-                            name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-                            break;
-                        case SpellManager.WIZARD_DUEL:
-                            descr = getResources().getString(R.string.short_desc_duel);
-                            name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-                            break;
-                        case SpellManager.BEEREKINESIS:
-                            descr = getResources().getString(R.string.short_desc_beerk);
-                            name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(2));
-                            break;
-                        case SpellManager.TRUTH_OR_SHOT:
-                            descr = getResources().getString(R.string.short_desc_truth);
-                            name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-                            break;
-                        case SpellManager.HAT_OF_SHAME:
-                            descr = getResources().getString(R.string.short_desc_hat);
-                            name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-                            break;
-                        case SpellManager.ALL_IN_BEER:
-                            descr = getResources().getString(R.string.short_desc_all);
-                            name = GUIFacade.getUserName(targetUser);
-                            spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-                            break;
-                    }
+
+                    String descr = getResources().getString(GUIFacade.getSpellDescription(idSpell));
+                    String name = GUIFacade.getUserName(targetUser);
+                    String spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
 
                     edit = getResources().getString(R.string.popup_received_spell_user_spell);
                     changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
@@ -402,5 +370,4 @@ public class SpellsActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
