@@ -1,6 +1,7 @@
 package pis2015.ub.com.beerwizard.gui;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -95,6 +96,9 @@ public class CastSpellActivity extends Activity {
 
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
+        Drawable bg = getBaseContext().getResources().getDrawable(R.drawable.popup_border);
+        popupWindow.setBackgroundDrawable(bg);
+        popupWindow.setOutsideTouchable(true);
         ListView listvw_user = (ListView) popupView.findViewById(R.id.listView_users);
         Button btCancel = (Button) popupView.findViewById(R.id.btn_cancel_user);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
