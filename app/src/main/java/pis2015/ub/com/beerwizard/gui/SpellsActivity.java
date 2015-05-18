@@ -347,6 +347,7 @@ public class SpellsActivity extends ActionBarActivity {
         }
     }
 
+
     public void lvlDown() {
         TextView textLvl = (TextView) findViewById(R.id.textLvl);
         textLvl.setText("Level " + lvl);

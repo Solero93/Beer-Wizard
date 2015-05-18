@@ -3,6 +3,7 @@ package pis2015.ub.com.beerwizard.gui;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -46,6 +47,10 @@ public class MainMenuActivity extends Activity {
 
                 final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 popupWindow.setFocusable(true);
+
+                Drawable bg = getBaseContext().getResources().getDrawable(R.drawable.popup_border);
+                popupWindow.setBackgroundDrawable(bg);
+                popupWindow.setOutsideTouchable(true);
 
                 Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
                 btnDismiss.setOnClickListener(new Button.OnClickListener() {

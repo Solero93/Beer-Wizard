@@ -2,6 +2,7 @@ package pis2015.ub.com.beerwizard.gui;
 
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -94,14 +95,15 @@ public class TutorialActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 if (curIndex == imageResources.length - 1) {
-                    LayoutInflater layoutInflater
-                            = (LayoutInflater) getBaseContext()
-                            .getSystemService(LAYOUT_INFLATER_SERVICE);
+                    LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                     View popupView = layoutInflater.inflate(R.layout.activity_main_menu_tutorial_popup_ended, null);
-                    final PopupWindow popupWindow = new PopupWindow(
-                            popupView,
-                            ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT);
+                    final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
+                    popupWindow.setFocusable(true);
+                    Drawable bg = getBaseContext().getResources().getDrawable(R.drawable.popup_border);
+                    popupWindow.setBackgroundDrawable(bg);
+                    popupWindow.setOutsideTouchable(true);
                     Button end_tutorial = (Button) popupView.findViewById(R.id.end_turorial);
                     end_tutorial.setOnClickListener(new Button.OnClickListener() {
                         //                TextView wwa= (TextView)popupView.findViewById(R.id.)
