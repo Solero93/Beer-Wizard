@@ -4,6 +4,7 @@ import pis2015.ub.com.beerwizard.R;
 
 public class SpellShield extends Spell {
     public SpellShield() {
+        super();
         setName(R.string.title_spell4);
         setImage(R.drawable.duel_of_wizards); // More images need to arrive
         setDescription(R.string.description_text_spell4);

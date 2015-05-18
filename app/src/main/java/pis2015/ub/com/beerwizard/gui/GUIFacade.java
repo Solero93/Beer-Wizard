@@ -184,11 +184,37 @@ public class GUIFacade {
      * @param idSpell
      * @return
      */
-    static int getSpellCooldown(int idSpell) {
+    static long getSpellCooldown(int idSpell) {
         return SpellManager.getCooldown(idSpell);
     }
 
-    static int getImage(int idSpell) {
+    /**
+     * Returns whether a spell is in Cooldown
+     *
+     * @param idSpell
+     * @return
+     */
+    static boolean getSpellIsCooldown(int idSpell) {
+        return SpellManager.getIsCooldown(idSpell);
+    }
+
+    /**
+     * Sets "cooldown" state on a spell
+     *
+     * @param idSpell
+     * @param isCooldown
+     */
+    static void setSpellIsCooldown(int idSpell, boolean isCooldown) {
+        SpellManager.setIsCooldown(idSpell, isCooldown);
+    }
+
+    /**
+     * Returns image of a spell
+     *
+     * @param idSpell
+     * @return
+     */
+    static int getSpellImage(int idSpell) {
         return SpellManager.getImage(idSpell);
     }
 
@@ -224,6 +250,10 @@ public class GUIFacade {
         }
     }
 
+    /**
+     * Returns current rule of the Game
+     * @return
+     */
     static String getRule() {
         return GameData.getRule();
     }

@@ -4,6 +4,7 @@ import pis2015.ub.com.beerwizard.R;
 
 public class SpellCreateRule extends Spell {
     public SpellCreateRule() {
+        super();
         setName(R.string.title_spell5);
         setImage(R.drawable.duel_of_wizards); // More images need to arrive
         setDescription(R.string.description_text_spell5);

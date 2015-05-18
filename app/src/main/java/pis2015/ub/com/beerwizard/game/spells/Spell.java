@@ -10,9 +10,11 @@ public abstract class Spell {
     protected int quote;
     protected int lockedText;
     protected int levelToUnlock;
-    protected int cooldown;
+    protected long cooldown;
+    protected boolean isCooldown;
 
     public Spell() {
+        this.isCooldown = false;
     }
 
     public int getName() {
@@ -69,11 +71,19 @@ public abstract class Spell {
     }
 
 
-    public int getCooldown() {
+    public long getCooldown() {
         return this.cooldown;
     }
 
-    public void setCooldown(int cooldown) {
+    public boolean isCooldown() {
+        return isCooldown;
+    }
+
+    public void setCooldown(long cooldown) {
         this.cooldown = cooldown;
+    }
+
+    public void setIsCooldown(boolean isCooldown) {
+        this.isCooldown = isCooldown;
     }
 }

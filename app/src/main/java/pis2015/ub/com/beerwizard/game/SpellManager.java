@@ -67,8 +67,16 @@ public class SpellManager {
         return spells.get(idSpell).getLevelToUnlock();
     }
 
-    public static int getCooldown(int idSpell) {
+    public static long getCooldown(int idSpell) {
         return spells.get(idSpell).getCooldown();
+    }
+
+    public static boolean getIsCooldown(int idSpell) {
+        return spells.get(idSpell).isCooldown();
+    }
+
+    public static void setIsCooldown(int idSpell, boolean isCooldown) {
+        spells.get(idSpell).setIsCooldown(isCooldown);
     }
 
     public static int getImage(int idSpell) {
