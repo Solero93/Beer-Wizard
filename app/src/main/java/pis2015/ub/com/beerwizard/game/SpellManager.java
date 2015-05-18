@@ -70,4 +70,8 @@ public class SpellManager {
     public static int getCooldown(int idSpell) {
         return spells.get(idSpell).getCooldown();
     }
+
+    public static int getImage(int idSpell) {
+        return spells.get(idSpell).getImage();
+    }
 }

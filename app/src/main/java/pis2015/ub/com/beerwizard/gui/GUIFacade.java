@@ -188,6 +188,10 @@ public class GUIFacade {
         return SpellManager.getCooldown(idSpell);
     }
 
+    static int getImage(int idSpell) {
+        return SpellManager.getImage(idSpell);
+    }
+
     /**
      * Casts a Spell at a given User.
      *
