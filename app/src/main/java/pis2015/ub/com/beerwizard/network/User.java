@@ -17,10 +17,15 @@ public class User implements UserInterface, BusObject {
     private boolean hasShield;
 
     public User() {
-        this("");
+        this("", -1);
     }
     public User(String name) {
+        this(name, -1);
+    }
+
+    public User(String name, int avatarPhoto) {
         this.name = name;
+        this.avatarPhoto = avatarPhoto;
     }
     /**
      * Level's up the User.

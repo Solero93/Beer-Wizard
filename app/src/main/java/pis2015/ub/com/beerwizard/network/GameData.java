@@ -1,6 +1,7 @@
 package pis2015.ub.com.beerwizard.network;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.os.Handler;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import pis2015.ub.com.beerwizard.R;
 public class GameData extends Application {
     private static Handler spellsActivityHandler;
     private static String rule;
-    private static User user = new User("Test User");
+    private static User user;
     private static ConcurrentHashMap<String, UserInterface> users = new ConcurrentHashMap<>();
 
     public GameData() {
@@ -56,6 +57,8 @@ public class GameData extends Application {
 
     public void onCreate() {
         super.onCreate();
+        SharedPreferences preferences = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE);
+        user = new User(preferences.getString("name", "Change me!"), preferences.getInt("avatar", -1));
         rule = getString(R.string.rule);
     }
 }
