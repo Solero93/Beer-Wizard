@@ -33,7 +33,6 @@ public class CastSpellActivity extends Activity {
         Bundle b = new Bundle();
         b = getIntent().getExtras();
         idSpell = b.getInt("spell");//id spell de 1 a
-        idSpell = idSpell - 1;
         idUser = 0;
         textRule = "";
 
@@ -50,32 +49,34 @@ public class CastSpellActivity extends Activity {
     //Event onClick
     public void onClickCast(View v) {
         oRule = false;
-        //En cada caso hara una cosa
-        if (idSpell == SpellManager.CAN_TO_THE_FACE) {//CAN TO THE FACE
-            //SELECT USER
-
-            initPopupUser(v);
-        } else if (idSpell == SpellManager.WIZARD_DUEL) {//Duel
-            oRule = true;
-            initPopupUser(v);
-        } else if (idSpell == SpellManager.BEEREKINESIS) {//beerkineesis
-
-            initPopupUser(v);
-        } else if (idSpell == SpellManager.SHIELD) {//Shild
-
-            initPopupAccept(v);
-        } else if (idSpell == SpellManager.CREATE_RULE) {//rule
-            oRule = true;
-            initPopupRule(v);
-
-        } else if (idSpell == SpellManager.TRUTH_OR_SHOT) {//Truth
-            oRule = true;
-            initPopupUser(v);
-        } else if (idSpell == SpellManager.HAT_OF_SHAME) {//Hat
-
-            initPopupUser(v);
-        } else if (idSpell == SpellManager.ALL_IN_BEER) {//all
-            initPopupAccept(v);
+        switch (idSpell) {
+            case SpellManager.CAN_TO_THE_FACE:
+                initPopupUser(v);
+                break;
+            case SpellManager.WIZARD_DUEL:
+                oRule = true;
+                initPopupUser(v);
+                break;
+            case SpellManager.BEEREKINESIS:
+                initPopupUser(v);
+                break;
+            case SpellManager.SHIELD:
+                initPopupAccept(v);
+                break;
+            case SpellManager.CREATE_RULE:
+                oRule = true;
+                initPopupRule(v);
+                break;
+            case SpellManager.TRUTH_OR_SHOT:
+                oRule = true;
+                initPopupUser(v);
+                break;
+            case SpellManager.HAT_OF_SHAME:
+                initPopupUser(v);
+                break;
+            case SpellManager.ALL_IN_BEER:
+                initPopupAccept(v);
+                break;
         }
 
     }

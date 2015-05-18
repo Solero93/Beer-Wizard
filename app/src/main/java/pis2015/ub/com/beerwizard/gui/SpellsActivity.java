@@ -29,16 +29,16 @@ import pis2015.ub.com.beerwizard.network.GameData;
 The activity where you can select a spell.
  */
 public class SpellsActivity extends ActionBarActivity {
-    //temporal, cuando tengan los metodos lvl hechos
     int[] tText= new int[]{R.id.textViewSpell1, R.id.textViewSpell2, R.id.textViewSpell3, R.id.textViewSpell4, R.id.textViewSpell5, R.id.textViewSpell6, R.id.textViewSpell7, R.id.textViewSpell8};
     int[] tImage = new int[]{R.id.imageViewSpell1, R.id.imageViewSpell2, R.id.imageViewSpell3, R.id.imageViewSpell4, R.id.imageViewSpell5, R.id.imageViewSpell6, R.id.imageViewSpell7, R.id.imageViewSpell8};
-    String edited;
-    TextView changetext2;
-    String edit;
     private int lvl;
     public Handler spellsHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message inputMessage) {
+            String edited;
+            TextView changetext2;
+            String edit;
+
             switch (inputMessage.what) {
                 case Constants.MSG_DECIDE_LEVEL:
                     final String targetUser1 = (String) inputMessage.obj;
@@ -63,7 +63,7 @@ public class SpellsActivity extends ActionBarActivity {
                     TextView changetext = (TextView) popupView.findViewById(R.id.name_lvl);
                     changetext.setText(strMeatMsg);
 
-                    //Now we declarate the 2 possible buttons, player can level ul, or player cannot level up
+                    //Now we declare the 2 possible buttons, player can level ul, or player cannot level up
                     //this button increases the player level in 1
                     Button btnlvlup = (Button) popupView.findViewById(R.id.btn_lvlup);
                     btnlvlup.setOnClickListener(new Button.OnClickListener() {
@@ -103,22 +103,14 @@ public class SpellsActivity extends ActionBarActivity {
                     int idSpell = (int) ((Object[]) inputMessage.obj)[0];
                     String targetUser = (String) ((Object[]) inputMessage.obj)[1];
                     String param = (String) ((Object[]) inputMessage.obj)[2];
-
-
-                    /*
-                    * If user has shield, spell is not casted
-                    * And shield is broken.
-                     */
+                    //If user has shield, spell is not casted and shield is broken.
                     if (GUIFacade.haveShield()) {
                         GUIFacade.breakShield();
                         break;
                     }
 
                     String descr = getResources().getString(GUIFacade.getSpellDescription(idSpell));
-
-                    // idSpell needs to changed to targetUser
                     String name = GUIFacade.getUserName(targetUser);
-
                     String spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
 
                     /**
@@ -126,113 +118,59 @@ public class SpellsActivity extends ActionBarActivity {
                      * sending a request to another player, this player can accept the level up
                      * or deny it
                      */
-                    //Here we create the layout inflater
                     LayoutInflater layoutInflater2 = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-                    //Here we associate the layout inflater with the layout we need, in this case popup_lvlup
                     View popupView2 = layoutInflater2.inflate(R.layout.popup_received_spell, null);
-                    //Now we create the popup window
                     final PopupWindow popupWindow2 = new PopupWindow(popupView2, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    //Time to only interact with the popup
                     popupWindow2.setFocusable(true);
 
-                    //here we edit the popup to show what spell the casted
                     switch (idSpell) {
                         case SpellManager.CAN_TO_THE_FACE:
                             descr = getResources().getString(R.string.short_desc_can);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-
-                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
-                            edited = String.format(edit, name, spellName);
-                            changetext2.setText(edited);
-
-                            edit = getResources().getString(R.string.popup_received_spell_descr);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                            edited = String.format(edit, descr);
-                            changetext2.setText(edited);
-
                             break;
-
                         case SpellManager.WIZARD_DUEL:
                             descr = getResources().getString(R.string.short_desc_duel);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-
-                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
-                            edited = String.format(edit, name, spellName);
-                            changetext2.setText(edited);
-
-                            edit = getResources().getString(R.string.popup_received_spell_descr);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                            edited = String.format(edit, descr);
-                            changetext2.setText(edited);
                             break;
-
                         case SpellManager.BEEREKINESIS:
                             descr = getResources().getString(R.string.short_desc_beerk);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(2));
-
-                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
-                            edited = String.format(edit, name, spellName);
-                            changetext2.setText(edited);
-
-                            edit = getResources().getString(R.string.popup_received_spell_descr);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                            edited = String.format(edit, descr);
-                            changetext2.setText(edited);
                             break;
-
                         case SpellManager.TRUTH_OR_SHOT:
                             descr = getResources().getString(R.string.short_desc_truth);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-
-                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
-                            edited = String.format(edit, name, spellName);
-                            changetext2.setText(edited);
-
-                            edit = getResources().getString(R.string.popup_received_spell_descr);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                            edited = String.format(edit, param);
-                            changetext2.setText(edited);
                             break;
-
                         case SpellManager.HAT_OF_SHAME:
                             descr = getResources().getString(R.string.short_desc_hat);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-
-                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
-                            edited = String.format(edit, name, spellName);
-                            changetext2.setText(edited);
-
-                            edit = getResources().getString(R.string.popup_received_spell_descr);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                            edited = String.format(edit, descr);
-                            changetext2.setText(edited);
                             break;
-
                         case SpellManager.ALL_IN_BEER:
                             descr = getResources().getString(R.string.short_desc_all);
                             name = GUIFacade.getUserName(targetUser);
                             spellName = getResources().getString(GUIFacade.getSpellName(idSpell));
-
-                            edit = getResources().getString(R.string.popup_received_spell_user_spell);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
-                            edited = String.format(edit, name, spellName);
-                            changetext2.setText(edited);
-
-                            edit = getResources().getString(R.string.popup_received_spell_descr);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                            edited = String.format(edit, descr);
-                            changetext2.setText(edited);
                             break;
+                    }
+
+                    edit = getResources().getString(R.string.popup_received_spell_user_spell);
+                    changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
+                    edited = String.format(edit, name, spellName);
+                    changetext2.setText(edited);
+
+                    if (param != "") {
+                        edit = getResources().getString(R.string.popup_received_spell_descr);
+                        changetext2 = (TextView) popupView2.findViewById(R.id.order);
+                        edited = String.format(edit, param);
+                        changetext2.setText(edited);
+                    } else {
+                        edit = getResources().getString(R.string.popup_received_spell_descr);
+                        changetext2 = (TextView) popupView2.findViewById(R.id.order);
+                        edited = String.format(edit, descr);
+                        changetext2.setText(edited);
                     }
 
                     Button got = (Button) popupView2.findViewById(R.id.btn_got);
@@ -264,13 +202,9 @@ public class SpellsActivity extends ActionBarActivity {
                     final String user2 = (String) ((Object[]) inputMessage.obj)[1];
                     final String user2_name = GUIFacade.getUserName(user2);
 
-                    //Here we create the layout inflater
                     LayoutInflater layoutInflater3 = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-                    //Here we associate the layout inflater with the layout we need, in this case popup_lvlup
                     View popupView3 = layoutInflater3.inflate(R.layout.popup_duel, null);
-                    //Now we create the popup window
                     final PopupWindow popupWindow3 = new PopupWindow(popupView3, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    //Time to only interact with the popup
                     popupWindow3.setFocusable(true);
 
                     edit = getResources().getString(R.string.duel_user1);
@@ -305,13 +239,9 @@ public class SpellsActivity extends ActionBarActivity {
                         }
                     });
 
-                    //We set the animation to show the popup
                     popupWindow3.setAnimationStyle(R.style.popup_animation);
-                    //Here we show the position where will appear the popup
                     popupWindow3.showAtLocation(findViewById(R.id.handle), Gravity.CENTER, 0, 0);
-
                     break;
-
             }
         }
     };
@@ -340,9 +270,7 @@ public class SpellsActivity extends ActionBarActivity {
         GameData.setSpellsActivityHandler(this.spellsHandler); // Assigns Handler to GameData
     }
 
-    /*
-    Action bar constructor
-     */
+    //Action bar constructor
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -352,6 +280,7 @@ public class SpellsActivity extends ActionBarActivity {
 
     }
 
+    //Disabling Back Button in this activity
     public void onBackPressed() {
     }
 
@@ -367,28 +296,28 @@ public class SpellsActivity extends ActionBarActivity {
         int id = v.getId();
         Intent intent = new Intent(this, CastSpellActivity.class);
         if ((id == R.id.spell1) && (this.lvl >= 2)) {
-            intent.putExtra("spell", 1); //Your id
+            intent.putExtra("spell", SpellManager.CAN_TO_THE_FACE); //Your id
             startActivity(intent);
         } else if ((id == R.id.spell2) && (this.lvl >= 3)) {
-            intent.putExtra("spell", 2); //Your id
+            intent.putExtra("spell", SpellManager.WIZARD_DUEL); //Your id
             startActivity(intent);
         } else if ((id == R.id.spell3) && (this.lvl >= 4)) {
-            intent.putExtra("spell", 3); //Your id
+            intent.putExtra("spell", SpellManager.BEEREKINESIS); //Your id
             startActivity(intent);
         } else if ((id == R.id.spell4) && (this.lvl >= 5)) {
-            intent.putExtra("spell", 4); //Your id
+            intent.putExtra("spell", SpellManager.SHIELD); //Your id
             startActivity(intent);
         } else if ((id == R.id.spell5) && (this.lvl >= 6)) {
-            intent.putExtra("spell", 5); //Your id
+            intent.putExtra("spell", SpellManager.CREATE_RULE); //Your id
             startActivity(intent);
         } else if ((id == R.id.spell6) && (this.lvl >= 7)) {
-            intent.putExtra("spell", 6); //Your id
+            intent.putExtra("spell", SpellManager.TRUTH_OR_SHOT); //Your id
             startActivity(intent);
         } else if ((id == R.id.spell7) && (this.lvl >= 8)) {
-            intent.putExtra("spell", 7); //Your id
+            intent.putExtra("spell", SpellManager.HAT_OF_SHAME); //Your id
             startActivity(intent);
         } else if ((id == R.id.spell8) && (this.lvl >= 9)) {
-            intent.putExtra("spell", 8); //Your id
+            intent.putExtra("spell", SpellManager.ALL_IN_BEER); //Your id
             startActivity(intent);
         }
     }
@@ -452,33 +381,24 @@ public class SpellsActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        //PROILE
-        if (id == R.id.action_lvl_up) {
-            GUIFacade.levelUp();
-
-        }
-        if (id == R.id.action_profile) {
-            Intent intent = new Intent(this, ProfileActivity.class);
-            startActivityForResult(intent, 1);
-            setTitle(GUIFacade.getUserName());
-            return true;
-        }
-
-        //TUTORIAL
-        if (id == R.id.action_tutorial) {
-            Intent intent = new Intent(this, TutorialActivity.class);
-            startActivity(intent);
-            return true;
-        }
-
-        //Exit to Menu
-        if (id == R.id.action_exit) {
-            GUIFacade.exitGame(this);
-            finish();
-            return true;
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_lvl_up:
+                GUIFacade.levelUp();
+                break;
+            case R.id.action_profile: // Profile
+                intent = new Intent(this, ProfileActivity.class);
+                startActivityForResult(intent, 1);
+                setTitle(GUIFacade.getUserName());
+                break;
+            case R.id.action_tutorial: // Tutorial
+                intent = new Intent(this, TutorialActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_exit: // Exit To Menu
+                GUIFacade.exitGame(this);
+                finish();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
