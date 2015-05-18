@@ -6,6 +6,8 @@ import org.alljoyn.bus.annotation.BusMethod;
 import org.alljoyn.bus.annotation.BusProperty;
 import org.alljoyn.bus.annotation.BusSignal;
 
+import pis2015.ub.com.beerwizard.util.Constants;
+
 /**
  * Created by jordi on 5/11/15.
  */

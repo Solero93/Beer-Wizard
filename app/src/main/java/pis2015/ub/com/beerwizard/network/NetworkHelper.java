@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
+import pis2015.ub.com.beerwizard.util.Constants;
 
 public class NetworkHelper {
 

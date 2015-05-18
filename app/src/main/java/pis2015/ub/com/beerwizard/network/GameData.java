@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import pis2015.ub.com.beerwizard.R;
+import pis2015.ub.com.beerwizard.util.Constants;
 
 public class GameData extends Application {
     private static Handler spellsActivityHandler;

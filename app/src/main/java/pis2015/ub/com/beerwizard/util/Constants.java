@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard.network;
+package pis2015.ub.com.beerwizard.util;
 
 import android.os.Build;
 

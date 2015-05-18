@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
-import pis2015.ub.com.beerwizard.network.Constants;
 import pis2015.ub.com.beerwizard.network.GameData;
 import pis2015.ub.com.beerwizard.network.NetworkHelper;
 import pis2015.ub.com.beerwizard.network.User;
 import pis2015.ub.com.beerwizard.network.UserInterface;
+import pis2015.ub.com.beerwizard.util.Constants;
 
 /**
  * Façade class that has all the "services" the GUI can call.

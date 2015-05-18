@@ -6,6 +6,8 @@ import android.util.Log;
 
 import org.alljoyn.bus.BusObject;
 
+import pis2015.ub.com.beerwizard.util.Constants;
+
 /**
  * Class that represents the User (or Player) object
  */

@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 
 import pis2015.ub.com.beerwizard.R;
-import pis2015.ub.com.beerwizard.network.Constants;
+import pis2015.ub.com.beerwizard.util.Constants;
 
 
 public class ProfileActivity extends Activity {

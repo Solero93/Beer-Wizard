@@ -8,6 +8,8 @@ import org.alljoyn.bus.Version;
 import java.util.HashMap;
 import java.util.Map;
 
+import pis2015.ub.com.beerwizard.util.Constants;
+
 /**
  * Created by jordi on 5/11/15.
  */

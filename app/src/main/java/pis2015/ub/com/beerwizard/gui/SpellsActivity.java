@@ -22,8 +22,8 @@ import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.game.SpellManager;
-import pis2015.ub.com.beerwizard.network.Constants;
 import pis2015.ub.com.beerwizard.network.GameData;
+import pis2015.ub.com.beerwizard.util.Constants;
 
 /*
 The activity where you can select a spell.
