@@ -16,6 +16,13 @@ public class GameData extends Application {
     private static User user;
     private static ConcurrentHashMap<String, UserInterface> users = new ConcurrentHashMap<>();
 
+    /*
+    We load the AllJoyn library
+     */
+    static {
+        System.loadLibrary("alljoyn_java");
+    }
+
     public GameData() {
     }
 
