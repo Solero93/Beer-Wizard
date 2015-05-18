@@ -1,6 +1,7 @@
 package pis2015.ub.com.beerwizard.network;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.os.Handler;
 
 import java.util.ArrayList;
@@ -8,12 +9,20 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import pis2015.ub.com.beerwizard.R;
+import pis2015.ub.com.beerwizard.util.Constants;
 
 public class GameData extends Application {
     private static Handler spellsActivityHandler;
     private static String rule;
-    private static User user = new User("Test User");
+    private static User user;
     private static ConcurrentHashMap<String, UserInterface> users = new ConcurrentHashMap<>();
+
+    /*
+    We load the AllJoyn library
+     */
+    static {
+        System.loadLibrary("alljoyn_java");
+    }
 
     public GameData() {
     }
@@ -56,6 +65,8 @@ public class GameData extends Application {
 
     public void onCreate() {
         super.onCreate();
+        SharedPreferences preferences = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE);
+        user = new User(preferences.getString("name", "Change me!"), preferences.getInt("avatar", -1));
         rule = getString(R.string.rule);
     }
 }

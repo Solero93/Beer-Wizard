@@ -1,6 +1,7 @@
 package pis2015.ub.com.beerwizard.gui;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 
 import pis2015.ub.com.beerwizard.R;
+import pis2015.ub.com.beerwizard.util.Constants;
 
 
 public class ProfileActivity extends Activity {
@@ -49,6 +51,11 @@ public class ProfileActivity extends Activity {
             public void onClick(View v) {
                 String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
                 int idAvatar = 0;
+                SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
+                        .edit();
+                editor.putString("name", name);
+                editor.putInt("avatar", idAvatar);
+                editor.commit();
                 GUIFacade.modifyUserProfile(name, idAvatar);
                 setResult(RESULT_OK, null);
                 finish();

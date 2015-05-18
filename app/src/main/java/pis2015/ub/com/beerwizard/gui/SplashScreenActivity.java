@@ -20,10 +20,6 @@ public class SplashScreenActivity extends Activity {
     // Set the duration of the splash screen
     private static final long SPLASH_SCREEN_DELAY = 300;
 
-    static {
-        System.loadLibrary("alljoyn_java");
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);

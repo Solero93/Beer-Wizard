@@ -23,6 +23,8 @@ import org.alljoyn.bus.annotation.BusSignalHandler;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
+import pis2015.ub.com.beerwizard.util.Constants;
+
 public class Server extends Service {
     private static final String TAG = "ServerService";
     static BusHandler busHandler = null;
@@ -165,6 +167,7 @@ public class Server extends Service {
                     mBus.unregisterBusObject(user);
                     userDb.clear();
                     user.setLevel(1);
+                    GameData.setRule("");
                     user = null;
                     mBus.disconnect();
                     getLooper().quit();

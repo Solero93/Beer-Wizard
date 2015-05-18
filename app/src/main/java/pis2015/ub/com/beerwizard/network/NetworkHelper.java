@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
+import pis2015.ub.com.beerwizard.util.Constants;
 
 public class NetworkHelper {
 
@@ -52,7 +53,7 @@ public class NetworkHelper {
         if (params == null)
             params = "";
         try {
-            if (idTargetUser == Constants.BROADCAST) {
+            if (idTargetUser.equals(Constants.BROADCAST)) {
                 if (idSpell == SpellManager.CREATE_RULE) {
                     /*
                     We emit a signal for all to update the rule
