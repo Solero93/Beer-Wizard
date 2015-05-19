@@ -18,14 +18,6 @@ import pis2015.ub.com.beerwizard.util.Constants;
  * Façade class that has all the "services" the GUI can call.
  */
 public class GUIFacade {
-    private static GUIFacade ourInstance = new GUIFacade();
-
-    private GUIFacade() {
-    }
-
-    public static GUIFacade getInstance() {
-        return ourInstance;
-    }
 
     /**
      * Gives all the Users that play the current GameData
