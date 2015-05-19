@@ -20,7 +20,7 @@ import pis2015.ub.com.beerwizard.R;
  * Activity of the Main Menu
  */
 public class MainMenuActivity extends Activity {
-    Button btnAbout;
+    private Button btnAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +92,7 @@ public class MainMenuActivity extends Activity {
      * Enters to a new game, but before has to create a Room.
      */
     public void onClick_newGame(View vw) {
-        GUIFacade.createGame(this, "");
+        GUIFacade.createGame(this);
         Intent intent = new Intent(this, SpellsActivity.class);
         startActivity(intent);
     }

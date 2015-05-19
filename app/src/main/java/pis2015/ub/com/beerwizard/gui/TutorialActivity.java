@@ -1,6 +1,5 @@
 package pis2015.ub.com.beerwizard.gui;
 
-
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -21,21 +20,21 @@ import android.widget.ViewSwitcher;
 import pis2015.ub.com.beerwizard.R;
 
 public class TutorialActivity extends Activity {
-    Button buttonNext;
-    Button buttonPrevious;
-    ImageSwitcher imageSwitcher;
-    Animation slide_in_left, slide_out_right;
-
-    int imageResources[] = {
-            R.drawable.tutorial_1,
-            R.drawable.tutorial_2,
-            R.drawable.tutorial_3,
-            R.drawable.tutorial_4,
-    };
-
-    int curIndex;
+    private Button buttonNext;
+    private Button buttonPrevious;
+    private ImageSwitcher imageSwitcher;
+    private Animation slide_in_left, slide_out_right;
+    private int[] imageResources;
+    private int curIndex;
 
     protected void onCreate(Bundle savedInstanceState) {
+        this.imageResources = new int[]{
+                R.drawable.tutorial_1,
+                R.drawable.tutorial_2,
+                R.drawable.tutorial_3,
+                R.drawable.tutorial_4,
+        };
+
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
@@ -136,5 +135,4 @@ public class TutorialActivity extends Activity {
             }
         });
     }
-
 }

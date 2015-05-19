@@ -22,9 +22,9 @@ import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.game.SpellManager;
 
 public class CastSpellActivity extends Activity {
-    int idSpell, idUser;
-    String textRule;
-    boolean oRule;
+    private int idSpell, idUser;
+    private String textRule;
+    private boolean oRule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

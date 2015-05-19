@@ -1,9 +1,5 @@
 package pis2015.ub.com.beerwizard.gui;
 
-/**
- * Created by Administrador on 03/05/2015.
- */
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

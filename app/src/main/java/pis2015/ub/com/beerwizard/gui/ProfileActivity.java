@@ -19,7 +19,7 @@ import pis2015.ub.com.beerwizard.util.Constants;
 
 
 public class ProfileActivity extends Activity {
-
+    //TODO is this necessary??
     public static void enableDisableViewGroup(ViewGroup viewGroup, boolean enabled) {
         int childCount = viewGroup.getChildCount();
         for (int i = 0; i < childCount; i++) {

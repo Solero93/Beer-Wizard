@@ -65,28 +65,28 @@ public class GUIFacade {
      *
      * @return
      */
-    static boolean haveShield() {
+    static boolean getUserShield() {
         return GameData.getUser().getShield();
     }
 
     /**
      * Breaks shield of User
      */
-    static void breakShield() {
+    static void breakUserShield() {
         GameData.getUser().setShield(false);
     }
 
     /**
-     * Creates a GameData with a given name.
-     *
-     * @param gameName - name you want the GameData to have
+     * Lets a User create or enter a Game
+     * @param context
      */
-    static void createGame(Context context, String gameName) {
+    static void createGame(Context context) {
         NetworkHelper.createGame(context);
     }
 
     /**
-     * Exits the current User from the GameData.
+     * Removes a User from the list of User when he exists
+     * @param context
      */
     static void exitGame(Context context) {
         NetworkHelper.exitGame(context);
@@ -125,17 +125,18 @@ public class GUIFacade {
     /**
      * Levels Up a specific user.
      *
-     * @param targetUser
+     * @param uuid
      */
-    static void levelUp(String targetUser) {
-        NetworkHelper.levelUp(targetUser);
+    static void levelUp(String uuid) {
+        NetworkHelper.levelUp(uuid);
     }
 
     /**
-     * Levels down the User
+     * Levels down a User after losing a duel
+     * @param uuid
      */
-    static void levelDown(String targetUser) {
-        NetworkHelper.levelDown(targetUser);
+    static void levelDown(String uuid) {
+        NetworkHelper.levelDown(uuid);
     }
 
     /**
@@ -143,9 +144,9 @@ public class GUIFacade {
      *
      * @param idSpell      - ID of spell to cast
      * @param param       - possible parametres (null if there aren't any)
-     * @param userPosition - ID of User to cast spell on (null if it's self inflicted)
+     * @param targetUserPosition - ID of User to cast spell on (null if it's self inflicted)
      */
-    static void castSpell(int userPosition, int idSpell, String param) {
+    static void castSpell(int targetUserPosition, int idSpell, String param) {
         try {
             String casterUserId = GameData.getUser().getUUID();
             switch (idSpell) {
@@ -160,7 +161,7 @@ public class GUIFacade {
                     NetworkHelper.castSpell(casterUserId, Constants.BROADCAST, idSpell, param); // has to be sent to everyone
                     break;
                 default: // Rest of cases
-                    String targetUserId = GameData.getUser(userPosition).getUUID();
+                    String targetUserId = GameData.getUser(targetUserPosition).getUUID();
                     NetworkHelper.castSpell(casterUserId, targetUserId, idSpell, param);
                     break;
             }
