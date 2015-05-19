@@ -3,46 +3,96 @@
 
 package GUI{
 	class CastSpellActivity{
+		#void onCreate(Bundle savedInstanceState)
+		+void onBackPressed()
+		+void onClickCast(View v)
+		+boolean onCreateOptionsMenu(Menu menu)
+		+boolean onOptionsItemSelected(MenuItem item)
+		+void initPopupUser(final View v)
+		+void initPopupRule(View v)
+		+void initPopupAccept(View v)
 	}
+	
+	class IntroActivity{
+		#void onCreate(Bundle savedInstanceState)
+		+void onClick_enterMenu(View vw)
+	}
+	
 	class MainMenuActivity{
-		-void runIntroActivityOnLaunch()
+		#void onCreate(Bundle savedInstanceState)
+		+void run_IntroActivity_at_launch()
+		+void onClick_newGame(View vw)
+		+void onClick_profile(View vw)
+		+void onClick_tutorial(View vw)
 	}
 	class ProfileActivity{
+		{static} void enableDisableViewGroup(ViewGroup viewGroup, boolean enabled)
+		#void onCreate(Bundle savedInstanceState)
 	}
 	
 	class SpellsActivity{
+		-tText : int[]
+		-tImage : int[]
+		-tSpell : int[]
+		-lvl : int
+		+spellsHandler : Handler
+		#void onCreate(Bundle savedInstanceState)
+		+boolean onCreateOptionsMenu(Menu menu)
+		+void onBackPressed()
+		#void onSaveInstanceState(Bundle icicle)
+		+void onClickSpell(View v)
+		#void onActivityResult(int requestCode, int resultCode, Intent data)
+		+boolean onOptionsItemSelected(MenuItem item)
+		-void lvlUp()
+		-void lvlDown()
+		-void masterUp()
+		-void masterDown()
+		-void cooldown(final int idSpell)
+		-void initSpellsHandler()
+	}
+	
+	class SplashScreenActivity{
+		-{static} SPLASH_SCREEN_DELAY : final long = 300;
+		#void onCreate(Bundle savedInstanceState)
+	}
+	
+	class TutorialActivity{
+		-buttonNext : Button
+		-buttonPrevious : Button
+		-imageSwitcher : ImageSwitcher
+		-slide_in_left : Animation
+		-slide_out_right : Animation
+		-imageResources : int[]
+		-curIndex : int
+		#void onCreate(Bundle savedInstanceState)
 	}
   
 	MainMenuActivity  -->  IntroActivity
 	MainMenuActivity  -->  SpellsActivity
-	MainMenuActivity  -->  RoomCreateActivity
 	MainMenuActivity  -->  ProfileActivity 
 	MainMenuActivity  -->  TutorialActivity
-	MainMenuActivity  -->  AboutPopUp
+	MainMenuActivity  -->  SplashScreenActivity
 	SpellsActivity  -->  ProfileActivity
 	SpellsActivity  -->  TutorialActivity
 	SpellsActivity  -->  CastSpellActivity
-	SpellsActivity  -->  AboutPopUp
 }
 
 class GUIFacade <<(F,orchid) Facade>>{
-	-idLocalUser : String
-	.. MainMenuActivity ..
-	{static}ArrayList<String> getAllGames()
-	{static}void createGame(String gameName)
-	{static}void enterGame(String serverIP)
-	{static}void modifyUserProfile(String name, int idAvatar)
 	.. SpellsActivity ..
+	{static}List<String> getAllUsers()
+	{static}String getUserName()
+	{static}String getUserName(String uuid)
+	{static}createGame(Context context)
+	{static}exitGame(Context context)
 	{static}void modifyUserProfile(String name, int idAvatar)
 	{static}void levelUp()
-	{static}void levelDown()
-	{static}void exitGame()
+	{static}void levelUp(String uuid)
+	{static}void levelDown(String uuid)
+	{static}String getRule()
 	.. CastSpellActivity ..
-	{static}ArrayList<String> getAllUsers()
-	{static}String getSpellName(int idSpell)
-	{static}String getSpellDescription(int idSpell)
-	{static}String getSpellQuote(int idSpell)
-	{static}void castSpell(int idTargetUser, int idSpell, String[] params)
+	{static}boolean getUserShield()
+	{static}void breakUserShield()
+	{static}void castSpell(int targetUserPosition, int idSpell, String param)
 }
 
 GUI --> GUIFacade : sends petitions to

@@ -1,64 +1,79 @@
 @startuml
 
-class Network <<(F,orchid) Facade>>{
-    .. Server ..
-    - serverIP : String
-    - serverPort : int
-    .. Spells (Synchronous) ..
-    + void castSpell(String idCasterUser, String idTargetUser, String idSpell, String[] params)
-    .. User (Asynchronous) ..
-    + void modifyUserProfile(String idUser, String name, String idAvatar)
-    + void levelUp(String idUser)
-    .. Enter Game ..
-    + void enterGame(String ip)
-    - void downloadUsers()
-    .. Exit Game ..
-    + void exitGame()
-    .. User exits the game (Synchronous/Internal) ..
-    - void userExitsGame(String idUser)
-}
-note right: levelUp() launches a BossException\nif encountering a Boss while leveling up
-
-class Server {
-    .. Database ..
-    - userDb : Database
-    - castingSpell : boolean
+class NetworkHelper <<(F,orchid) Facade>>{
+    +{static} byte createGame(Context context)
+    +{static} void exitGame(Context context)
+    +{static} void levelUp()
+    +{static} void levelUp(String uuidUser)
+    +{static} void levelDown(String uuidUser)
+    +{static} void castSpell(String idCasterUser, String idTargetUser, int idSpell, String params)
 }
 
-class ServerListener <<(T,green) Thread>> implements Runnable{
-    .. Synchronous methods ..
-    + void setStop()
-    + boolean hasToStop()
+class Server extends Service{
+    -{static} TAG : final String = "ServerService"
+    {static} bushandler : Bushandler
+    -userDb : final ConcurrentHashMap<String, UserInterface>
+    -reverseUserDb : final ConcurrentHashMap<UserInterface, String>
+    +class BusHandler extends Handler
+    
+    +void onCreate()
+    +int onStartCommand(Intent intent, int flags, int startId)
+    +void onDestroy()
+    +IBinder onBind(Intent intent)
+    +void updateRule(String newRule) 
 }
 
-Server <--> Network : communicates over the network
-Server <--> SocketServer
-Network <--> ServerListener : receives data from the server
-ServerListener <--> SocketServer : listens for the server
+Server <--> NetworkHelper : communicates over the network
 
+class GameData{
+	-{static} spellsActivityHandler : Handler
+	-{static} rule : String
+	-{static} users : ConcurrentHashMap<String, UserInterface>
+	
+	static {System.loadLibrary("alljoyn_java");}
+	
+	+GameData()
+	+void onCreate()
+}
 
-class Game << (S,#FF7700) Singleton >>{
+interface UserInterface{
+	String getName()
+	void setName(String name) 
+	int getLevel() 
+	void setLevel(int level) 
+	int getAvatar() 
+	void setAvatar(int avatar) 
+	String getUUID() 
+	void levelUp() 
+	void levelDown() 
+	void acceptsLevelUp(String uuid) 
+	void castedSpell(int i, String uuid, String param) 
+	void updateRule(String newRule) 
+	String getRule() 
+	void beJudge(String uuidCaster, String uuidVictim) 
+	boolean getShield() 
+	void setShield(boolean bool) 
+}
+
+class User implements UserInterface{
+	-{static} TAG : final String = "User";
 	-name : String
-	-rule : String
-	.. Users ..
-	+void modifyUserProfile(byte idUser, String name, byte idAvatar)
-	+void userExitsGame(byte idUser)
-	.. Exit ..
-	+void exitGame()
-}
-
-class User {
-	-id : byte
-	-name : String
-	-level : byte
+	-level : int
+	-avatarPhoto : int
 	-hasShield : boolean
-	-avatarPhoto : byte
 
-	+void levelUp()
-	+void levelDown()
-	+void modifyMyProfile(String name, byte idAvatar)
+	+User()
+	+User(String name)
+	+User(String name, int avatarPhoto)
 }
 
-Game "1" --> "1..*" User: stores
+GameData "1" --> "1..*" User: stores
+
+class LocalAboutDataListener implements AboutDataListener{
+	+Map<String, Variant> getAboutData(String language)
+	+Map<String, Variant> getAnnouncedAboutData()
+}
+
+Server "1" --> "1" LocalAboutDataListener : has
 
 @enduml

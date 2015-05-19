@@ -1,24 +1,20 @@
 @startuml
 
 abstract class Spell{
-	#name : String
-	#description : String
-	#quote : String
+	#name : int
+	#image : int
+	#description : int
+	#quote : int
+	#lockedText : int
 	#levelToUnlock : int
-	#cooldown : int
+	#cooldown : long
+	#isCooldown : boolean
 }
 
 class SpellManager << (S,#FF7700) Singleton >>{
-	{static}String getName(idSpell)
-	{static}String getDescription(idSpell)
-	{static}String getQuote(idSpell)
-	{static}String getLevelToUnlock(idSpell)
-	{static}String getCooldown(idSpell)
 }
 
 SpellManager "1" --> "8" Spell : manages
-
-
 
 /'
 Sons of Spell class
@@ -30,10 +26,8 @@ class SpellCanToTheFace extends Spell{
 
 class SpellWizardDuel extends Spell{
 	#levelToUnlock = 3
+	-duels : ArrayList<Integer>
 	+String getRandomDuel()
-}
-class Duel{
-	-duel : String
 }
 
 class SpellBeerekinesis extends Spell{
@@ -47,38 +41,27 @@ class SpellShield extends Spell{
 
 class SpellCreateRule extends Spell{
 	#levelToUnlock = 6
+	-rules : ArrayList<Integer>
 	+String getRandomRule()
-}
-class Rule{
-	-rule : String
 }
 
 
 class SpellTruthOrShot extends Spell{
 	#levelToUnlock = 7
+	-truths : ArrayList<Integer>
 	+String getRandomTruth()
-}
-class Truth{
-	-truth : String
 }
 
 
 class SpellHatOfShame extends Spell{
 	#levelToUnlock = 8
+	-hatsOfShame : ArrayList<Integer>
 	+String getRandomHatOfShame()
-}
-class HatOfShame{
-	-hatOfShame : String
 }
 
 
 class SpellAllInShot extends Spell{
 	#levelToUnlock = 9
 }
-
-SpellWizardDuel "1" --> "1..*" Duel
-SpellCreateRule "1" --> "1..*" Rule
-SpellTruthOrShot "1" --> "1..*" Truth
-SpellHatOfShame "1" --> "1..*" HatOfShame
 
 @enduml

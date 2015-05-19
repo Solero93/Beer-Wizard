@@ -4,8 +4,8 @@
 !include gui.txt
 !include server.txt
 
-Network <--> Game : interacts with
-GUIFacade --> SpellManager : sends petition to
-GUIFacade <--> Network : interacts with
+NetworkHelper <--> Game : interacts with
+GUI --> SpellManager : asks for spell info
+GUIFacade <--> NetworkHelper : interacts with
 
 @enduml
