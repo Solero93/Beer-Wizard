@@ -11,6 +11,6 @@ public class SpellCreateRule extends Spell {
         setQuote(R.string.description_quote_spell5);
         setLockedText(R.string.lock5);
         setLevelToUnlock(6);
-        setCooldown(0);
+        setCooldown(30000);
     }
 }

@@ -11,6 +11,6 @@ public class SpellTruthOrShot extends Spell {
         setQuote(R.string.description_quote_spell6);
         setLockedText(R.string.lock6);
         setLevelToUnlock(7);
-        setCooldown(0);
+        setCooldown(30000);
     }
 }

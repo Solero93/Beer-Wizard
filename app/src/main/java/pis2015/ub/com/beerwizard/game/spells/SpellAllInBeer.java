@@ -11,6 +11,6 @@ public class SpellAllInBeer extends Spell {
         setQuote(R.string.description_quote_spell8);
         setLockedText(R.string.lock8);
         setLevelToUnlock(9);
-        setCooldown(0);
+        setCooldown(30000);
     }
 }

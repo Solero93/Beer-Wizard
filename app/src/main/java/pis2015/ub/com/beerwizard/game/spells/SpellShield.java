@@ -11,6 +11,6 @@ public class SpellShield extends Spell {
         setQuote(R.string.description_quote_spell4);
         setLockedText(R.string.lock4);
         setLevelToUnlock(5);
-        setCooldown(0);
+        setCooldown(30000);
     }
 }

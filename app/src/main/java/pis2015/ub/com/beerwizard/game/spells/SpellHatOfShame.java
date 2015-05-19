@@ -11,6 +11,6 @@ public class SpellHatOfShame extends Spell {
         setQuote(R.string.description_quote_spell7);
         setLockedText(R.string.lock7);
         setLevelToUnlock(8);
-        setCooldown(0);
+        setCooldown(30000);
     }
 }

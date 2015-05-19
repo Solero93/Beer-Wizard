@@ -11,6 +11,6 @@ public class SpellBeerekinesis extends Spell {
         setQuote(R.string.description_quote_spell3);
         setLockedText(R.string.lock3);
         setLevelToUnlock(4);
-        setCooldown(0);
+        setCooldown(30000);
     }
 }

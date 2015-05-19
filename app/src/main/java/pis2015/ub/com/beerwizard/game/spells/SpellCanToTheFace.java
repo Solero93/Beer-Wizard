@@ -11,6 +11,6 @@ public class SpellCanToTheFace extends Spell {
         setQuote(R.string.description_quote_spell1);
         setLockedText(R.string.lock1);
         setLevelToUnlock(2);
-        setCooldown(0);
+        setCooldown(30000);
     }
 }

@@ -11,7 +11,7 @@ public class SpellWizardDuel extends Spell {
         setQuote(R.string.description_quote_spell2);
         setLockedText(R.string.lock2);
         setLevelToUnlock(3);
-        setCooldown(0);
+        setCooldown(30000);
 
     }
 }
