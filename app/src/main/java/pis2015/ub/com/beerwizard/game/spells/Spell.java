@@ -75,12 +75,13 @@ public abstract class Spell {
         return this.cooldown;
     }
 
-    public boolean isCooldown() {
-        return isCooldown;
-    }
-
     public void setCooldown(long cooldown) {
         this.cooldown = cooldown;
+    }
+
+
+    public boolean getIsCooldown() {
+        return isCooldown;
     }
 
     public void setIsCooldown(boolean isCooldown) {

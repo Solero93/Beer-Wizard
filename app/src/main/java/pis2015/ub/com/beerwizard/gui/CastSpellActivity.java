@@ -41,9 +41,9 @@ public class CastSpellActivity extends Activity {
         TextView description = (TextView) findViewById(R.id.descriptionText);
         TextView title = (TextView) findViewById(R.id.titleText);
         TextView quote = (TextView) findViewById(R.id.quoteText);
-        title.setText(GUIFacade.getSpellName(idSpell));
-        description.setText(GUIFacade.getSpellDescription(idSpell));
-        quote.setText(GUIFacade.getSpellQuote(idSpell));
+        title.setText(SpellManager.getSpellName(idSpell));
+        description.setText(SpellManager.getSpellDescription(idSpell));
+        quote.setText(SpellManager.getSpellQuote(idSpell));
 
     }
 
@@ -191,8 +191,8 @@ public class CastSpellActivity extends Activity {
         popupWindow.setFocusable(true);
         TextView name = (TextView) popupView.findViewById(R.id.sent_spell_Name);
         TextView text = (TextView) popupView.findViewById(R.id.sent_spell_text);
-        name.setText(getText(GUIFacade.getSpellName(idSpell)) + "");
-        text.setText("Are you sure want to cast " + getText(GUIFacade.getSpellName(idSpell)) + "?");
+        name.setText(getText(SpellManager.getSpellName(idSpell)) + "");
+        text.setText("Are you sure want to cast " + getText(SpellManager.getSpellName(idSpell)) + "?");
         Button btOk = (Button) popupView.findViewById(R.id.btn_cast_spell);
         Button btNo = (Button) popupView.findViewById(R.id.btn_NO_cast_spell);
         btOk.setOnClickListener(new Button.OnClickListener() {

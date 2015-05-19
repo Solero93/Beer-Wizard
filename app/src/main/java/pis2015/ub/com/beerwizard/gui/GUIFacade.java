@@ -104,6 +104,11 @@ public class GUIFacade {
         user.setAvatar(idAvatar);
     }
 
+    /**
+     * Returns current level of User
+     *
+     * @return Current Level
+     */
     static int getLevel() {
         return GameData.getUser().getLevel();
     }
@@ -131,83 +136,6 @@ public class GUIFacade {
      */
     static void levelDown(String targetUser) {
         NetworkHelper.levelDown(targetUser);
-    }
-
-    /**
-     * Gets the Name of a given Spell
-     *
-     * @param idSpell
-     * @return Spell's name
-     */
-    static int getSpellName(int idSpell) {
-        return SpellManager.getName(idSpell);
-    }
-
-    /**
-     * Gets the Description of a given Spell.
-     * @param idSpell
-     * @return Spell's Description
-     */
-    static int getSpellDescription(int idSpell) {
-        return SpellManager.getDescription(idSpell);
-    }
-
-    /**
-     * Gets the Quote of a given Spell
-     *
-     * @param idSpell
-     * @return Spell's Quote
-     */
-    static int getSpellQuote(int idSpell) {
-        return SpellManager.getQuote(idSpell);
-    }
-
-    /**
-     * Gets the Locked Text of a given Spell
-     * @param idSpell
-     * @return Spell's LockedText
-     */
-    static int getSpellLockedText(int idSpell) {
-        return SpellManager.getLockedText(idSpell);
-    }
-
-    /**
-     * Gets Cooldown of Spell.
-     * @param idSpell
-     * @return
-     */
-    static long getSpellCooldown(int idSpell) {
-        return SpellManager.getCooldown(idSpell);
-    }
-
-    /**
-     * Returns whether a spell is in Cooldown
-     *
-     * @param idSpell
-     * @return
-     */
-    static boolean getSpellIsCooldown(int idSpell) {
-        return SpellManager.getIsCooldown(idSpell);
-    }
-
-    /**
-     * Sets "cooldown" state on a spell
-     *
-     * @param idSpell
-     * @param isCooldown
-     */
-    static void setSpellIsCooldown(int idSpell, boolean isCooldown) {
-        SpellManager.setIsCooldown(idSpell, isCooldown);
-    }
-
-    /**
-     * Returns image of a spell
-     *
-     * @param idSpell
-     * @return
-     */
-    static int getSpellImage(int idSpell) {
-        return SpellManager.getImage(idSpell);
     }
 
     /**

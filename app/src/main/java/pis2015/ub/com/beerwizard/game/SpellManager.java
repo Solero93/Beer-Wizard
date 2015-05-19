@@ -47,39 +47,83 @@ public class SpellManager {
         return ourInstance;
     }
 
-    public static int getName(int idSpell) {
+    /**
+     * Gets the Name of a given Spell
+     *
+     * @param idSpell
+     * @return Spell's name
+     */
+    public static int getSpellName(int idSpell) {
         return spells.get(idSpell).getName();
     }
 
-    public static int getDescription(int idSpell) {
+    /**
+     * Gets the Description of a given Spell.
+     *
+     * @param idSpell
+     * @return Spell's Description
+     */
+    public static int getSpellDescription(int idSpell) {
         return spells.get(idSpell).getDescription();
     }
 
-    public static int getQuote(int idSpell) {
+    /**
+     * Gets the Quote of a given Spell
+     *
+     * @param idSpell
+     * @return Spell's Quote
+     */
+    public static int getSpellQuote(int idSpell) {
         return spells.get(idSpell).getQuote();
     }
 
-    public static int getLockedText(int idSpell) {
+    /**
+     * Gets the Locked Text of a given Spell
+     *
+     * @param idSpell
+     * @return Spell's LockedText
+     */
+    public static int getSpellLockedText(int idSpell) {
         return spells.get(idSpell).getLockedText();
     }
 
-    public static int getLevelToUnlock(int idSpell) {
-        return spells.get(idSpell).getLevelToUnlock();
-    }
-
-    public static long getCooldown(int idSpell) {
+    /**
+     * Gets Cooldown of Spell.
+     *
+     * @param idSpell
+     * @return
+     */
+    public static long getSpellCooldown(int idSpell) {
         return spells.get(idSpell).getCooldown();
     }
 
-    public static boolean getIsCooldown(int idSpell) {
-        return spells.get(idSpell).isCooldown();
+    /**
+     * Returns whether a spell is in Cooldown
+     *
+     * @param idSpell
+     * @return
+     */
+    public static boolean getSpellIsCooldown(int idSpell) {
+        return spells.get(idSpell).getIsCooldown();
     }
 
-    public static void setIsCooldown(int idSpell, boolean isCooldown) {
+    /**
+     * Sets "cooldown" state on a spell
+     *
+     * @param idSpell
+     * @param isCooldown
+     */
+    public static void setSpellIsCooldown(int idSpell, boolean isCooldown) {
         spells.get(idSpell).setIsCooldown(isCooldown);
     }
 
-    public static int getImage(int idSpell) {
+    /**
+     * Returns image of a spell
+     *
+     * @param idSpell
+     * @return
+     */
+    public static int getSpellImage(int idSpell) {
         return spells.get(idSpell).getImage();
     }
 }
