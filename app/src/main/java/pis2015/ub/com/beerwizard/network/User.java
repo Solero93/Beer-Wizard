@@ -14,10 +14,13 @@ import pis2015.ub.com.beerwizard.util.Constants;
 public class User implements UserInterface, BusObject {
     private static final String TAG = "User";
     private String name;
+    // TODO Except for constants, assignments should go to Constructor, here only declare
     private int level = 1;
     private int avatarPhoto;
     private boolean hasShield;
 
+
+    //TODO Are all 3 constructors REALLY necessary?
     public User() {
         this("", -1);
     }
@@ -56,6 +59,7 @@ public class User implements UserInterface, BusObject {
     /**
      * Modifies the profile of the User.
      */
+    //TODO We could "deprecate" this one if you wish so, since it's not being used
     public void modifyProfile(String name, int avatar) {
         this.setName(name);
         this.setAvatar(avatar);
@@ -118,10 +122,15 @@ public class User implements UserInterface, BusObject {
         h.sendMessage(msg);
     }
 
+    //TODO This method should never be called... I think we could just call GameData.getRule() directly
+    // I might be wrong, because I'm not sure what you do with User exactly,
+    // since it started as a simple class that contained attributes and stuff but looks like it Digivolved
     public String getRule() {
         return GameData.getRule();
     }
 
+    //TODO Why is this even here? shouldn't this be done by GameData?
+    //Seems like I'm not keen on what you're doing here xD
     public void updateRule(String newRule) {
 
     }

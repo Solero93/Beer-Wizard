@@ -59,6 +59,8 @@ public class NetworkHelper {
         if (params == null)
             params = "";
         try {
+            //TODO just a proposal, couldn't this be simplified with a switch(idSpell) and some ifs inside? or at least made more clear
+            // I mean switch(idSpell) : case CREATE_RULE , case ALL_IN_BEER, case WIZARD_DUEL and default
             if (idTargetUser.equals(Constants.BROADCAST)) {
                 if (idSpell == SpellManager.CREATE_RULE) {
                     /*

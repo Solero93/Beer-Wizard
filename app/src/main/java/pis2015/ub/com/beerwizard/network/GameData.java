@@ -15,6 +15,7 @@ public class GameData extends Application {
     private static Handler spellsActivityHandler;
     private static String rule;
     private static User user;
+    // TODO the ... users = new ConcurrentHashMap<>() assignment should go to onCreate, here only declare
     private static ConcurrentHashMap<String, UserInterface> users = new ConcurrentHashMap<>();
 
     /*
@@ -24,6 +25,7 @@ public class GameData extends Application {
         System.loadLibrary("alljoyn_java");
     }
 
+    // TODO Why do you have a constructor with an onCreate()???
     public GameData() {
     }
 
@@ -66,6 +68,7 @@ public class GameData extends Application {
     public void onCreate() {
         super.onCreate();
         SharedPreferences preferences = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE);
+        // TODO String "Change me!" should go to strings.xml
         user = new User(preferences.getString("name", "Change me!"), preferences.getInt("avatar", -1));
         rule = getString(R.string.rule);
     }

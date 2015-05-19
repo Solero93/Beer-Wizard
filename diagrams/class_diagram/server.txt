@@ -67,6 +67,7 @@ class User implements UserInterface{
 	+User(String name, int avatarPhoto)
 }
 
+Server "1" --> "1" User
 GameData "1" --> "1..*" User: stores
 
 class LocalAboutDataListener implements AboutDataListener{
