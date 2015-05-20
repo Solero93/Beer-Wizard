@@ -14,21 +14,12 @@ import pis2015.ub.com.beerwizard.util.Constants;
 public class User implements UserInterface, BusObject {
     private static final String TAG = "User";
     private String name;
-    // TODO Except for constants, assignments should go to Constructor, here only declare
-    private int level = 1;
+    private int level;
     private int avatarPhoto;
     private boolean hasShield;
 
-
-    //TODO Are all 3 constructors REALLY necessary?
-    public User() {
-        this("", -1);
-    }
-    public User(String name) {
-        this(name, -1);
-    }
-
     public User(String name, int avatarPhoto) {
+        this.level = 1;
         this.name = name;
         this.avatarPhoto = avatarPhoto;
     }
@@ -54,15 +45,6 @@ public class User implements UserInterface, BusObject {
         }
         Handler handler = GameData.getSpellsActivityHandler();
         handler.sendMessage(handler.obtainMessage(Constants.MSG_LEVEL_DOWN));
-    }
-
-    /**
-     * Modifies the profile of the User.
-     */
-    //TODO We could "deprecate" this one if you wish so, since it's not being used
-    public void modifyProfile(String name, int avatar) {
-        this.setName(name);
-        this.setAvatar(avatar);
     }
 
     public String getUUID() {
@@ -122,16 +104,13 @@ public class User implements UserInterface, BusObject {
         h.sendMessage(msg);
     }
 
-    //TODO This method should never be called... I think we could just call GameData.getRule() directly
-    // I might be wrong, because I'm not sure what you do with User exactly,
-    // since it started as a simple class that contained attributes and stuff but looks like it Digivolved
+    //TODO Separate this into a different class
     public String getRule() {
         return GameData.getRule();
     }
 
-    //TODO Why is this even here? shouldn't this be done by GameData?
-    //Seems like I'm not keen on what you're doing here xD
     public void updateRule(String newRule) {
-
+        // Body is empty on purpose
+        // When called emits a broadcast signal to all the phones
     }
 }
