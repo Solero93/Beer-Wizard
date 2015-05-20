@@ -90,9 +90,9 @@ public abstract class Spell {
      * @return
      */
     public long getMilisecondsLeftFromCooldown() {
-        long secondsLeft = (this.startCooldown.getTime() - (new Date()).getTime());
-        if (secondsLeft > 0) {
-            return secondsLeft;
+        long miliSecondsPassed = (new Date()).getTime() - this.startCooldown.getTime();
+        if (miliSecondsPassed < this.cooldown) {
+            return (this.cooldown - miliSecondsPassed);
         } else {
             return 0;
         }
