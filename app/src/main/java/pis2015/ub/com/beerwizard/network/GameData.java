@@ -42,6 +42,8 @@ public class GameData extends Application {
     }
 
     public static UserInterface getUser(String uuid) {
+        if (uuid.equals(user.getUUID()))
+            return user;
         return users.get(uuid);
     }
 
