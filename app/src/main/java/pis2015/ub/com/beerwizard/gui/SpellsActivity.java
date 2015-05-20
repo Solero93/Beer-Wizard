@@ -59,17 +59,21 @@ public class SpellsActivity extends ActionBarActivity {
 
         lvl = 1;
         if (savedInstanceState != null) {
-            for (int i = 1; i < savedInstanceState.getInt("lvl"); i++) {
-                lvlUp();
-                if (SpellManager.isSpellCooldown(i - 1)) {
-                    cooldownReload(i - 1);
+            for (int i = 1; i < GUIFacade.getLevel(); i++) {
+                if (i < 9) {
+                    lvlUp();
+                    if (SpellManager.isSpellCooldown(i - 1)) {
+                        cooldownReload(i - 1);
+                    }
                 }
             }
         } else if (GUIFacade.getLevel() > 1) {
             for (int i = 1; i < GUIFacade.getLevel(); i++) {
-                lvlUp();
-                if (SpellManager.isSpellCooldown(i - 1)) {
-                    cooldownReload(i - 1);
+                if (i < 9) {
+                    lvlUp();
+                    if (SpellManager.isSpellCooldown(i - 1)) {
+                        cooldownReload(i - 1);
+                    }
                 }
             }
         }
@@ -252,6 +256,7 @@ public class SpellsActivity extends ActionBarActivity {
 
             public void onTick(long millisUntilFinished) {
                 text.setText("" + millisUntilFinished / 1000);
+
                 //here you can have your logic to set text to edittext
             }
 
