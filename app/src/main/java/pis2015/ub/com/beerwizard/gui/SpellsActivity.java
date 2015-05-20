@@ -61,10 +61,16 @@ public class SpellsActivity extends ActionBarActivity {
         if (savedInstanceState != null) {
             for (int i = 1; i < savedInstanceState.getInt("lvl"); i++) {
                 lvlUp();
+                if (SpellManager.isSpellCooldown(i - 1)) {
+                    cooldown(i - 1);
+                }
             }
         } else if (GUIFacade.getLevel() > 1) {
             for (int i = 1; i < GUIFacade.getLevel(); i++) {
                 lvlUp();
+                if (SpellManager.isSpellCooldown(i - 1)) {
+                    cooldown(i - 1);
+                }
             }
         }
         GameData.setSpellsActivityHandler(this.spellsHandler); // Assigns Handler to GameData
@@ -96,7 +102,7 @@ public class SpellsActivity extends ActionBarActivity {
         int id = v.getId();
         int i;
         for (i = 0; i <= 7; i++) {
-            if ((id == tSpell[i]) && (lvl >= (i + 2)) && (!SpellManager.getSpellIsCooldown(i))) {
+            if ((id == tSpell[i]) && (lvl >= (i + 2)) && (!SpellManager.isSpellCooldown(i))) {
                 Intent intent = new Intent(this, CastSpellActivity.class);
                 intent.putExtra("spell", i); //Your id
                 startActivityForResult(intent, 1);
@@ -221,7 +227,7 @@ public class SpellsActivity extends ActionBarActivity {
         final ImageView image = (ImageView) findViewById(tImage[idSpell]);
         final TextView text = (TextView) findViewById(tText[idSpell]);
         image.setImageResource(R.drawable.candado);
-        SpellManager.setSpellIsCooldown(idSpell, true);
+        SpellManager.startSpellCooldown(idSpell);
         new CountDownTimer(SpellManager.getSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
 
             public void onTick(long millisUntilFinished) {
@@ -232,12 +238,30 @@ public class SpellsActivity extends ActionBarActivity {
             public void onFinish() {
                 image.setImageResource(SpellManager.getSpellImage(idSpell));
                 text.setText(SpellManager.getSpellName(idSpell));
-                SpellManager.setSpellIsCooldown(idSpell, false);
             }
         }
                 .start();
     }
 
+
+    private void cooldownReload(final int idSpell) {
+        final ImageView image = (ImageView) findViewById(tImage[idSpell]);
+        final TextView text = (TextView) findViewById(tText[idSpell]);
+        image.setImageResource(R.drawable.candado);
+        new CountDownTimer(SpellManager.getMilisecondsLeftFromSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
+
+            public void onTick(long millisUntilFinished) {
+                text.setText("" + millisUntilFinished / 1000);
+                //here you can have your logic to set text to edittext
+            }
+
+            public void onFinish() {
+                image.setImageResource(SpellManager.getSpellImage(idSpell));
+                text.setText(SpellManager.getSpellName(idSpell));
+            }
+        }
+                .start();
+    }
     /**
      * Auxiliar method to Initialize the Handler that manages the Spell arrivals
      */
