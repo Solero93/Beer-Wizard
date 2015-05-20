@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Random;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
-import pis2015.ub.com.beerwizard.util.Constants;
 
 public class NetworkHelper {
 
@@ -35,10 +34,7 @@ public class NetworkHelper {
 
     public static void levelUp(String uuidUser) {
         try {
-            if (uuidUser.equals(Constants.UUID_STRING))
-                GameData.getUser().levelUp();
-            else
-                GameData.getUserDb().get(uuidUser).levelUp();
+            GameData.getUser(uuidUser).levelUp();
         } catch (BusException e) {
             Log.e("LevelUpUser", e.getMessage());
         }
@@ -46,50 +42,59 @@ public class NetworkHelper {
 
     public static void levelDown(String uuidUser) {
         try {
-            if (uuidUser.equals(Constants.UUID_STRING))
-                GameData.getUser().levelDown();
-            else
-                GameData.getUserDb().get(uuidUser).levelDown();
+            GameData.getUser(uuidUser).levelDown();
         } catch (BusException e) {
             Log.e("LevelDownUser", e.getMessage());
         }
     }
 
     public static void castSpell(String idCasterUser, String idTargetUser, int idSpell, String params) {
+        UserInterface user;
         if (params == null)
             params = "";
         try {
-            //TODO just a proposal, couldn't this be simplified with a switch(idSpell) and some ifs inside? or at least made more clear
-            // I mean switch(idSpell) : case CREATE_RULE , case ALL_IN_BEER, case WIZARD_DUEL and default
-            if (idTargetUser.equals(Constants.BROADCAST)) {
-                if (idSpell == SpellManager.CREATE_RULE) {
+            switch (idSpell) {
+                case SpellManager.CREATE_RULE:
                     /*
                     We emit a signal for all to update the rule
                      */
                     SignalEmitter emitter = new SignalEmitter(GameData.getUser(), BusAttachment.SESSION_ID_ALL_HOSTED, SignalEmitter.GlobalBroadcast.Off);
-                    UserInterface userInterface = emitter.getInterface(UserInterface.class);
-                    userInterface.updateRule(GameData.getRule());
-                } else if (idSpell == SpellManager.ALL_IN_BEER) {
-                    for (UserInterface user : GameData.getUsers()) {
-                        user.castedSpell(idSpell, idCasterUser, params);
+                    user = emitter.getInterface(UserInterface.class);
+                    user.updateRule(GameData.getRule());
+                    break;
+                case SpellManager.ALL_IN_BEER:
+                    // TODO Change this to a signal
+                    for (UserInterface userInterface : GameData.getUsers()) {
+                        userInterface.castedSpell(idSpell, idCasterUser, params);
                     }
-                }
-            } else if (idSpell == SpellManager.WIZARD_DUEL) {
-                Random random = new Random();
-                List<UserInterface> list = GameData.getUsers();
-                UserInterface user;
-                if (list.size() <= 1) {
-                    user = list.get(random.nextInt(list.size()));
-                } else {
-                    user = list.get(random.nextInt(list.size()));
-                    while (user.getUUID().equals(idCasterUser) || user.getUUID().equals(idTargetUser))
+                    break;
+                case SpellManager.WIZARD_DUEL:
+                    Random random = new Random();
+                    List<UserInterface> list = GameData.getUsers();
+                    // If there are only two players in the game we choose either caster or target
+                    // randomly
+                    if (list.size() == 1) {
+                        // Target
+                        if (random.nextInt(2) == 1)
+                            user = list.get(0);
+                            // Caster
+                        else
+                            user = GameData.getUser();
+                        // Otherwise we choose a third player who is neither of those two
+                    } else {
                         user = list.get(random.nextInt(list.size()));
-                }
-                user.beJudge(idCasterUser, idTargetUser);
-                GameData.getUser(idTargetUser).castedSpell(idSpell, idCasterUser, params);
-            } else {
-                UserInterface user = GameData.getUser(idTargetUser);
-                user.castedSpell(idSpell, idCasterUser, params);
+                        while (user.getUUID().equals(idCasterUser) || user.getUUID().equals(idTargetUser))
+                            user = list.get(random.nextInt(list.size()));
+                    }
+                    // We make a player the judge
+                    user.beJudge(idCasterUser, idTargetUser);
+                    // And we send a notification to the target
+                    GameData.getUser(idTargetUser).castedSpell(idSpell, idCasterUser, params);
+                    break;
+                default:
+                    user = GameData.getUser(idTargetUser);
+                    user.castedSpell(idSpell, idCasterUser, params);
+                    break;
             }
         } catch (BusException e) {
             e.printStackTrace();
