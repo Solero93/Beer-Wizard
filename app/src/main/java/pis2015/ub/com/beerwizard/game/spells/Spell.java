@@ -1,7 +1,6 @@
 package pis2015.ub.com.beerwizard.game.spells;
 
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Abstract class that represents the Spell object.
@@ -90,8 +89,8 @@ public abstract class Spell {
      *
      * @return
      */
-    public int getSecondsLeftFromCooldown() {
-        int secondsLeft = (int) TimeUnit.MILLISECONDS.toSeconds(this.startCooldown.getTime() - (new Date()).getTime());
+    public long getMilisecondsLeftFromCooldown() {
+        long secondsLeft = (this.startCooldown.getTime() - (new Date()).getTime());
         if (secondsLeft > 0) {
             return secondsLeft;
         } else {
@@ -100,7 +99,7 @@ public abstract class Spell {
     }
 
     public boolean isCooldown() {
-        return (this.getSecondsLeftFromCooldown() > 0);
+        return (this.getMilisecondsLeftFromCooldown() > 0);
     }
 
     public void setCooldown(long cooldown) {

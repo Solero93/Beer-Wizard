@@ -111,8 +111,8 @@ public class SpellManager {
         spells.get(idSpell).startCooldown();
     }
 
-    public static int getSecondsLeftFromSpellCooldown(int idSpell) {
-        return spells.get(idSpell).getSecondsLeftFromCooldown();
+    public static long getMilisecondsLeftFromSpellCooldown(int idSpell) {
+        return spells.get(idSpell).getMilisecondsLeftFromCooldown();
     }
 
     public static boolean isSpellCooldown(int idSpell) {
