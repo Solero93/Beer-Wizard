@@ -60,8 +60,9 @@ public class SpellsActivity extends ActionBarActivity {
         lvl = 1;
         if (savedInstanceState != null) {
             for (int i = 1; i < GUIFacade.getLevel(); i++) {
+
+                lvlUp();
                 if (i < 9) {
-                    lvlUp();
                     if (SpellManager.isSpellCooldown(i - 1)) {
                         cooldownReload(i - 1);
                     }
@@ -69,8 +70,9 @@ public class SpellsActivity extends ActionBarActivity {
             }
         } else if (GUIFacade.getLevel() > 1) {
             for (int i = 1; i < GUIFacade.getLevel(); i++) {
+
+                lvlUp();
                 if (i < 9) {
-                    lvlUp();
                     if (SpellManager.isSpellCooldown(i - 1)) {
                         cooldownReload(i - 1);
                     }
