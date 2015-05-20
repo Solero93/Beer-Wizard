@@ -28,13 +28,15 @@ import pis2015.ub.com.beerwizard.util.Constants;
 public class Server extends Service {
     private static final String TAG = "ServerService";
     // TODO Except constants, all assignments should go to onCreate, here only declare
-    static BusHandler busHandler = null;
-    private final ConcurrentHashMap<String, UserInterface> userDb = GameData.getUserDb();
-    private final ConcurrentHashMap<UserInterface, String> reverseUserDb = new ConcurrentHashMap<>();
+    static BusHandler busHandler;
+    private ConcurrentHashMap<String, UserInterface> userDb;
+    private ConcurrentHashMap<UserInterface, String> reverseUserDb;
     private User user;
 
     @Override
     public void onCreate() {
+        userDb = GameData.getUserDb();
+        reverseUserDb = new ConcurrentHashMap<>();
         HandlerThread thread = new HandlerThread("UserProvider");
         thread.start();
         user = GameData.getUser();
@@ -62,7 +64,6 @@ public class Server extends Service {
     }
 
     @BusSignalHandler(iface = Constants.INTERFACE_NAME, signal = "updateRule")
-    // TODO Save "updateRule" to Constants maybe?
     public void updateRule(String newRule) {
         Message msg = busHandler.obtainMessage(BusHandler.UPDATE_RULE);
         msg.obj = newRule;
@@ -168,6 +169,7 @@ public class Server extends Service {
                     observer.close();
                     mBus.unregisterBusObject(user);
                     userDb.clear();
+                    reverseUserDb.clear();
                     user.setLevel(1);
                     GameData.setRule("");
                     user = null;
