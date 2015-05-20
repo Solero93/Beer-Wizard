@@ -98,26 +98,6 @@ public class SpellManager {
     }
 
     /**
-     * Returns whether a spell is in Cooldown
-     *
-     * @param idSpell
-     * @return
-     */
-    public static boolean getSpellIsCooldown(int idSpell) {
-        return spells.get(idSpell).getIsCooldown();
-    }
-
-    /**
-     * Sets "cooldown" state on a spell
-     *
-     * @param idSpell
-     * @param isCooldown
-     */
-    public static void setSpellIsCooldown(int idSpell, boolean isCooldown) {
-        spells.get(idSpell).setIsCooldown(isCooldown);
-    }
-
-    /**
      * Returns image of a spell
      *
      * @param idSpell
@@ -125,5 +105,17 @@ public class SpellManager {
      */
     public static int getSpellImage(int idSpell) {
         return spells.get(idSpell).getImage();
+    }
+
+    public static void startSpellCooldown(int idSpell) {
+        spells.get(idSpell).startCooldown();
+    }
+
+    public static int getSecondsLeftFromSpellCooldown(int idSpell) {
+        return spells.get(idSpell).getSecondsLeftFromCooldown();
+    }
+
+    public static boolean isSpellCooldown(int idSpell) {
+        return spells.get(idSpell).isCooldown();
     }
 }

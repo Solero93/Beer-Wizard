@@ -1,5 +1,8 @@
 package pis2015.ub.com.beerwizard.game.spells;
 
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Abstract class that represents the Spell object.
  */
@@ -11,10 +14,10 @@ public abstract class Spell {
     protected int lockedText;
     protected int levelToUnlock;
     protected long cooldown;
-    protected boolean isCooldown;
+    protected Date startCooldown;
 
     public Spell() {
-        this.isCooldown = false;
+        this.startCooldown = new Date(0); // Initialize
     }
 
     public int getName() {
@@ -75,16 +78,32 @@ public abstract class Spell {
         return this.cooldown;
     }
 
+    /**
+     * Starts a cooldown a spell
+     */
+    public void startCooldown() {
+        this.startCooldown = new Date(); // Initialize with current time
+    }
+
+    /**
+     * Returns Seconds left from a Cooldown
+     *
+     * @return
+     */
+    public int getSecondsLeftFromCooldown() {
+        int secondsLeft = (int) TimeUnit.MILLISECONDS.toSeconds(this.startCooldown.getTime() - (new Date()).getTime());
+        if (secondsLeft > 0) {
+            return secondsLeft;
+        } else {
+            return 0;
+        }
+    }
+
+    public boolean isCooldown() {
+        return (this.getSecondsLeftFromCooldown() > 0);
+    }
+
     public void setCooldown(long cooldown) {
         this.cooldown = cooldown;
-    }
-
-
-    public boolean getIsCooldown() {
-        return isCooldown;
-    }
-
-    public void setIsCooldown(boolean isCooldown) {
-        this.isCooldown = isCooldown;
     }
 }
