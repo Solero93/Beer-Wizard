@@ -31,6 +31,7 @@ The activity where you can select a spell.
  */
 public class SpellsActivity extends ActionBarActivity {
     public Handler spellsHandler;
+    Menu menuActionBar;
     private int[] tText, tImage, tSpell; // Tables of Component identifiers
     private int lvl;
 
@@ -173,6 +174,21 @@ public class SpellsActivity extends ActionBarActivity {
             case R.id.action_profile: // Profile
                 intent = new Intent(this, ProfileActivity.class);
                 startActivityForResult(intent, 1);
+                menuActionBar.findItem(R.id.btn_lvlup).setEnabled(false);
+                menuActionBar.findItem(R.id.btn_lvlup).setIcon(R.drawable.lvl_up_cuadrado_pulsado);
+                new CountDownTimer(30000, 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
+
+                    public void onTick(long millisUntilFinished) {
+                        //here you can have your logic to set text to edittext
+                    }
+
+                    public void onFinish() {
+                        menuActionBar.findItem(R.id.btn_lvlup).setEnabled(true);
+                        menuActionBar.findItem(R.id.btn_lvlup).setIcon(R.drawable.lvl_up_cuadrado);
+                    }
+                }
+                        .start();
+
                 break;
             case R.id.action_tutorial: // Tutorial
                 intent = new Intent(this, TutorialActivity.class);
@@ -200,6 +216,8 @@ public class SpellsActivity extends ActionBarActivity {
         } else if (lvl == 9) {
             lvl++;
             masterUp();
+            menuActionBar.findItem(R.id.btn_lvlup).setEnabled(false);
+            menuActionBar.findItem(R.id.btn_lvlup).setIcon(R.drawable.lvl_up_cuadrado_pulsado);
         }
     }
 
@@ -209,6 +227,8 @@ public class SpellsActivity extends ActionBarActivity {
         if (lvl > 9) {
             lvl--;
             textLvl.setText("Level " + lvl);
+            menuActionBar.findItem(R.id.btn_lvlup).setEnabled(true);
+            menuActionBar.findItem(R.id.btn_lvlup).setIcon(R.drawable.lvl_up_cuadrado);
         } else if (lvl > 1) {
             lvl--;
             ImageView image = (ImageView) findViewById(tImage[lvl - 1]);
