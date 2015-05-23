@@ -1,11 +1,15 @@
 package pis2015.ub.com.beerwizard.gui;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,6 +27,7 @@ import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.game.SpellManager;
+import pis2015.ub.com.beerwizard.gui.util.PauseHandler;
 import pis2015.ub.com.beerwizard.network.GameData;
 import pis2015.ub.com.beerwizard.util.Constants;
 
@@ -30,7 +35,7 @@ import pis2015.ub.com.beerwizard.util.Constants;
 The activity where you can select a spell.
  */
 public class SpellsActivity extends ActionBarActivity {
-    public Handler spellsHandler;
+    public PauseHandler spellsHandler;
     Menu menuActionBar;
     private int[] tText, tImage, tSpell; // Tables of Component identifiers
     private int lvl;
@@ -117,33 +122,6 @@ public class SpellsActivity extends ActionBarActivity {
             }
 
         }
-        /*
-        Intent intent = new Intent(this, CastSpellActivity.class);
-        if ((id == R.id.spell1) && (this.lvl >= 2)) {
-            intent.putExtra("spell", SpellManager.CAN_TO_THE_FACE); //Your id
-            startActivityForResult(intent, 1);
-        } else if ((id == R.id.spell2) && (this.lvl >= 3)) {
-            intent.putExtra("spell", SpellManager.WIZARD_DUEL); //Your id
-            startActivityForResult(intent, 1);
-        } else if ((id == R.id.spell3) && (this.lvl >= 4)) {
-            intent.putExtra("spell", SpellManager.BEEREKINESIS); //Your id
-            startActivityForResult(intent, 1);
-        } else if ((id == R.id.spell4) && (this.lvl >= 5)) {
-            intent.putExtra("spell", SpellManager.SHIELD); //Your id
-            startActivityForResult(intent, 1);
-        } else if ((id == R.id.spell5) && (this.lvl >= 6)) {
-            intent.putExtra("spell", SpellManager.CREATE_RULE); //Your id
-            startActivityForResult(intent, 1);
-        } else if ((id == R.id.spell6) && (this.lvl >= 7)) {
-            intent.putExtra("spell", SpellManager.TRUTH_OR_SHOT); //Your id
-            startActivityForResult(intent, 1);
-        } else if ((id == R.id.spell7) && (this.lvl >= 8)) {
-            intent.putExtra("spell", SpellManager.HAT_OF_SHAME); //Your id
-            startActivityForResult(intent, 1);
-        } else if ((id == R.id.spell8) && (this.lvl >= 9)) {
-            intent.putExtra("spell", SpellManager.ALL_IN_BEER); //Your id
-            startActivityForResult(intent, 1);
-        }*/
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -202,6 +180,17 @@ public class SpellsActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.spellsHandler.resume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        this.spellsHandler.pause();
+    }
 
     private void lvlUp() {
 
@@ -269,7 +258,6 @@ public class SpellsActivity extends ActionBarActivity {
                 .start();
     }
 
-
     private void cooldownReload(final int idSpell) {
         final ImageView image = (ImageView) findViewById(tImage[idSpell]);
         final TextView text = (TextView) findViewById(tText[idSpell]);
@@ -293,9 +281,14 @@ public class SpellsActivity extends ActionBarActivity {
      * Auxiliar method to Initialize the Handler that manages the Spell arrivals
      */
     private void initSpellsHandler() {
-        this.spellsHandler = new Handler(Looper.getMainLooper()) {
+        this.spellsHandler = new PauseHandler(this, Looper.getMainLooper()) {
+            /**
+             * If activity is Active, show PopUp
+             *
+             * @param inputMessage
+             */
             @Override
-            public void handleMessage(Message inputMessage) {
+            final protected void processMessage(Message inputMessage) {
                 String edited;
                 TextView changetext2;
                 String edit;
@@ -380,7 +373,6 @@ public class SpellsActivity extends ActionBarActivity {
                         final PopupWindow popupWindow2 = new PopupWindow(popupView2, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                         popupWindow2.setFocusable(true);
 
-
                         String descr = getResources().getString(SpellManager.getSpellDescription(idSpell));
                         String name = GUIFacade.getUserName(targetUser);
                         String spellName = getResources().getString(SpellManager.getSpellName(idSpell));
@@ -390,17 +382,10 @@ public class SpellsActivity extends ActionBarActivity {
                         edited = String.format(edit, name, spellName);
                         changetext2.setText(edited);
 
-                        if (param != "") {
-                            edit = getResources().getString(R.string.popup_received_spell_descr);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                            edited = String.format(edit, param);
-                            changetext2.setText(edited);
-                        } else {
-                            edit = getResources().getString(R.string.popup_received_spell_descr);
-                            changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                            edited = String.format(edit, descr);
-                            changetext2.setText(edited);
-                        }
+                        edit = getResources().getString(R.string.popup_received_spell_descr);
+                        changetext2 = (TextView) popupView2.findViewById(R.id.order);
+                        edited = (param != "") ? String.format(edit, param) : String.format(edit, descr);
+                        changetext2.setText(edited);
 
                         Button got = (Button) popupView2.findViewById(R.id.btn_got);
                         got.setOnClickListener(new Button.OnClickListener() {
@@ -473,6 +458,109 @@ public class SpellsActivity extends ActionBarActivity {
                         break;
                 }
             }
+
+            /**
+             * Show a notification when User not inGame
+             */
+            @Override
+            protected void processMessagePaused(Message inputMessage) {
+                String contentText;
+                switch (inputMessage.what) {
+                    case Constants.MSG_DECIDE_LEVEL:
+                        contentText = String.format(
+                                getString(R.string.notification_decide_level),
+                                inputMessage.obj);
+                        break;
+                    case Constants.MSG_LEVEL_UP:
+                        contentText = getString(R.string.notification_level_up);
+                        break;
+                    case Constants.MSG_LEVEL_DOWN:
+                        contentText = getString(R.string.notification_level_down);
+                        break;
+                    case Constants.MSG_CASTED_SPELL:
+                        contentText = String.format(
+                                getString(R.string.notification_cast_spell),
+                                (String) ((Object[]) inputMessage.obj)[1], // User who casted
+                                SpellManager.getSpellName((int) ((Object[]) inputMessage.obj)[0]) // Spell casted
+                        );
+                        break;
+                    case Constants.MSG_UPDATE_RULE:
+                        contentText = getString(R.string.notification_update_rule);
+                        break;
+                    case Constants.MSG_DECIDE_DUEL:
+                        contentText = String.format(
+                                getString(R.string.notification_decide_duel),
+                                (String) ((Object[]) inputMessage.obj)[0], // First User
+                                (String) ((Object[]) inputMessage.obj)[1] // Second User
+                        );
+                        break;
+                    default:
+                        contentText = getString(R.string.notification_default);
+                        break;
+                }
+                /*
+                We create the Notification with the info put in
+                 */
+                NotificationCompat.Builder mBuilder =
+                        new NotificationCompat.Builder(this.activity)
+                                .setSmallIcon(R.drawable.beerwizard_icon2)
+                                .setContentTitle(getString(R.string.app_name))
+                                .setContentText(contentText);
+                // Creates an explicit intent for an Activity in your app
+                Intent resultIntent = new Intent(this.activity, SpellsActivity.class);
+
+                // The stack builder object will contain an artificial back stack for the
+                // started Activity.
+                // This ensures that navigating backward from the Activity leads out of
+                // your application to the Home screen.
+                TaskStackBuilder stackBuilder = TaskStackBuilder.create(this.activity);
+                // Adds the back stack for the Intent (but not the Intent itself)
+                stackBuilder.addParentStack(SpellsActivity.class);
+                // Adds the Intent that starts the Activity to the top of the stack
+                stackBuilder.addNextIntent(resultIntent);
+                PendingIntent resultPendingIntent =
+                        stackBuilder.getPendingIntent(
+                                0,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                        );
+                mBuilder.setContentIntent(resultPendingIntent);
+                NotificationManager mNotificationManager =
+                        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                // mId allows you to update the notification later on.
+                int mId = 0; // Just to assign something
+                mNotificationManager.notify(mId, mBuilder.build());
+            }
         };
     }
+/*
+    private void notifyXorra(){
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.beerwizard_icon2)
+                        .setContentTitle(getString(R.string.app_name))
+                        .setContentText(getString(R.string.notification_cast_spell));
+        // Creates an explicit intent for an Activity in your app
+        Intent resultIntent = new Intent(this, SpellsActivity.class);
+
+        // The stack builder object will contain an artificial back stack for the
+        // started Activity.
+        // This ensures that navigating backward from the Activity leads out of
+        // your application to the Home screen.
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        // Adds the back stack for the Intent (but not the Intent itself)
+        stackBuilder.addParentStack(SpellsActivity.class);
+        // Adds the Intent that starts the Activity to the top of the stack
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(
+                        0,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        mBuilder.setContentIntent(resultPendingIntent);
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        // mId allows you to update the notification later on.
+        int mId = 0;
+        mNotificationManager.notify(mId, mBuilder.build());
+    }*/
 }

@@ -7,6 +7,13 @@
         \n THE FACE</string>
     <string name="lvl">Level 1</string>
     <string name="app_name">Beer Wizard</string>
+    <string name="notification_decide_level">%1$s requested a Level Up from You!</string>
+    <string name="notification_cast_spell">%1$s casted %2$s on You!</string>
+    <string name="notification_update_rule">New Rule in Game!</string>
+    <string name="notification_decide_duel">%1$s and %2$s had a duel, who won? you judge!</string>
+    <string name="notification_level_up">You drank a potion and gained a level!</string>
+    <string name="notification_level_down">You lost a duel and a level with it :(</string>
+    <string name="notification_default">Something happened in Beer Wizard!</string>
 
     <string name="title_activity_room_create">Create Room</string>
     <string name="create_room_hint">Room Name</string>
@@ -16,7 +23,7 @@
     <string name="title_activity_cast_spell">Cast Spell</string>
 
 
-    <string name="rule">Not Rule jet</string>
+    <string name="rule">No Rule has been set yet</string>
     <!-- Intro Strings-->
     <string name="lbl_tap_to_begin">Tap to beergin!</string>
 
@@ -55,8 +62,8 @@
         <item>Several Snapple</item>
         <item>Eh Mion</item>
     </string-array>
-    <string name="description_text">Descripcion</string>
-    <string name="description_quote">cita</string>
+    <string name="description_text">Description</string>
+    <string name="description_quote">Quote</string>
     <!--Popup Strings -->
     <string name="cast_spell_popup_spell_name">SPELL_NAME</string>
     <string name="cast_spell_popup_spell_intro">Are you sure want to cast SPELL_NAME?</string>

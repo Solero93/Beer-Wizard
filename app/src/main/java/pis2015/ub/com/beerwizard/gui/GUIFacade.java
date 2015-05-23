@@ -24,7 +24,7 @@ public class GUIFacade {
      *
      * @return List of all Users in current GameData
      */
-    static List<String> getAllUsers() {
+    public static List<String> getAllUsers() {
         List<UserInterface> users = GameData.getUsers();
         ArrayList<String> array = new ArrayList<>();
         for (UserInterface user : users) {
@@ -42,7 +42,7 @@ public class GUIFacade {
      * @param uuid the uuid of the user
      * @return
      */
-    static String getUserName(String uuid) {
+    public static String getUserName(String uuid) {
         try {
             if (uuid.equals(Constants.UUID_STRING))
                 return GameData.getUser().getName();
@@ -56,7 +56,7 @@ public class GUIFacade {
      * Returns the name of the current User
      * @return User's Name
      */
-    static String getUserName() {
+    public static String getUserName() {
         return GameData.getUser().getName();
     }
 
@@ -65,14 +65,14 @@ public class GUIFacade {
      *
      * @return
      */
-    static boolean getUserShield() {
+    public static boolean getUserShield() {
         return GameData.getUser().getShield();
     }
 
     /**
      * Breaks shield of User
      */
-    static void breakUserShield() {
+    public static void breakUserShield() {
         GameData.getUser().setShield(false);
     }
 
@@ -80,7 +80,7 @@ public class GUIFacade {
      * Lets a User create or enter a Game
      * @param context
      */
-    static void createGame(Context context) {
+    public static void createGame(Context context) {
         NetworkHelper.createGame(context);
     }
 
@@ -88,7 +88,7 @@ public class GUIFacade {
      * Removes a User from the list of User when he exists
      * @param context
      */
-    static void exitGame(Context context) {
+    public static void exitGame(Context context) {
         NetworkHelper.exitGame(context);
     }
 
@@ -98,7 +98,7 @@ public class GUIFacade {
      * @param name
      * @param idAvatar
      */
-    static void modifyUserProfile(String name, int idAvatar) {
+    public static void modifyUserProfile(String name, int idAvatar) {
         User user = GameData.getUser();
         user.setName(name);
         user.setAvatar(idAvatar);
@@ -109,14 +109,14 @@ public class GUIFacade {
      *
      * @return Current Level
      */
-    static int getLevel() {
+    public static int getLevel() {
         return GameData.getUser().getLevel();
     }
 
     /**
      * Levels up the User.
      */
-    static void levelUp() {
+    public static void levelUp() {
         if (GameData.getUser().getLevel() < 10) {
             NetworkHelper.levelUp();
         }
@@ -127,7 +127,7 @@ public class GUIFacade {
      *
      * @param uuid
      */
-    static void levelUp(String uuid) {
+    public static void levelUp(String uuid) {
         NetworkHelper.levelUp(uuid);
     }
 
@@ -135,7 +135,7 @@ public class GUIFacade {
      * Levels down a User after losing a duel
      * @param uuid
      */
-    static void levelDown(String uuid) {
+    public static void levelDown(String uuid) {
         NetworkHelper.levelDown(uuid);
     }
 
@@ -146,7 +146,7 @@ public class GUIFacade {
      * @param param       - possible parametres (null if there aren't any)
      * @param targetUserPosition - ID of User to cast spell on (null if it's self inflicted)
      */
-    static void castSpell(int targetUserPosition, int idSpell, String param) {
+    public static void castSpell(int targetUserPosition, int idSpell, String param) {
         try {
             String casterUserId = GameData.getUser().getUUID();
             switch (idSpell) {
@@ -175,7 +175,7 @@ public class GUIFacade {
      * Returns current rule of the Game
      * @return
      */
-    static String getRule() {
+    public static String getRule() {
         return GameData.getRule();
     }
 }
