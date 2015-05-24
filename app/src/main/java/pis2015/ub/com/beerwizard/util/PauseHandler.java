@@ -1,4 +1,4 @@
-package pis2015.ub.com.beerwizard.gui.util;
+package pis2015.ub.com.beerwizard.util;
 
 import android.app.Activity;
 import android.os.Handler;

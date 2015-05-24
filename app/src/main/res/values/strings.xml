@@ -8,7 +8,7 @@
     <string name="lvl">Level 1</string>
     <string name="app_name">Beer Wizard</string>
     <string name="notification_decide_level">%1$s requested a Level Up from You!</string>
-    <string name="notification_cast_spell">%1$s casted %2$s on You!</string>
+    <string name="notification_cast_spell">%1$s casted %1$s on You!</string>
     <string name="notification_update_rule">New Rule in Game!</string>
     <string name="notification_decide_duel">%1$s and %2$s had a duel, who won? you judge!</string>
     <string name="notification_level_up">You drank a potion and gained a level!</string>

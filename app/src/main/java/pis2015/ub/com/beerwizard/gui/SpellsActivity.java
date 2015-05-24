@@ -27,9 +27,9 @@ import android.widget.TextView;
 
 import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.game.SpellManager;
-import pis2015.ub.com.beerwizard.gui.util.PauseHandler;
 import pis2015.ub.com.beerwizard.network.GameData;
 import pis2015.ub.com.beerwizard.util.Constants;
+import pis2015.ub.com.beerwizard.util.PauseHandler;
 
 /*
 The activity where you can select a spell.
@@ -294,7 +294,6 @@ public class SpellsActivity extends ActionBarActivity {
             final protected void processMessage(Message inputMessage) {
                 String edited;
                 TextView changetext2;
-                String edit;
 
                 switch (inputMessage.what) {
                     case Constants.MSG_DECIDE_LEVEL:
@@ -315,8 +314,7 @@ public class SpellsActivity extends ActionBarActivity {
 
                         //Now we change the text on the TextView to show WHO wants to level up
                         final String who_lvl = GUIFacade.getUserName(targetUser1);
-                        String texto = getResources().getString(R.string.level_up_popup_name);
-                        String strMeatMsg = String.format(texto, who_lvl);
+                        String strMeatMsg = getString(R.string.level_up_popup_name, who_lvl);
                         TextView changetext = (TextView) popupView.findViewById(R.id.name_lvl);
                         changetext.setText(strMeatMsg);
 
@@ -376,18 +374,16 @@ public class SpellsActivity extends ActionBarActivity {
                         final PopupWindow popupWindow2 = new PopupWindow(popupView2, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                         popupWindow2.setFocusable(true);
 
-                        String descr = getResources().getString(SpellManager.getSpellDescription(idSpell));
+                        String descr = getString(SpellManager.getSpellDescription(idSpell));
                         String name = GUIFacade.getUserName(targetUser);
-                        String spellName = getResources().getString(SpellManager.getSpellName(idSpell));
+                        String spellName = getString(SpellManager.getSpellName(idSpell));
 
-                        edit = getResources().getString(R.string.popup_received_spell_user_spell);
                         changetext2 = (TextView) popupView2.findViewById(R.id.name_spell);
-                        edited = String.format(edit, name, spellName);
+                        edited = getString(R.string.popup_received_spell_user_spell, name, spellName);
                         changetext2.setText(edited);
 
-                        edit = getResources().getString(R.string.popup_received_spell_descr);
                         changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                        edited = (param != "") ? String.format(edit, param) : String.format(edit, descr);
+                        edited = (param != "") ? getString(R.string.popup_received_spell_descr, param) : getString(R.string.popup_received_spell_descr, descr);
                         changetext2.setText(edited);
 
                         Button got = (Button) popupView2.findViewById(R.id.btn_got);
@@ -424,14 +420,12 @@ public class SpellsActivity extends ActionBarActivity {
                         final PopupWindow popupWindow3 = new PopupWindow(popupView3, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                         popupWindow3.setFocusable(true);
 
-                        edit = getResources().getString(R.string.duel_user1);
                         changetext2 = (Button) popupView3.findViewById(R.id.player1);
-                        edited = String.format(edit, user1_name);
+                        edited = getString(R.string.duel_user1, user1_name);
                         changetext2.setText(edited);
 
-                        edit = getResources().getString(R.string.duel_user2);
                         changetext2 = (Button) popupView3.findViewById(R.id.player2);
-                        edited = String.format(edit, user2_name);
+                        edited = getString(R.string.duel_user2, user2_name);
                         changetext2.setText(edited);
 
                         Button win1 = (Button) popupView3.findViewById(R.id.player1);
@@ -470,9 +464,10 @@ public class SpellsActivity extends ActionBarActivity {
                 String contentText;
                 switch (inputMessage.what) {
                     case Constants.MSG_DECIDE_LEVEL:
-                        contentText = String.format(
-                                getString(R.string.notification_decide_level),
-                                inputMessage.obj);
+                        contentText = getString(
+                                R.string.notification_decide_level,
+                                inputMessage.obj // Who wants to level up
+                        );
                         break;
                     case Constants.MSG_LEVEL_UP:
                         contentText = getString(R.string.notification_level_up);
@@ -481,18 +476,18 @@ public class SpellsActivity extends ActionBarActivity {
                         contentText = getString(R.string.notification_level_down);
                         break;
                     case Constants.MSG_CASTED_SPELL:
-                        contentText = String.format(
-                                getString(R.string.notification_cast_spell),
+                        contentText = getString(
+                                R.string.notification_cast_spell,
                                 (String) ((Object[]) inputMessage.obj)[1], // User who casted
-                                SpellManager.getSpellName((int) ((Object[]) inputMessage.obj)[0]) // Spell casted
+                                SpellManager.getSpellName((int) ((Object[]) inputMessage.obj)[0]) // Spell Casted
                         );
                         break;
                     case Constants.MSG_UPDATE_RULE:
                         contentText = getString(R.string.notification_update_rule);
                         break;
                     case Constants.MSG_DECIDE_DUEL:
-                        contentText = String.format(
-                                getString(R.string.notification_decide_duel),
+                        contentText = getString(
+                                R.string.notification_decide_duel,
                                 (String) ((Object[]) inputMessage.obj)[0], // First User
                                 (String) ((Object[]) inputMessage.obj)[1] // Second User
                         );
@@ -530,40 +525,8 @@ public class SpellsActivity extends ActionBarActivity {
                 NotificationManager mNotificationManager =
                         (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 // mId allows you to update the notification later on.
-                int mId = 0; // Just to assign something
-                mNotificationManager.notify(mId, mBuilder.build());
+                mNotificationManager.notify((int) System.currentTimeMillis(), mBuilder.build());
             }
         };
     }
-/*
-    private void notifyXorra(){
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.beerwizard_icon2)
-                        .setContentTitle(getString(R.string.app_name))
-                        .setContentText(getString(R.string.notification_cast_spell));
-        // Creates an explicit intent for an Activity in your app
-        Intent resultIntent = new Intent(this, SpellsActivity.class);
-
-        // The stack builder object will contain an artificial back stack for the
-        // started Activity.
-        // This ensures that navigating backward from the Activity leads out of
-        // your application to the Home screen.
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        // Adds the back stack for the Intent (but not the Intent itself)
-        stackBuilder.addParentStack(SpellsActivity.class);
-        // Adds the Intent that starts the Activity to the top of the stack
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent =
-                stackBuilder.getPendingIntent(
-                        0,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                );
-        mBuilder.setContentIntent(resultPendingIntent);
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        // mId allows you to update the notification later on.
-        int mId = 0;
-        mNotificationManager.notify(mId, mBuilder.build());
-    }*/
 }
