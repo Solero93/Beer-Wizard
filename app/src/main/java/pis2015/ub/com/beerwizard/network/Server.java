@@ -23,6 +23,7 @@ import org.alljoyn.bus.annotation.BusSignalHandler;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
+import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.util.Constants;
 
 public class Server extends Service {
@@ -182,8 +183,15 @@ public class Server extends Service {
                     obj.setReplyTimeout(5000);
                     UserInterface user = obj.getInterface(UserInterface.class);
                     try {
+                        // If we discovered ourselves, we omit us
                         if (user.getUUID().equals(Constants.UUID_STRING))
                             break;
+                        // If the rule is different on that phone AND we are alone, we update our rule to match it
+                        if ((userDb.size() == 0) && !(user.getRule().equals(getString(R.string.rule)))) {
+                            Message message = this.obtainMessage(UPDATE_RULE);
+                            message.obj = user.getRule();
+                            this.sendMessage(message);
+                        }
                         String name = user.getName();
                         Log.d(TAG + "JoinGame", "Discovered user " + name);
                         String uuid = user.getUUID();
