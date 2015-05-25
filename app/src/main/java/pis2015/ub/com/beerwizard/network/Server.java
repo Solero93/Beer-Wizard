@@ -172,7 +172,7 @@ public class Server extends Service {
                     userDb.clear();
                     reverseUserDb.clear();
                     user.setLevel(1);
-                    GameData.setRule("");
+                    GameData.setRule(getString(R.string.rule));
                     user = null;
                     mBus.disconnect();
                     getLooper().quit();
