@@ -53,10 +53,14 @@ public class Server extends Service {
     }
 
     @Override
+    public void onTaskRemoved(Intent intent) {
+        stopSelf();
+    }
+
+    @Override
     public void onDestroy() {
         Log.d(TAG, "Shutting Server");
         busHandler.sendMessage(busHandler.obtainMessage(BusHandler.DISCONNECT));
-        super.onDestroy();
     }
 
     @Override
