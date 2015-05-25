@@ -390,7 +390,7 @@ public class SpellsActivity extends ActionBarActivity {
                         changetext2.setText(edited);
 
                         changetext2 = (TextView) popupView2.findViewById(R.id.order);
-                        edited = (param != "") ? getString(R.string.popup_received_spell_descr, param) : getString(R.string.popup_received_spell_descr, descr);
+                        edited = (!(param.equals(""))) ? getString(R.string.popup_received_spell_descr, param) : getString(R.string.popup_received_spell_descr, descr);
                         changetext2.setText(edited);
 
                         Button got = (Button) popupView2.findViewById(R.id.btn_got);
