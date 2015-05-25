@@ -267,13 +267,18 @@ public class SpellsActivity extends ActionBarActivity {
         new CountDownTimer(SpellManager.getSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
 
             public void onTick(long millisUntilFinished) {
-                text.setText("" + millisUntilFinished / 1000);
+                if (idSpell + 2 <= lvl) {
+                    image.setImageResource(R.drawable.timeout);
+                    text.setText("" + millisUntilFinished / 1000);
+                }
                 //here you can have your logic to set text to edittext
             }
 
             public void onFinish() {
-                image.setImageResource(SpellManager.getSpellImage(idSpell));
-                text.setText(SpellManager.getSpellName(idSpell));
+                if (idSpell + 2 <= lvl) {
+                    image.setImageResource(SpellManager.getSpellImage(idSpell));
+                    text.setText(SpellManager.getSpellName(idSpell));
+                }
             }
         }
                 .start();
@@ -286,14 +291,18 @@ public class SpellsActivity extends ActionBarActivity {
         new CountDownTimer(SpellManager.getMilisecondsLeftFromSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
 
             public void onTick(long millisUntilFinished) {
-                text.setText("" + millisUntilFinished / 1000);
-
+                if (idSpell + 2 <= lvl) {
+                    image.setImageResource(R.drawable.timeout);
+                    text.setText("" + millisUntilFinished / 1000);
+                }
                 //here you can have your logic to set text to edittext
             }
 
             public void onFinish() {
-                image.setImageResource(SpellManager.getSpellImage(idSpell));
-                text.setText(SpellManager.getSpellName(idSpell));
+                if (idSpell + 2 <= lvl) {
+                    image.setImageResource(SpellManager.getSpellImage(idSpell));
+                    text.setText(SpellManager.getSpellName(idSpell));
+                }
             }
         }
                 .start();
