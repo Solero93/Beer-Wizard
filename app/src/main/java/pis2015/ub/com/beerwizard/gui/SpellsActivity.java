@@ -529,13 +529,14 @@ public class SpellsActivity extends ActionBarActivity {
                 PendingIntent resultPendingIntent =
                         stackBuilder.getPendingIntent(
                                 0,
-                                PendingIntent.FLAG_UPDATE_CURRENT
+                                PendingIntent.FLAG_CANCEL_CURRENT
                         );
                 mBuilder.setContentIntent(resultPendingIntent);
                 NotificationManager mNotificationManager =
                         (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 // mId allows you to update the notification later on.
                 mNotificationManager.notify((int) System.currentTimeMillis(), mBuilder.build());
+
             }
         };
     }
