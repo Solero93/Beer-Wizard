@@ -20,6 +20,7 @@ import pis2015.ub.com.beerwizard.util.Constants;
 
 public class ProfileActivity extends Activity {
     Button avatar;
+    int idAvatar;
     //TODO is this necessary??
     public static void enableDisableViewGroup(ViewGroup viewGroup, boolean enabled) {
         int childCount = viewGroup.getChildCount();
@@ -42,31 +43,31 @@ public class ProfileActivity extends Activity {
         Button btn_avatarChooser;
         final FrameLayout block = null;
         ((EditText) findViewById(R.id.profileName)).setText(GUIFacade.getUserName());
+        idAvatar = GUIFacade.getUserAvatar();
 
 
-        Button end_profile = (Button) findViewById(R.id.btn_back);
-        end_profile.setOnClickListener(new Button.OnClickListener() {
-
-            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
-            @Override
-            public void onClick(View v) {
-                String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
-                int idAvatar = 0;
-                SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
-                        .edit();
-                editor.putString("name", name);
-                editor.putInt("avatar", idAvatar);
-                editor.commit();
-                GUIFacade.modifyUserProfile(name, idAvatar);
-                setResult(RESULT_OK, null);
-                finish();
-                //overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
-            }
-        });
+//        Button end_profile = (Button) findViewById(R.id.btn_back);
+//        end_profile.setOnClickListener(new Button.OnClickListener() {
+//
+//            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
+//            @Override
+//            public void onClick(View v) {
+//                String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
+//                SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
+//                        .edit();
+//                editor.putString("name", name);
+//                editor.putInt("avatar", idAvatar);
+//                editor.commit();
+//                GUIFacade.modifyUserProfile(name, idAvatar);
+//                setResult(RESULT_OK, null);
+//                finish();
+//                //overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
+//            }
+//        });
 
 
         btn_avatarChooser = (Button) findViewById(R.id.avatarImage);
-        btn_avatarChooser.setBackgroundResource(R.drawable.cara);
+        btn_avatarChooser.setBackgroundResource(GUIFacade.getUserAvatar());
         btn_avatarChooser.setOnClickListener(new Button.OnClickListener() {
 
             @Override
@@ -84,15 +85,6 @@ public class ProfileActivity extends Activity {
                         popupWindow.dismiss();
                     }
                 });
-                Button btn_back;
-                btn_back = (Button) findViewById(R.id.btn_back);
-                btn_back.setOnClickListener(new Button.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        finish();
-                    }
-                });
                 popupWindow.setAnimationStyle(R.style.popup_animation);
                 popupWindow.showAtLocation(findViewById(R.id.layout_activity_profile), Gravity.CENTER, 0, 0);
 
@@ -100,51 +92,74 @@ public class ProfileActivity extends Activity {
         });
     }
     public void changeprofileimg(View v){
+//        //String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
+//        SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
+//                .edit();
+//        editor.putInt("avatar", idAvatar);
         switch (v.getId()){
+
             case R.id.img2:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara);
+                idAvatar = R.drawable.cara;
                 break;
             case R.id.img3:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara1);
+
+                idAvatar = R.drawable.cara1;
+
+
                 break;
 
             case R.id.img4:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara2);
+                idAvatar = R.drawable.cara2;
                 break;
             case R.id.img5:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara3);
+                idAvatar = R.drawable.cara3;
                 break;
             case R.id.img6:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara4);
+                idAvatar = R.drawable.cara4;
                 break;
             case R.id.img7:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara5);
+                idAvatar = R.drawable.cara5;
                 break;
             case R.id.img8:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara6);
+                idAvatar = R.drawable.cara6;
                 break;
             case R.id.img9:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara7);
+                idAvatar = R.drawable.cara7;
                 break;
         }
-
+//        GUIFacade.modifyUserProfile(name, idAvatar);
 
     }
 
 
-//    public void onClick_saveChanges(View view) {
-//        String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
-//
-//        finish();
-//    }
+    public void onClick_saveChanges(View view) {
+        String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
+        SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
+        .edit();
+        editor.putString("name", name);
+        editor.putInt("avatar", idAvatar);
+        editor.commit();
+        GUIFacade.modifyUserProfile(name, idAvatar);
+        setResult(RESULT_OK, null);
+        finish();
+    //overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
+    }
 
 }
 

@@ -1,3 +1,5 @@
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_activity_profile"
@@ -29,7 +31,8 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal|bottom"
         android:background="@drawable/button_states"
-        android:text="Done!" />
+        android:text="Done!"
+        android:onClick="onClick_saveChanges" />
 
 
     <FrameLayout
