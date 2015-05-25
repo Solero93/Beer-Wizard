@@ -70,7 +70,7 @@ public class GameData extends Application {
     public void onCreate() {
         super.onCreate();
         SharedPreferences preferences = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE);
-        // TODO String "Change me!" should go to strings.xml
+        // TODO String "Change me!" should go to strings.xml -> Put R.string.user_name_default instead of Change me! (and change to getInt)
         user = new User(preferences.getString("name", "Change me!"), preferences.getInt("avatar", R.drawable.cara));
         rule = getString(R.string.rule);
     }

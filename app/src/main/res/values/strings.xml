@@ -7,6 +7,7 @@
         \n THE FACE</string>
     <string name="lvl">Level 1</string>
     <string name="app_name">Beer Wizard</string>
+    <string name="user_name_default">Change me!</string>
     <string name="notification_decide_level">%1$s requested a Level Up from You!</string>
     <string name="notification_cast_spell">%1$s casted %1$s on You!</string>
     <string name="notification_update_rule">New Rule in Game!</string>

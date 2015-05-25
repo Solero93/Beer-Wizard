@@ -28,7 +28,6 @@ import pis2015.ub.com.beerwizard.util.Constants;
 
 public class Server extends Service {
     private static final String TAG = "ServerService";
-    // TODO Except constants, all assignments should go to onCreate, here only declare
     static BusHandler busHandler;
     private ConcurrentHashMap<String, UserInterface> userDb;
     private ConcurrentHashMap<UserInterface, String> reverseUserDb;
@@ -184,7 +183,7 @@ public class Server extends Service {
                 case JOIN_GAME:
                     ProxyBusObject obj = (ProxyBusObject) msg.obj;
                     obj.enablePropertyCaching();
-                    obj.setReplyTimeout(5000);
+                    obj.setReplyTimeout(1000);
                     UserInterface user = obj.getInterface(UserInterface.class);
                     try {
                         // If we discovered ourselves, we omit us

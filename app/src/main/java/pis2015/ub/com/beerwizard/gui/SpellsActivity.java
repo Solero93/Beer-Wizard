@@ -2,7 +2,6 @@ package pis2015.ub.com.beerwizard.gui;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -86,7 +85,7 @@ public class SpellsActivity extends ActionBarActivity {
                 }
             }
         }
-        GameData.setSpellsActivityHandler(this.spellsHandler); // Assigns Handler to GameData
+        GameData.setSpellsActivityHandler(spellsHandler); // Assigns Handler to GameData
     }
 
     //Action bar constructor
@@ -181,6 +180,7 @@ public class SpellsActivity extends ActionBarActivity {
                 break;
             case R.id.action_exit: // Exit To Menu
                 GUIFacade.exitGame(this);
+                // TODO Close all Notifications
                 NotificationManager mNotificationManager =
                         (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 mNotificationManager.cancelAll();
@@ -192,14 +192,20 @@ public class SpellsActivity extends ActionBarActivity {
 
     @Override
     public void onResume() {
+        spellsHandler.resume();
         super.onResume();
-        this.spellsHandler.resume();
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        this.spellsHandler.pause();
+    public void onStop() {
+        spellsHandler.pause();
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        spellsHandler.removeAllMessages();
+        super.onDestroy();
     }
 
     private void lvlUp() {
@@ -291,7 +297,7 @@ public class SpellsActivity extends ActionBarActivity {
      * Auxiliar method to Initialize the Handler that manages the Spell arrivals
      */
     private void initSpellsHandler() {
-        this.spellsHandler = new PauseHandler(this, Looper.getMainLooper()) {
+        spellsHandler = new PauseHandler(this, Looper.getMainLooper()) {
             /**
              * If activity is Active, show PopUp
              *
@@ -471,7 +477,8 @@ public class SpellsActivity extends ActionBarActivity {
             protected void processMessagePaused(Message inputMessage) {
                 String contentText;
                 switch (inputMessage.what) {
-                    case Constants.MSG_DECIDE_LEVEL:
+                    //TODO Implement properly notifications. Right now, default message appears
+                    /*case Constants.MSG_DECIDE_LEVEL:
                         contentText = getString(
                                 R.string.notification_decide_level,
                                 GUIFacade.getUserName((String) inputMessage.obj) // Who wants to level up
@@ -499,7 +506,7 @@ public class SpellsActivity extends ActionBarActivity {
                                 GUIFacade.getUserName((String) ((Object[]) inputMessage.obj)[0]), // First User
                                 GUIFacade.getUserName((String) ((Object[]) inputMessage.obj)[1]) // Second User
                         );
-                        break;
+                        break;*/
                     default:
                         contentText = getString(R.string.notification_default);
                         break;
@@ -511,30 +518,25 @@ public class SpellsActivity extends ActionBarActivity {
                         new NotificationCompat.Builder(this.activity)
                                 .setSmallIcon(R.drawable.beerwizard_icon2)
                                 .setContentTitle(getString(R.string.app_name))
-                                .setContentText(contentText);
+                                .setContentText(contentText)
+                                .setAutoCancel(true);
                 // Creates an explicit intent for an Activity in your app
                 Intent resultIntent = new Intent(this.activity, SpellsActivity.class);
+                resultIntent.setAction(Intent.ACTION_MAIN);
+                resultIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 
-                // The stack builder object will contain an artificial back stack for the
-                // started Activity.
-                // This ensures that navigating backward from the Activity leads out of
-                // your application to the Home screen.
-                TaskStackBuilder stackBuilder = TaskStackBuilder.create(this.activity);
-                // Adds the back stack for the Intent (but not the Intent itself)
-                stackBuilder.addParentStack(SpellsActivity.class);
-                // Adds the Intent that starts the Activity to the top of the stack
-                stackBuilder.addNextIntent(resultIntent);
                 PendingIntent resultPendingIntent =
-                        stackBuilder.getPendingIntent(
+                        PendingIntent.getActivity(
+                                this.activity,
                                 0,
-                                PendingIntent.FLAG_CANCEL_CURRENT
+                                resultIntent,
+                                0
                         );
                 mBuilder.setContentIntent(resultPendingIntent);
                 NotificationManager mNotificationManager =
                         (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 // mId allows you to update the notification later on.
-                mNotificationManager.notify((int) System.currentTimeMillis(), mBuilder.build());
-
+                mNotificationManager.notify(0, mBuilder.build());
             }
         };
     }

@@ -14,8 +14,8 @@ import java.util.Vector;
  * Adapted to this project
  */
 public abstract class PauseHandler extends Handler {
+    final static Vector<Message> messageQueueBuffer = new Vector<Message>();
     protected final Activity activity;
-    final Vector<Message> messageQueueBuffer = new Vector<Message>();
     private boolean paused;
 
 
@@ -35,6 +35,10 @@ public abstract class PauseHandler extends Handler {
             messageQueueBuffer.removeElementAt(0);
             sendMessage(msg);
         }
+    }
+
+    final public void removeAllMessages() {
+        messageQueueBuffer.clear();
     }
 
     /**
