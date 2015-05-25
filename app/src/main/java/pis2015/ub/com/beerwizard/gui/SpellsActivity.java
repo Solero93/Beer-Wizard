@@ -131,14 +131,15 @@ public class SpellsActivity extends ActionBarActivity {
         if (resultCode == RESULT_OK) {
             Intent refresh = new Intent(this, SpellsActivity.class);
             startActivity(refresh);
+
+        } else if ((resultCode <= 7) && (resultCode >= 0)) {
+            cooldown(resultCode);
             Toast.makeText(
                     this,
                     getString(R.string.toast_sent),
                     Toast.LENGTH_LONG)
                     .show();
-            this.finish();
-        } else if ((resultCode <= 7) && (resultCode >= 0)) {
-            cooldown(resultCode);
+            
 
         }
     }
