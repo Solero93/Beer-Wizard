@@ -134,11 +134,7 @@ public class SpellsActivity extends ActionBarActivity {
 
         } else if ((resultCode <= 7) && (resultCode >= 0)) {
             cooldown(resultCode);
-            Toast.makeText(
-                    this,
-                    getString(R.string.toast_sent),
-                    Toast.LENGTH_LONG)
-                    .show();
+            Toast.makeText(this, getString(R.string.toast_sent), Toast.LENGTH_LONG).show();
             
 
         }
@@ -417,6 +413,7 @@ public class SpellsActivity extends ActionBarActivity {
                         Log.d("Rule", newRule);
                         TextView ruleText = (TextView) findViewById(R.id.textRule);
                         ruleText.setText(newRule);
+                        Toast.makeText(this.activity, getString(R.string.toast_updated_rule), Toast.LENGTH_LONG).show();
                         break;
                     case Constants.MSG_DECIDE_DUEL:
                         final String user1 = (String) ((Object[]) inputMessage.obj)[0];

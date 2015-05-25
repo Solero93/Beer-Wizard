@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import pis2015.ub.com.beerwizard.R;
@@ -21,7 +23,7 @@ import pis2015.ub.com.beerwizard.R;
  */
 public class MainMenuActivity extends Activity {
     private Button btnAbout;
-
+    private LinearLayout layout_MainMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -31,6 +33,8 @@ public class MainMenuActivity extends Activity {
         this.setTheme(R.style.mainMenuTheme);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         setContentView(R.layout.activity_main_menu);
+        layout_MainMenu = (LinearLayout) findViewById( R.id.layout_main);
+        //layout_MainMenu.getForeground().setAlpha(0);
 
         this.run_IntroActivity_at_launch(); // Run intro activity at launch
 
@@ -42,6 +46,7 @@ public class MainMenuActivity extends Activity {
 
             @Override
             public void onClick(View arg0) {
+                //layout_MainMenu.getForeground().setAlpha( 220);
                 LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = layoutInflater.inflate(R.layout.activity_main_menu_popup_about, null);
 
@@ -57,6 +62,7 @@ public class MainMenuActivity extends Activity {
                     //                TextView wwa= (TextView)popupView.findViewById(R.id.)
                     @Override
                     public void onClick(View v) {
+                        //layout_MainMenu.getForeground().setAlpha( 0);
                         popupWindow.dismiss();
                     }
                 });

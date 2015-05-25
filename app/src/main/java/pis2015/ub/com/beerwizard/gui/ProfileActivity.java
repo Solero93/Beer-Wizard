@@ -19,6 +19,7 @@ import pis2015.ub.com.beerwizard.util.Constants;
 
 
 public class ProfileActivity extends Activity {
+    Button avatar;
     //TODO is this necessary??
     public static void enableDisableViewGroup(ViewGroup viewGroup, boolean enabled) {
         int childCount = viewGroup.getChildCount();
@@ -96,6 +97,44 @@ public class ProfileActivity extends Activity {
 
             }
         });
+    }
+    public void changeprofileimg(View v){
+        switch (v.getId()){
+            case R.id.img2:
+                avatar =(Button)findViewById(R.id.avatarImage);
+                avatar.setBackgroundResource(R.drawable.cara);
+                break;
+            case R.id.img3:
+                avatar =(Button)findViewById(R.id.avatarImage);
+                avatar.setBackgroundResource(R.drawable.cara1);
+                break;
+
+            case R.id.img4:
+                avatar =(Button)findViewById(R.id.avatarImage);
+                avatar.setBackgroundResource(R.drawable.cara2);
+                break;
+            case R.id.img5:
+                avatar =(Button)findViewById(R.id.avatarImage);
+                avatar.setBackgroundResource(R.drawable.cara3);
+                break;
+            case R.id.img6:
+                avatar =(Button)findViewById(R.id.avatarImage);
+                avatar.setBackgroundResource(R.drawable.cara4);
+                break;
+            case R.id.img7:
+                avatar =(Button)findViewById(R.id.avatarImage);
+                avatar.setBackgroundResource(R.drawable.cara5);
+                break;
+            case R.id.img8:
+                avatar =(Button)findViewById(R.id.avatarImage);
+                avatar.setBackgroundResource(R.drawable.cara6);
+                break;
+            case R.id.img9:
+                avatar =(Button)findViewById(R.id.avatarImage);
+                avatar.setBackgroundResource(R.drawable.cara7);
+                break;
+        }
+
 
     }
 
