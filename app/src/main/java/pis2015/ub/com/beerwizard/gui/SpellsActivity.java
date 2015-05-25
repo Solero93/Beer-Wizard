@@ -521,13 +521,13 @@ public class SpellsActivity extends ActionBarActivity {
                  */
                 NotificationCompat.Builder mBuilder =
                         new NotificationCompat.Builder(this.activity)
-                                .setSmallIcon(R.drawable.beerwizard_icon2)
+                                .setSmallIcon(R.drawable.beer_wizard_notification)
                                 .setContentTitle(getString(R.string.app_name))
                                 .setContentText(contentText)
                                 .setAutoCancel(true);
                 // Creates an explicit intent for an Activity in your app
                 Intent resultIntent = new Intent(this.activity, SpellsActivity.class);
-
+                resultIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 PendingIntent resultPendingIntent =
                         PendingIntent.getActivity(
                                 this.activity,
