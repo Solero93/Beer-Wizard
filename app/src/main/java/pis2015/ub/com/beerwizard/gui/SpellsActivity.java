@@ -381,7 +381,7 @@ public class SpellsActivity extends ActionBarActivity {
                         final PopupWindow popupWindow2 = new PopupWindow(popupView2, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                         popupWindow2.setFocusable(true);
 
-                        String descr = getString(SpellManager.getSpellDescription(idSpell));
+                        String descr = getString(SpellManager.getSpellCastedDescription(idSpell));
                         String name = GUIFacade.getUserName(targetUser);
                         String spellName = getString(SpellManager.getSpellName(idSpell));
 

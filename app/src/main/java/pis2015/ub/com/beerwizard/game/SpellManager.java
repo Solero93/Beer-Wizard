@@ -87,6 +87,10 @@ public class SpellManager {
         return spells.get(idSpell).getLockedText();
     }
 
+    public static int getSpellCastedDescription(int idSpell) {
+        return spells.get(idSpell).getCastedDescription();
+    }
+
     /**
      * Gets Cooldown of Spell.
      *

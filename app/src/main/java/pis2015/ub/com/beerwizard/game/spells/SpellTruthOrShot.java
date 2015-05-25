@@ -10,6 +10,7 @@ public class SpellTruthOrShot extends Spell {
         setDescription(R.string.description_text_spell6);
         setQuote(R.string.description_quote_spell6);
         setLockedText(R.string.lock6);
+        setCastedDescription(R.string.short_desc_truth);
         setLevelToUnlock(7);
         setCooldown(30000);
     }

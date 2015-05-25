@@ -10,6 +10,7 @@ public class SpellAllInBeer extends Spell {
         setDescription(R.string.description_text_spell8);
         setQuote(R.string.description_quote_spell8);
         setLockedText(R.string.lock8);
+        setCastedDescription(R.string.short_desc_all);
         setLevelToUnlock(9);
         setCooldown(30000);
     }

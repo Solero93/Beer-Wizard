@@ -10,6 +10,7 @@ public class SpellWizardDuel extends Spell {
         setDescription(R.string.description_text_spell2);
         setQuote(R.string.description_quote_spell2);
         setLockedText(R.string.lock2);
+        setCastedDescription(R.string.short_desc_duel);
         setLevelToUnlock(3);
         setCooldown(30000);
 

@@ -11,6 +11,7 @@ public abstract class Spell {
     protected int description;
     protected int quote;
     protected int lockedText;
+    protected int castedDescription;
     protected int levelToUnlock;
     protected long cooldown;
     protected Date startCooldown;
@@ -61,6 +62,15 @@ public abstract class Spell {
 
     public void setLockedText(int lockedText) {
         this.lockedText = lockedText;
+    }
+
+
+    public int getCastedDescription() {
+        return this.castedDescription;
+    }
+
+    public void setCastedDescription(int castedDescription) {
+        this.castedDescription = castedDescription;
     }
 
 

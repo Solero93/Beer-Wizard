@@ -10,6 +10,7 @@ public class SpellCanToTheFace extends Spell {
         setDescription(R.string.description_text_spell1);
         setQuote(R.string.description_quote_spell1);
         setLockedText(R.string.lock1);
+        setCastedDescription(R.string.short_desc_can);
         setLevelToUnlock(2);
         setCooldown(30000);
     }
