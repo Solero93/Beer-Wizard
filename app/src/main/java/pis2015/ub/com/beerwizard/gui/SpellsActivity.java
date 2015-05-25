@@ -36,7 +36,7 @@ import pis2015.ub.com.beerwizard.util.PauseHandler;
 The activity where you can select a spell.
  */
 public class SpellsActivity extends ActionBarActivity {
-    public PauseHandler spellsHandler;
+    public static PauseHandler spellsHandler;
     private Menu menuActionBar;
     private int[] tText, tImage, tSpell; // Tables of Component identifiers
     private int lvl;
