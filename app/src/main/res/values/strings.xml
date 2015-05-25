@@ -191,4 +191,7 @@
     <string name="duel_what">Now you must %1$s</string>
     <string name="duel_user1">%1$s</string>
     <string name="duel_user2">%1$s</string>
+
+    <!--Toast hechizo send-->
+    <string name="toast_sent">Spell casted.</string>
 </resources>

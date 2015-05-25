@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.game.SpellManager;
@@ -130,6 +131,11 @@ public class SpellsActivity extends ActionBarActivity {
         if (resultCode == RESULT_OK) {
             Intent refresh = new Intent(this, SpellsActivity.class);
             startActivity(refresh);
+            Toast.makeText(
+                    this,
+                    getString(R.string.toast_sent),
+                    Toast.LENGTH_LONG)
+                    .show();
             this.finish();
         } else if ((resultCode <= 7) && (resultCode >= 0)) {
             cooldown(resultCode);
@@ -150,7 +156,7 @@ public class SpellsActivity extends ActionBarActivity {
             case R.id.action_lvl_up:
                 item.setEnabled(false);
                 item.setIcon(R.drawable.lvl_up_cuadrado_pulsado);
-                new CountDownTimer(5000, 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
+                new CountDownTimer(1000, 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
 
                     public void onTick(long millisUntilFinished) {
                         //here you can have your logic to set text to edittext
