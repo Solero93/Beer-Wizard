@@ -250,7 +250,7 @@ public class SpellsActivity extends ActionBarActivity {
     private void cooldown(final int idSpell) {
         final ImageView image = (ImageView) findViewById(tImage[idSpell]);
         final TextView text = (TextView) findViewById(tText[idSpell]);
-        image.setImageResource(R.drawable.candado);
+        image.setImageResource(R.drawable.timeout);
         SpellManager.startSpellCooldown(idSpell);
         new CountDownTimer(SpellManager.getSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
 
@@ -270,7 +270,7 @@ public class SpellsActivity extends ActionBarActivity {
     private void cooldownReload(final int idSpell) {
         final ImageView image = (ImageView) findViewById(tImage[idSpell]);
         final TextView text = (TextView) findViewById(tText[idSpell]);
-        image.setImageResource(R.drawable.candado);
+        image.setImageResource(R.drawable.timeout);
         new CountDownTimer(SpellManager.getMilisecondsLeftFromSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
 
             public void onTick(long millisUntilFinished) {
