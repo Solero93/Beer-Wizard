@@ -91,6 +91,12 @@ public class ProfileActivity extends Activity {
             }
         });
     }
+
+
+    public void onBackPressed() {
+        setResult(RESULT_OK, null);
+        finish();
+    }
     public void changeprofileimg(View v){
 //        //String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
 //        SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
