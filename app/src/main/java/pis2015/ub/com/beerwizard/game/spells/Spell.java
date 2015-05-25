@@ -94,11 +94,6 @@ public abstract class Spell {
         this.startCooldown = new Date(); // Initialize with current time
     }
 
-    /**
-     * Returns Seconds left from a Cooldown
-     *
-     * @return
-     */
     public long getMilisecondsLeftFromCooldown() {
         long miliSecondsPassed = (new Date()).getTime() - this.startCooldown.getTime();
         if (miliSecondsPassed < this.cooldown) {

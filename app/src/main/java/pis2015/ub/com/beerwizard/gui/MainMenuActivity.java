@@ -13,7 +13,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import pis2015.ub.com.beerwizard.R;
@@ -36,7 +35,7 @@ public class MainMenuActivity extends Activity {
         layout_MainMenu = (FrameLayout) findViewById( R.id.selectableItem);
         layout_MainMenu.getForeground().setAlpha(0);
 
-        this.run_IntroActivity_at_launch(); // Run intro activity at launch
+        this.runIntroActivityOnLaunch(); // Run intro activity at launch
 
         // Initializes btn_about
         btnAbout = (Button) findViewById(R.id.btn_about);
@@ -81,18 +80,18 @@ public class MainMenuActivity extends Activity {
      * Runs IntroActivity at launch
      * and never again.
      */
-    public void run_IntroActivity_at_launch() {
+    public void runIntroActivityOnLaunch() {
         SharedPreferences prefs = this.getSharedPreferences("appName", 0);
         SharedPreferences.Editor editor = prefs.edit();
         if (prefs.getBoolean("isInitialAppLaunch", true)) {
             editor.putBoolean("isInitialAppLaunch", false);
             editor.commit();
-            Intent intent = new Intent(this, IntroActivity.class);
-            startActivity(intent);
+            Intent intentProfile = new Intent(this, ProfileActivity.class);
+            startActivity(intentProfile);
+            Intent intentIntro = new Intent(this, IntroActivity.class);
+            startActivity(intentIntro);
         }
     }
-
-
 
     // ActionListeners
 
