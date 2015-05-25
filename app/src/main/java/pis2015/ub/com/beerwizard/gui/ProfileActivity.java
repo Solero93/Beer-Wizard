@@ -66,6 +66,7 @@ public class ProfileActivity extends Activity {
 
 
         btn_avatarChooser = (Button) findViewById(R.id.avatarImage);
+        btn_avatarChooser.setBackgroundResource(R.drawable.cara);
         btn_avatarChooser.setOnClickListener(new Button.OnClickListener() {
 
             @Override

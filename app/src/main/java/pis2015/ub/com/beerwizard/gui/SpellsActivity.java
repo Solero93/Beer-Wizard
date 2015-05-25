@@ -130,6 +130,7 @@ public class SpellsActivity extends ActionBarActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             Intent refresh = new Intent(this, SpellsActivity.class);
+            finish();
             startActivity(refresh);
 
         } else if ((resultCode <= 7) && (resultCode >= 0)) {
