@@ -31,8 +31,8 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal|bottom"
         android:background="@drawable/button_states"
-        android:text="Done!"
-        android:onClick="onClick_saveChanges" />
+        android:onClick="onClick_saveChanges"
+        android:text="Done!" />
 
 
     <FrameLayout
@@ -66,6 +66,7 @@
         android:layout_toRightOf="@+id/avatarImage"
         android:ems="10"
         android:hint="@string/profile_change_name"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:maxLength="30" />
 
 </RelativeLayout>
