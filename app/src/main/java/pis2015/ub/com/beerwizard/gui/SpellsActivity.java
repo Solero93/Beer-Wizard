@@ -59,7 +59,7 @@ public class SpellsActivity extends ActionBarActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_main_screen);
-        getSupportActionBar().setIcon(R.drawable.cara);//change the icon, avatar
+        getSupportActionBar().setIcon(GUIFacade.getUserAvatar());//change the icon, avatar
         setTitle(GUIFacade.getUserName());//change the Nickname
         TextView ruleText = (TextView) findViewById(R.id.textRule);
         ruleText.setText(GUIFacade.getRule());
