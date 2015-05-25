@@ -19,19 +19,8 @@ import pis2015.ub.com.beerwizard.util.Constants;
 
 
 public class ProfileActivity extends Activity {
-    Button avatar;
-    int idAvatar;
-    //TODO is this necessary??
-    public static void enableDisableViewGroup(ViewGroup viewGroup, boolean enabled) {
-        int childCount = viewGroup.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            View view = viewGroup.getChildAt(i);
-            view.setEnabled(enabled);
-            if (view instanceof ViewGroup) {
-                enableDisableViewGroup((ViewGroup) view, enabled);
-            }
-        }
-    }
+    private Button avatar;
+    private int idAvatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,27 +33,6 @@ public class ProfileActivity extends Activity {
         final FrameLayout block = null;
         ((EditText) findViewById(R.id.profileName)).setText(GUIFacade.getUserName());
         idAvatar = GUIFacade.getUserAvatar();
-
-
-//        Button end_profile = (Button) findViewById(R.id.btn_back);
-//        end_profile.setOnClickListener(new Button.OnClickListener() {
-//
-//            //                TextView wwa= (TextView)popupView.findViewById(R.id.)
-//            @Override
-//            public void onClick(View v) {
-//                String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
-//                SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
-//                        .edit();
-//                editor.putString("name", name);
-//                editor.putInt("avatar", idAvatar);
-//                editor.commit();
-//                GUIFacade.modifyUserProfile(name, idAvatar);
-//                setResult(RESULT_OK, null);
-//                finish();
-//                //overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
-//            }
-//        });
-
 
         btn_avatarChooser = (Button) findViewById(R.id.avatarImage);
         btn_avatarChooser.setBackgroundResource(GUIFacade.getUserAvatar());
@@ -98,12 +66,7 @@ public class ProfileActivity extends Activity {
         finish();
     }
     public void changeprofileimg(View v){
-//        //String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
-//        SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
-//                .edit();
-//        editor.putInt("avatar", idAvatar);
         switch (v.getId()){
-
             case R.id.img2:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara);
@@ -112,12 +75,8 @@ public class ProfileActivity extends Activity {
             case R.id.img3:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara1);
-
                 idAvatar = R.drawable.cara1;
-
-
                 break;
-
             case R.id.img4:
                 avatar =(Button)findViewById(R.id.avatarImage);
                 avatar.setBackgroundResource(R.drawable.cara2);
@@ -149,10 +108,7 @@ public class ProfileActivity extends Activity {
                 idAvatar = R.drawable.cara7;
                 break;
         }
-//        GUIFacade.modifyUserProfile(name, idAvatar);
-
     }
-
 
     public void onClick_saveChanges(View view) {
         String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
@@ -166,6 +122,4 @@ public class ProfileActivity extends Activity {
         finish();
     //overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);
     }
-
 }
-

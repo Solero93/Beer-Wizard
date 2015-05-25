@@ -13,7 +13,7 @@ import pis2015.ub.com.beerwizard.game.spells.SpellTruthOrShot;
 import pis2015.ub.com.beerwizard.game.spells.SpellWizardDuel;
 
 /**
- * Singleton class that manages the Spells.
+ * Class that manages available spells (getters and setters)
  */
 public class SpellManager {
     /*
@@ -111,14 +111,29 @@ public class SpellManager {
         return spells.get(idSpell).getImage();
     }
 
+    /**
+     * Starts cooldown of a spell
+     *
+     * @param idSpell
+     */
     public static void startSpellCooldown(int idSpell) {
         spells.get(idSpell).startCooldown();
     }
 
+    /**
+     * Returns miliseconds left from the cooldown of a spell
+     * @param idSpell
+     * @return
+     */
     public static long getMilisecondsLeftFromSpellCooldown(int idSpell) {
         return spells.get(idSpell).getMilisecondsLeftFromCooldown();
     }
 
+    /**
+     * Returns whether a spell is in Cooldown
+     * @param idSpell
+     * @return
+     */
     public static boolean isSpellCooldown(int idSpell) {
         return spells.get(idSpell).isCooldown();
     }

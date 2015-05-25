@@ -21,7 +21,6 @@ public class GUIFacade {
 
     /**
      * Gives all the Users that play the current GameData
-     *
      * @return List of all Users in current GameData
      */
     public static List<String> getAllUsers() {
@@ -62,7 +61,6 @@ public class GUIFacade {
 
     /**
      * Returns avatar of current User
-     *
      * @return
      */
     public static int getUserAvatar() {
@@ -71,7 +69,6 @@ public class GUIFacade {
 
     /**
      * Shows whether User has shield
-     *
      * @return
      */
     public static boolean getUserShield() {
@@ -103,7 +100,6 @@ public class GUIFacade {
 
     /**
      * Modifies the current User's profile.
-     *
      * @param name
      * @param idAvatar
      */
@@ -115,7 +111,6 @@ public class GUIFacade {
 
     /**
      * Returns current level of User
-     *
      * @return Current Level
      */
     public static int getLevel() {
@@ -133,7 +128,6 @@ public class GUIFacade {
 
     /**
      * Levels Up a specific user.
-     *
      * @param uuid
      */
     public static void levelUp(String uuid) {
@@ -150,7 +144,6 @@ public class GUIFacade {
 
     /**
      * Casts a Spell at a given User.
-     *
      * @param idSpell      - ID of spell to cast
      * @param param       - possible parametres (null if there aren't any)
      * @param targetUserPosition - ID of User to cast spell on (null if it's self inflicted)
