@@ -67,8 +67,9 @@ public class SpellsActivity extends ActionBarActivity {
         if (savedInstanceState != null) {
             for (int i = 1; i < GUIFacade.getLevel(); i++) {
 
-                lvlUp();
+
                 if (i < 9) {
+                    lvlUp();
                     if (SpellManager.isSpellCooldown(i - 1)) {
                         cooldownReload(i - 1);
                     }
@@ -77,8 +78,9 @@ public class SpellsActivity extends ActionBarActivity {
         } else if (GUIFacade.getLevel() > 1) {
             for (int i = 1; i < GUIFacade.getLevel(); i++) {
 
-                lvlUp();
+
                 if (i < 9) {
+                    lvlUp();
                     if (SpellManager.isSpellCooldown(i - 1)) {
                         cooldownReload(i - 1);
                     }
@@ -95,6 +97,9 @@ public class SpellsActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_spells, menu);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         this.menuActionBar = menu;
+        if (lvl == 9) {
+            lvlUp();
+        }
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -183,7 +188,7 @@ public class SpellsActivity extends ActionBarActivity {
                 // TODO Close all Notifications
                 NotificationManager mNotificationManager =
                         (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                mNotificationManager.cancelAll();
+                mNotificationManager.cancel(0);
                 finish();
                 break;
         }
@@ -522,15 +527,13 @@ public class SpellsActivity extends ActionBarActivity {
                                 .setAutoCancel(true);
                 // Creates an explicit intent for an Activity in your app
                 Intent resultIntent = new Intent(this.activity, SpellsActivity.class);
-                resultIntent.setAction(Intent.ACTION_MAIN);
-                resultIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 
                 PendingIntent resultPendingIntent =
                         PendingIntent.getActivity(
                                 this.activity,
                                 0,
                                 resultIntent,
-                                0
+                                PendingIntent.FLAG_UPDATE_CURRENT
                         );
                 mBuilder.setContentIntent(resultPendingIntent);
                 NotificationManager mNotificationManager =

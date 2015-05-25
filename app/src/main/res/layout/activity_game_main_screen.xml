@@ -549,21 +549,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/rules"
+                android:background="@drawable/flecha"
                 android:text="" />
 
             <LinearLayout
                 android:id="@+id/rules"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@color/yellow"
+                android:background="@drawable/scroll"
                 android:orientation="vertical">
 
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Rule"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
                     android:id="@+id/textRule"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginRight="150dp"
                     android:text="@string/rule" />
             </LinearLayout>
         </LinearLayout>
