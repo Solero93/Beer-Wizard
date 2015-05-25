@@ -184,6 +184,9 @@ public class SpellsActivity extends ActionBarActivity {
                 break;
             case R.id.action_exit: // Exit To Menu
                 GUIFacade.exitGame(this);
+                NotificationManager mNotificationManager =
+                        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                mNotificationManager.cancelAll();
                 finish();
                 break;
         }
