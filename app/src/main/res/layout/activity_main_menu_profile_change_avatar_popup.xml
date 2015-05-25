@@ -38,32 +38,36 @@
                     android:layout_height="match_parent">
 
                     <ImageButton
-                        android:id="@+id/imageButton2"
+                        android:id="@+id/img2"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_column="1"
-                        android:background="@drawable/cara" />
+                        android:background="@drawable/cara"
+                        android:onClick="changeprofileimg" />
 
                     <ImageButton
-                        android:id="@+id/imageButton3"
+                        android:id="@+id/img3"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="3"
-                        android:background="@drawable/cara" />
+                        android:background="@drawable/cara1" />
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/img4"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="5"
-                        android:background="@drawable/cara" />
+                        android:background="@drawable/cara2" />
 
                     <ImageButton
-                        android:id="@+id/imageButton5"
+                        android:id="@+id/img5"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="7"
-                        android:background="@drawable/cara" />
+                        android:background="@drawable/cara3" />
                 </TableRow>
 
                 <TableRow
@@ -71,32 +75,36 @@
                     android:layout_height="match_parent">
 
                     <ImageButton
-                        android:id="@+id/imageButton6"
+                        android:id="@+id/img6"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="1"
-                        android:background="@drawable/cara" />
+                        android:background="@drawable/cara4" />
 
                     <ImageButton
-                        android:id="@+id/imageButton7"
+                        android:id="@+id/img7"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="3"
-                        android:background="@drawable/cara" />
+                        android:background="@drawable/cara5" />
 
                     <ImageButton
-                        android:id="@+id/imageButton8"
+                        android:id="@+id/img8"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="5"
-                        android:background="@drawable/cara" />
+                        android:background="@drawable/cara6" />
 
                     <ImageButton
-                        android:id="@+id/imageButton9"
+                        android:id="@+id/img9"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="7"
-                        android:background="@drawable/cara" />
+                        android:background="@drawable/cara7" />
                 </TableRow>
 
                 <TableRow
@@ -107,6 +115,7 @@
                         android:id="@+id/imageButton10"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="1"
                         android:background="@drawable/cara" />
 
@@ -114,6 +123,7 @@
                         android:id="@+id/imageButton11"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="3"
                         android:background="@drawable/cara" />
 
@@ -121,6 +131,7 @@
                         android:id="@+id/imageButton12"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="5"
                         android:background="@drawable/cara" />
 
@@ -128,6 +139,7 @@
                         android:id="@+id/imageButton13"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:onClick="changeprofileimg"
                         android:layout_column="7"
                         android:background="@drawable/cara" />
                 </TableRow>

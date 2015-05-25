@@ -194,4 +194,5 @@
 
     <!--Toast hechizo send-->
     <string name="toast_sent">Spell casted.</string>
+    <string name="toast_updated_rule">Rule updated.</string>
 </resources>
