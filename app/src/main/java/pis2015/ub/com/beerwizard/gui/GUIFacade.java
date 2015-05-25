@@ -61,6 +61,15 @@ public class GUIFacade {
     }
 
     /**
+     * Returns avatar of current User
+     *
+     * @return
+     */
+    public static int getUserAvatar() {
+        return GameData.getUser().getAvatar();
+    }
+
+    /**
      * Shows whether User has shield
      *
      * @return
