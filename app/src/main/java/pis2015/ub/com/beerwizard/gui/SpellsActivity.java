@@ -473,7 +473,7 @@ public class SpellsActivity extends ActionBarActivity {
                     case Constants.MSG_DECIDE_LEVEL:
                         contentText = getString(
                                 R.string.notification_decide_level,
-                                inputMessage.obj // Who wants to level up
+                                GUIFacade.getUserName((String) inputMessage.obj) // Who wants to level up
                         );
                         break;
                     case Constants.MSG_LEVEL_UP:
@@ -485,7 +485,7 @@ public class SpellsActivity extends ActionBarActivity {
                     case Constants.MSG_CASTED_SPELL:
                         contentText = getString(
                                 R.string.notification_cast_spell,
-                                (String) ((Object[]) inputMessage.obj)[1], // User who casted
+                                GUIFacade.getUserName((String) ((Object[]) inputMessage.obj)[1]), // User who casted
                                 SpellManager.getSpellName((int) ((Object[]) inputMessage.obj)[0]) // Spell Casted
                         );
                         break;
@@ -495,8 +495,8 @@ public class SpellsActivity extends ActionBarActivity {
                     case Constants.MSG_DECIDE_DUEL:
                         contentText = getString(
                                 R.string.notification_decide_duel,
-                                (String) ((Object[]) inputMessage.obj)[0], // First User
-                                (String) ((Object[]) inputMessage.obj)[1] // Second User
+                                GUIFacade.getUserName((String) ((Object[]) inputMessage.obj)[0]), // First User
+                                GUIFacade.getUserName((String) ((Object[]) inputMessage.obj)[1]) // Second User
                         );
                         break;
                     default:
