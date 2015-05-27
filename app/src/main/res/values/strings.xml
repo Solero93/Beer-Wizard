@@ -3,18 +3,9 @@
 
     <string name="lvlUp">Level Up</string>
     <string name="nick">Harry Potter</string>
-    <string name="spell1">CAN TO
-        \n THE FACE</string>
     <string name="lvl">Level 1</string>
     <string name="app_name">Beer Wizard</string>
     <string name="user_name_default">Change me!</string>
-    <string name="notification_decide_level">%1$s requested a Level Up from You!</string>
-    <string name="notification_cast_spell">%1$s casted %1$s on You!</string>
-    <string name="notification_update_rule">New Rule in Game!</string>
-    <string name="notification_decide_duel">%1$s and %2$s had a duel, who won? you judge!</string>
-    <string name="notification_level_up">You drank a potion and gained a level!</string>
-    <string name="notification_level_down">You lost a duel and a level with it :(</string>
-    <string name="notification_default">Something happened in Beer Wizard!</string>
 
     <string name="title_activity_room_create">Create Room</string>
     <string name="create_room_hint">Room Name</string>
@@ -86,65 +77,98 @@
     <string name="action_tutorial">Tutorial</string>
     <string name="action_exit">Exit Game</string>
     <string name="action_settings">Settings</string>
+
     <!-- Spells text-->
+
     <!-- Spell1 text-->
     <string name="lock1">Unlock \n lvl. 2</string>
     <string name="title_spell1">CAN TO
         \n THE FACE</string>
-    <string name="description_text_spell1">Call out someone of a lower level \n than you and make them take a drink</string>
-    <string name="description_quote_spell1">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
+    <string name="description_text_spell1">
+        Call out someone of a lower level \nthan you and make them take a drink</string>
+    <string name="description_quote_spell1">
+        Like Dionysus and Russell Brand in one\n
+	    You are now the king of fun\n
+	    Don’t feel bad telling people what to do\n
+	    No one has more fun than when you tell them to\n
+    </string>
 
     <!-- Spell2 text-->
     <string name="lock2">Unlock \n lvl. 3</string>
-    <string name="title_spell2">DUEL OF
-        \n WIZARDS</string>
-    <string name="description_text_spell2">Challenge someone to a common \ndrinking activity.</string>
-    <string name="description_quote_spell2">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
+    <string name="title_spell2">DUEL OF\n WIZARDS</string>
+    <string name="description_text_spell2">
+        Challenge someone to a common \ndrinking activity.</string>
+    <string name="description_quote_spell2">
+        If of a duel you are not sure\n
+        Alcohol’s the perfect cure</string>
 
     <!-- Spell3 text-->
     <string name="lock3">Unlock \n lvl. 4</string>
     <string name="title_spell3">BEER-\nEKINESIS</string>
-    <string name="description_text_spell3">Retrive a beer through Magic, ie,\n making someone get you a beer</string>
-    <string name="description_quote_spell3">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
+    <string name="description_text_spell3">
+        Retrieve a beer through Magic, ie,\nmaking someone get you a beer</string>
+    <string name="description_quote_spell3">
+        If you cannot read this spell\n
+        This game is working far too well</string>
 
     <!-- Spell4 text-->
     <string name="lock4">Unlock \n lvl. 5</string>
     <string name="title_spell4">SHIELD</string>
-    <string name="description_text_spell4">You are protected from the next spell</string>
-    <string name="description_quote_spell4">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
+    <string name="description_text_spell4">
+        You are protected from the next spell</string>
+    <string name="description_quote_spell4">
+        Shouldst thou be in an ikea,\n
+        This game probably is not a great idea…</string>
 
     <!-- Spell5 text-->
     <string name="lock5">Unlock \n lvl. 6</string>
     <string name="title_spell5">RULE</string>
-    <string name="description_text_spell5">When you reach this level, create a\n rule that all must follow under penalty\nof drinking.</string>
-    <string name="description_quote_spell5">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
+    <string name="description_text_spell5">
+        When you reach this level, create a\n rule that all must follow under penalty\nof drinking.</string>
+    <string name="description_quote_spell5">
+        Now you’re less inhibited\nit’s time to get creative\n
+        It’s you who gets to make the rules\n
+        Just don’t let your ideas run away from yofhdgseules.</string>
 
     <!-- Spell6 text-->
     <string name="lock6">Unlock \n lvl. 7</string>
-    <string name="title_spell6">TRUTH OR
-        \n SHOT</string>
-    <string name="description_text_spell6">You can ask your target a question that\nneeds to be answered; in case your buddy s\na pussy he s gotta drink a shot.</string>
-    <string name="description_quote_spell6">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
+    <string name="title_spell6">TRUTH OR \n SHOT</string>
+    <string name="description_text_spell6">
+        You can ask your target a question that\nneeds to be answered; in case your buddy\'s\na pussy he s gotta drink a shot.</string>
+    <string name="description_quote_spell6">
+        The only way to lift the curse\n
+        Is tell the truth (preferably in verse)\n
+        If you’d rather not face your personal life at all\n
+        Bury your problems with more alcohol</string>
 
     <!-- Spell7 text-->
     <string name="lock7">Unlock \n lvl. 8</string>
-    <string name="title_spell7">HAT OF
-        \n SHAME</string>
-    <string name="description_text_spell7">Humiliate a Wizard by forcing them to\n wear a humorous headpiece for\nyour enjoyment.</string>
-    <string name="description_quote_spell7">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
+    <string name="title_spell7">HAT OF\n SHAME</string>
+    <string name="description_text_spell7">
+        Humiliate a Wizard by forcing them to\n wear a humorous headpiece for\nyour enjoyment.</string>
+    <string name="description_quote_spell7">
+        To defeat your enemies, here’s a clue\n
+        Don’t rely on Spells, or foul brew\n
+        Curses, Poxes, Eye of cat\n
+        Nothing compares to a dumb-looking hat</string>
 
     <!-- Spell8 text-->
     <string name="lock8">Unlock \n lvl. 9</string>
-    <string name="title_spell8">ALL
-        \n IN BEER</string>
-    <string name="description_text_spell8">Make everyone drink a beer.</string>
-    <string name="description_quote_spell8">One can to rule them all,\nOne can to find them,\nOne can to bring them all\nand in the darkness bind them</string>
+    <string name="title_spell8">ALL\n IN BEER</string>
+    <string name="description_text_spell8">
+        Make everyone drink a beer.</string>
+    <string name="description_quote_spell8">
+        One can to rule them all,\n
+        One can to find them,\n
+        One can to bring them all\n
+        Home with a designated driver.
+    </string>
 
 
     <!-- Tutorial Strings (popup also included) -->
 
     <string name="tutorial_btn_next">Next</string>
-    <string name="tutorial_btn_previous">Previuous</string>
+    <string name="tutorial_btn_previous">Previous</string>
 
     <!-- Popup Strings-->
     <string name="tutorial_popup_congrats">Congratulations!</string>
@@ -166,8 +190,6 @@
     <string name="level_up_boss_popup_eff">You are the one who can do it!</string>
     <string name="level_up_boss_popup_btn_fight">FIGHT!</string>
     <string name="title_activity_cast_spell2">CastSpell2Activity</string>
-
-    <string name="hello_world">Hello world!</string>
     <!-- END Level Up Boss -->
 
     <!-- popup Received spell -->
@@ -176,10 +198,10 @@
     <string name="popup_received_spell_descr">Now you must %1$s</string>
     <string name="popup_received_spell_btn"> Beer it!</string>
     <!-- short description spell-->
-    <string name="short_desc_can">take your beer!</string>
-    <string name="short_desc_duel">be ready to face him a duel!</string>
-    <string name="short_desc_beerk">take him a beer</string>
-    <string name="short_desc_hat">take something and is your new hat!</string>
+    <string name="short_desc_can">Take your beer!</string>
+    <string name="short_desc_duel">Be ready to face him a duel!</string>
+    <string name="short_desc_beerk">Take him a beer</string>
+    <string name="short_desc_hat">Take something and is your new hat!</string>
     <string name="short_desc_truth">TRUTH OR SHOT?</string>
     <string name="short_desc_all">DRINK,DRINK,DRINK!!!</string>
 
@@ -196,4 +218,13 @@
     <!--Toast hechizo send-->
     <string name="toast_sent">Spell casted.</string>
     <string name="toast_updated_rule">Rule updated.</string>
+
+    <!--Notification texts -->
+    <string name="notification_decide_level">%1$s requested a Level Up from You!</string>
+    <string name="notification_cast_spell">%1$s casted %1$s on You!</string>
+    <string name="notification_update_rule">New Rule in Game!</string>
+    <string name="notification_decide_duel">%1$s and %2$s had a duel, who won? you judge!</string>
+    <string name="notification_level_up">You drank a potion and gained a level!</string>
+    <string name="notification_level_down">You lost a duel and a level with it :(</string>
+    <string name="notification_default">Something happened in Beer Wizard!</string>
 </resources>
