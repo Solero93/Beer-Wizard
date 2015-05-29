@@ -116,7 +116,7 @@ public class ProfileActivity extends Activity {
         .edit();
         editor.putString("name", name);
         editor.putInt("avatar", idAvatar);
-        editor.commit();
+        editor.apply();
         GUIFacade.modifyUserProfile(name, idAvatar);
         setResult(RESULT_OK, null);
         finish();
