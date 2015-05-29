@@ -13,7 +13,7 @@ import pis2015.ub.com.beerwizard.util.Constants;
 /**
  * Created by jordi on 5/11/15.
  */
-public class LocalAboutDataListener implements AboutDataListener {
+class LocalAboutDataListener implements AboutDataListener {
 
     @Override
     public Map<String, Variant> getAboutData(String language)
