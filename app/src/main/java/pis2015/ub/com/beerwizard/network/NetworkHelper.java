@@ -16,10 +16,9 @@ import pis2015.ub.com.beerwizard.game.SpellManager;
 
 public class NetworkHelper {
 
-    public static byte createGame(Context context) {
+    public static void createGame(Context context) {
         Intent intent = new Intent(context, Server.class);
         context.startService(intent);
-        return 0;
     }
 
     public static void exitGame(Context context) {
