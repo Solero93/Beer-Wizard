@@ -14,50 +14,50 @@ import pis2015.ub.com.beerwizard.util.Constants;
 @BusInterface(name = Constants.INTERFACE_NAME, announced = "true")
 public interface UserInterface {
     @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
-    public String getName() throws BusException;
+    String getName() throws BusException;
 
     @BusProperty
-    public void setName(String name) throws BusException;
+    void setName(String name) throws BusException;
 
     @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
-    public int getLevel() throws BusException;
+    int getLevel() throws BusException;
 
     @BusProperty
-    public void setLevel(int level) throws BusException;
+    void setLevel(int level) throws BusException;
 
     @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
-    public int getAvatar() throws BusException;
+    int getAvatar() throws BusException;
 
     @BusProperty
-    public void setAvatar(int avatar) throws BusException;
+    void setAvatar(int avatar) throws BusException;
 
     @BusProperty
-    public String getUUID() throws BusException;
+    String getUUID() throws BusException;
 
     @BusMethod
-    public void levelUp() throws BusException;
+    void levelUp() throws BusException;
 
     @BusMethod
-    public void levelDown() throws BusException;
+    void levelDown() throws BusException;
 
     @BusMethod
-    public void acceptsLevelUp(String uuid) throws BusException;
+    void acceptsLevelUp(String uuid) throws BusException;
 
     @BusMethod
-    public void castedSpell(int i, String uuid, String param) throws BusException;
+    void castedSpell(int i, String uuid, String param) throws BusException;
 
     @BusSignal
-    public void updateRule(String newRule) throws BusException;
+    void updateRule(String newRule) throws BusException;
 
     @BusMethod
-    public String getRule() throws BusException;
+    String getRule() throws BusException;
 
     @BusMethod
-    public void beJudge(String uuidCaster, String uuidVictim) throws BusException;
+    void beJudge(String uuidCaster, String uuidVictim) throws BusException;
 
     @BusProperty(annotation = BusProperty.ANNOTATE_EMIT_CHANGED_SIGNAL)
-    public boolean getShield() throws BusException;
+    boolean getShield() throws BusException;
 
     @BusProperty
-    public void setShield(boolean bool) throws BusException;
+    void setShield(boolean bool) throws BusException;
 }
