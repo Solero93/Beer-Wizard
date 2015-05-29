@@ -1,7 +1,7 @@
 @startuml
 
-class NetworkHelper <<(F,orchid) Facade>>{
-    +{static} byte createGame(Context context)
+class NetworkHelper <<(H,orchid) Helper>>{
+    +{static} void createGame(Context context)
     +{static} void exitGame(Context context)
     +{static} void levelUp()
     +{static} void levelUp(String uuidUser)
@@ -23,16 +23,33 @@ class Server extends Service{
     +void updateRule(String newRule) 
 }
 
-Server <--> NetworkHelper : communicates over the network
+class BusHandler {
+    + {static final} int CONNECT
+    + {static final} int DISCONECT
+    + {static final} int LEVEL_UP_USER
+    + {static final} int JOIN_GAME
+    + {static final} int UPDATE_RULE
+    - {static final} short CONTACT_PORT
+    - BusAttachment mBus
+    - AboutObj aboutObj
+    - LocalAboutDataListener aboutData
+    - Observer observer
+    
+    +BusHandler(Looper looper)
+    
+    +void handleMessage(Message msg)
+}
+Server "1" <--> "1" BusHandler : Communicates to the rest of the network using it
+Server "1" <-- "1" NetworkHelper : Sends messages to the server
 
 class GameData{
 	-{static} spellsActivityHandler : Handler
 	-{static} rule : String
 	-{static} users : ConcurrentHashMap<String, UserInterface>
 	
-	static {System.loadLibrary("alljoyn_java");}
-	
 	+GameData()
+	+UserInterface getUser(String uuid)
+	+UserInterface getUser(int position)
 	+void onCreate()
 }
 
@@ -62,12 +79,12 @@ class User implements UserInterface{
 	-avatarPhoto : int
 	-hasShield : boolean
 
-	+User()
-	+User(String name)
 	+User(String name, int avatarPhoto)
 }
 
-Server "1" --> "1" User
+NetworkHelper "1" --> "1" UserInterface : Interacts with the other users in the network
+NetworkHelper "1" --> "1" BusHandler : Asks the network to level up
+Server "1" --> "1" User : Announces to the network
 GameData "1" --> "1..*" User: stores
 
 class LocalAboutDataListener implements AboutDataListener{
@@ -75,6 +92,6 @@ class LocalAboutDataListener implements AboutDataListener{
 	+Map<String, Variant> getAnnouncedAboutData()
 }
 
-Server "1" --> "1" LocalAboutDataListener : has
+Server "1" --> "1" LocalAboutDataListener : announces this data to the network
 
 @enduml
