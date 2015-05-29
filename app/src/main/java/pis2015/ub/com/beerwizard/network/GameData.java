@@ -15,8 +15,7 @@ public class GameData extends Application {
     private static Handler spellsActivityHandler;
     private static String rule;
     private static User user;
-    // TODO the ... users = new ConcurrentHashMap<>() assignment should go to onCreate, here only declare
-    private static ConcurrentHashMap<String, UserInterface> users = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, UserInterface> users;
 
     /*
     We load the AllJoyn library
@@ -73,5 +72,6 @@ public class GameData extends Application {
         // TODO String "Change me!" should go to strings.xml -> Put R.string.user_name_default instead of Change me! (and change to getInt)
         user = new User(preferences.getString("name", "Change me!"), preferences.getInt("avatar", R.drawable.cara));
         rule = getString(R.string.rule);
+        users = new ConcurrentHashMap<>();
     }
 }
