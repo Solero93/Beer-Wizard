@@ -11,7 +11,7 @@ import java.util.Map;
 import pis2015.ub.com.beerwizard.util.Constants;
 
 /**
- * Created by jordi on 5/11/15.
+ * Class that contains the data to be announced to the network. Required by the AllJoyn framework
  */
 class LocalAboutDataListener implements AboutDataListener {
 

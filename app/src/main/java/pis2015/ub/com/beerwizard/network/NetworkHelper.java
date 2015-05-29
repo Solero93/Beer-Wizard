@@ -14,23 +14,44 @@ import java.util.Random;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
 
+/**
+ * Helper for the other classes to abstract functions from the rest of the implementation
+ */
 public class NetworkHelper {
 
+    /**
+     * Creates a game locally
+     *
+     * @param context the activity that requests the game to start
+     */
     public static void createGame(Context context) {
         Intent intent = new Intent(context, Server.class);
         context.startService(intent);
     }
 
+    /**
+     * Exits the game, shutting down the server
+     * @param context the activity that requests the game to stop
+     */
     public static void exitGame(Context context) {
         Intent intent = new Intent(context, Server.class);
         context.stopService(intent);
     }
 
+    /**
+     * Asks to level up the user.
+     *
+     * Will ask the server to contact another user for permission
+     */
     public static void levelUp() {
         Handler h = Server.busHandler;
         h.sendMessage(h.obtainMessage(Server.BusHandler.LEVEL_UP_USER));
     }
 
+    /**
+     * Levels up the given user
+     * @param uuidUser the UUID of the user to level up
+     */
     public static void levelUp(String uuidUser) {
         try {
             GameData.getUser(uuidUser).levelUp();
@@ -39,6 +60,10 @@ public class NetworkHelper {
         }
     }
 
+    /**
+     * Levels down the given user
+     * @param uuidUser UUID of the user
+     */
     public static void levelDown(String uuidUser) {
         try {
             GameData.getUser(uuidUser).levelDown();
@@ -47,6 +72,13 @@ public class NetworkHelper {
         }
     }
 
+    /**
+     * Casts a spell to the given user
+     * @param idCasterUser the UUID of the user who casts the spell
+     * @param idTargetUser the UUID of the user who is targeted
+     * @param idSpell the spell id
+     * @param params extra parameters if the spell requires them (i.e. Rule)
+     */
     public static void castSpell(String idCasterUser, String idTargetUser, int idSpell, String params) {
         UserInterface user;
         if (params == null)

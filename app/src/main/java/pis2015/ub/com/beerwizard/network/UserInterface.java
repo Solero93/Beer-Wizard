@@ -9,7 +9,8 @@ import org.alljoyn.bus.annotation.BusSignal;
 import pis2015.ub.com.beerwizard.util.Constants;
 
 /**
- * Created by jordi on 5/11/15.
+ * Interface for the AllJoyn service, those classes that implement this will broadcast signals when
+ * updating the rule or any property is changed
  */
 @BusInterface(name = Constants.INTERFACE_NAME, announced = "true")
 public interface UserInterface {

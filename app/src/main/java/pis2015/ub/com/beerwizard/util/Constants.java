@@ -5,9 +5,12 @@ import android.os.Build;
 import java.util.UUID;
 
 /**
- * Created by jordi on 4/27/15.
+ * Class is used as a store for various constants used throughout the application
  */
 public class Constants {
+    /**
+     * The UUID is generated when the application starts
+     */
     public static final String UUID_STRING = UUID.randomUUID().toString();
     public static final String VERSION_NUMBER = Build.VERSION.RELEASE;
     public static final byte[] APP_ID = {42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42};
