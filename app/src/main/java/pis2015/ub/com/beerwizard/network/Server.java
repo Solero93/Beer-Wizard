@@ -26,6 +26,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.util.Constants;
 
+/**
+ * The server for the game, it announces the user to the network and in general
+ */
 public class Server extends Service {
     private static final String TAG = "ServerService";
     static BusHandler busHandler;
@@ -51,11 +54,20 @@ public class Server extends Service {
         return START_STICKY;
     }
 
+    /**
+     * Called when the user has removed the application from the app drawer.
+     * We stop the server if this happens to avoid issues with the popups
+     *
+     * @param intent the intent used to start the service
+     */
     @Override
     public void onTaskRemoved(Intent intent) {
         stopSelf();
     }
 
+    /**
+     * Called to stop the server
+     */
     @Override
     public void onDestroy() {
         Log.d(TAG, "Shutting Server");
@@ -67,6 +79,10 @@ public class Server extends Service {
         return null;
     }
 
+    /**
+     * Called only by the AllJoyn service when receiving an "updateRule" signal
+     * @param newRule the new rule
+     */
     @BusSignalHandler(iface = Constants.INTERFACE_NAME, signal = "updateRule")
     public void updateRule(String newRule) {
         Message msg = busHandler.obtainMessage(BusHandler.UPDATE_RULE);
@@ -74,6 +90,9 @@ public class Server extends Service {
         busHandler.sendMessage(msg);
     }
 
+    /**
+     * Class used to handle all the connections and usages of the AllJoyn service
+     */
     public class BusHandler extends Handler {
         public static final int CONNECT = 1;
         public static final int DISCONNECT = 2;
@@ -88,6 +107,10 @@ public class Server extends Service {
 
         private Observer observer;
 
+        /**
+         * Builds the class with the given message looper
+         * @param looper
+         */
         public BusHandler(Looper looper) {
             super(looper);
         }
@@ -150,6 +173,9 @@ public class Server extends Service {
                         return;
                     }
 
+                    /**
+                     * The observer used to discover and control the users in the network
+                     */
                     observer = new Observer(mBus, new Class[]{UserInterface.class});
                     observer.registerListener(new Observer.Listener() {
                         @Override
@@ -165,6 +191,7 @@ public class Server extends Service {
                             Log.d(TAG + "LostUser", "Lost user");
                             String uuid = reverseUserDb.get(user);
                             userDb.remove(uuid);
+                            reverseUserDb.remove(user);
                         }
                     });
                     break;
@@ -182,6 +209,7 @@ public class Server extends Service {
                     break;
                 case JOIN_GAME:
                     ProxyBusObject obj = (ProxyBusObject) msg.obj;
+                    // We enable the property cache so as to avoid calling multiple times each phone
                     obj.enablePropertyCaching();
                     obj.setReplyTimeout(1000);
                     UserInterface user = obj.getInterface(UserInterface.class);
@@ -209,6 +237,7 @@ public class Server extends Service {
                         Server.this.user.levelUp();
                         break;
                     }
+                    // We obtain another user at random to ask permission to level up
                     UserInterface random = (UserInterface) userDb.values().toArray()[new Random().nextInt(userDb.size())];
                     try {
                         random.acceptsLevelUp(Server.this.user.getUUID());
@@ -217,11 +246,13 @@ public class Server extends Service {
                     }
                     break;
                 case UPDATE_RULE:
+                    // We update the internal rule variable
                     String newRule = (String) msg.obj;
                     Handler h = GameData.getSpellsActivityHandler();
                     Message message = h.obtainMessage(Constants.MSG_UPDATE_RULE);
                     message.obj = msg.obj;
                     GameData.setRule(newRule);
+                    // We send a message to the UI for them to update the rule there
                     h.sendMessage(message);
                     break;
                 default:
