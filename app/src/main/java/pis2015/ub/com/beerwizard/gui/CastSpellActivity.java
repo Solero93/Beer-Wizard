@@ -147,7 +147,9 @@ public class CastSpellActivity extends Activity {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.activity_game_setrule, null);
 
-
+        /*
+        Popup shown when one played cast a spell and needs some feedback from player
+         */
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         Drawable bg = getBaseContext().getResources().getDrawable(R.drawable.popup_border);

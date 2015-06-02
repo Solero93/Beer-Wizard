@@ -17,7 +17,9 @@ import android.widget.PopupWindow;
 import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.util.Constants;
 
-
+/**
+ * Activity used to modify your profile, set an avatar image and your name
+ */
 public class ProfileActivity extends Activity {
     private Button avatar;
     private int idAvatar;
@@ -34,6 +36,9 @@ public class ProfileActivity extends Activity {
         ((EditText) findViewById(R.id.profileName)).setText(GUIFacade.getUserName());
         idAvatar = GUIFacade.getUserAvatar();
 
+        /**
+         * This button opens a popup to select your new avatar from a listview
+         */
         btn_avatarChooser = (Button) findViewById(R.id.avatarImage);
         btn_avatarChooser.setBackgroundResource(GUIFacade.getUserAvatar());
         btn_avatarChooser.setOnClickListener(new Button.OnClickListener() {
@@ -60,11 +65,18 @@ public class ProfileActivity extends Activity {
         });
     }
 
-
+    /**
+     * Finish the profileactivity when pressed back Android button
+     */
     public void onBackPressed() {
         setResult(RESULT_OK, null);
         finish();
     }
+
+    /**
+     * Method used to show new avatar image and register on the memory of the phone
+     * @param v
+     */
     public void changeprofileimg(View v){
         switch (v.getId()){
             case R.id.img2:
@@ -110,6 +122,10 @@ public class ProfileActivity extends Activity {
         }
     }
 
+    /**
+     * Button to save your changes and end this activity
+     * @param view
+     */
     public void onClick_saveChanges(View view) {
         String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
         SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE)

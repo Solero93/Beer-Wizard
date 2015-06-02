@@ -19,6 +19,10 @@ import android.widget.ViewSwitcher;
 
 import pis2015.ub.com.beerwizard.R;
 
+/**
+ * Class which shows images to help new players understand how to play this app
+ * BETA VERSION
+ */
 public class TutorialActivity extends Activity {
     private Button buttonNext;
     private Button buttonPrevious;
@@ -27,6 +31,10 @@ public class TutorialActivity extends Activity {
     private int[] imageResources;
     private int curIndex;
 
+    /**
+     * Here we create an array with images
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         this.imageResources = new int[]{
                 R.drawable.tutorial_1,
@@ -40,14 +48,13 @@ public class TutorialActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main_menu_tutorial);
-        //Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fonts.ttf");
-        //boto que desa el que hi ha escrit i torna a l'activity main
 
+        //Buttons to see next or previous image
         buttonNext = (Button) findViewById(R.id.btn_next);
         buttonPrevious = (Button) findViewById(R.id.btn_previous);
-
+        //Object where images shown
         imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
-
+        //animation between images
         slide_in_left = AnimationUtils.loadAnimation(this,
                 android.R.anim.slide_in_left);
         slide_out_right = AnimationUtils.loadAnimation(this,
@@ -59,7 +66,10 @@ public class TutorialActivity extends Activity {
 
         imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
 
-
+            /**
+             * Method to select the image and show it
+             * @return
+             */
             @Override
             public View makeView() {
 
@@ -77,9 +87,10 @@ public class TutorialActivity extends Activity {
 
         curIndex = 0;
         imageSwitcher.setImageResource(imageResources[curIndex]);
-
+        /**
+         * Method to show the previous image, if is the first, this button does nothing
+         */
         buttonPrevious.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 if (curIndex == 0) {
@@ -88,9 +99,10 @@ public class TutorialActivity extends Activity {
                 }
             }
         });
-
+        /**
+         * Method to show the next image, if is the last, goes to the first element and ask player with a popup to go previous activity.
+         */
         buttonNext.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 if (curIndex == imageResources.length - 1) {

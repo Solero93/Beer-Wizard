@@ -11,10 +11,14 @@ import java.util.TimerTask;
 
 import pis2015.ub.com.beerwizard.R;
 
+
+/**
+ * Class used to show a SplashScreen of the app
+ */
 public class SplashScreenActivity extends Activity {
 
     // Set the duration of the splash screen
-    private static final long SPLASH_SCREEN_DELAY = 300;
+    private static final long SPLASH_SCREEN_DELAY = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

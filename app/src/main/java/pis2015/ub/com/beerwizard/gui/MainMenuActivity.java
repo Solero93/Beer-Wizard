@@ -18,7 +18,7 @@ import android.widget.PopupWindow;
 import pis2015.ub.com.beerwizard.R;
 
 /**
- * Activity of the Main Menu
+ * Activity of the Main Menu which any player can choose start a new game, modify his profile or either see the tutorial
  */
 public class MainMenuActivity extends Activity {
     private Button btnAbout;
@@ -45,7 +45,9 @@ public class MainMenuActivity extends Activity {
 
             @Override
             public void onClick(View arg0) {
-
+                /**
+                 * This popup shows who done this app
+                 */
                 LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                 layout_MainMenu.getForeground().setAlpha( 220);
                 View popupView = layoutInflater.inflate(R.layout.activity_main_menu_popup_about, null);
