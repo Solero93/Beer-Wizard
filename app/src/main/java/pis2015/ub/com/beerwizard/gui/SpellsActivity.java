@@ -31,8 +31,8 @@ import pis2015.ub.com.beerwizard.network.GameData;
 import pis2015.ub.com.beerwizard.util.Constants;
 import pis2015.ub.com.beerwizard.util.PauseHandler;
 
-/*
-The activity where you can select a spell.
+/**
+ * The activity where you can select a spell.
  */
 public class SpellsActivity extends ActionBarActivity {
     public static PauseHandler spellsHandler;
@@ -86,7 +86,12 @@ public class SpellsActivity extends ActionBarActivity {
         GameData.setSpellsActivityHandler(spellsHandler); // Assigns Handler to GameData
     }
 
-    //Action bar constructor
+    /**
+     * Action bar constructor
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -100,7 +105,9 @@ public class SpellsActivity extends ActionBarActivity {
 
     }
 
-    //Disabling Back Button in this activity
+    /**
+     * Disabling Back Button in this activity
+     */
     public void onBackPressed() {
     }
 
@@ -109,8 +116,10 @@ public class SpellsActivity extends ActionBarActivity {
         super.onSaveInstanceState(icicle);
         icicle.putInt("lvl", lvl);
     }
-    /*
-    event of the spells
+
+    /**
+     * event of the spells
+     * @param v
      */
     public void onClickSpell(View v) {
         int id = v.getId();
@@ -126,6 +135,13 @@ public class SpellsActivity extends ActionBarActivity {
         }
     }
 
+    /**
+     * the return from others activitys
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
@@ -141,8 +157,10 @@ public class SpellsActivity extends ActionBarActivity {
         }
     }
 
-    /*
-    options and settings
+    /**
+     * ActionBar options and buttons
+     * @param item
+     * @return
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -209,6 +227,9 @@ public class SpellsActivity extends ActionBarActivity {
         super.onDestroy();
     }
 
+    /**
+     * when lvl up, change the image and text from a unlocked lvl
+     */
     private void lvlUp() {
 
         if (lvl < 9) {
@@ -227,6 +248,9 @@ public class SpellsActivity extends ActionBarActivity {
         }
     }
 
+    /**
+     * lock spells if you dont have de level
+     */
     private void lvlDown() {
         TextView textLvl = (TextView) findViewById(R.id.textLvl);
         textLvl.setText("Level " + lvl);
@@ -250,11 +274,10 @@ public class SpellsActivity extends ActionBarActivity {
         textLvl.setText("MASTER");
     }
 
-    private void masterDown() {
-        TextView textLvl = (TextView) findViewById(R.id.textLvl);
-        textLvl.setText("Level " + lvl);
-    }
-
+    /**
+     * the countdown of the lock spells
+     * @param idSpell
+     */
     private void cooldown(final int idSpell) {
         final ImageView image = (ImageView) findViewById(tImage[idSpell]);
         final TextView text = (TextView) findViewById(tText[idSpell]);
@@ -280,6 +303,10 @@ public class SpellsActivity extends ActionBarActivity {
                 .start();
     }
 
+    /**
+     * Reload the cooldown
+     * @param idSpell
+     */
     private void cooldownReload(final int idSpell) {
         final ImageView image = (ImageView) findViewById(tImage[idSpell]);
         final TextView text = (TextView) findViewById(tText[idSpell]);

@@ -21,6 +21,9 @@ import android.widget.TextView;
 import pis2015.ub.com.beerwizard.R;
 import pis2015.ub.com.beerwizard.game.SpellManager;
 
+/**
+ * Activity where the wizar can cast his spells
+ */
 public class CastSpellActivity extends Activity {
     private int idSpell, idUser;
     private String textRule;
@@ -47,12 +50,18 @@ public class CastSpellActivity extends Activity {
 
     }
 
+    /**
+     * Redefine the Back button
+     */
     public void onBackPressed() {
         setResult(-2, null);
         finish();
     }
 
-    //Event onClick
+    /**
+     * Event onClick
+     * Every spell has a different case with his popups
+     */
     public void onClickCast(View v) {
         oRule = false;
         switch (idSpell) {
@@ -94,6 +103,9 @@ public class CastSpellActivity extends Activity {
         return true;
     }
 
+    /**
+     * POPUP where you can select an user to cast the spell
+     */
     public void initPopupUser(final View v) {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.activity_game_users, null);
@@ -142,7 +154,11 @@ public class CastSpellActivity extends Activity {
 
     }
 
-
+    /**
+     * POPUP where you can
+     *
+     * @param v
+     */
     public void initPopupRule(View v) {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.activity_game_setrule, null);
@@ -184,6 +200,11 @@ public class CastSpellActivity extends Activity {
 
     }
 
+    /**
+     * POPUP where you can accept
+     *
+     * @param v
+     */
     public void initPopupAccept(View v) {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.popup_sent_spell, null);
