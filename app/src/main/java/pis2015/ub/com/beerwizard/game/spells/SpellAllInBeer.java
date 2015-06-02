@@ -6,7 +6,7 @@ public class SpellAllInBeer extends Spell {
     public SpellAllInBeer() {
         super();
         setName(R.string.title_spell8);
-        setImage(R.drawable.duel_of_wizards); // More images need to arrive
+        setImage(R.drawable.all_in_beer); // More images need to arrive
         setDescription(R.string.description_text_spell8);
         setQuote(R.string.description_quote_spell8);
         setLockedText(R.string.lock8);

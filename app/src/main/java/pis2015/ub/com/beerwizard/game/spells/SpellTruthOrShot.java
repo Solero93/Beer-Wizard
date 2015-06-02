@@ -6,7 +6,7 @@ public class SpellTruthOrShot extends Spell {
     public SpellTruthOrShot() {
         super();
         setName(R.string.title_spell6);
-        setImage(R.drawable.duel_of_wizards); // More images need to arrive
+        setImage(R.drawable.truth_or_shot); // More images need to arrive
         setDescription(R.string.description_text_spell6);
         setQuote(R.string.description_quote_spell6);
         setLockedText(R.string.lock6);
