@@ -1,1 +1,1 @@
-# PIS_12
+# Beer Wizard Android project
