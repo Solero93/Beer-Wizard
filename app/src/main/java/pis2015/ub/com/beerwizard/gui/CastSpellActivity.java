@@ -29,18 +29,22 @@ public class CastSpellActivity extends Activity {
     private String textRule;
     private boolean oRule;
 
+    //TODO Create class FullScreenActivity that inherits from Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cast_spell);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Bundle b = new Bundle();
+        this.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Bundle b = new Bundle(); //FIXME could be deleted
         b = getIntent().getExtras();
         idSpell = b.getInt("spell");//id spell de 1 a
         idUser = 0;
         textRule = "";
 
         //description and Quote
+        //FIXME could be contracted to be done without declaration
         TextView description = (TextView) findViewById(R.id.descriptionText);
         TextView title = (TextView) findViewById(R.id.titleText);
         TextView quote = (TextView) findViewById(R.id.quoteText);
@@ -110,7 +114,7 @@ public class CastSpellActivity extends Activity {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.activity_game_users, null);
 
-
+        //FIXME Should apply builder pattern to create popUps
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         Drawable bg = getBaseContext().getResources().getDrawable(R.drawable.popup_border);
@@ -138,7 +142,7 @@ public class CastSpellActivity extends Activity {
 
 /*                // We know the View is a TextView so we can cast it
                   // IMPORTANT TO REMEMBER THIS!!
-                TextView clickedView = (TextView) view;
+                TextView clickedView = (TextView) view; FIXME wtf ?!
 */
                 idUser = position;
                 popupWindow.dismiss();
@@ -166,6 +170,7 @@ public class CastSpellActivity extends Activity {
         /*
         Popup shown when one played cast a spell and needs some feedback from player
          */
+        //FIXME rename stuff here + builder pattern
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         Drawable bg = getBaseContext().getResources().getDrawable(R.drawable.popup_border);
@@ -209,7 +214,7 @@ public class CastSpellActivity extends Activity {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.popup_sent_spell, null);
 
-
+        //FIXME goddamn builder pattern
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         TextView name = (TextView) popupView.findViewById(R.id.sent_spell_Name);

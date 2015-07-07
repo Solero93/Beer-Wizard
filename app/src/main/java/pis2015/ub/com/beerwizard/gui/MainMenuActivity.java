@@ -27,7 +27,9 @@ public class MainMenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         this.setTheme(R.style.mainMenuTheme);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -35,9 +37,9 @@ public class MainMenuActivity extends Activity {
         layout_MainMenu = (FrameLayout) findViewById( R.id.selectableItem);
         layout_MainMenu.getForeground().setAlpha(0);
 
-        this.runIntroActivityOnLaunch(); // Run intro activity at launch
+        this.runIntroActivityOnLaunch(); // Run intro activity on launch
 
-        // Initializes btn_about
+        // Initializes btn_about FIXME could be done in single declaration
         btnAbout = (Button) findViewById(R.id.btn_about);
         btnAbout.setWidth(25);
         btnAbout.setHeight(1);
@@ -47,6 +49,7 @@ public class MainMenuActivity extends Activity {
             public void onClick(View arg0) {
                 /**
                  * This popup shows who done this app
+                 * FIXME Builder pattern...
                  */
                 LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                 layout_MainMenu.getForeground().setAlpha( 220);
@@ -81,6 +84,7 @@ public class MainMenuActivity extends Activity {
     /**
      * Runs IntroActivity at launch
      * and never again.
+     * TODO should look for easier way to do this
      */
     public void runIntroActivityOnLaunch() {
         SharedPreferences prefs = this.getSharedPreferences("appName", 0);
@@ -100,6 +104,7 @@ public class MainMenuActivity extends Activity {
     /**
      * OnClick ActionListener of btn_newGame
      * Enters to a new game, but before has to create a Room.
+     * FIXME could be done in single declaration (last 2 lines)
      */
     public void onClick_newGame(View vw) {
         GUIFacade.createGame(this);
@@ -110,6 +115,7 @@ public class MainMenuActivity extends Activity {
     /**
      * OnClick ActionListener of btn_profile
      * Lets edit your Profile
+     * FIXME could be done in single line
      */
     public void onClick_profile(View vw) {
         Intent intent = new Intent(this, ProfileActivity.class);
@@ -119,6 +125,7 @@ public class MainMenuActivity extends Activity {
     /**
      * OnClick ActionListener of btn_tutorial
      * Opens the Tutorial
+     * FIXME could be done in single line + ANIMATION
      */
     public void onClick_tutorial(View vw) {
         Intent intent = new Intent(this, TutorialActivity.class);

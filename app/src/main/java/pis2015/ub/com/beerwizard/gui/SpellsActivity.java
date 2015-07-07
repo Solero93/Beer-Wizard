@@ -36,8 +36,8 @@ import pis2015.ub.com.beerwizard.util.PauseHandler;
  */
 public class SpellsActivity extends ActionBarActivity {
     public static PauseHandler spellsHandler;
-    private Menu menuActionBar;
-    private int[] tText, tImage, tSpell; // Tables of Component identifiers
+    private Menu menuActionBar; // TODO why is this stored??
+    private int[] tText, tImage, tSpell; // Tables of Component identifiers FIXME say goodbye -> XML array
     private int lvl;
 
     @Override
@@ -55,14 +55,19 @@ public class SpellsActivity extends ActionBarActivity {
         this.initSpellsHandler(); // Initializes spellsHandler
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_main_screen);
         getSupportActionBar().setIcon(GUIFacade.getUserAvatar());//change the icon, avatar
         setTitle(GUIFacade.getUserName());//change the Nickname
+        //FIXME could be done in single line
         TextView ruleText = (TextView) findViewById(R.id.textRule);
         ruleText.setText(GUIFacade.getRule());
 
+
+        //TODO this is too lame...
         lvl = 1;
         if (savedInstanceState != null) {
             for (int i = 1; i < GUIFacade.getLevel(); i++) {
@@ -98,6 +103,7 @@ public class SpellsActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_spells, menu);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         this.menuActionBar = menu;
+        //FIXME unnecessary parche
         if (lvl == 9) {
             lvlUp();
         }
@@ -123,8 +129,8 @@ public class SpellsActivity extends ActionBarActivity {
      */
     public void onClickSpell(View v) {
         int id = v.getId();
-        int i;
-        for (i = 0; i <= 7; i++) {
+        //FIXME this is confusing...
+        for (int i = 0; i <= 7; i++) {
             if ((id == tSpell[i]) && (lvl >= (i + 2)) && (!SpellManager.isSpellCooldown(i))) {
                 Intent intent = new Intent(this, CastSpellActivity.class);
                 intent.putExtra("spell", i); //Your id
@@ -152,8 +158,6 @@ public class SpellsActivity extends ActionBarActivity {
         } else if ((resultCode <= 7) && (resultCode >= 0)) {
             cooldown(resultCode);
             Toast.makeText(this, getString(R.string.toast_sent), Toast.LENGTH_LONG).show();
-            
-
         }
     }
 
@@ -208,6 +212,10 @@ public class SpellsActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    /*
+    * FIXME Should try where to put which (resume, pause and removeAllMessages)
+     */
 
     @Override
     public void onResume() {
@@ -283,7 +291,7 @@ public class SpellsActivity extends ActionBarActivity {
         final TextView text = (TextView) findViewById(tText[idSpell]);
         image.setImageResource(R.drawable.timeout);
         SpellManager.startSpellCooldown(idSpell);
-        new CountDownTimer(SpellManager.getSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
+        new CountDownTimer(SpellManager.getSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long FIXME wut?
 
             public void onTick(long millisUntilFinished) {
                 if (idSpell + 2 <= lvl) {
@@ -311,7 +319,7 @@ public class SpellsActivity extends ActionBarActivity {
         final ImageView image = (ImageView) findViewById(tImage[idSpell]);
         final TextView text = (TextView) findViewById(tText[idSpell]);
         image.setImageResource(R.drawable.timeout);
-        new CountDownTimer(SpellManager.getMilisecondsLeftFromSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long
+        new CountDownTimer(SpellManager.getMilisecondsLeftFromSpellCooldown(idSpell), 1000) {//CountDownTimer(edittext1.getText()+edittext2.getText()) also parse it to long FIXME wut?
 
             public void onTick(long millisUntilFinished) {
                 if (idSpell + 2 <= lvl) {
@@ -352,6 +360,7 @@ public class SpellsActivity extends ActionBarActivity {
                          * Here we create a popup using a LayoutInflater to allow players to lvl up
                          * sending a request to another player, this player can accept the level up
                          * or deny it
+                         * FIXME builder pattern
                          */
                         //Here we create the layout inflater
                         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -418,11 +427,14 @@ public class SpellsActivity extends ActionBarActivity {
                          * Here we create a popup using a LayoutInflater to allow players to lvl up
                          * sending a request to another player, this player can accept the level up
                          * or deny it
+                         * FIXME builder pattern
                          */
                         LayoutInflater layoutInflater2 = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                         View popupView2 = layoutInflater2.inflate(R.layout.popup_received_spell, null);
                         final PopupWindow popupWindow2 = new PopupWindow(popupView2, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                         popupWindow2.setFocusable(true);
+
+                        //FIXME oh.. my... barrow..
 
                         String descr = getString(SpellManager.getSpellCastedDescription(idSpell));
                         String name = GUIFacade.getUserName(targetUser);
@@ -570,7 +582,7 @@ public class SpellsActivity extends ActionBarActivity {
                 mBuilder.setContentIntent(resultPendingIntent);
                 NotificationManager mNotificationManager =
                         (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                // mId allows you to update the notification later on. (mId = 0 currently)
+                // mId allows you to update the notification later on. (mId = 0 currently) FIXME create more notifications
                 mNotificationManager.notify(0, mBuilder.build());
             }
         };

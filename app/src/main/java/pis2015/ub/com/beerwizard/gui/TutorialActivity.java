@@ -24,11 +24,11 @@ import pis2015.ub.com.beerwizard.R;
  * BETA VERSION
  */
 public class TutorialActivity extends Activity {
-    private Button buttonNext;
+    private Button buttonNext; // FIXME shouldn't be stored. This is why we use IDs...
     private Button buttonPrevious;
     private ImageSwitcher imageSwitcher;
-    private Animation slide_in_left, slide_out_right;
-    private int[] imageResources;
+    private Animation slide_in_left, slide_out_right; // FIXME use ID
+    private int[] imageResources; // FIXME should go -> do an XML array
     private int curIndex;
 
     /**
@@ -106,6 +106,7 @@ public class TutorialActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 if (curIndex == imageResources.length - 1) {
+                    //FIXME popUpBuilder
                     LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                     View popupView = layoutInflater.inflate(R.layout.activity_main_menu_tutorial_popup_ended, null);
                     final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

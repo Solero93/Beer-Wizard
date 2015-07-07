@@ -121,7 +121,7 @@ public class GUIFacade {
      * Levels up the User.
      */
     public static void levelUp() {
-        if (GameData.getUser().getLevel() < 10) {
+        if (GameData.getUser().getLevel() < 10) { // FIXME Shouldn't be checked since button is blocked
             NetworkHelper.levelUp();
         }
     }
