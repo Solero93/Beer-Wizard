@@ -23,12 +23,12 @@ import pis2015.ub.com.beerwizard.R;
  * Class which shows images to help new players understand how to play this app
  * BETA VERSION
  */
-public class TutorialActivity extends Activity {
-    private Button buttonNext; // FIXME shouldn't be stored. This is why we use IDs...
+public class TutorialActivityTest extends Activity {
+    private Button buttonNext;
     private Button buttonPrevious;
     private ImageSwitcher imageSwitcher;
-    private Animation slide_in_left, slide_out_right; // FIXME use ID
-    private int[] imageResources; // FIXME should go -> do an XML array
+    private Animation slide_in_left, slide_out_right;
+    private int[] imageResources;
     private int curIndex;
 
     /**
@@ -73,7 +73,7 @@ public class TutorialActivity extends Activity {
             @Override
             public View makeView() {
 
-                ImageView imageView = new ImageView(TutorialActivity.this);
+                ImageView imageView = new ImageView(TutorialActivityTest.this);
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
                 ViewGroup.LayoutParams params = new ImageSwitcher.LayoutParams(
@@ -106,7 +106,6 @@ public class TutorialActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 if (curIndex == imageResources.length - 1) {
-                    //FIXME popUpBuilder
                     LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                     View popupView = layoutInflater.inflate(R.layout.activity_main_menu_tutorial_popup_ended, null);
                     final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

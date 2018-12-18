@@ -8,23 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pis2015.ub.com.beerwizard.game.SpellManager;
-import pis2015.ub.com.beerwizard.network.GameData;
-import pis2015.ub.com.beerwizard.network.NetworkHelper;
-import pis2015.ub.com.beerwizard.network.User;
+import pis2015.ub.com.beerwizard.network.GameDataTest;
+import pis2015.ub.com.beerwizard.network.NetworkHelperTest;
+import pis2015.ub.com.beerwizard.network.UserTest;
 import pis2015.ub.com.beerwizard.network.UserInterface;
-import pis2015.ub.com.beerwizard.util.Constants;
+import pis2015.ub.com.beerwizard.util.ConstantsTest;
 
 /**
  * Façade class that has all the "services" the GUI can call.
  */
-public class GUIFacade {
+public class GUIFacadeTest {
 
     /**
      * Gives all the Users that play the current GameData
      * @return List of all Users in current GameData
      */
     public static List<String> getAllUsers() {
-        List<UserInterface> users = GameData.getUsers();
+        List<UserInterface> users = GameDataTest.getUsers();
         ArrayList<String> array = new ArrayList<>();
         for (UserInterface user : users) {
             try {
@@ -43,9 +43,9 @@ public class GUIFacade {
      */
     public static String getUserName(String uuid) {
         try {
-            if (uuid.equals(Constants.UUID_STRING))
-                return GameData.getUser().getName();
-            return GameData.getUser(uuid).getName();
+            if (uuid.equals(ConstantsTest.UUID_STRING))
+                return GameDataTest.getUser().getName();
+            return GameDataTest.getUser(uuid).getName();
         } catch (BusException ignored) {
             return "";
         }
@@ -56,7 +56,7 @@ public class GUIFacade {
      * @return User's Name
      */
     public static String getUserName() {
-        return GameData.getUser().getName();
+        return GameDataTest.getUser().getName();
     }
 
     /**
@@ -64,7 +64,7 @@ public class GUIFacade {
      * @return
      */
     public static int getUserAvatar() {
-        return GameData.getUser().getAvatar();
+        return GameDataTest.getUser().getAvatar();
     }
 
     /**
@@ -72,14 +72,14 @@ public class GUIFacade {
      * @return
      */
     public static boolean getUserShield() {
-        return GameData.getUser().getShield();
+        return GameDataTest.getUser().getShield();
     }
 
     /**
      * Breaks shield of User
      */
     public static void breakUserShield() {
-        GameData.getUser().setShield(false);
+        GameDataTest.getUser().setShield(false);
     }
 
     /**
@@ -87,7 +87,7 @@ public class GUIFacade {
      * @param context
      */
     public static void createGame(Context context) {
-        NetworkHelper.createGame(context);
+        NetworkHelperTest.createGame(context);
     }
 
     /**
@@ -95,7 +95,7 @@ public class GUIFacade {
      * @param context
      */
     public static void exitGame(Context context) {
-        NetworkHelper.exitGame(context);
+        NetworkHelperTest.exitGame(context);
     }
 
     /**
@@ -104,7 +104,7 @@ public class GUIFacade {
      * @param idAvatar
      */
     public static void modifyUserProfile(String name, int idAvatar) {
-        User user = GameData.getUser();
+        UserTest user = GameDataTest.getUser();
         user.setName(name);
         user.setAvatar(idAvatar);
     }
@@ -114,15 +114,15 @@ public class GUIFacade {
      * @return Current Level
      */
     public static int getLevel() {
-        return GameData.getUser().getLevel();
+        return GameDataTest.getUser().getLevel();
     }
 
     /**
      * Levels up the User.
      */
     public static void levelUp() {
-        if (GameData.getUser().getLevel() < 10) { // FIXME Shouldn't be checked since button is blocked
-            NetworkHelper.levelUp();
+        if (GameDataTest.getUser().getLevel() < 10) {
+            NetworkHelperTest.levelUp();
         }
     }
 
@@ -131,7 +131,7 @@ public class GUIFacade {
      * @param uuid
      */
     public static void levelUp(String uuid) {
-        NetworkHelper.levelUp(uuid);
+        NetworkHelperTest.levelUp(uuid);
     }
 
     /**
@@ -139,7 +139,7 @@ public class GUIFacade {
      * @param uuid
      */
     public static void levelDown(String uuid) {
-        NetworkHelper.levelDown(uuid);
+        NetworkHelperTest.levelDown(uuid);
     }
 
     /**
@@ -150,21 +150,21 @@ public class GUIFacade {
      */
     public static void castSpell(int targetUserPosition, int idSpell, String param) {
         try {
-            String casterUserId = GameData.getUser().getUUID();
+            String casterUserId = GameDataTest.getUser().getUUID();
             switch (idSpell) {
                 case SpellManager.SHIELD:
-                    GameData.getUser().setShield(true);
+                    GameDataTest.getUser().setShield(true);
                     break;
                 case SpellManager.CREATE_RULE:
-                    GameData.setRule(param);
-                    NetworkHelper.castSpell(casterUserId, Constants.BROADCAST, idSpell, param); // has to be sent to everyone
+                    GameDataTest.setRule(param);
+                    NetworkHelperTest.castSpell(casterUserId, ConstantsTest.BROADCAST, idSpell, param); // has to be sent to everyone
                     break;
                 case SpellManager.ALL_IN_BEER:
-                    NetworkHelper.castSpell(casterUserId, Constants.BROADCAST, idSpell, param); // has to be sent to everyone
+                    NetworkHelperTest.castSpell(casterUserId, ConstantsTest.BROADCAST, idSpell, param); // has to be sent to everyone
                     break;
                 default: // Rest of cases
-                    String targetUserId = GameData.getUser(targetUserPosition).getUUID();
-                    NetworkHelper.castSpell(casterUserId, targetUserId, idSpell, param);
+                    String targetUserId = GameDataTest.getUser(targetUserPosition).getUUID();
+                    NetworkHelperTest.castSpell(casterUserId, targetUserId, idSpell, param);
                     break;
             }
         } catch (BusException e) {
@@ -178,6 +178,6 @@ public class GUIFacade {
      * @return
      */
     public static String getRule() {
-        return GameData.getRule();
+        return GameDataTest.getRule();
     }
 }

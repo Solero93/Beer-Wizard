@@ -15,12 +15,12 @@ import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 
 import pis2015.ub.com.beerwizard.R;
-import pis2015.ub.com.beerwizard.util.Constants;
+import pis2015.ub.com.beerwizard.util.ConstantsTest;
 
 /**
  * Activity used to modify your profile, set an avatar image and your name
  */
-public class ProfileActivity extends Activity {
+public class ProfileActivityTest extends Activity {
     private Button avatar;
     private int idAvatar;
 
@@ -28,21 +28,19 @@ public class ProfileActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu_profile);
         Button btn_avatarChooser;
         final FrameLayout block = null;
-        ((EditText) findViewById(R.id.profileName)).setText(GUIFacade.getUserName());
-        idAvatar = GUIFacade.getUserAvatar();
+        ((EditText) findViewById(R.id.profileName)).setText(GUIFacadeTest.getUserName());
+        idAvatar = GUIFacadeTest.getUserAvatar();
 
         /**
          * This button opens a popup to select your new avatar from a listview
          */
         btn_avatarChooser = (Button) findViewById(R.id.avatarImage);
-        btn_avatarChooser.setBackgroundResource(GUIFacade.getUserAvatar());
+        btn_avatarChooser.setBackgroundResource(GUIFacadeTest.getUserAvatar());
         btn_avatarChooser.setOnClickListener(new Button.OnClickListener() {
 
             @Override
@@ -130,12 +128,12 @@ public class ProfileActivity extends Activity {
      */
     public void onClick_saveChanges(View view) {
         String name = ((EditText) findViewById(R.id.profileName)).getText().toString();
-        SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
+        SharedPreferences.Editor editor = getSharedPreferences(ConstantsTest.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
         .edit();
         editor.putString("name", name);
         editor.putInt("avatar", idAvatar);
         editor.apply();
-        GUIFacade.modifyUserProfile(name, idAvatar);
+        GUIFacadeTest.modifyUserProfile(name, idAvatar);
         setResult(RESULT_OK, null);
         finish();
     //overridePendingTransition(R.anim.card_flip_left_in, R.anim.card_flip_left_out);

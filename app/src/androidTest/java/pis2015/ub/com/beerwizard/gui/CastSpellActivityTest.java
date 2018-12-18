@@ -24,27 +24,23 @@ import pis2015.ub.com.beerwizard.game.SpellManager;
 /**
  * Activity where the wizar can cast his spells
  */
-public class CastSpellActivity extends Activity {
+public class CastSpellActivityTest extends Activity {
     private int idSpell, idUser;
     private String textRule;
     private boolean oRule;
 
-    //TODO Create class FullScreenActivity that inherits from Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cast_spell);
-        this.getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Bundle b = new Bundle(); //FIXME could be deleted
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Bundle b = new Bundle();
         b = getIntent().getExtras();
         idSpell = b.getInt("spell");//id spell de 1 a
         idUser = 0;
         textRule = "";
 
         //description and Quote
-        //FIXME could be contracted to be done without declaration
         TextView description = (TextView) findViewById(R.id.descriptionText);
         TextView title = (TextView) findViewById(R.id.titleText);
         TextView quote = (TextView) findViewById(R.id.quoteText);
@@ -114,7 +110,7 @@ public class CastSpellActivity extends Activity {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.activity_game_users, null);
 
-        //FIXME Should apply builder pattern to create popUps
+
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         Drawable bg = getBaseContext().getResources().getDrawable(R.drawable.popup_border);
@@ -125,7 +121,7 @@ public class CastSpellActivity extends Activity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
-                GUIFacade.getAllUsers());
+                GUIFacadeTest.getAllUsers());
         // Assign adapter to ListView
         listvw_user.setAdapter(arrayAdapter);
         btCancel.setOnClickListener(new Button.OnClickListener() {
@@ -142,7 +138,7 @@ public class CastSpellActivity extends Activity {
 
 /*                // We know the View is a TextView so we can cast it
                   // IMPORTANT TO REMEMBER THIS!!
-                TextView clickedView = (TextView) view; FIXME wtf ?!
+                TextView clickedView = (TextView) view;
 */
                 idUser = position;
                 popupWindow.dismiss();
@@ -170,7 +166,6 @@ public class CastSpellActivity extends Activity {
         /*
         Popup shown when one played cast a spell and needs some feedback from player
          */
-        //FIXME rename stuff here + builder pattern
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         Drawable bg = getBaseContext().getResources().getDrawable(R.drawable.popup_border);
@@ -214,7 +209,7 @@ public class CastSpellActivity extends Activity {
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.popup_sent_spell, null);
 
-        //FIXME goddamn builder pattern
+
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         TextView name = (TextView) popupView.findViewById(R.id.sent_spell_Name);
@@ -228,7 +223,7 @@ public class CastSpellActivity extends Activity {
             @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
-                GUIFacade.castSpell(idUser, idSpell, textRule);
+                GUIFacadeTest.castSpell(idUser, idSpell, textRule);
                 setResult(idSpell, null);
                 finish();
             }
